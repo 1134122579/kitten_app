@@ -1,0 +1,73 @@
+<view class="votePage">
+  <!-- 头 -->
+  <view class="vote_header ">
+    <view>
+      <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
+        寻找最美猫咪
+      </view>
+      <view class="vote_header_text">
+        第2届猫咪选美大赛
+      </view>
+    </view>
+    <view class="vote_header_time">
+      <text>活动时间：</text><text>2021.2.2 至 2021.3.3</text>
+    </view>
+  </view>
+  <!-- 活动公告 -->
+  <view class="tag_style flexbetween">
+    <view class="flexastart">
+      <van-icon name="underway" size="18" />
+      <text class="hd_text">活动倒数计时：1小时30分04秒</text>
+    </view>
+    <van-button round type="warning" size="small">我要报名</van-button>
+  </view>
+  <!-- 数据 -->
+
+  <view class="number_list flexaround">
+    <view class="numnber_one flexcolumn">
+      <view>
+        已报名
+      </view>
+      <view class="num">
+        15123
+      </view>
+    </view>
+    <view class="numnber_one flexcolumn borderLR">
+      <view>
+        投票人数
+      </view>
+      <view class="num">
+        15123
+      </view>
+    </view>
+    <view class="numnber_one flexcolumn">
+      <view>
+        访问量
+      </view>
+      <view class="num">
+        15123
+      </view>
+    </view>
+  </view>
+
+  <!-- 搜索 -->
+
+  <view class="searchstyle flexbetween">
+    <view class="search_l flexastart">
+      <van-icon name="search" size="18" />
+      <input class="search_input" type="text" placeholder="请输入名字或编号" />
+    </view>
+    <view class="search_r">
+      <van-button type="warning">我要报名</van-button>
+    </view>
+  </view>
+  <!-- 内容 -->
+  <view class="tab_content">
+    <van-tabs active="{{ active }}" bind:change="onChange"  bind:click="onClick" tab-active-class="tabactiveclass">
+      <!-- <van-tab name="{{item.id}}" wx:for="{{tabList}}" wx:key="index">{{item.title}}</van-tab> -->
+      <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
+    </van-tabs>
+  </view>
+
+
+</view>

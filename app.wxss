@@ -17,8 +17,8 @@ page {
   /* overflow: hidden; */
   --button-border-radius: 14rpx;
   --button-default-color: #d13027;
-  /* --toast-background-color: #d13027; */
-  --button-default-border-color:#d13027;
+   --button-default-border-color:#d13027;
+  --button-warning-background-color:rgba(255, 106, 110, 1);
 }
 .redBackground {
   background: #d13027;

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/vote/vote",
     "pages/home/home",
     "pages/shopCount/shopCount",
     "pages/typelistpage/typelistpage",
@@ -32,7 +33,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#D13127",
-    "navigationBarTitleText": "憩适空间",
+    "navigationBarTitleText": "WCCF协会",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
