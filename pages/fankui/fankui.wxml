@@ -1,0 +1,19 @@
+<view class="userInfo">
+  <van-cell-group >
+  <van-field
+    model:value="{{ problem }}"
+    label="留言:"
+    input-align="right"
+    type="textarea"
+    autosize="{{autosize}}"
+    input-class="inputClass"
+    placeholder="请输入问题"
+  />
+</van-cell-group>
+
+<view class="button_">
+<van-button block round type="primary" bind:click="problembutton" color="#90A4AE">
+  立即提交
+</van-button>
+</view>
+</view>

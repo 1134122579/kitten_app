@@ -1,0 +1,7 @@
+<view class="tab-bar">
+  <!-- <view class="tab-bar-border"></cover-view> -->
+  <view wx:for="{{list}}" wx:key="index" class="{{item.is_content?'tab-bar-item contentVip':'tab-bar-item'}}" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="onChange">
+    <image  src="{{selected == index ? item.selectedIconPath : item.iconPath}}" class="coverimage"></image>
+    <view class="coverview" style="color: {{selected == index ? selectedColor : color}}"  >{{item.text}}</view>
+  </view>
+</view>

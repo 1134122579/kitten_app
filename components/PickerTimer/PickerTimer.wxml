@@ -1,0 +1,23 @@
+<van-popup show="{{ isshow }}" position="bottom" round>
+  <view class="picker_view">
+    <view class="picker_view_header flexbetween">
+      <view bindtap="onNll">取消</view>
+      <view bindtap="onok">确定</view>
+    </view>
+    <view class="picker_view_content">
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+        <picker-view-column>
+          <view wx:for="{{years}}" style="line-height: 50px">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" style="line-height: 50px">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" style="line-height: 50px">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+
+  </view>
+
+</van-popup>

@@ -1,0 +1,40 @@
+<view class="carkblock">
+  <view class="carkblock_l">
+    <van-image width="120" radius="8" height="120" bindtap="previewImage" data-url="{{carItem.car_photo}}" src="{{carItem.car_photo}}" />
+  </view>
+  <view class="card_content ">
+    <view class="title">
+      <text class="car_no"> {{carItem.car_no}}</text>
+      <van-tag type="danger" wx:if="{{carItem.car_type}}" plain class="car_type">{{carItem.car_type}}</van-tag>
+    </view>
+    <view class="card_content_bottom flexbetween">
+      <view class="desc">
+        <view class="p">
+          车辆品牌:
+          <text class="text">{{carItem.brand_name}}</text>
+        </view>
+        <view class="p">
+          车辆颜色:
+          <text class="text">{{carItem.car_color}}</text>
+        </view>
+        <view class="p">
+          该车架号:
+          <text class="text">{{carItem.vin_no}}</text>
+        </view>
+      </view>
+
+      <view class="carkblock_r" wx:if="{{!isButton}}" bindtap="edit" data-item="{{carItem}}">
+        <van-icon name="edit" size="30" />
+      </view>
+      <!-- <view class="carkblock_r">
+        <van-button color="#D13127" block size="small" round data-item="{{carItem}}" bind:click="gopage">选择</van-button>
+      </view>  -->
+      <picker wx:if="{{isButton}}" class="carkblock_r" bindchange="bindPickerChange" value="{{index}}" range="{{array}}" range-key="name">
+        <van-button color="#D13127" block size="small" round>选择</van-button>
+      </picker>
+    </view>
+
+  </view>
+
+
+</view>

@@ -1,0 +1,16 @@
+<!--index.wxml-->
+
+<view class="newcontent flexcolumn">
+  <view class="logo">
+    <open-data type="userAvatarUrl"></open-data>
+  </view>
+  <view class="newtitle"> 憩适空间</view>
+  <view class="buttonSyule ">
+  <view class="button_">
+    <van-button block  color="#D13127" bind:click="getUserProfile" disabled="{{disabled}}"> 授权登录 </van-button>
+  </view>
+  <view class="button_">
+    <van-button block  color="#A1A1A1" bind:click="noUser"> 暂不登录 </van-button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,105 @@
+/* components/OrdeCard/OrdeCard.wxss */
+.cardStyle {
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #fff;
+  margin: 20rpx;
+  box-shadow: 0rpx 0rpx 10rpx #ccc;
+}
+
+.card_header {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+.redBackground {
+  background: #D13127;
+  color: #fff;
+}
+.card_header_l {
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 600;
+  font-size: 26rpx;
+}
+.tltle {
+  margin-left: 20rpx;
+  font-size: 18px;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}
+.iconText {
+  font-size: 26rpx;
+  margin-right: 20rpx;
+}
+.card_header_r {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card_content {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.card_content_li {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.card_content_li_name {
+  font-size: 22rpx;
+  width: 100rpx;
+  text-align: center;
+  color: rgb(114, 114, 114);
+}
+.card_content_li_text {
+  font-size: 28rpx;
+  padding-left: 20rpx;
+  font-weight: 600;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+
+  /* color: #ebebeb; */
+}
+.clilpStyle{
+  color: #999999;
+}
+.cardfooter {
+  padding: 10rpx 20rpx;
+  display: flex;
+  justify-content: flex-end;
+align-items: center;
+}
+.buttonArr {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.button_ {
+  margin-right: 20rpx;
+}
+.price {
+  color: #D13127;
+}
+.timer {
+  font-size: 24rpx;
+  font-weight: 600;
+}
+.z_price{
+  color: #ccc;
+  text-decoration: line-through;
+}

@@ -1,0 +1,30 @@
+<view class="businesslist">
+  <block wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+    <view class="businesslist_card">
+      <view class="businesslist_card_title">
+        {{item.order_no}}
+      </view>
+      <view class="businesslist_card_desc flexbetween">
+        <view class="businesslist_card_desc_ul">
+          <view class="businesslist_card_desc_li">
+            <text class="desc_l">充值金额：</text>
+            <text class="desc_r">{{item.price}}</text>
+          </view>
+          <view class="businesslist_card_desc_li">
+            <text class="desc_l">充值时间：</text>
+            <text class="desc_r">{{item.create_time}}</text>
+          </view>
+        </view>
+        <view class="businesslist_card_desc_ok">
+          充值成功
+        </view>
+
+      </view>
+
+    </view>
+
+  </block>
+  <block wx:if="{{list.length<=0}}">
+    <EmptyModel />
+  </block>
+</view>

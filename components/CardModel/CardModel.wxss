@@ -1,0 +1,52 @@
+.carkblock {
+  display: flex;
+  padding: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 0 5px #cccccc;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+}
+.card_content{
+  flex: 1;
+  box-sizing: border-box;
+  padding: 0 10rpx;
+}
+.card_content_bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.desc {
+  margin: 0 20rpx;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  /* background-color: #d13027; */
+}
+.title {
+  font-size: 40rpx;
+  font-weight: 600;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.desc .p {
+  font-size: 24rpx;
+  color: #404040;
+  padding: 8rpx 0;
+}
+.desc .p .text {
+  color: #333;
+  font-size: 28rpx;
+}
+.title .car_no {
+  margin-right: 18rpx;
+}
+.car_type {
+  font-size: 20rpx;
+}

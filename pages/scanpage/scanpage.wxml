@@ -1,0 +1,123 @@
+<!--扫码界面l-->
+
+<view class="scanPage">
+
+	<!--扫码-->
+	<view class="pagecontent_code flexcolumn" wx:if="{{is_sancode}}">
+		<view class="pagecontent_code_content flexcolumn">
+			<view class="pagecontent_code_content_tittle">
+				券码核销
+			</view>
+			<view class="scanCode" bindtap="onHXScanCode">
+				<van-icon name="scan" size="34" />
+			</view>
+		</view>
+		<view class="pagecontent_code_content flexcolumn">
+			<view class="pagecontent_code_content_tittle">
+				扫码下单
+			</view>
+			<view class="scanCode" bindtap="onScanCode">
+				<van-icon name="scan" size="34" />
+			</view>
+		</view>
+
+		<view class="pagecontent_code_content flexcolumn">
+			<view class="pagecontent_code_content_tittle">
+				账户充值
+			</view>
+			<view class="scanCode" bindtap="onCZCode">
+				<van-icon name="scan" size="34" />
+			</view>
+		</view>
+
+	</view>
+
+	<!--车辆列表 -->
+	<view class="cardList" wx:if="{{!is_sancode}}">
+		<block wx:if="{{list.length>0}}">
+			<view class="Cardtitle">
+				车辆列表
+			</view>
+			<block wx:for="{{list}}" wx:key="index">
+				<!--车辆样式 -->
+				<CardModel carItem="{{item}}" isButton="{{true}}" bind:onCard="gopage" />
+			</block>
+		</block>
+		<block wx:else>
+			<!-- <van-empty class="custom-image" image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="请让用户添加车辆" /> -->
+			<EmptyModel description="请让用户添加车辆" />
+		</block>
+	</view>
+
+		<!--券码核销车辆列表 -->
+		<view class="cardList" wx:if="{{!is_qmcode}}">
+		<block wx:if="{{list.length>0}}">
+			<view class="Cardtitle">
+				车辆列表
+			</view>
+			<block wx:for="{{list}}" wx:key="index">
+				<!--车辆样式 -->
+				<CardModel carItem="{{item}}" isButton="{{true}}" bind:onCard="onHXCode" />
+			</block>
+		</block>
+		<block wx:else>
+			<!-- <van-empty class="custom-image" image="https://img.yzcdn.cn/vant/custom-empty-image.png" description="请让用户添加车辆" /> -->
+			<EmptyModel description="请让用户添加车辆" />
+		</block>
+	</view>
+
+	<!-- 充值弹窗 -->
+	<van-popup z-index="99" show="{{ show }}" round position="bottom" custom-style="padding-bottom:30px"
+		bind:close="onClose">
+		<view class="price_content">
+			<view class="price_header">
+				充值
+			</view>
+			<view class="price_list">
+				<block>
+					<view class="priceBlock inputStyle">
+						<input value="{{ge_price}}" type="text" bindtap="inputprice" bindinput="bindinput" type="number"
+							placeholder="自定义金额" />
+					</view>
+				</block>
+				<block wx:for="{{priceList}}" wx:key="index">
+					<view bindtap="pricButton" data-price="{{item.price}}"
+						class="{{is_price==item.price?'priceBlock selpriceBlock':'priceBlock'}}">
+						{{item.price}}
+					</view>
+				</block>
+			</view>
+			<view class="price_contentfooter">
+				<van-button block size="normal  " type="danger" bind:click="order"> 充值
+				</van-button>
+			</view>
+		</view>
+	</van-popup>
+	<!-- 券码核销 -->
+	<!-- <van-popup z-index="99" show="{{ isQcodeshow }}" round position="bottom" custom-style="padding-bottom:30px"
+		bind:close="onQcodeClose">
+		<view class="price_content">
+			<view class="price_header">
+				充值
+			</view>
+			<view class="price_list">
+				<block>
+					<view class="priceBlock inputStyle">
+						<input value="{{ge_price}}" type="text" bindtap="inputprice" bindinput="bindinput" type="number"
+							placeholder="自定义金额" />
+					</view>
+				</block>
+				<block wx:for="{{priceList}}" wx:key="index">
+					<view bindtap="pricButton" data-price="{{item.price}}"
+						class="{{is_price==item.price?'priceBlock selpriceBlock':'priceBlock'}}">
+						{{item.price}}
+					</view>
+				</block>
+			</view>
+			<view class="price_contentfooter">
+				<van-button block size="normal  " type="danger" bind:click="order"> 充值
+				</van-button>
+			</view>
+		</view>
+	</van-popup> -->
+</view>

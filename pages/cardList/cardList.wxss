@@ -1,0 +1,65 @@
+/* pages/cardList/cardList.wxss */
+.cardList {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.tag {
+  padding: 20rpx 0;
+  text-align: center;
+  color: #D13127;
+  font-size: 14px;
+  /* background: #ffd767; */
+  background: #fff;
+  box-shadow: 0 3px 5px #ccc;
+}
+.cardBlock {
+  margin-top: 10rpx;
+}
+#swipe-cell {
+  background: #fff;
+}
+.del {
+  display: flex;
+  width: 120rpx;
+  height: 100%;
+  color: #fff;
+  background: #D13127;
+  justify-content: center;
+  align-items: center;
+}
+
+.add {
+  position: absolute;
+  bottom: 50rpx;
+  left: 0;
+  right: 0;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.addButton {
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.buttonAll {
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  padding: 20rpx 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.button_ {
+  width: 40%;
+}
+.caeBlock {
+  background: #fff;
+  padding-left: 40rpx;
+}

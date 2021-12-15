@@ -1,0 +1,112 @@
+<!--index.wxml-->
+<view class=" page">
+	<view class="page_bg" />
+	<view class="panel">
+		<view class="header">
+			<van-image radius="10" width="150" height="150" src="{{userInfo.photo||'../../../../images/Group.png'}}" />
+		</view>
+		<view class="content">
+			<view class="userInfo">
+				<view class="name">
+					{{userInfo.name||"未认证"}}
+				</view>
+				<view class="vipTime" wx:if="{{userInfo.vip_time_out}}" bindtap="goVip">
+					<image class="vip_bg" src="../../images/vipPg.png"></image>
+					<view class="vip_time">
+						会员有效期{{userInfo.vip_time_out}}
+					</view>
+				</view>
+				<view class="novip" wx:if="{{!userInfo.vip_time_out}}" bindtap="goVip">
+					<image class="vip_bg" src="../../images/novip.png"></image>
+				</view>
+				<view class="user_jf">
+					<view class="user_ye flexcolumn">
+						<view class="user_ye_title ">
+							余额
+						</view>
+						<view class=" user_number">
+							{{userInfo.balance}}
+						</view>
+					</view>
+					<view class="user_ye flexcolumn " bindtap="gocouponpage">
+						<view class="user_ye_title ">
+							抵用券
+						</view>
+						<view class=" user_number coupNum">
+							{{userInfo.userCoupon}}
+						</view>
+					</view>
+					<view class="user_ye flexcolumn">
+						<view class="user_ye_title ">
+							积分
+						</view>
+						<view class=" user_number">
+							{{userInfo.coupon_balance}}
+						</view>
+					</view>
+				</view>
+
+			</view>
+			<view class="barnum">会员号：<text style="color:#D03126;">{{userInfo.vip_no}}</text></view>
+			<!-- bindtap="previewImageQr"-->
+			<view class="barcode" hidden="{{!is_barcode}}" bindtap="previewImageQr" data-url="{{barcodeImagePath}}">
+				<image class="barcodeImage" src="{{barcodeImagePath}}"></image>
+			</view>
+			<!-- -->
+			<view class="qrcode" bindtap="previewImageQr" data-url="{{qrcodeImagePath}}" hidden="{{is_barcode}}">
+				<view class="qrcode_content">
+					<image class="qrcodeImg" mode="widthFix" src="{{qrcodeImagePath}}"></image>
+					<!-- <image class="qrcodeImg" mode="scaleToFill"  src="{{qrcodeImagePath}}"></image> -->
+				</view>
+			</view>
+			<view class="is_Qh" bindtap="iscode">
+				<text>{{!is_barcode?'切换二维码':'切换条形码'}}</text>
+				<van-icon name="arrow" size="16" />
+			</view>
+		</view>
+	</view>
+	<view class="footer_content" wx:if="{{userInfo.is_show}}">
+		<van-button block  size="large " type="danger" color="#D13127" bind:click="onClose" custom-class="CzStyle"> 充值
+		</van-button>
+	</view>
+</view>
+<view>
+	<canvas canvas-id="qrcode" style="width: 320rpx;height: 320rpx;position: absolute;top:-9999px" />
+	<canvas canvas-id="barcode" style="width: 320rpx;height: 160rpx; position: absolute;top:-9999px" />
+</view>
+<!--充值-->
+<van-popup z-index="99" show="{{ show }}" round position="bottom" custom-style="padding:0 0 90rpx 0;bottom:48px" bind:close="onClose">
+	<view class="price_content">
+		<view class="price_header">
+			充值
+		</view>
+		<view class="price_list">
+			<block>
+				<view class="priceBlock inputStyle">
+					<input value="{{ge_price}}" type="text" bindtap="inputprice" bindinput="bindinput" type="digit" placeholder="自定义金额" />
+				</view>
+			</block>
+			<block wx:for="{{priceList}}" wx:key="index">
+				<view bindtap="pricButton" data-price="{{item.price}}" class="{{is_price==item.price?'priceBlock selpriceBlock':'priceBlock'}}">
+					{{item.price}}
+				</view>
+			</block>
+
+		</view>
+		<view class="price_contentfooter">
+			<van-button block size="normal" type="danger" color="#D13127" custom-class="CzStyle" bind:click="order">充值</van-button>
+		</view>
+	</view>
+</van-popup>
+<!-- 充值成功 -->
+<van-popup show="{{ is_okplayShow }}" closeable round 
+bind:click-overlay="onplayClose" bind:close="onplayClose">
+	<view class="okplayicon_content flexcolumn">
+		<view class="okplayicon ">
+			<image src="../../images/okplayicon.png"></image>
+		</view>
+		<view class="okplayicon_content_title">
+			充值成功
+		</view>
+	</view>
+</van-popup>

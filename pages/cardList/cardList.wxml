@@ -1,0 +1,105 @@
+<view class="cardList">
+
+	<view class="tag flexcenter">
+		<van-icon name="warning-o" color="#F2BA51" size="18"/><text style="margin-left:10rpx;">  若你的车型分类不正确，可点击编辑进行修改</text>
+	</view>
+
+	<block wx:for="{{list}}" wx:key="index" wx:if="{{list.length>0}}">
+	<CardModel carItem="{{item}}" bind:eidtClick="eidtClick"/>
+	</block>
+
+	<block  wx:if="{{list.length<=0}}">
+	<EmptyModel/>
+	</block>
+
+	<view class="add">
+		<van-button
+		 class="addButton"
+		 icon="plus"
+		 size="normal"
+		 plain
+		 color="#D13127"
+		 block
+		 bind:click="addpopup"
+	>添加车辆</van-button>
+	</view>
+	<van-popup show="{{show}}" custom-style="width:90%;padding:20rpx 0 20px 0;" round>
+		<view class="title">
+			车辆信息
+		</view>
+		<van-cell title="车辆照片" required>
+			<view>
+				<van-uploader
+				 file-list="{{ fileList }}"
+				 max-count="1"
+				 bind:after-read="afterRead"
+				 accept="image"
+				 bind:after-read="afterRead"
+				 bind:delete="deleteImage"
+				/>
+			</view>
+		</van-cell>
+		<van-field
+		 model:value="{{car_no}}"
+		 label="车牌号"
+		 input-align="right"
+		 placeholder="请输入车牌号"
+		 required
+		/>
+		<van-field
+		 model:value="{{ brand_name }}"
+		 input-align="right"
+		 label="车辆品牌"
+		 placeholder="请输入车辆品牌"
+		/>
+		<van-field
+		 model:value="{{ car_color }}"
+		 input-align="right"
+		 label="车辆颜色"
+		 placeholder="请输入车辆颜色"
+		/>
+		<van-field
+		 model:value="{{ vin_no }}"
+		 input-align="right"
+		 label="车架号"
+		 placeholder="请输入车架号"
+		/>
+		<van-cell value="{{ car_type|| '请选择车辆类型'}}" title="车辆类型" bind:click="clickInput" />
+		<view class="buttonAll">
+			<van-button
+			 class="button_"
+			 round
+			 block
+			 size="small"
+			 bind:click="onAdd"
+			> 取消
+			</van-button>
+			<van-button
+			 class="button_"
+			 round
+			 block
+			 size="small"
+			 type="primary"
+			 color="#D13127"
+			 bind:click="setAdd"
+			> 确认
+			</van-button>
+		</view>
+
+	</van-popup>
+
+	<van-popup show="{{ isCardTypeshow }}" position="bottom" round>
+		<view class="timecheck">
+			<van-picker
+			 show-toolbar
+			 columns="{{ car_typeList }}"
+			 bind:cancel="oncancel"
+			 bind:confirm="onconfirm"
+			 bind:change="onChange"
+			/>
+		</view>
+	</van-popup>
+
+</view>
+
+<van-dialog id="van-dialog" />

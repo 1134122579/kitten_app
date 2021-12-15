@@ -1,0 +1,26 @@
+<!-- <van-tabs active="{{ status }}" bind:change="onChange">
+  <van-tab wx:for="{{statusList}}" wx:key="{{status}}" title="{{item.title}}" name="{{item.status}}"></van-tab>
+</van-tabs> -->
+
+<view class="list" wx:if="{{list.length>0}}">
+  <view wx:for="{{list}}" wx:key="room_id" class="_block">
+    <van-card thumb-mode="aspectFill" title-class="titleclass" desc-class="descclass" centered desc="{{item.order_no}}" title="{{item.name}}"
+      thumb="{{ item.cover }}"
+    >
+      <view slot="footer" wx:if="{{status==2}}">
+      <view class="button_">
+        <van-button size="small" type="primary" block bind:click="order"  color="#90A4AE" round data-item="{{item}}">立即支付</van-button>
+      </view>
+      </view>
+      <view slot="footer" wx:if="{{status==1}}">
+      <view class="button_">
+        <van-button size="small" type="primary" block bind:click="notice"  color="#90A4AE" round data-item="{{item}}">一键通知</van-button>
+      </view>
+      </view>
+      <view slot="price-top" >
+        {{item.start_time_dete}}-{{item.end_time_date}}
+      </view>
+    </van-card>
+  </view>
+</view>
+<van-empty wx:if="{{list.length<=0}}" description="暂无" />

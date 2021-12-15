@@ -1,0 +1,122 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/shopCount/shopCount",
+    "pages/typelistpage/typelistpage",
+    "pages/vippage/vip",
+    "pages/cardList/cardList",
+    "pages/scanpage/scanpage",
+    "pages/setting/setting",
+    "pages/spacepage/space",
+    "pages/morepage/more",
+    "pages/orderpage/order",
+    "pages/login/login",
+    "pages/OrderLog/OrderLog",
+    "pages/purchase/purchase",
+    "pages/vipdetail/vipdetail",
+    "pages/about/about",
+    "pages/list/list",
+    "pages/storelist/storelist",
+    "pages/roomdetail/roomdetail",
+    "pages/userInfo/userInfo",
+    "pages/index/index",
+    "pages/businesslist/businesslist",
+    "pages/logs/logs",
+    "pages/fankui/fankui",
+    "pages/vippageCopy/vip",
+    "pages/vipchagepage/vipchagepage",
+    "pages/activitydetail/activitydetail",
+    "pages/couponpage/couponpage",
+    "pages/exchangpage/exchangpage"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#D13127",
+    "navigationBarTitleText": "憩适空间",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#272822",
+    "selectedColor": "#D13027",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home_s.png"
+      },
+      {
+        "pagePath": "pages/orderpage/order",
+        "text": "订单",
+        "iconPath": "./images/time.png",
+        "selectedIconPath": "./images/time_s.png"
+      },
+      {
+        "pagePath": "pages/vippage/vip",
+        "text": "会员",
+        "iconPath": "./images/vipcard.png",
+        "selectedIconPath": "./images/vipcard_s.png"
+      },
+      {
+        "pagePath": "pages/spacepage/space",
+        "text": "空间",
+        "iconPath": "./images/list.png",
+        "selectedIconPath": "./images/list_s.png"
+      },
+      {
+        "pagePath": "pages/morepage/more",
+        "text": "更多",
+        "iconPath": "./images/about.png",
+        "selectedIconPath": "./images/about_s.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "EmptyModel": "./components/EmptyModel/EmptyModel",
+    "CouponModel": "./components/CouponModel/CouponModel",
+    "van-tag": "@vant/weapp/tag/index",
+    "CardModel": "./components/CardModel/CardModel",
+    "van-sticky": "@vant/weapp/sticky/index",
+    "NavbarModel": "./components/NavbarModel/NavbarModel",
+    "OrdeCard": "./components/OrdeCard/OrdeCard",
+    "SpaceCard": "./components/SpaceCard/SpaceCard",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "Navheader": "./components/Navheader/Navheader",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-transition": "@vant/weapp/transition/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-radio": "@vant/weapp/radio/index",
+    "van-radio-group": "@vant/weapp/radio-group/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口展示"
+    }
+}
+}

@@ -1,0 +1,27 @@
+<view class="newstyle list_b">
+	<!-- <view class="title flexastart ">
+		<text>舞蹈练习室</text>
+		<text class="time spacing">24小时营业</text>
+	</view> -->
+	<view class="listItem" wx:for="{{list}}" wx:key="id">
+		<image src="{{item.cover}}" class="room_cover" />
+		<view class="detailstyle">
+			<view class="left">
+				<view class="itemtitle"> {{item.name}}</view>
+				<view class="address"> {{item.address}}</view>
+			</view>
+			<view class="riget_button">
+				<van-button
+				 bind:click="yuyueRoom"
+				 data-item="{{item}}"
+				 block
+				 round
+				 size="small"
+				 color="#494D59"
+				 wx:if="{{item.is_rent==1}}"
+				/>
+			</view>
+		</view>
+	</view>
+</view>
+

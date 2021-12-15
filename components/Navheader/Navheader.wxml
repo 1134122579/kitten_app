@@ -1,0 +1,4 @@
+
+<view class="custom flex_center" style="padding-top:{{statusBarHeight}}px">
+  <van-icon name="arrow-left" size="24px" bind:click="onback" />
+</view>

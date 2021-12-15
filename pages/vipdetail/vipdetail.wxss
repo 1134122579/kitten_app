@@ -1,0 +1,123 @@
+.vip_page {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.vip_header {
+  width: 100%;
+  height: 420rpx;
+}
+
+.headerimage {
+  width: 100%;
+  height: 100%;
+}
+
+.vip_card {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 220rpx;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+
+.vip_card_content {
+  height: 384rpx;
+  position: relative;
+
+}
+
+.card_text {
+  position: absolute;
+  top: 80rpx;
+  left: 200rpx;
+  color: #AE6F4D;
+}
+
+.card_text_title {
+  font-size: 38rpx;
+  font-weight: 600;
+  padding: 10rpx 0;
+  color: #571B0B;
+  
+}
+
+.card_text_tag {
+  font-size: 20rpx;
+  padding: 4rpx 10rpx;
+  border-radius: 20rpx;
+  border: 1px solid #AE6F4D;
+  margin-left: 10rpx;
+  color: #AE6F4D;
+}
+.card_text_desc{
+  font-size: 20rpx;
+}
+
+
+.vip_content{
+  padding: 20rpx;
+}
+.vip_title{
+  font-size: 34srpx;
+  font-weight:600 ;
+  padding-left: 14rpx;
+  padding: 20rpx 0;
+}
+.vip_type_text{
+  height: 420rpx;
+margin: 30rpx 0;
+overflow: hidden;
+}
+.vip_content_text{
+  /* font-size: 28rpx; */
+  padding:20rpx;
+}
+.vip_content_text_li{
+  padding: 10rpx 0;
+  line-height: 1.6;
+}
+.button_vip{
+  position: fixed;
+  bottom: 0rpx;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx ;
+  padding-bottom: 40rpx;
+  box-sizing: border-box;
+}
+/* 会员弹窗 */
+.okplayStyle_poup{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.okplayStyle{
+  width: 100%;
+  height: 1200rpx;
+  position: relative;
+}
+.customclass{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0) !important;
+}
+.image_pay{
+  width: 100%;
+  height: 100%;
+}
+.okbutton{
+  width: 56%;
+  height:100rpx ;
+  position: absolute;
+  bottom: 40rpx;
+}

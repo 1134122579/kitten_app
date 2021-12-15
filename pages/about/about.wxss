@@ -1,0 +1,104 @@
+/* pages/about/about.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background: #F5F6F8;
+  padding-bottom: 50px;
+}
+.aboout{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.aboutBG{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.aboutpage{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.header{
+  
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.headerImg{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-direction: 0;
+}
+.username{
+  margin: 20rpx;
+  font-size: 38rpx;
+  font-weight: 600;
+}
+.userdesc{
+  font-size: 26rpx;
+  color: #86868E;
+}
+
+.vip{
+  height:240rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.vipStyle{
+  height: 100%;
+  width: 100%;
+}
+.li{
+  width: 30%;
+  height: 180rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.iconstyle{
+  width: 30px;
+  height: 30px;
+}
+.text{
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  text-align: center;
+}
+.other_top{
+  padding: 20rpx;
+  text-indent: 20rpx;
+}
+.iconstyle_top{
+  width: 100rpx;
+  height: 100rpx;
+  flex-direction: 0;
+}
+.grid_user{
+  background: rgba(0, 0 ,0 ,0 );
+}
+.top .van-grid-item__content{
+  background: rgba(0, 0 ,0 ,0 );
+}
+.contacButton {
+  background-color: #FFF;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  height: 100%;
+}
+ 
+.contacButton::after {
+  border: #FFF solid;
+  opacity: 0;
+}

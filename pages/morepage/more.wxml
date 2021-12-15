@@ -1,0 +1,56 @@
+<wxs src="../../utils/split.wxs" module="split" />
+
+<view class="morerpage" style="margin-top:{{navHeight-1}}px">
+	<!-- nav  -->
+	<NavbarModel page-name="更多" text-color="#fff" bg-color="#D43C30"/>
+
+	<!-- 个人信息 -->
+	<view class="more_header">
+		<image class="header_bg" src="../../images/anoutbg.png"></image>
+		<view class="user_content">
+			<view class="user_content_t" bindtap="onuserInfo">
+				<van-image round width="80" height="80" src="{{userInfo.photo||'../../../../images/Group.png'}}"></van-image>
+				<view class="userName">{{userInfo.name||'未认证'}}</view>
+				<van-icon name="edit" size="18" />
+			</view>
+			<view class="header_footer">
+				<image class="header_bg" bindtap="goVip" src="../../images/vipdesc.png"></image>
+			</view>
+		</view>
+
+	</view>
+	<!-- 卡券   车辆 -->
+
+	<view class="cardStyle">
+		<view class="imageStyle" bindtap="oncarClick">
+			<image src="../../images/car.png"></image>
+		</view>
+		<view class="imageStyle" bindtap="oncardClick">
+			<image src="../../images/card.png"></image>
+		</view>
+	</view>
+
+	<!-- 功能 -->
+
+	<view class="function">
+		<view class="function_title">
+			常用功能
+		</view>
+		<block wx:for="{{list}}" wx:key="title">
+			<view class="{{item.marginTop}}" hidden="{{!split.power(powerlist,item.is_power)}}">
+				<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}"
+					value="{{item.value}}" border="{{isborder}}" />
+			</view>
+			<!-- 联系客服 -->
+			<!-- <view wx:if="{{item.isbutton}}" class="{{item.marginTop}}" wx:if="{{split.power(powerlist,item.is_power)}}">
+					<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}" value="{{item.value}}" border="{{isborder}}" />
+			</view> -->
+		</block>
+	</view>
+
+	<view class="contact">
+		<button class="button_style" open-type="contact" >
+			<van-icon name="service-o" size="20"></van-icon>
+		</button>
+	</view>
+</view>

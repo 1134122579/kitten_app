@@ -1,0 +1,267 @@
+/**index.wxss**/
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.page_bg {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 40%;
+  background: #D13127;
+}
+
+.panel {
+  display: flex;
+  /* overflow: hidden; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 710rpx;
+  margin-top: 40rpx;
+  border-radius: 10rpx;
+}
+
+.header {
+  /* height: 140rpx;
+  background-color: #f0f0f0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  background-color: #fff;
+  /* background: #4fc08d; */
+  margin-top: -100rpx;
+  padding-top: 110rpx;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 8rpx #ccc;
+}
+
+.userInfo {
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 36rpx;
+}
+
+.vipTime {
+  /* padding: 10rpx 0; */
+  width: 100%;
+  position: relative;
+  width: 380rpx;
+  height: 50rpx;
+  overflow: hidden;
+  margin: 0 auto;
+margin-top: 10rpx;
+}
+
+ .vip_bg {
+  width: 100%;
+  height: 100%;
+}
+
+.vip_time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 36rpx;
+  bottom: 0;
+  margin: auto;
+  font-size: 20rpx;
+  font-weight: 600;
+  line-height: 50rpx;
+  color: #F7D27F;
+}
+
+.novip{
+  width: 100%;
+  position: relative;
+  width: 190rpx;
+  height: 50rpx;
+  overflow: hidden;
+  margin: 0 auto;
+margin-top: 10rpx;
+}
+
+
+.user_jf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10rpx;
+  /* padding: 0 20%; */
+  padding: 0 30rpx;
+}
+
+.user_ye {
+  width: 30%;
+  flex: 1;
+}
+
+.user_number {
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-top: 10rpx;
+}
+
+.barcode {
+  display: flex;
+  height: 280rpx;
+overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.barcodeImage{
+    height: 100%;
+}
+
+.barnum {
+  padding: 20rpx 0;
+
+}
+
+.barcode>canvas {
+  width: 680rpx;
+  height: 200rpx;
+}
+
+.qrcode {
+  /* padding-bottom: 20rpx; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; */
+
+}
+.qrcode_content{
+  width: 240px;
+  height:  240px;
+  margin: 0 auto;
+}
+.qrcodeImg{
+  width: 100%;
+height:  100%;
+margin: 0 auto;
+
+}
+.qrcode>canvas {
+  width: 420rpx;
+  height: 420rpx;
+}
+
+.footer_content {
+  margin-top: 20rpx;
+  width: 100%;
+  padding:0 20rpx;
+  box-sizing: border-box;
+  padding-bottom: 120px;
+}
+
+.is_Qh {
+  color: #D13127;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18rpx 0;
+}
+
+/* 充值 */
+.price_header {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.price_list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+
+.priceBlock {
+  margin: 20rpx 28rpx 0 0;
+  height: 90rpx;
+  width: 46%;
+  border: 1px solid #fafafa;
+  box-shadow: 0 0 10rpx #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 90rpx;
+  border-radius: 10rpx;
+}
+
+.inputStyle {
+  width: 100%;
+  height: 90rpx;
+}
+
+.inputStyle input {
+  width: 100%;
+  height: 100%;
+}
+
+.selpriceBlock {
+  background: #D13127;
+  color: #fff;
+}
+
+.price_contentfooter {
+  padding: 20rpx 40rpx;
+}
+.coupNum{
+  /* background: #D13127; */
+  color: #D13127;
+  text-decoration: underline;
+  /* border-radius: 20rpx; */
+}
+
+
+.okplayicon_content{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 84rpx ;
+}
+.okplayicon_content_title{
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.okplayicon{
+  width: 270rpx;
+  height: 250rpx;
+}
+.okplayicon image{
+  width: 100%;
+  height: 100%;
+}
+.CzStyle{
+  letter-spacing: 20px;
+  text-indent: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}

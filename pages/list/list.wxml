@@ -1,0 +1,90 @@
+
+<view class="detailstyle">
+  <view class="coverimage" style="margin-top: {{statusBarHeights*2}}px;">
+    <!-- 预约 -->
+    <view class="userInfo flexcenter">
+    <view class="headerImgae">
+      <image src="{{userInfo.headimgurl}}" class="userImg"> </image>
+    </view>
+    <view class="userNAme">
+      <view>
+          {{userInfo.nickname}}
+      </view>
+      <view class="signature">
+        {{userInfo.signature||'这个人很懒，什么也没有留下'}}
+      </view>
+      
+    </view>
+    <view class="vipicon" wx:if="{{userInfo.is_vip==1}}">
+      <image src="../../images/vipicon.png" class="vipImg" mode="widthFix"> </image>
+    </view>
+  </view>
+  </view>
+  <view class="textStyle ">
+    <view class="yuyue ">
+      <van-grid column-num="3" center gutter="{{ 10 }}" border="{{ false }}">
+        <van-grid-item icon="underway-o" text="{{userInfo.avg_time}}" use-slot>
+          <view>累计次数</view>
+          <view>{{userInfo.dance_count||'0'}}</view>
+        </van-grid-item>
+        <van-grid-item icon="bookmark-o" text="{{userInfo.dance_count||'0'}}" use-slot>
+          <view>日均时长</view>
+          <view>{{userInfo.avg_time||'0'}}</view>
+        </van-grid-item>
+        <van-grid-item icon="clock-o" text="{{userInfo.hour_time||'0'}}" use-slot>
+          <view>总时长</view>
+          <view>{{userInfo.hour_time||'0'}}</view>
+        </van-grid-item>
+      </van-grid>
+    </view>
+    <!-- 注意事项 -->
+    <view class="zysx">
+      <view class="zysx_title">
+        <van-tabs type="card" bind:click="ontabclick" color="#252526">
+          <van-tab title="近七天" name="w"></van-tab>
+          <van-tab title="近一个月" name="m"></van-tab>
+        </van-tabs>
+      </view>
+      <view class="listStyle">
+        <view class="flexaround itemblock">
+          <view class="hour_time">
+            排名
+          </view>
+          <view class="hour_time">
+            头像
+          </view>
+          <view class="name">
+            名称
+          </view>
+          <view class="count">
+            次数
+          </view>
+          <view class="hour_time">
+            时长
+          </view>
+        </view>
+        <view wx:for="{{list}}" wx:key="user_id" class="flexaround itemblock">
+          <view class="hour_time">
+            {{index+1}}
+          </view>
+          <view class="headimgurl">
+            <image src="{{item.headimgurl}}" class="headimgurl"></image>
+          </view>
+          <view class="name">
+            {{item.nickname}}
+          </view>
+          <view class="count">
+            {{item.count}}
+          </view>
+          <view class="hour_time">
+            {{item.hour_time}}
+          </view>
+        </view>
+      </view>
+      <view class="emly" wx:if="{{list.length<=0}}">
+        <van-empty description="暂无" />
+      </view>
+    </view>
+
+  </view>
+</view>

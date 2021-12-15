@@ -1,0 +1,137 @@
+<!-- 订单卡片 -->
+
+<view class="cardStyle">
+	<!-- 订单头 -->
+	<view class="card_header redBackground">
+		<view class="card_header_l ">
+			<van-image
+			 src="{{cardItem.cover}}"
+			 radius="10"
+			 width="50"
+			 height="50"
+			/>
+			<view class="tltle">
+				{{cardItem.name||'未知名字'}}
+			</view>
+		</view>
+		<!-- <view class="card_header_r">
+			<text class="iconText">详情</text>
+			<van-icon name="arrow" size="18" />
+		</view> -->
+	</view>
+	<!-- 订单内容 -->
+	<view class="card_content">
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				车  牌  号:
+			</view>
+			<view class="card_content_li_text">
+				{{cardItem.car_no}}
+			</view>
+		</view>
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				服务项目:
+			</view>
+			<view class="card_content_li_text">
+				{{cardItem.projects}}
+
+			</view>
+		</view>
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				项目数量:
+			</view>
+			<view class="card_content_li_text">
+				{{cardItem.num}}项
+			</view>
+		</view>
+
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+		订单金额:
+			</view>
+			<view class="card_content_li_text price z_price">
+				￥{{(--cardItem.discount_price)+(--cardItem.price)}}
+			</view>
+		</view>
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				折扣金额:
+			</view>
+			<view class="card_content_li_text price">
+				￥{{cardItem.discount_price}}
+			</view>
+		</view>
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				支付金额:
+			</view>
+			<view class="card_content_li_text price">
+				￥{{cardItem.price}}
+			</view>
+		</view>
+
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				订单编号:
+			</view>
+			<view class="card_content_li_text flexbetween">
+			<view>	{{cardItem.order_no}} </view>
+				<view bindtap="setClip" data-text="{{cardItem.order_no}}" class="clilpStyle">复制</view>	
+			</view>
+		</view>
+		<view class="card_content_li">
+			<view class="card_content_li_name">
+				消费时间:
+			</view>
+			<view class="card_content_li_text">
+				{{cardItem.create_time}}
+			</view>
+		</view>
+
+	</view>
+
+	<view class="cardfooter ">
+
+		<!-- <view class="timer">
+			{{cardItem.create_time}}
+		</view> -->
+		<view class="buttonArr">
+			<van-button
+			 size="small"
+			 class="button_"
+			 round
+			 wx:if="{{cardItem.status==2}}"
+			 data-item="{{cardItem}}"
+			 bind:click="cancelOrder"
+			>
+				取消订单
+			</van-button>
+			<van-button
+			 size="small"
+			 type="danger"
+			 round
+			 color="#D13127"
+			 wx:if="{{cardItem.status==2}}"
+			 plain="{{cardItem.status==5}}"
+			 data-item="{{cardItem}}"
+			 bind:click="order"
+			>
+				确认支付
+			</van-button>
+			<!-- <van-button
+			 size="mini"
+			 type="danger"
+			 round
+			 wx:if="{{cardItem.status==5}}"
+			 plain="{{cardItem.status==5}}"
+			>
+				再次预约
+			</van-button> -->
+		</view>
+
+	</view>
+
+</view>
+

@@ -1,0 +1,36 @@
+<!-- 空间了卡片 -->
+
+<view class="spacecard" bindtap="roomdetail">
+  <view class="imgcontent" style="background-image: url('{{spaceitem.cover}}');">
+
+    <view class="img_text">
+      <view class="img_text_l">
+        {{spaceitem.address}}
+      </view>
+      <view class="img_text_r" catchtap="stop">
+        <!-- <van-icon name="map-marked" /> -->
+
+        <view class="img_icon "  bindtap="setmobile" data-mobile="{{spaceitem.mobile}}" >
+          <van-icon name="phone" size="22" color="#fff"/>
+
+          <text class="text">电话</text>
+        </view>
+        <view class="img_icon border_l "  bindtap="onlocation" data-item="{{spaceitem}}">
+          <van-icon name="map-marked" size="22" color="#fff" />
+          <text class="text">导航</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="spacecard_footer">
+    <view class="spacecard_title"> <text>{{spaceitem.name}}</text> <text class="kmStyle" wx:if="{{spaceitem.distance}}">距离{{spaceitem.distance}}km</text></view>
+    <view class="spacecard_desc">
+      <view class="spacecard_desc_l">
+        <van-icon name="notes-o" size="16px" /> <text class="p">等待人数<text class="text">{{spaceitem.wait_car}}</text>人</text>
+      </view>
+      <view class="spacecard_desc_l">
+        <van-icon name="underway-o" ize="16px" /> <text  class="p">预计排队时间<text class="text">{{spaceitem.wait_time}}</text>分钟</text>
+      </view>
+    </view>
+  </view>
+</view>

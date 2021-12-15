@@ -1,0 +1,25 @@
+<NavbarModel showNav="{{true}}" bgColor="#D33E32" page-name="优惠券" />
+<view class="orderList flexcolumn" style="padding-top: {{navHeight}}px;">
+	<view class="orderList_header">
+			<van-tabs active="{{ isStatus }}" bind:change="ontabChange">
+				<van-tab wx:for="{{ordertypeList}}" wx:key="index" data-id="{{item.status}}" name="{{item.status}}" disabled="{{item.disabled}}" title="{{item.title}}" />
+			</van-tabs>
+	</view>
+
+	<!-- 列表 -->
+	<view class="orderList_content">
+
+		<block wx:if="{{list.length>0}}">
+			<block wx:for="{{list}}" wx:key="index">
+				<!-- 优惠券 -->
+				<CouponModel wx:if="{{item.coupon_code}}" couponItem="{{item}}" />
+				<!-- <canvas canvas-id="{{'qr'+item.coupon_code+1}}" style="width:320rpx;height:320rpx;"></canvas> -->
+				<!-- <canvas type="2d" style="width: 260px; height: 260px;" id="myQrcode"></canvas> -->
+				<!-- <canvas style="width: 260px; height: 260px;"  canvas-id="myQrcode"></canvas> -->
+			</block>
+		</block>
+		<block wx:if="{{list.length<=0}}">
+			<EmptyModel />
+		</block>
+	</view>
+</view>

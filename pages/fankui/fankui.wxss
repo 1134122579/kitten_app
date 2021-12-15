@@ -1,0 +1,7 @@
+/* pages/fankui/fankui.wxss */
+.button_{
+  padding: 50rpx;
+}
+.inputClass{
+  background: #fafafa;
+}

@@ -1,0 +1,61 @@
+ <!--pages/purchase/purchase.wxml-->
+<wxs src="../../utils/split.wxs" module="split"></wxs>
+
+
+<view class="yuyue flexbetween">
+  <view class="yuyue_left">
+    <image class="imageStyke" src="{{detail.cover}}"></image>
+  </view>
+  <view class="yuyue_content">
+    <view class="yuyue_content_title">{{detail.name}}</view>
+    <view class="yuyue_content_hd ">组团拼课，丰富更多~</view>
+  </view>
+  <!-- 时间 -->
+</view>
+
+
+<view class="timestyle">
+  <view class="timestyle_top flexcenter">
+    <van-icon name="arrow-left" bindtap="next" />
+    <view class="tdytime">
+      {{date}}
+    </view>
+    <van-icon name="arrow" bindtap="add" />
+  </view>
+  <view class="timestyle_bottom ">
+    <view class="timestyle_bottom_block flexcolumn {{surttime==item?'suretime':''}}" wx:for="{{NowM}}" wx:key="*this" bindtap="onclicktime"
+      data-day="{{item}}">
+       <view> {{split.week(getWeeklist,index)}}</view>
+      <view>{{ split.timesplit(item)}}</view>
+    </view>
+  </view>
+</view>
+<view class="ckecktime" wx:if="{{queryQueueRoomList.length>0}}">
+  <view class="ckecktime_title">
+    已选日期{{surttime}}，选择以下时间段可预约
+  </view>
+  <view class="timeList">
+    <view class="timeblock {{time_id==item.id?'oktime':''}} {{item.is_queue==1?'':'notime'}}  " wx:for="{{queryQueueRoomList}}" wx:key="id"  bindtap="ontime_" data-timeitem="{{item}}">
+      <!-- <view>
+        早上
+      </view> -->
+      <view>
+        {{item.start_time}}-{{item.end_time}}
+      </view>
+      <view class="huiy_price"> 
+        ￥ {{ split.parseIntNum(item.price-(discount_price||0))}}
+      </view>
+      <view class="yu_price" wx:if="{{userInfo.is_vip==1}}"> 
+        ￥{{item.price}}
+      </view>
+      <view class="yu_price" wx:if="{{userInfo.is_vip==2}}"> 
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="buttonstyle">
+<van-button block round color="#494D59" bind:click="libutton">
+立即预约
+</van-button>
+</view>

@@ -1,0 +1,135 @@
+/* pages/activitydetail/activitydetail.wxss */
+page {
+  /* background: #fafafa; */
+  background: #fff;
+
+}
+
+.detailstyle {
+  position: relative;
+}
+
+.coverimage {
+  height: 560rpx;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+}
+
+.textStyle {
+  position: absolute;
+  top: 440rpx;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
+  color: #333;
+  background: #fff;
+}
+
+.textStyle .title {
+  font-size: 40rpx;
+  font-weight: 600;
+  margin: 10rpx 0;
+}
+
+.desc {
+  padding: 20rpx;
+  font-weight: 600;
+}
+
+.rigeh_icon {
+  width: 40%;
+}
+
+/* yuyue */
+.yuyue {
+  background: #fafafa;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+
+.yuyue_left {
+  background: #fff;
+  width: 40px;
+  height: 40px;
+}
+
+.iconstyle {
+  width: 100%;
+  height: 100%;
+}
+
+.yuyue_right {
+  width: 27%;
+}
+
+.yuyue_content {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.yuyue_content_title {
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.yuyue_content_hd {
+  padding: 10rpx 0;
+  font-size: 26rpx;
+}
+
+/* zhuyi */
+.zysx {
+  margin-top: 20rpx;
+}
+
+.zysx_title {
+  font-weight: 600;
+  padding: 10rpx 0;
+}
+
+.zysx_content {
+  background: #fafafa;
+  margin: 20rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+
+.tagstyle_text {
+  font-size: 20rpx;
+  flex: 1;
+}
+
+.tagstyle_text .tagstyle_text_p .text {
+  color: #ff0000;
+  font-size: 24rpx;
+  padding: 0 5rpx;
+  font-weight: 600;
+  /* padding: 0 6rpx; */
+}
+
+.tagstyle_text_p {
+  margin-left: 10rpx;
+}
+
+.footer_icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 20rpx;
+}
+
+.yuyue_footer {
+  margin-top: 10rpx;
+}
+
+.footer_icon_url {
+  width: 100%;
+  height: 100%;
+}
+
+.footer_button {
+  flex: 1;
+}

@@ -1,0 +1,46 @@
+/**index.wxss**/
+page{
+  height: 100%;
+  background:#F8F8F8 ;
+}
+
+.newcontent{
+  width: 100%;
+  height: 100%;
+}
+.buttonSyule{
+  margin: 0 auto;
+  width: 45%;
+  height: 400rpx;
+}
+
+.logo {
+  border-radius: 50%;
+  overflow: hidden;
+  /* position: absolute; */
+  z-index: 2;
+  left: 50%;
+  bottom: 200rpx;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 160rpx;
+  /* animation: sway 10s ease-in-out infinite; */
+  opacity: .95;
+}
+@keyframes sway{
+  0% {transform: translate3d(0,20rpx,0) rotate(-15deg); }
+  17% {transform: translate3d(0,0rpx,0) rotate(25deg); }
+  34% {transform: translate3d(0,-20rpx,0) rotate(-20deg); }
+  50% {transform: translate3d(0,-10rpx,0) rotate(15deg); }
+  67% {transform: translate3d(0,10rpx,0) rotate(-25deg); }
+  84% {transform: translate3d(0,15rpx,0) rotate(15deg); }
+  100% {transform: translate3d(0,20rpx,0) rotate(-15deg); }
+}
+.newtitle{
+  font-size: 38rpx;
+  font-weight: 700;
+  padding: 50rpx 0;
+}
+.button_{
+margin:40rpx 0;
+}

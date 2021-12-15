@@ -1,0 +1,46 @@
+<!--
+  洗车项目选择
+ -->
+<wxs src="../../utils/split.wxs" module="split" />
+
+<view class="content_type">
+	<!-- 选项 -->
+	<view class="typelistpage">
+		<!--sidebar-->
+		<view class="typelistpage_l">
+			<van-sidebar active-key="{{ activeKey }}" bind:change="sidebarChange">
+				<van-sidebar-item wx:for="{{List}}" wx:key="index" bind:click="onsidebarClick" data-item="{{item}}" title="{{item.cat_name}}" />
+			</van-sidebar>
+		</view>
+		<view class="typelistpage_r">
+			<block wx:for="{{sonList}}" wx:key="index" class="cardListStyle">
+				<view class="block" style="{{split.bgimg(imageurl)}}" bindtap="onredio" data-item="{{item}}">
+					<view class="cardtext">
+						<view class="vip_price lineH">
+							<van-icon name="gold-coin-o" size="14" />
+							{{item.vip_price}}
+						</view>
+						<view class="server_time lineH">
+							<van-icon name="clock-o" size="14"/>
+							{{item.server_time}}
+						</view>
+						<view class="project_name lineH">
+							<van-icon name="orders-o" size="14"/>
+							{{item.project_name}}
+						</view>
+						<view class="like">
+							<van-icon size="16" name="{{split.ridefilter(rediolist,item.id)?'cart':'cart-o'}}" color="{{split.ridefilter(rediolist,item.id)?'#F7D27F':''}}"/>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<!-- 按钮 -->
+
+	<view class="button_type">
+		<van-button block color="#D13127" disabled="{{disabled}}" bind:click="onMake">
+			确认
+		</van-button>
+	</view>
+</view>

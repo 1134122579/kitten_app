@@ -1,0 +1,10 @@
+/* pages/setting/setting.wxss */
+page{
+  padding: 20rpx;
+  box-sizing: border-box;
+
+}
+.pageguize{
+  padding: 20rpx;
+  box-sizing: border-box;
+}

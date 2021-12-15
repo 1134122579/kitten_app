@@ -1,0 +1,35 @@
+<!--components/CouponModel/CouponModel.wxml-->
+<view class="couponStyle ">
+  <view class="coupon_bg">
+    <image class="coupon_bg_url" src="../../images/quan_bg.png"></image>
+  </view>
+  <!-- 内容 -->
+  <view class="couponStyle_content_z">
+  <view class="couponStyle_content_z_header">
+    <view class="couponStyle_content">
+      <view class="couponStyle_title  couponStyle_"> {{newData.project_name}}券</view>
+      <view class="couponStyle_code couponStyle_">{{newData.coupon_code}} </view>
+      <!-- <view class="couponStyle_time couponStyle_"> 添加时间{{newData.create_time}} </view> -->
+    </view>
+    <view class="couponStyle_l">
+      <van-button wx:if="{{newData.status==2}}" round size="small" bind:click="onclick">未使用</van-button>
+      <van-button wx:if="{{newData.status==1}}" round size="small" plain color="#999">已使用</van-button> 
+      <van-button wx:if="{{newData.status==3}}" round size="small" bind:click="onclick" plain color="#999" >已失效</van-button>
+    </view>
+  </view>
+  <view class="couponStyle_content_z_footer">
+    <view class="couponStyle_time couponStyle_"  wx:if="{{newData.status==2}}" > 到期时间：{{newData.time_out}} </view>
+    <view class="couponStyle_time couponStyle_"  wx:if="{{newData.status==1}}" > 使用时间：{{newData.use_time||''}} </view>
+    <view class="couponStyle_time couponStyle_"  wx:if="{{newData.status==3}}" > 过期时间：{{newData.time_out}} </view>
+    <view class="couponStyle_time couponStyle_ "> 1.一个订单只能使用一张优惠券，优惠券不可合并</view>
+    <view class="couponStyle_time couponStyle_ "> 2.若使用优惠券的订单发生退货,优惠券不退回</view>
+    <view class="couponStyle_time couponStyle_ colorJS"> *最终解释权归本公司所有</view>
+  </view>
+  </view>
+
+</view>
+<!-- 弹窗 -->
+
+<van-popup show="{{ show }}" bind:close="onClose">
+  <canvas hidden="{{!show}}" canvas-id="{{'qr'+newData.coupon_code}}" style="width:320rpx;height:320rpx;" />
+</van-popup>

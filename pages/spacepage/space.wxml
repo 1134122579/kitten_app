@@ -1,0 +1,26 @@
+<view class="space ">
+  <!-- nav  -->
+  <!-- <NavbarModel /> -->
+  <!-- 空间了  -->
+  <view class="spacepage">
+    <image class="spaceBG" src="../../images/spaceBG.png"></image>
+    <view class="list flexcolumn" style="top:{{navHeight}}px">
+      <view class="spacepage_header flexastart">
+        <view class="{{is_typeStatus==item.status?'spacepage_header_type istypeStyle ':'spacepage_header_type'}}" wx:for="{{typeList}}" wx:key="index" data-status="{{item.status}}" bindtap="onClickType">
+          {{item.title}}
+        </view>
+      </view>
+      <view class="orderList_content">
+        <block wx:for="{{RoomList}}" wx:key="index" wx:if="{{RoomList.length>0}}">
+          <view class="block">
+            <SpaceCard spaceitem="{{item}}" />
+          </view>
+        </block>
+        <block wx:if="{{RoomList.length<=0}}">
+          <EmptyModel description="暂无门店" />
+        </block>
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -1,0 +1,31 @@
+.businesslist{
+  padding: 20rpx;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.businesslist_card{
+  box-shadow: 0 0 8rpx #cccccc;
+  margin: 20rpx 0;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+.businesslist_card_title{
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.businesslist_card_desc{
+  font-size: 28rpx;
+  padding: 10rpx 0;
+  
+}
+.businesslist_card_desc_li{
+  padding: 10rpx 0;
+}
+.businesslist_card_desc_ok{
+  padding: 8rpx 10rpx;
+  border: 1px solid #D13127;
+  border-radius: 30rpx;
+  color:#D13127
+}

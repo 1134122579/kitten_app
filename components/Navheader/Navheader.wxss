@@ -1,0 +1,13 @@
+/* components/Navheader/Navheader.wxss */
+.custom{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 45px;
+  /* background: #c00; */
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  z-index: 999;
+  color: #ffffff;
+}

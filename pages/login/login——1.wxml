@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container redBackground">
+    <view class="content">
+      <view class="hd" >
+      <view class="logo">
+        <open-data  type="userAvatarUrl"></open-data>
+      </view>
+        <image class="wave" src="../../images/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="../../images/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+          <!-- <image class="smalltitle" src="../../images/confirm-word1.png"></image> -->
+        <view class="buttonSyule flexcolumn">
+          <van-button block round
+           color="#2C2D3A"   bind:click="getUserProfile" disabled="{{disabled}}"> 点击授权 </van-button >
+           <van-button block round
+           color="#A1A1A1"   bind:click="noUser" disabled="{{disabled}}"> 取消登录 </van-button >
+          <!-- <button  class="confirm-btn redBackground"  wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" disabled="{{disabled}}" >点击授权 </button>
+           <button  class="confirm-btn redBackground" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo" disabled="{{disabled}}"> 点击授权 </button> -->
+        </view>
+      </view>
+    </view>
+</view>

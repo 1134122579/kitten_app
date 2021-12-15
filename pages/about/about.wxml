@@ -1,0 +1,66 @@
+<!--pages/about/about.wxml-->
+
+<view class="aboout">
+  <image class="aboutBG" src="../../images/aboutimage/bg.png" mode="widthFix"></image>
+  <view class="aboutpage">
+    <view class="header ">
+      <view class="headerImg">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="username">
+        {{userInfo.nickname}}
+        <!-- <open-data type="userNickName" lang="zh_CN"></open-data> -->
+      </view>
+      <view class="userdesc">
+        {{userInfo.signature||'这个人很懒，什么也没有留下'}}
+      </view>
+    </view>
+    <view class="flexspan top">
+        <van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
+          <van-grid-item use-slot text="已订购" class="grid_user" url="/pages/OrderLog/OrderLog?status=3" >
+            <image src="../../images/aboutimage/qbicon.png" class="iconstyle_top"></image>
+            <view class="text">已订购</view>
+          </van-grid-item>
+          <van-grid-item use-slot text="待支付" url="/pages/OrderLog/OrderLog?status=2">
+            <image src="../../images/aboutimage/ddicon.png" class="iconstyle_top"></image>
+            <view class="text">待支付</view>
+          </van-grid-item>
+          <van-grid-item use-slot text="已完成" url="/pages/OrderLog/OrderLog?status=4">
+            <image src="../../images/aboutimage/yhqicon.png" class="iconstyle_top"></image>
+            <view class="text">已完成</view>
+          </van-grid-item>
+        </van-grid>
+      </view>
+    <view class="vip" bindtap="goVip">
+      <image class="vipStyle" src="../../images/aboutimage/vip.png"></image>
+    </view>
+    <view class="other">
+      <view class="other_top">
+        其他
+      </view>
+      <view class="flexspan">
+        <van-grid column-num="3" border="{{ false }}" gutter="{{ 10 }}">
+          <van-grid-item use-slot text="反馈意见" url="/pages/fankui/fankui">
+            <button  class='contacButton flexcolumn'>
+            <image src="../../images/aboutimage/fkicon.png" class="iconstyle"></image>
+            <view class="text">反馈意见</view>
+          </button>
+          </van-grid-item>
+          <van-grid-item use-slot text="联系客服">
+            <button open-type="contact" class='contacButton flexcolumn'>
+            <image src="../../images/aboutimage/xxicon.png" class="iconstyle"></image>
+            <view class="text">联系客服</view>
+          </button>
+          </van-grid-item>
+          <van-grid-item use-slot text="设置" url="/pages/userInfo/userInfo">
+            <button  class='contacButton flexcolumn'>
+            <image src="../../images/aboutimage/szicon.png" class="iconstyle"></image>
+            <view class="text">设置</view>
+            </button>
+            
+          </van-grid-item>
+        </van-grid>
+      </view>
+    </view>
+  </view>
+</view>

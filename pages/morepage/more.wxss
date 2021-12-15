@@ -1,0 +1,122 @@
+/* pages/morepage/more.wxss */
+
+page {
+  background: #f7f8fa;
+}
+
+.more_header {
+  height: 435rpx;
+  background-size: 100% 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.header_bg {
+  width: 100%;
+  height: 100%;
+}
+
+.user_content {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user_content_t {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+}
+
+.header_footer {
+  width: 100%;
+  margin-top: 20rpx;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  height: 123rpx;
+}
+
+.userName {
+  padding: 0 20rpx;
+  font-size: 38rpx;
+}
+
+.morerpage {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 100px;
+  position: relative;
+  /* box-sizing: border-box; */
+}
+
+.marginTop {
+  margin-top: 20rpx;
+}
+
+/* <!-- 卡券   车辆 --> */
+
+.cardStyle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 156rpx;
+  box-sizing: border-box;
+  margin: 20rpx 40rpx;
+}
+
+.imageStyle {
+  width: 48%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 20rpx;
+}
+
+.imageStyle image {
+  width: 100%;
+  height: 100%;
+}
+
+
+.function_title {
+  font-size: 36rpx;
+  font-weight: 600;
+  padding: 0 20rpx;
+}
+
+.contact {
+  position: fixed;
+  right: 20rpx;
+  top: 80%;
+
+  /* width: 80rpx;
+  height:80rpx ; */
+  /* overflow: hidden; */
+  border-radius: 50%;
+}
+
+.button_style {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  background-color: #D13127;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+
+}
+
+.contactButton {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}

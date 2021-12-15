@@ -1,0 +1,74 @@
+<NavbarModel page-name="会员中心" showNav="{{true}}" />
+<view class="vip_page">
+  <view class="vip_header"> 
+    <image src="../../images/vipheaderbg.png" class="headerimage"></image>
+  </view>
+  <view class="vip_card">
+    <view class="vip_card_content">
+      <image src="../../images/vip_crad.png" class="headerimage"></image>
+      <view class="card_text">
+        <view class="card_text_title flexastart">
+          <text>憩适空间</text> <text class="card_text_tag">{{userInfo.vip_time_out?'已开通':'未开通'}}</text>
+        </view>
+        <view class="card_text_desc" wx:if="{{userInfo.vip_time_out}}">
+          会员时间：{{userInfo.vip_time_out}}到期</view>
+        <view class="card_text_desc" wx:if="{{!userInfo.vip_time_out}}">
+          开通会员免费送洗车一次</view>
+      </view>
+    </view>
+
+    <view class="vip_content">
+      <view class="vip_title">
+        <text></text>
+        <text>尊享特权</text>
+      </view>
+      <view class="vip_type_text">
+        <image src="../../images/viptq.png" class="headerimage"></image>
+      </view>
+
+    </view>
+    <view class="vip_content">
+      <view class="vip_title">
+        <text></text>
+        <text>权益说明</text>
+      </view>
+      <view class="vip_content_text">
+        <!-- <view class="vip_content_text_li">
+          1：大众权益：适用于大多数用户（腰部及以上的用户）.
+        </view>
+        <view class="vip_content_text_li">
+          2：定义：大多数会员等级可拥有的权益或在相同权益下，不 同的会员等级加码幅度不大.
+        </view>
+        <view class="vip_content_text_li">
+          3：核心权益：适用于头部用户.
+        </view>
+        <view class="vip_content_text_li">
+          4：定义：用户最关注的需求或成本/价值较大的权益.
+
+        </view> -->
+        <rich-text nodes="{{vipDetail.desc}}"></rich-text>
+      </view>
+
+    </view>
+
+    <view class="button_vip">
+      <van-button block bind:click="payVipOrder" color="#D13127">{{price}}元/年,立即开通</van-button>
+    </view>
+  </view>
+
+</view>
+
+<!-- 支付成功的弹窗 -->
+<view class="okplayStyle_poup" hidden="{{!is_show}}" catchtap="no">
+  <view class="okplayStyle flexcolumn">
+    <image src="../../images/okplay.png" class="image_pay"></image>
+    <view class="okbutton">
+      <!-- <van-button block round  siz="small" bind:click="okpaly"> 完成
+        </van-button> -->
+      <image bindtap="okpaly" src="../../images/okbutton.png" class="image_pay"></image>
+    </view>
+  </view>
+  <!-- <van-popup show="{{!is_show}}" custom-class="customclass">
+
+  </van-popup> -->
+</view>

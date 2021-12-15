@@ -1,0 +1,5 @@
+/* pages/userInfo/userInfo.wxss */
+.button_{
+  margin-top: 40px;
+  padding: 20px;
+}

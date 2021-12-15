@@ -1,0 +1,41 @@
+<!-- <Navheader statusBarHeight="{{statusBarHeights}}" /> -->
+<NavbarModel showNav="{{true}}" />
+<view class="detailstyle">
+  <view class="coverimage">
+    <image src="{{detail.cover}}" class="cover" mode="scaleToFill"></image>
+  </view>
+  <view class="textStyle ">
+    <!-- <view class="title">{{detail.name}}</view> -->
+    <!-- <view class="address flexbetween">
+      <view class="desc">{{detail.address}}</view>
+      <view class="rigeh_icon flexaround">
+        <van-icon name="location" size="30px"></van-icon>
+        <van-icon name="phone" size="30px"></van-icon>
+      </view>
+    </view> -->
+    <!-- 预约 -->
+    <view class="yuyue flexbetween">
+      <!-- <view class="yuyue_left">
+        <van-icon name="todo-list" size="40px" />
+      </view> -->
+      <view class="yuyue_content">
+        <view class="yuyue_content_title">{{detail.title}}</view>
+        <view class="yuyue_content_hd ">{{detail.desc}}</view>
+      </view>
+      <!-- <view class="yuyue_right">
+        <van-button round color="#494D59" bind:click="go" block size="small">立即预约</van-button>
+      </view> -->
+    </view>
+    <!-- 注意事项 -->
+    <view class="zysx">
+      <view class="zysx_title">
+     活动详情 </view>
+      <view class="zysx_content" wx:if="{{detail.content}}">
+        <rich-text class="content" nodes="{{detail.content}}"></rich-text>
+      </view>
+      <view class="emly" wx:if="{{!detail.content}}">
+        <van-empty description="暂无" />
+      </view>
+    </view>
+  </view>
+</view>

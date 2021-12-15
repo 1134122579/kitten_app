@@ -1,0 +1,99 @@
+/* components/SpaceCard/SpaceCard.wxss */
+
+.spacecard {
+  padding: 18rpx;
+  border-radius: 14rpx;
+  /* height: 406rpx; */
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 0 6px #ACCCC1;
+
+}
+
+.imgcontent {
+  background-size: 100% 100%;
+  border-radius: 14rpx;
+  height: 340rpx;
+  box-sizing: border-box;display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.img_text {
+ width: 100%;
+  /* display: flex;
+  align-items: center; */
+  /* padding:0 20rpx; */
+  box-sizing: border-box;
+  color: #fff;
+}
+
+.img_text_l {
+  flex: 1;
+  flex-shrink: 0;
+  font-size: 28rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+  padding: 20rpx;
+  margin: 10rpx 20rpx;
+  border-radius: 20rpx;
+  background: rgba(0,0,0,0.3);
+
+}
+.img_text_r{
+  /* width: 25%; */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #D13127;
+}
+
+.spacecard_title{
+  padding: 14rpx 0;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.spacecard_desc{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.spacecard_desc_l{
+  flex: 1;
+  font-size: 24rpx;
+  color:#999999 ;
+}
+.spacecard_desc_l .text{
+  margin:0 10rpx ;
+}
+.spacecard_desc_l .p{
+  margin-left: 10rpx;
+}
+
+.img_icon{
+  /* background: rgba(0,0,0,0.3); */
+  flex: 1;
+  text-align: center;
+  /* padding: 14rpx; */
+  margin: 10rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+.border_l{
+  border-left: 1px solid #fff;
+}
+.img_icon .text{
+  margin-left: 10rpx;
+}
+.kmStyle{
+  font-size:24rpx;
+  color: #999999;
+  margin-left: 40rpx;
+  font-weight: normal;
+}

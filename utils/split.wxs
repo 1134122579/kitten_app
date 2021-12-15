@@ -1,0 +1,28 @@
+function timesplit(data) {
+  return data.slice(-2);
+}
+function week(arry, index) {
+  return arry[index];
+}
+function parseIntNum(num) {
+  return num > 0 ? num : 0;
+}
+function bgimg(value) {
+  return value? "background-image:url('" + value + "')":"background: #D13127;";
+}
+
+function power(array, data) {
+  return array.indexOf(data) != -1;
+}
+
+function ridefilter(arr, data) {
+  return arr.indexOf(data)!=-1;
+}
+module.exports = {
+  timesplit: timesplit,
+  week: week,
+  parseIntNum: parseIntNum,
+  power: power,
+  bgimg: bgimg,
+  ridefilter: ridefilter,
+};

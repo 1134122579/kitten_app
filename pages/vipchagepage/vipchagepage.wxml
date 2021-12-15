@@ -1,0 +1,38 @@
+<view class="exchangepage">
+  <NavbarModel page-name="优惠券兑换" show-nav="{{true}}"  bgColor="#D42C2C" />
+
+  <view class="exchange_header" style="margin-top:{{navHeight-1}}px">
+    <image class="headerImg" src="../../images/dhVIp.png"></image>
+  </view>
+
+
+  <view class="title">
+    兑换年费会员
+  </view>
+  <!-- 输入框 -->
+  <view class="exchang_input">
+    <input class="input" type="text" placeholder="请输入兑换码" value="{{inputValue}}" bindinput="bindcodeInput" />
+    <!-- <van-icon name="scan" size="20" bindtap="scanCode"/> -->
+  </view>
+
+  <view class="button_">
+    <van-button color="#D13127" block disabled="{{disabled}}" bind:click="exchangeCoupon">确认兑换 </van-button>
+  </view>
+
+  <!-- 介绍 -->
+  <view class="content">
+    <view class="c_title">
+      兑换说明
+    </view>
+    <view class="text">
+      1.兑换码只能兑换一次，并在有效期内兑换.
+    </view>
+    <view class="text">
+      2.自动识别兑换成相应的优惠券和年卡3兑换的产品不支持退款，只能用于消费.
+    </view>
+    <view class="text">
+      3.最终解释权我们所有.
+    </view>
+
+  </view>
+</view>

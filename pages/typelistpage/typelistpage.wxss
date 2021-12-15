@@ -1,0 +1,102 @@
+/* pages/typelistpage/typelistpage.wxss */
+page {
+  width: 100%;
+  height: 100%;
+}
+
+.content_type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  overflow: hidden;
+}
+
+.typelistpage {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.typelistpage_l {
+  background: #F7F8FA;
+  height: 100%;
+}
+
+.typelistpage_r {
+  padding: 0 30rpx;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+
+}
+
+.block {
+  width: 240rpx;
+  height: 240rpx;
+  display: inline-block;
+  background: #fff;
+  margin: 8rpx 8rpx;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 14rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.imageStyle {
+  width: 100%;
+  height: 100%;
+}
+
+.sonimageStyle {
+  width: 100%;
+  height: 100%;
+}
+
+.cardtext {
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.4); */
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  color: #fff;
+  box-sizing: border-box;
+  padding: 10rpx;
+  font-size: 28rpx;
+}
+
+.button_ {
+  margin-top: 20rpx;
+  flex: 1;
+}
+
+.project_name {
+  min-height: 60rpx; 
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.lineH {
+  padding: 4rpx;
+}
+
+.like {
+  width: 100%;
+  text-align: right;
+}
+
+.button_type {
+  /* padding: 10rpx; */
+  box-sizing: border-box;
+  margin: 20rpx;
+}

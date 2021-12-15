@@ -1,0 +1,65 @@
+page {
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.space {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.spacepage {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.spaceBG {
+  width: 100%;
+  height: 100%;
+}
+
+.list {
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: 100%;
+  padding:0 20rpx;
+  box-sizing: border-box;
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.block {
+  margin-top: 20rpx;
+}
+
+.spacepage_header {
+  width: 100%;
+  color: #cccccc;
+  font-size: 24rpx;
+  overflow: hidden;
+  padding-bottom: 14rpx;
+}
+
+.spacepage_header_type {
+  margin-right: 20rpx;
+  padding: 10px 0;
+}
+
+.istypeStyle {
+  border-bottom: 2px solid #fff;
+  color: #fafafa;
+  font-weight: 600;
+  font-size: 24rpx;
+}
+
+.orderList_content {
+  flex: 1;
+  width: 100%;
+  overflow-y:auto ;
+  padding-bottom: 180px;
+}

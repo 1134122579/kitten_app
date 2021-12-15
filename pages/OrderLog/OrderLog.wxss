@@ -1,0 +1,17 @@
+/* pages/OrderLog/OrderLog.wxss */
+page{
+  background: #E0E7F2;
+}
+.titleclass{
+  font-size: 18px;
+}
+.descclass{
+  margin: 20rpx 0;
+
+}
+._block{
+  margin-bottom: 20rpx;
+}
+.button_{
+  padding-top: 10rpx;
+}

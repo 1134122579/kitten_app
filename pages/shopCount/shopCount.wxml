@@ -1,0 +1,29 @@
+<!-- 修改门店统计 -->
+
+<view class="shopCountPage flexcolumn">
+  <view class="shopCountPage_card_li flexcolumn">
+    <view class="shopCountPage_card_li_title">
+      等待时间
+    </view>
+    <view class="shopCountPage_card_li_input">
+      <input type="number" class="shopCountPage_card_li_input_" placeholder="请输入等待时间" bindinput="bindtimeInput" />
+    </view>
+
+  </view>
+
+  <view class="shopCountPage_card_li flexcolumn">
+    <view class="shopCountPage_card_li_title ">
+      等待车辆
+    </view>
+    <view class="shopCountPage_card_li_input">
+      <input type="number" class="shopCountPage_card_li_input_" placeholder="请输入等待车辆" bindinput="bindcardInput" />
+    </view>
+  </view>
+
+   <view class="shopCountPage_card">
+   <van-button block bind:click="setshopCount">
+   立即修改
+   </van-button>
+   
+   </view>
+</view>

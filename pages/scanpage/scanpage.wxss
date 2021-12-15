@@ -1,0 +1,131 @@
+/* pages/scanpage/scanpage.wxss */
+.scanPage {
+  /* padding: 20rpx; */
+  width: 100%;
+  height: 100%;
+}
+
+/* 扫码 */
+.pagecontent_code {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: space-around; */
+}
+
+.pagecontent_code_content {
+  /* height: 20%; */
+  box-sizing: border-box;
+  padding: 40rpx;
+  margin: 20rpx;
+  width: 80%;
+  border-radius: 10rpx;
+  box-shadow: 0 0 8rpx #cccccc;
+}
+.pagecontent_code_content_tittle{
+  font-size: 36rpx;
+  font-weight: 600;
+  padding: 0 0 20rpx 0;
+}
+
+.scanCode {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 50%;
+  background: #D13127;
+  margin: 0 auto;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardList {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.Cardtitle {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20rpx 0;
+}
+
+/* 车辆样式 */
+.cardBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 8rpx #cccccc;
+}
+
+.cardBlock_l {
+  flex: 1;
+  font-size: 16px;
+}
+
+.p {
+  padding: 10rpx 0;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.cardBlock_r {
+  flex-shrink: 0;
+  width: 120rpx;
+}
+/* 充值 */
+.price_header {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.price_list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20rpx;
+}
+
+.priceBlock {
+  margin: 20rpx 28rpx 0 0;
+  height: 90rpx;
+  width: 46%;
+  border: 1px solid #fafafa;
+  box-shadow: 0 0 10rpx #ccc;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 90rpx;
+  border-radius: 10rpx;
+}
+
+.inputStyle {
+  width: 100%;
+  height: 90rpx;
+}
+
+.inputStyle input {
+  width: 100%;
+  height: 100%;
+}
+
+.selpriceBlock {
+  background: #D13127;
+  color: #fff;
+}
+
+.price_contentfooter {
+  padding: 20rpx 40rpx;
+}

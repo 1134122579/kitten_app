@@ -1,0 +1,150 @@
+/* pages/home/home.wxss */
+page {
+  margin-bottom: 50rpx;
+}
+.swiperStyle {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.bannerStyle {
+  margin: 0 20rpx;
+}
+
+.swiperItem {
+  width: 100%;
+  height: 280rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.vitImage {
+  border-radius: 20rpx;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.swiperItem image {
+  width: 100%;
+  height: 100%;
+}
+
+.newstyle {
+  margin: 0 20rpx;
+  border-radius: 20rpx;
+}
+.list_b {
+  padding-bottom: 160rpx;
+}
+.home {
+  /* padding-bottom: 100rpx; */
+}
+
+.listItem {
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-top: 20rpx;
+  height: 280rpx;
+  position: relative;
+}
+
+.listItem image {
+  width: 100%;
+  height: 100%;
+}
+
+.title {
+  font-size: 20px;
+  font-size: 34rpx;
+  padding: 20rpx 0;
+  font-weight: 600;
+  letter-spacing: 6rpx;
+}
+
+.itemtitle {
+  font-size: 30rpx;
+  padding: 10rpx 0;
+  font-weight: 600;
+  letter-spacing: 6rpx;
+}
+
+.room_cover {
+  width: 100%;
+  height: 100%;
+}
+
+.detailstyle {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  padding: 20rpx;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 20rpx 20rpx 0;
+  overflow: hidden;
+  align-items: center;
+}
+
+.flexbtwenn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  flex: 1;
+}
+
+.address {
+  font-size: 24rpx;
+  padding: 10rpx 0;
+}
+
+.riget_button {
+  width: 200rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.time {
+  font-size: 18rpx;
+  color: #e7c8a7;
+}
+
+.dwStyle {
+  font-size: 14px;
+}
+
+.dw {
+  width: 30rpx;
+  margin-right: 10rpx;
+}
+
+.spacing {
+  letter-spacing: normal;
+}
+
+.from {
+  margin-top: 80rpx;
+}
+
+.playbutton {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.timestyle {
+  width: 100%;
+  height: 100%;
+  background: burlywood;
+}
+.vip_c {
+  height: 200rpx;
+}

@@ -1,0 +1,58 @@
+<NavbarModel showNav="{{true}}" />
+<view class="detailstyle">
+  <view class="coverimage">
+    <image src="{{detail.cover}}" class="cover" mode="aspectFill"></image>
+  </view>
+  <view class="textStyle ">
+    <!-- <view class="title">{{detail.name}}</view> -->
+    <view class="address flexbetween">
+      <view class="desc">{{detail.address}}</view>
+      <!-- <view class="rigeh_icon flexaround">
+        <van-icon name="location" size="30px" color="#D13127" bindtap="onlocation"  ></van-icon>
+        <van-icon name="phone" size="30px" color="#D13127" data-mobile="{{detail.mobile}}" bindtap="setmobile"></van-icon>
+      </view> -->
+    </view>
+    <!-- 预约 -->
+    <view class="yuyue ">
+      <view class="yuyue_top flexastart">
+        <view class="yuyue_left">
+          <image src="../../images/yuyueicon.png" class="iconstyle"></image>
+        </view>
+        <view class="yuyue_content">
+          <view class="yuyue_content_title">{{detail.name}}</view>
+          <view class="yuyue_content_hd flexaround">
+            <view class="tagstyle_text flexastart">
+              <van-icon name="notes-o" size="18" /><text class="tagstyle_text_p">前边人数：<text class="text">{{detail.wait_car}}</text>人</text>
+            </view>
+            <view class="tagstyle_text flexastart">
+              <van-icon name="underway-o" size="18" /> <text class="tagstyle_text_p">预计排队时间：<text class="text">{{detail.wait_time}}</text>分</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+      <view class="yuyue_footer flexaround">
+          <view class="footer_icon" bindtap="onlocation">
+            <image class="footer_icon_url" src="../../images/location.png"></image>
+          </view>
+          <view class="footer_icon" bindtap="setmobile" data-mobile="{{detail.mobile}}">
+            <image class="footer_icon_url" src="../../images/phone.png"></image>
+          </view>
+          <view class="footer_button">
+            <van-button color="#D13127" block size="small" bind:click="onlocation">立即导航</van-button>
+          </view>
+        </view>
+    </view>
+    <!-- 注意事项 -->
+    <view class="zysx">
+      <view class="zysx_title">
+        注意事项</view>
+      <view class="zysx_content" wx:if="{{detail.desc}}">
+        <rich-text class="content" nodes="{{detail.desc}}"></rich-text>
+      </view>
+      <view class="emly" wx:if="{{!detail.desc}}">
+        <van-empty description="暂无" />
+      </view>
+    </view>
+  </view>
+</view>
