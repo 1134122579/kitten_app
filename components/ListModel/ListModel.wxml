@@ -1,0 +1,80 @@
+<view class="tab_content_list">
+  <view class="tab_left">
+    <block wx:for="{{leftList}}" wx:key="index">
+      <view class="tab_content_list_one">
+        <view class="block_image">
+          <image mode="widthFix" class="M_imageurl" src="{{item.imageUrl}}">
+          </image>
+          <view class="M_pm flexbetween">
+            <view class="M_pm_l flexbetween">
+              <view class="M_pm_text">·排名</view>
+              <view class="M_pm_num">132</view>
+            </view>
+            <van-icon size="24" name="https://img.js.design/assets/img/61b461127eee43a5a2374d2d.png"></van-icon>
+          </view>
+        </view>
+        <view class="M_text">
+          <view class="block_header flexbetween">
+            <view class="name flexastart">
+              <text>小银豆</text>
+              <van-icon name="https://img.js.design/assets/img/61b37fd9c2794ab9ea3f7a40.png"></van-icon>
+            </view>
+            <view class="M_id">
+              ID 20063
+            </view>
+          </view>
+          <view class="M_desc">
+            今天是小猫咪的第一次参加比赛，略显紧张哈哈哈哈哈哈。
+          </view>
+          <view class="M_button flexbetween">
+            <view class="M_button_l">
+              当前<text class="M_num"> 2335</text>票
+            </view>
+            <view class="M_button_r">
+              投票
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="tab_right">
+    <block wx:for="{{rightList}}" wx:key="index">
+      <view class="tab_content_list_one">
+        <view class="block_image">
+          <image mode="widthFix" class="M_imageurl" src="{{item.imageUrl}}">
+          </image>
+          <view class="M_pm flexbetween">
+            <view class="M_pm_l flexbetween">
+              <view class="M_pm_text">·排名</view>
+              <view class="M_pm_num">132</view>
+            </view>
+            <van-icon size="24" name="https://img.js.design/assets/img/61b461127eee43a5a2374d2d.png"></van-icon>
+          </view>
+        </view>
+        <view class="M_text">
+          <view class="block_header flexbetween">
+            <view class="name flexastart">
+              <text>小银豆</text>
+              <van-icon name="https://img.js.design/assets/img/61b37fd9c2794ab9ea3f7a40.png"></van-icon>
+            </view>
+            <view class="M_id">
+              ID 20063
+            </view>
+          </view>
+          <view class="M_desc">
+            今天是小猫咪的第一次参加比赛，略显紧张哈哈哈哈哈哈。
+          </view>
+          <view class="M_button flexbetween">
+            <view class="M_button_l">
+              当前<text class="M_num"> 2335</text>票
+            </view>
+            <view class="M_button_r">
+              投票
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

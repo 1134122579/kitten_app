@@ -74,6 +74,7 @@
     ]
   },
   "usingComponents": {
+    "ListModel": "./components/ListModel/ListModel",
     "EmptyModel": "./components/EmptyModel/EmptyModel",
     "CouponModel": "./components/CouponModel/CouponModel",
     "van-tag": "@vant/weapp/tag/index",
