@@ -1,3 +1,4 @@
+<wxs src="../../utils/split.wxs" module="split" />
 <view class="votePage">
   <!-- 头 -->
   <view class="vote_header ">
@@ -64,9 +65,10 @@
   <!-- 内容 -->
   <view class="tab_content">
     <van-tabs active="{{ active }}" bind:change="onChange" bind:click="onClick" tab-active-class="tabactiveclass">
-      <!-- <van-tab name="{{item.id}}" wx:for="{{tabList}}" wx:key="index">{{item.title}}</van-tab> -->
       <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
     </van-tabs>
-      <ListModel list="{{list}}"/>
+    <!-- 列表 -->
+    <ListModel wx:if="{{split.indexOf(lookList,activeLookId)}}" list="{{list}}" />
+      
   </view>
 </view>

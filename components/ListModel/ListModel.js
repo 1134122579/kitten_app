@@ -46,7 +46,6 @@ Component({
       for (const item of list) {
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         let res = await this.getBoxHeight(leftList, rightList);
-        console.log('waterfallFlow', leftHeight <= rightHeight)
       }
     },
     getBoxHeight(leftList, rightList) {

@@ -22,7 +22,7 @@ module.exports = {
   timesplit: timesplit,
   week: week,
   parseIntNum: parseIntNum,
-  power: power,
+  indexOf: power,
   bgimg: bgimg,
   ridefilter: ridefilter,
 };

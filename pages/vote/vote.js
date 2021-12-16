@@ -8,6 +8,8 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     active: 1,
+    lookList:[1,2],
+    activeLookId:1,
     list: [{
       imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
     }, {
@@ -38,16 +40,15 @@ Page({
     }]
   },
   onClick(event) {
-    wx.showToast({
-      title: `点击标签 ${event.detail.name}`,
-      icon: 'none',
-    });
+    this.setData({
+      activeLookId:event.detail.name
+    })
   },
   onChange(event) {
-    wx.showToast({
-      title: `切换到标签 ${event.detail.name}`,
-      icon: 'none',
-    });
+    // wx.showToast({
+    //   title: `切换到标签 ${event.detail.name}`,
+    //   icon: 'none',
+    // });
   },
   /**
    * 生命周期函数--监听页面加载

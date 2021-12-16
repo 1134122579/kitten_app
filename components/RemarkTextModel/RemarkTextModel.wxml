@@ -1,0 +1,13 @@
+<!-- 活动简介模块 -->
+
+
+<view class="remark">
+<!-- 内容 -->
+<view class="content">
+  <rich-text nodes="{{content}}"></rich-text>
+</view>
+<view class="content">
+  <rich-text nodes="{{content}}"></rich-text>
+</view>
+  
+</view>
