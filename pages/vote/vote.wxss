@@ -1,4 +1,6 @@
-.votePage {}
+.votePage {
+  /* background: #F2F2F2; */
+}
 
 .vote_header {
   width: 100%;
@@ -30,66 +32,77 @@
   color: rgba(255, 255, 255, 1);
   font-size: 14px;
 }
+
 /* 公告 */
-.tag_style{
+.tag_style {
   padding: 14px;
   background: #FEEFE6;
   color: rgba(255, 87, 51, 1);
   font-size: 14px;
 }
-.hd_text{
+
+.hd_text {
   padding-left: 10px;
 }
 
 /* 数据 */
-.number_list{
+.number_list {
   padding: 10px;
   color: rgba(0, 0, 0, 1);
   font-size: 14px;
 }
-.numnber_one{
+
+.numnber_one {
   width: 33.3%;
 }
-.numnber_one .num{
+
+.numnber_one .num {
   font-size: 14px;
   color: rgba(255, 87, 51, 1);
   margin-top: 4px;
   font-weight: 600;
 }
-.borderLR{
+
+.borderLR {
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
 
 /* 搜索 */
-.searchstyle{
+.searchstyle {
   box-sizing: border-box;
   border: 2px solid rgba(255, 87, 51, 1);
   border-radius: 5px;
   margin: 14rpx;
+  background: #fff;
 }
-.search_l{
-  padding: 0 10px ;
+
+.search_l {
+  padding: 0 10px;
   font-size: 16px;
   flex: 1;
 }
-.search_input{
+
+.search_input {
   flex: 1;
   margin-left: 8px;
 }
-.search_input::placeholder{
+
+.search_input::placeholder {
   font-size: 24px;
 }
 
-.search_r{
+.search_r {
   background: rgba(255, 87, 51, 1);
 }
 
 
 /* 内容 */
-.tab_content{
-  padding:0 14px;
+.tab_content {
+  padding: 0 10px;
 }
-.tabactiveclass{
+
+.tabactiveclass {
   font-weight: 800;
 }
+

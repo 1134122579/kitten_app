@@ -8,6 +8,21 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     active: 1,
+    list: [{
+      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+    }, {
+      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+    },
+    {
+      imageUrl: 'https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg'
+    },
+     {
+      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+    },
+     {
+      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+    }
+  ],
     tabList: [{
       id: 1,
       title: '最新投票'
