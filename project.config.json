@@ -9,7 +9,7 @@
     ]
   },
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -27,9 +27,9 @@
     "uploadWithSourceMap": true,
     "compileHotReLoad": true,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": false,
-    "useApiHostProcess": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -53,7 +53,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.21.0",
-  "appid": "wx27c0d416d63b9754",
+  "appid": "wx849c0850853466c4",
   "projectname": "kitten_app",
   "debugOptions": {
     "hidedInDevtools": []

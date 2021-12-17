@@ -97,21 +97,21 @@ App({
       console.error('获取小程序顶部参数', err)
     }
     // 获取小程序定位问题
-    try {
-      wx.getLocation({
-        type: "wgs84",
-        success(res) {
-      console.error('获取小程序定位权限ok', res)
-          that.globalData.longitude = res.longitude;
-          that.globalData.latitude = res.latitude;
-          that.globalData.is_location=true
-        },fail(){
-          that.globalData.is_location=false
-        }
-      })
-    } catch (error) {
-      console.error('获取小程序定位权限', error)
-    }
+    // try {
+    //   wx.getLocation({
+    //     type: "wgs84",
+    //     success(res) {
+    //   console.error('获取小程序定位权限ok', res)
+    //       that.globalData.longitude = res.longitude;
+    //       that.globalData.latitude = res.latitude;
+    //       that.globalData.is_location=true
+    //     },fail(){
+    //       that.globalData.is_location=false
+    //     }
+    //   })
+    // } catch (error) {
+    //   console.error('获取小程序定位权限', error)
+    // }
 
     // // 登录
     // wx.login({

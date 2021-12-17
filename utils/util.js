@@ -47,7 +47,6 @@ function getDay(num, str) {
 }
 // 格式化日期
 function formatDate(date) {
-  console.log(typeof date)
   date= date.toString().length<=10?Number(date)*1000:Number(date)
   date = new Date(date);
   let myyear = date.getFullYear();

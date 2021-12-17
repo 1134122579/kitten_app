@@ -1,14 +1,16 @@
 <wxs src="../../utils/split.wxs" module="split" />
 <view class="votePage">
   <!-- 头 -->
-  <view class="vote_header ">
+  <view class="vote_header " style="height: {{imgHeight}}px;background-image: url('{{content.cover||nullImgUrl}}');">
     <view>
+    <!-- 是计算图片大小 -->
+    <image style="position: absolute;top: -999px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
       <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
         <!-- 寻找最美猫咪 -->
-        {{content.titile}}
+        {{content.title}}
       </view>
       <view class="vote_header_text">
-        第2届猫咪选美大赛
+        {{content.stage_num}}猫咪选美大赛
       </view>
     </view>
     <view class="vote_header_time">

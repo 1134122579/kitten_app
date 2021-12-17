@@ -16,6 +16,8 @@
   color: #fff;
   font-weight: 600;
   padding: 6px 0;
+  letter-spacing: 4px;
+  text-indent: 4px;
 }
 .content{
   padding: 10px;

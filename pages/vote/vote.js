@@ -4,6 +4,7 @@ import Api from "../../api/index.js";
 import {
   formatDate
 } from "../../utils/util.js";
+import storage from "../../utils/cache.js"
 
 Page({
 
@@ -11,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imgHeight:0,
+    nullImgUrl:"https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg",
     navHeight: App.globalData.navHeight,
     active: 1,
     lookList: [1, 2],
@@ -52,39 +55,67 @@ Page({
       query: '', //编号
     }, //
     sort_fieldList: ["id", "ticket_num"], // 最新，热门
-    timeData:{},//倒计时
+    timeData: {}, //倒计时
+  },
+  // 获取头部图片大小
+  imgLoad(e){
+  let {windowWidth,screenHeight}=  wx.getSystemInfoSync()
+    let {height,width}=e.detail
+   let ratio =width/height
+   let imgHeight=windowWidth/ratio
+   console.log('获取头部图片大小',imgHeight ,ratio)
+this.setData({
+  imgHeight
+})
+  
+  },
+  // 判断是否登录
+  is_load(callback) {
+    storage.getToken(res => {
+      if (res) {
+        callback();
+      } else {
+        wx.navigateTo({
+          url: "/pages/login/login",
+        });
+      }
+    })
+
+
   },
   // 投票
-  join_vote(e){
+  join_vote(e) {
     let {
       id,
       vote_id
-    } =e.detail
-    Api.join_vote({
-      id,
-      vote_id
-    }).then(res => {
-      console.log("投票成功", res)
-      wx.showToast({
-        title: '投票成功',
+    } = e.detail
+    this.is_load(res => {
+      Api.join_vote({
+        id,
+        vote_id
+      }).then(res => {
+        console.log("投票成功", res)
+        wx.showToast({
+          title: '投票成功',
+        })
       })
     })
   },
-  onSearch(){
+  onSearch() {
     let {
       sort_fieldList,
       activeLookId,
       listQuery
     } = this.data
-    if(!sort_fieldList.includes(activeLookId)){
+    if (!sort_fieldList.includes(activeLookId)) {
       this.setData({
-        "listQuery.sort_field":"id"
+        "listQuery.sort_field": "id"
       })
     }
-    if(!listQuery.query){
+    if (!listQuery.query) {
       wx.showToast({
         title: '请输入搜索内容',
-        icon:"none"
+        icon: "none"
       })
       return
     }
@@ -125,16 +156,16 @@ Page({
     this.getData();
   },
   // 倒计时
-  oncountChange(e){
+  oncountChange(e) {
     this.setData({
-      timeData:e.detail
+      timeData: e.detail
     })
   },
   // 获取信息
   get_vote_rule() {
     Api.get_vote_rule().then(res => {
       console.log('get_vote_rule', res)
-      res['djs_time']=res['end_time']*1000-(+new Date())
+      res['djs_time'] = res['end_time'] * 1000 - (+new Date())
       res['end_time'] = formatDate(res['end_time'])
       res['start_time'] = formatDate(res['start_time'])
       this.setData({
@@ -143,9 +174,14 @@ Page({
     })
   },
   // 报名
-  goBaobutton(){
-    wx.navigateTo({
-      url: `/pages/enrollpage/enrollpage?vote_id=${vote_id}`,
+  goBaobutton() {
+    let {
+      id
+    } = this.data.content
+    this.is_load(res => {
+      wx.navigateTo({
+        url: `/pages/enrollpage/enrollpage?vote_id=${id}`,
+      })
     })
   },
   // 获取列表
