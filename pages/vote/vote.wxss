@@ -95,6 +95,10 @@
 .search_r {
   background: rgba(255, 87, 51, 1);
 }
+.timeData{
+  color: rgba(255, 87, 51, 1);
+  font-size: 12px;
+}
 
 
 /* 内容 */

@@ -158,7 +158,7 @@ App({
     longitude: '',
     latitude: '',
     // baseUrl: 'https://carshop.nxcsoft.top/api/v1/',
-    baseUrl:"https://api.qishis.com/api/v1/",
+    baseUrl:"https://api.catcius.com/api/v1/",
     userInfo: null,
     statusBarHeight: null,
     redBg: "#ff0000",

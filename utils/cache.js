@@ -1,24 +1,18 @@
 let name = "WX_FT_TOKEN";
 let userName = "WX_FT_USERINFO";
+import {Storage} from './storage'
+let $newstorage=new Storage()
 
 export default {
   // 获取数据
-  getToken() {
-    return wx.getStorageSync(name);
-    wx.getStorage({
-      key: name,
-      success (res) {
-        // console.log(res.data)
-        return res.data
-      }
-    })
+ async getToken() {
+   return await new Promise((resolve,reject)=>{
+    resolve($newstorage.get(name))
+   })
   },
   setToken(data) {
-    wx.setStorageSync(name, data);
-  // wx.setStorage({
-  //   key:name,
-  //   data
-  // })
+    // wx.setStorageSync(name, data);
+    $newstorage.set(name,data,false)
   },
   removeToken() {
     wx.removeStorageSync(name);

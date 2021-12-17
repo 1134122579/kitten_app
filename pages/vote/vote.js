@@ -1,5 +1,10 @@
 // pages/vote/vote.js
 let App = getApp()
+import Api from "../../api/index.js";
+import {
+  formatDate
+} from "../../utils/util.js";
+
 Page({
 
   /**
@@ -8,28 +13,31 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     active: 1,
-    lookList:[1,2],
-    activeLookId:1,
-    list: [{
-      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-    }, {
-      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-    },
-    {
-      imageUrl: 'https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg'
-    },
-     {
-      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-    },
-     {
-      imageUrl: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-    }
-  ],
+    lookList: [1, 2],
+    content: '', //活动内容
+    activeLookId: "id",
+    isNullList: true,
+    list: [
+      // {
+      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+      // }, {
+      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+      // },
+      // {
+      //   img: 'https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg'
+      // },
+      // {
+      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+      // },
+      // {
+      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
+      // }
+    ],
     tabList: [{
-      id: 1,
+      id: "id",
       title: '最新投票'
     }, {
-      id: 2,
+      id: "ticket_num",
       title: '人气排行'
     }, {
       id: 3,
@@ -37,13 +45,132 @@ Page({
     }, {
       id: 4,
       title: '评选规则'
-    }]
+    }],
+    listQuery: {
+      page: 1,
+      sort_field: 'id',
+      query: '', //编号
+    }, //
+    sort_fieldList: ["id", "ticket_num"], // 最新，热门
+    timeData:{},//倒计时
   },
-  onClick(event) {
-    this.setData({
-      activeLookId:event.detail.name
+  // 投票
+  join_vote(e){
+    let {
+      id,
+      vote_id
+    } =e.detail
+    Api.join_vote({
+      id,
+      vote_id
+    }).then(res => {
+      console.log("投票成功", res)
+      wx.showToast({
+        title: '投票成功',
+      })
     })
   },
+  onSearch(){
+    let {
+      sort_fieldList,
+      activeLookId,
+      listQuery
+    } = this.data
+    if(!sort_fieldList.includes(activeLookId)){
+      this.setData({
+        "listQuery.sort_field":"id"
+      })
+    }
+    if(!listQuery.query){
+      wx.showToast({
+        title: '请输入搜索内容',
+        icon:"none"
+      })
+      return
+    }
+    this.getData()
+  },
+  // 搜索
+  bindinput: function (e) {
+    this.setData({
+      "listQuery.query": e.detail.value.trim(),
+      "listQuery.page": 1
+    })
+  },
+  onClick(event) {
+    let key = event.detail.name
+    let {
+      sort_fieldList
+    } = this.data
+    this.setData({
+      activeLookId: key,
+      "listQuery.page": 1,
+      "listQuery.sort_field": key
+    })
+    if (sort_fieldList.includes(key)) {
+      this.getData()
+    } else {
+      // console.log(key,"key")
+      // switch (key) {
+      //   case 3:
+      //     this.get_vote_rule()
+      //     break;
+      //   default:
+      //     break;
+      // }
+    }
+  },
+  onBottom() {
+    this.data.listQuery.page++
+    this.getData();
+  },
+  // 倒计时
+  oncountChange(e){
+    this.setData({
+      timeData:e.detail
+    })
+  },
+  // 获取信息
+  get_vote_rule() {
+    Api.get_vote_rule().then(res => {
+      console.log('get_vote_rule', res)
+      res['djs_time']=res['end_time']*1000-(+new Date())
+      res['end_time'] = formatDate(res['end_time'])
+      res['start_time'] = formatDate(res['start_time'])
+      this.setData({
+        content: res
+      })
+    })
+  },
+  // 报名
+  goBaobutton(){
+    wx.navigateTo({
+      url: `/pages/enrollpage/enrollpage?vote_id=${vote_id}`,
+    })
+  },
+  // 获取列表
+  getData() {
+    let {
+      listQuery,
+      list
+    } = this.data
+    Api.catVoteList(listQuery).then(res => {
+      this.setData({
+        isNullList: res.length <= 0 ? false : true
+      })
+      if (listQuery.page == 1) {
+        console.log('catVoteList', listQuery, res)
+        this.setData({
+          list: res
+        })
+      } else {
+        this.setData({
+          list: list.concat(res)
+        })
+      }
+    })
+  },
+
   onChange(event) {
     // wx.showToast({
     //   title: `切换到标签 ${event.detail.name}`,
@@ -71,7 +198,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData()
+    this.get_vote_rule()
   },
 
   /**
@@ -99,7 +227,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.onBottom()
   },
 
   /**

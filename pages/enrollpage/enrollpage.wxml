@@ -1,0 +1,54 @@
+<!-- 投票界面登记 -->
+
+<view class="enroll">
+  <view class="cat_detail">
+    <view class="e_title">
+      猫咪图片或视频
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="1" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+    <!-- <van-uploader file-list="{{ fileList }}" accept="video" bind:after-read="afterRead" /> -->
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      基本信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+        <!-- 姓名 -->
+        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入猫咪姓名" border="{{ true }}" input-align="right" is-link />
+        <!-- 性别 -->
+        <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ sexList[sexIndex]['text']|| '选择性别'}}" title="性别" is-link />
+        </picker>
+        <!-- 生日 -->
+        <!-- <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
+          <van-cell required size="large" value="{{ birthday|| '选择生日'}}" title="生日" is-link />
+        </picker> -->
+        <!-- 投票期数 -->
+        <!-- <picker mode="selector" range="{{voteList}}" value="{{voteIndex}}" bindchange="bindvoteChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ voteList[voteIndex]['text']|| '选择投票期数'}}" title="投票期数 " is-link />
+        </picker> -->
+
+        <!-- 级别 -->
+        <picker mode="selector" range="{{levelList}}" value="{{levelIndex}}" bindchange="bindlevelChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ levelList[levelIndex]['text']|| '选择级别'}}" title="级别 " is-link />
+        </picker>
+
+
+
+      </van-cell-group>
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      简介信息
+    </view>
+    <van-field value="{{ message }}" type="textarea" placeholder="猫咪借鉴不能超过180个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{180}}" />
+  </view>
+<view class="button_">
+  <van-button block round type="warning" bihd:click="onClick">提交信息</van-button>
+</view>
+
+</view>

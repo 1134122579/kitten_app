@@ -1,1 +1,26 @@
 /* components/RemarkTextModel/RemarkTextModel.wxss */
+
+
+
+.remark{
+  margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid #FF6A6E;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.remark_title{
+  background: #FF6A6E;
+  text-align: center;
+  font-size:16px ;
+  color: #fff;
+  font-weight: 600;
+  padding: 6px 0;
+}
+.content{
+  padding: 10px;
+}
+.nullStyle{
+  text-align: center;
+  font-size: 14px;
+}

@@ -4,23 +4,33 @@
   <view class="vote_header ">
     <view>
       <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
-        寻找最美猫咪
+        <!-- 寻找最美猫咪 -->
+        {{content.titile}}
       </view>
       <view class="vote_header_text">
         第2届猫咪选美大赛
       </view>
     </view>
     <view class="vote_header_time">
-      <text>活动时间：</text><text>2021.2.2 至 2021.3.3</text>
+      <text>活动时间：</text><text>{{content.start_time}}至{{content.end_time}}</text>
     </view>
   </view>
   <!-- 活动公告 -->
   <view class="tag_style flexbetween">
     <view class="flexastart">
       <van-icon name="underway" size="18" />
-      <text class="hd_text">活动倒数计时：1小时30分04秒</text>
+      <view class="hd_text flexastart">活动倒数计时：<van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
+          <view class="timeData flexastart">
+            <text class="tiemitem">{{ timeData.days }}</text>天
+            <text class="tiemitem">{{ timeData.hours }}</text>小时
+            <text class="tiemitem">{{ timeData.minutes }}</text>分钟
+            <text class="tiemitem">{{ timeData.seconds }}</text>秒
+          </view>
+        </van-count-down>
+      </view>
+
     </view>
-    <van-button round type="warning" size="small">我要报名</van-button>
+    <van-button round type="warning" size="small" bind:click="goBaobutton">我要报名</van-button>
   </view>
   <!-- 数据 -->
 
@@ -30,7 +40,7 @@
         已报名
       </view>
       <view class="num">
-        15123
+        {{content.bm_num}}
       </view>
     </view>
     <view class="numnber_one flexcolumn borderLR">
@@ -38,7 +48,7 @@
         投票人数
       </view>
       <view class="num">
-        15123
+        {{content.cy_num}}
       </view>
     </view>
     <view class="numnber_one flexcolumn">
@@ -46,29 +56,28 @@
         访问量
       </view>
       <view class="num">
-        15123
+        {{content.pv}}
       </view>
     </view>
   </view>
 
   <!-- 搜索 -->
-
   <view class="searchstyle flexbetween">
     <view class="search_l flexastart">
       <van-icon name="search" size="18" />
-      <input class="search_input" type="text" placeholder="请输入名字或编号" />
+      <input class="search_input" type="text" placeholder="请输入名字或编号" bindinput="bindinput" />
     </view>
     <view class="search_r">
-      <van-button type="warning">我要报名</van-button>
+      <van-button type="warning" bindclick="onSearch">搜索</van-button>
     </view>
   </view>
   <!-- 内容 -->
   <view class="tab_content">
-    <van-tabs active="{{ active }}" bind:change="onChange" bind:click="onClick" tab-active-class="tabactiveclass">
+    <van-tabs active="{{ activeLookId }}" bind:change="onChange" bind:click="onClick" tab-active-class="tabactiveclass">
       <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
     </van-tabs>
     <!-- 列表 -->
-    <ListModel wx:if="{{split.indexOf(lookList,activeLookId)}}" list="{{list}}" />
-      
+    <ListModel wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" bind:join_vote="join_vote" list="{{list}}" isNullList="{{isNullList}}" />
+    <RemarkTextModel wx:else content="{{content}}" activeLookId="{{activeLookId}}"  title="{{activeLookId==3?'活动简介':'活动规则'}}"/>
   </view>
 </view>

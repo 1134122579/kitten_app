@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/vote/vote",
+    "pages/enrollpage/enrollpage",
     "pages/home/home",
     "pages/shopCount/shopCount",
     "pages/typelistpage/typelistpage",
@@ -32,9 +33,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#D13127",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WCCF协会",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "custom": true,
@@ -74,10 +75,13 @@
     ]
   },
   "usingComponents": {
+    "CatModel": "./components/CatModel/CatModel",
+    "RemarkTextModel": "./components/RemarkTextModel/RemarkTextModel",
     "ListModel": "./components/ListModel/ListModel",
     "EmptyModel": "./components/EmptyModel/EmptyModel",
     "CouponModel": "./components/CouponModel/CouponModel",
     "van-tag": "@vant/weapp/tag/index",
+    "van-count-down": "@vant/weapp/count-down/index",
     "CardModel": "./components/CardModel/CardModel",
     "van-sticky": "@vant/weapp/sticky/index",
     "NavbarModel": "./components/NavbarModel/NavbarModel",

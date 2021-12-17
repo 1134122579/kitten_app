@@ -14,10 +14,20 @@ Component({
       type: Array,
       value: [],
       observer(newV, oldV) {
-        console.log(newV, oldV)
+        // if (newV == oldV) {
+        // console.log(newV, oldV)
+        //   return
+        // }
+        this.setData({
+          leftList: [], //左边数组
+          rightList: [], //右边数组
+        })
         this.waterfallFlow()
       }
-
+    },
+    isNullList:{
+      type:Boolean,
+      value:true,
     }
   },
 
@@ -27,14 +37,15 @@ Component({
   data: {
     leftList: [], //左边数组
     rightList: [], //右边数组
-    leftHeight: 0,
-    rightHeight: 0 //分别定义左右两边的高度
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    join_vote(e){
+      this.triggerEvent("join_vote",e.detail)
+    },
     //瀑布流布局
     async waterfallFlow() { //在获取list后调用
       const {
@@ -59,7 +70,6 @@ Component({
         query.exec((res) => {
           leftHeight = res[0].height; //获取左边列表的高度
           rightHeight = res[1].height; //获取右边列表的高度
-        console.log('waterfallFlow', leftHeight ,rightHeight)
           resolve(res);
         });
       })

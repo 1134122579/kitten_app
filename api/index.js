@@ -390,4 +390,31 @@ export default {
       isThree: true,
     });
   },
+  catVoteList(params) {
+    return fly({
+      url: `catVoteList`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  get_vote_rule(params) {
+    return fly({
+      url: `get_vote_rule`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
+  join_vote(params) {
+    return fly({
+      url: `join_vote`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+
+
+  
 };
