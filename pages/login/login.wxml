@@ -4,7 +4,7 @@
   <view class="logo">
     <open-data type="userAvatarUrl"></open-data>
   </view>
-  <view class="newtitle"> 憩适空间</view>
+  <view class="newtitle"> 凯修斯御猫堂</view>
   <view class="buttonSyule ">
   <view class="button_">
     <van-button block  color="#D13127" bind:click="getUserProfile" disabled="{{disabled}}"> 授权登录 </van-button>

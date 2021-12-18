@@ -43,12 +43,8 @@ class Storage {
       const errMsg = 'Storage get: failed to get data'
       return new Promise((resolve, reject) => {
         if (syncFlag) {
-          let res = wx.getStorageSync(tmpKey)
-          if (res) {
+          let res = wx.getStorageSync(tmpKey) ||""
             resolve(JSON.parse(res))
-          } else {
-            reject(errMsg)
-          }
         } else {
           wx.getStorage({
             key: tmpKey,
@@ -57,7 +53,8 @@ class Storage {
             },
             fail: (err) => {
               console.log(err)
-              reject(errMsg)
+              resolve("")
+              // reject(errMsg)
             }
           })
         }

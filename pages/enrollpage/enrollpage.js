@@ -1,4 +1,5 @@
 // pages/enrollpage/enrollpage.js
+let App=getApp()
 import Api from "../../api/index";
 import {
   getDate
@@ -51,12 +52,12 @@ Page({
     const {
       file
     } = event.detail;
-    console.log("afterRead", event);
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.showLoading({
       title: '上传中..',
       mask: true
     })
+    console.log("afterRead", file.url);
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
       filePath: file.url,
@@ -64,7 +65,7 @@ Page({
       success(res) {
         // 上传完成需要更新 fileList
         res = JSON.parse(res.data);
-        console.log(res.data.imgLink, "upImage");
+        console.log(res ,"upImage");
         let fileList = [{
           ...file,
           url: res.data.imgLink
@@ -72,8 +73,10 @@ Page({
         that.setData({
           fileList
         });
-        wx.hideLoading()
       },
+      complete(){
+        wx.hideLoading()
+      }
     });
   },
   // 删除

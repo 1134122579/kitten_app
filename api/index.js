@@ -25,6 +25,14 @@ export default {
       isThree: false,
     });
   },
+  ckeckToken(params) {
+    return fly({
+      url: `checkToken`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   wxlogin(params) {
     return fly({
       url: `wxlogin`,

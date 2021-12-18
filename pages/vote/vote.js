@@ -72,7 +72,7 @@ this.setData({
   // 判断是否登录
   is_load(callback) {
     storage.getToken(res => {
-      if (res) {
+      if (res&&!App.globalData.is_login) {
         callback();
       } else {
         wx.navigateTo({

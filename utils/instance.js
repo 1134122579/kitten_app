@@ -30,11 +30,13 @@ fly.interceptors.request.use((request) => {
     request.headers["app-type"] = "ios";
     // request.headers['sign'] = encrypt(new Date().getTime())
     request.headers["sign"] = 123;
-    // let token = storage.getToken();
-    let token="4bd13763d846659def1b7a3d855a86fe00aa157126d25ce27970fe751d13f17c50eefc284e7cb9f208253b1c6b104af867a7cf790e784a0ec4cf881f0bd7efd9fd1691897343ef695c46635c7235826f"
-    if (token) {
-      request.headers["access-user-token"] = token;
-    }
+    // 获取token
+    storage.getToken(token => {
+      if (token) {
+        request.headers["access-user-token"] = token;
+      }
+    })
+  
     return request;
   } catch (e) {}
 });

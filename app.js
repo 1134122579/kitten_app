@@ -1,14 +1,16 @@
 // app.js
 import Api from "./api/index";
 import storage from "./utils/cache";
-import {Storage} from './utils/storage'
+import {
+  Storage
+} from './utils/storage'
 const $Storage = new Storage();
 
 App({
-  $Storage:$Storage,
-  getStorage:$Storage.get,
-  setStorage:$Storage.set,
-  rmStorage:$Storage.rm,
+  $Storage: $Storage,
+  getStorage: $Storage.get,
+  setStorage: $Storage.set,
+  rmStorage: $Storage.rm,
   // 设置自定义下标 id
   tabbershow($this, selected) {
     if (typeof $this.getTabBar === "function" && $this.getTabBar()) {
@@ -55,7 +57,7 @@ App({
             title: '您手机定位功能没有开启',
             content: '请在系统设置中打开定位服务',
             success() {
-                   // 跳到首页
+              // 跳到首页
             }
           })
         }
@@ -63,12 +65,24 @@ App({
     })
   },
   // 获取用户信息
-  getUserinfoFn(cb){
+  getUserinfoFn(cb) {
     Api.getUserInfo().then((res) => {
-    this.globalData.userInfo=res
-    storage.setUserInfo(res)
-    cb()
+      this.globalData.userInfo = res
+      storage.setUserInfo(res)
+      cb()
     });
+  },
+  // 校验token是否过期
+   isTimetoken() {
+    let  that=this
+    storage.getToken(token => {
+      Api.ckeckToken({
+        token
+      }).then(res => {
+        console.log("isTimetoken", res)
+        that.globalData.is_login=!res.code 
+      })
+    })
   },
   onLaunch() {
     // 展示本地存储能力
@@ -79,6 +93,11 @@ App({
     wx.setStorageSync("logs", logs);
     if (storage.getUserInfo()) {
       this.globalData.userInfo = storage.getUserInfo()
+    }
+    try {
+      that.isTimetoken()
+    } catch (error) {
+
     }
     // 获取小程序顶部参数
     try {
@@ -91,7 +110,7 @@ App({
       this.globalData.navHeight = navHeight;
       this.globalData.navTop = navTop;
       this.globalData.windowHeight = res.windowHeight;
-      console.log("获取自定义顶部高度相关参数====", navHeight,statusBarHeight,navTop)
+      console.log("获取自定义顶部高度相关参数====", navHeight, statusBarHeight, navTop)
 
     } catch (err) {
       console.error('获取小程序顶部参数', err)
@@ -155,10 +174,10 @@ App({
   },
   globalData: {
     is_location: false,
+    is_login: true,
     longitude: '',
     latitude: '',
-    // baseUrl: 'https://carshop.nxcsoft.top/api/v1/',
-    baseUrl:"https://api.catcius.com/api/v1/",
+    baseUrl: "https://api.catcius.com/api/v1/",
     userInfo: null,
     statusBarHeight: null,
     redBg: "#ff0000",
