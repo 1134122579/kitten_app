@@ -12,29 +12,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgHeight:0,
-    nullImgUrl:"https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg",
+    imgHeight: 0,
+    nullImgUrl: "https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg",
     navHeight: App.globalData.navHeight,
     active: 1,
     lookList: [1, 2],
     content: '', //活动内容
     activeLookId: "id",
     isNullList: true,
+    isticket: null,
+    isSearch: false,
     list: [
-      // {
-      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-      // }, {
-      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-      // },
-      // {
-      //   img: 'https://img.js.design/assets/img/61b610b6c2794a29534a25bf.jpg'
-      // },
-      // {
-      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-      // },
-      // {
-      //   img: 'https://img.js.design/assets/img/61b61d30b4e2f6312ab037d8.png'
-      // }
+
     ],
     tabList: [{
       id: "id",
@@ -58,21 +47,27 @@ Page({
     timeData: {}, //倒计时
   },
   // 获取头部图片大小
-  imgLoad(e){
-  let {windowWidth,screenHeight}=  wx.getSystemInfoSync()
-    let {height,width}=e.detail
-   let ratio =width/height
-   let imgHeight=windowWidth/ratio
-   console.log('获取头部图片大小',imgHeight ,ratio)
-this.setData({
-  imgHeight
-})
-  
+  imgLoad(e) {
+    let {
+      windowWidth,
+      screenHeight
+    } = wx.getSystemInfoSync()
+    let {
+      height,
+      width
+    } = e.detail
+    let ratio = width / height
+    let imgHeight = windowWidth / ratio
+    console.log('获取头部图片大小', imgHeight, ratio)
+    this.setData({
+      imgHeight
+    })
+
   },
   // 判断是否登录
   is_load(callback) {
     storage.getToken(res => {
-      if (res&&!App.globalData.is_login) {
+      if (res && !App.globalData.is_login) {
         callback();
       } else {
         wx.navigateTo({
@@ -85,16 +80,20 @@ this.setData({
   },
   // 投票
   join_vote(e) {
+    let that = this
     let {
       id,
       vote_id
     } = e.detail
-    this.is_load(res => {
+
+    this.is_load(() => {
       Api.join_vote({
         id,
         vote_id
       }).then(res => {
-        console.log("投票成功", res)
+        that.setData({
+          isticket: id
+        })
         wx.showToast({
           title: '投票成功',
         })
@@ -119,6 +118,9 @@ this.setData({
       })
       return
     }
+    this.setData({
+      isSearch: true
+    })
     this.getData()
   },
   // 搜索
@@ -131,24 +133,26 @@ this.setData({
   onClick(event) {
     let key = event.detail.name
     let {
-      sort_fieldList
+      sort_fieldList,
+      activeLookId
     } = this.data
     this.setData({
-      activeLookId: key,
+      isSearch: false,
       "listQuery.page": 1,
       "listQuery.sort_field": key
     })
+    if(key==activeLookId){
+      return
+    }
     if (sort_fieldList.includes(key)) {
       this.getData()
+      this.setData({
+        activeLookId: key,
+      })
     } else {
-      // console.log(key,"key")
-      // switch (key) {
-      //   case 3:
-      //     this.get_vote_rule()
-      //     break;
-      //   default:
-      //     break;
-      // }
+      this.setData({
+        activeLookId: key,
+      })
     }
   },
   onBottom() {
@@ -185,26 +189,25 @@ this.setData({
     })
   },
   // 获取列表
-  getData() {
+  async getData() {
     let {
       listQuery,
       list
     } = this.data
-    Api.catVoteList(listQuery).then(res => {
-      this.setData({
-        isNullList: res.length <= 0 ? false : true
-      })
-      if (listQuery.page == 1) {
-        console.log('catVoteList', listQuery, res)
-        this.setData({
-          list: res
-        })
-      } else {
-        this.setData({
-          list: list.concat(res)
-        })
-      }
+    let res = await Api.catVoteList(listQuery)
+    this.setData({
+      isNullList: res.length <= 0 ? false : true
     })
+    if (listQuery.page == 1) {
+      console.log('catVoteList', listQuery, res)
+      this.setData({
+        list: res
+      })
+    } else {
+      this.setData({
+        list: list.concat(res)
+      })
+    }
   },
 
   onChange(event) {
@@ -263,7 +266,13 @@ this.setData({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.onBottom()
+    let {
+      sort_fieldList,
+      activeLookId
+    } = this.data
+    if (sort_fieldList.includes(activeLookId)) {
+      this.onBottom()
+    }
   },
 
   /**

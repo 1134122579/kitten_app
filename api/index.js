@@ -422,6 +422,14 @@ export default {
       isThree: false,
     });
   },
+  JoinCatVote(params) {
+    return fly({
+      url: `JoinCatVote`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
 
 
   

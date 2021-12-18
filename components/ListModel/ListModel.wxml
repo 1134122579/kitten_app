@@ -2,12 +2,12 @@
   <view class="tab_content_list">
     <view class="tab_left">
       <block wx:for="{{leftList}}" wx:key="index">
-        <CatModel item="{{item}}"  bind:join_vote="join_vote"/>
+        <CatModel item="{{item}}"  bind:join_vote="join_vote"  isticket="{{isticket}}"/>
       </block>
     </view>
     <view class="tab_right">
       <block wx:for="{{rightList}}" wx:key="index">
-        <CatModel item="{{item}}" bind:join_vote="join_vote"/>
+        <CatModel item="{{item}}" bind:join_vote="join_vote" isticket="{{isticket}}"/>
       </block>
     </view>
   </view>

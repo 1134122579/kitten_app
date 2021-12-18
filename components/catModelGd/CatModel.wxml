@@ -3,7 +3,7 @@
 
 <view class="tab_content_list_one">
   <view class="block_image">
-    <image mode="widthFix" class="M_imageurl" src="{{item.img||'../../images/kongtu.png'}}">
+    <image mode="aspectFill" class="M_imageurl" bindload="imgLoad" src="{{item.img||'../../images/kongtu.png'}}">
     </image>
     <view class="M_pm flexbetween">
       <view class="M_pm_l flexbetween">

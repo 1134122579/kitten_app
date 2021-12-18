@@ -105,8 +105,20 @@
 .tab_content {
   padding: 0 10px;
 }
+.cat_list{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
 
 .tabactiveclass {
   font-weight: 800;
 }
-
+.isNullList{
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  color:#ccc ;
+  width: 100%;
+}

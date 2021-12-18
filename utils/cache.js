@@ -8,12 +8,15 @@ let $newstorage = new Storage()
 export default {
   // 获取数据
   async getToken(callback) {
-    let res = await $newstorage.get(name)
-    callback(res)
+    // let res = await $newstorage.get(name)
+    callback(wx.getStorageSync(name))
   },
   setToken(data) {
-    // wx.setStorageSync(name, data);
-    $newstorage.set(name, data, false)
+    wx.setStorageSync(name, data);
+    // $newstorage.set(name, data, false)
+  },
+  oldgetToken() {
+    return wx.getStorageSync(name)
   },
   removeToken() {
     wx.removeStorageSync(name);

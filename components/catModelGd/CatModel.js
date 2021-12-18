@@ -36,6 +36,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+     // 获取头部图片大小
+  imgLoad(e) {
+    let {
+      windowWidth,
+      screenHeight
+    } = wx.getSystemInfoSync()
+    let {
+      height,
+      width
+    } = e.detail
+    let ratio = width / height
+    let imgHeight = windowWidth / ratio
+    console.log('获取片大小', imgHeight, ratio)
+    this.setData({
+      imgHeight
+    })
+  },
     join_vote() {
       let {
         id,

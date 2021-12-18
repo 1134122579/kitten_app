@@ -31,12 +31,12 @@ fly.interceptors.request.use((request) => {
     // request.headers['sign'] = encrypt(new Date().getTime())
     request.headers["sign"] = 123;
     // 获取token
-    storage.getToken(token => {
-      if (token) {
-        request.headers["access-user-token"] = token;
-      }
-    })
-  
+    let token = storage.oldgetToken()
+    if (token) {
+      request.headers["access-user-token"] = token;
+    }
+
+
     return request;
   } catch (e) {}
 });
@@ -50,7 +50,10 @@ fly.interceptors.response.use(
 );
 
 // 拦截处理
-const handleResponse = ({ config, response }) => {
+const handleResponse = ({
+  config,
+  response
+}) => {
   loadingNum--;
   loadingFun(loadingNum); //loding
   console.log("请求拦截======", {

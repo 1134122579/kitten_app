@@ -14,17 +14,49 @@ Component({
       type: Array,
       value: [],
       observer(newV, oldV) {
-        // if (newV == oldV) {
+        // if (newV.length == oldV) {
         // console.log(newV, oldV)
         //   return
         // }
-        this.setData({
-          leftList: [], //左边数组
-          rightList: [], //右边数组
-        })
+        // this.setData({
+        //   leftList: [], //左边数组
+        //   rightList: [], //右边数组
+        // })
         this.waterfallFlow()
       }
     },
+    isticket:{
+      type: ["String","Number"],
+      value: '',
+    },
+    isSwitchList:{
+      type:String,
+      observer(newV,oldV){
+        if(newV!=oldV){
+          // this.setData({
+          //   leftList: [], //左边数组
+          //   rightList: [], //右边数组
+          // })
+          console.log("isSwitchList",newV,oldV)
+          this.data.leftList=[]; //左边数组
+          this.data.rightList=[]; //左边数组
+        }
+      }
+    },
+    isSearch:{
+      type:Boolean,
+      observer(newV,oldV){
+        if(newV){
+          this.data.leftList=[]; //左边数组
+          this.data.rightList=[]; //左边数组
+          // this.setData({
+          //   leftList: [], //左边数组
+          //   rightList: [], //右边数组
+          // })
+        }
+      }
+    },
+    
     isNullList:{
       type:Boolean,
       value:true,

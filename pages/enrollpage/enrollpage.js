@@ -15,6 +15,7 @@ Page({
     sex: null, //性别
     birthday: "", //生日
     vote_id: '',
+    desc:'',
     level: '',
     levelIndex: null,
     sexIndex: null,
@@ -44,7 +45,7 @@ Page({
     }, {
       id: 2,
       text: '母'
-    }]
+    }],
   },
   // 上传
   afterRead(event) {
@@ -128,6 +129,7 @@ Page({
       fileList,
       sex,
       level,
+      desc,
       vote_id
     } = this.data
     let img = fileList?.[0]?.url
@@ -159,6 +161,13 @@ Page({
       });
       return;
     }
+    if (!desc) {
+      wx.showToast({
+        title: "请输入简介信息 ",
+        icon: "none",
+      });
+      return;
+    }
     wx.showLoading({
       title: '报名中..',
       mask: true
@@ -167,6 +176,7 @@ Page({
       cat_name,
       img,
       sex,
+      desc,
       level,
       vote_id
     }).then(res => {

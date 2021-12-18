@@ -3,8 +3,8 @@
   <!-- 头 -->
   <view class="vote_header " style="height: {{imgHeight}}px;background-image: url('{{content.cover||nullImgUrl}}');">
     <view>
-    <!-- 是计算图片大小 -->
-    <image style="position: absolute;top: -999px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
+      <!-- 是计算图片大小 -->
+      <image style="position: absolute;top: -999px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
       <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
         <!-- 寻找最美猫咪 -->
         {{content.title}}
@@ -14,7 +14,7 @@
       </view>
     </view>
     <view class="vote_header_time">
-      <text>活动时间：</text><text>{{content.start_time}}至{{content.end_time}}</text>
+      <text>活动时间：</text><text>{{content.start_time}} 至 {{content.end_time}}</text>
     </view>
   </view>
   <!-- 活动公告 -->
@@ -79,7 +79,14 @@
       <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
     </van-tabs>
     <!-- 列表 -->
-    <ListModel wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" bind:join_vote="join_vote" list="{{list}}" isNullList="{{isNullList}}" />
-    <RemarkTextModel wx:else content="{{content}}" activeLookId="{{activeLookId}}"  title="{{activeLookId==3?'活动简介':'活动规则'}}"/>
+    <!-- <ListModel wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" bind:join_vote="join_vote" list="{{list}}" isSearch="{{isSearch}}" isticket="{{isticket}}" isSwitchList="{{activeLookId}}" isNullList="{{isNullList}}" /> -->
+    <view class="cat_list"  wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" >
+      <block wx:for="{{list}}" wx:key="id">
+        <catModelGd item="{{item}}" bind:join_vote="join_vote" isticket="{{isticket}}" />
+      </block>
+      <view class="isNullList" hidden="{{isNullList}}">暂无更多~</view>
+    </view>
+    <!-- 介绍 -->
+    <RemarkTextModel wx:else content="{{content}}" activeLookId="{{activeLookId}}" title="{{activeLookId==3?'活动简介':'活动规则'}}" />
   </view>
 </view>
