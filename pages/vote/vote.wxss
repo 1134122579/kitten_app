@@ -72,7 +72,7 @@
 /* 搜索 */
 .searchstyle {
   box-sizing: border-box;
-  border: 2px solid rgba(255, 87, 51, 1);
+  border: 2px solid #FF6A6E;
   border-radius: 5px;
   margin: 14rpx;
   background: #fff;
@@ -94,7 +94,11 @@
 }
 
 .search_r {
-  background: rgba(255, 87, 51, 1);
+  background: #FF6A6E;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #fff;
+  padding: 0 36rpx;
 }
 .timeData{
   color: rgba(255, 87, 51, 1);

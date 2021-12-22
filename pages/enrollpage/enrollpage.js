@@ -154,13 +154,13 @@ Page({
       });
       return;
     }
-    if (!level) {
-      wx.showToast({
-        title: "请选择级别",
-        icon: "none",
-      });
-      return;
-    }
+    // if (!level) {
+    //   wx.showToast({
+    //     title: "请选择级别",
+    //     icon: "none",
+    //   });
+    //   return;
+    // }
     if (!desc) {
       wx.showToast({
         title: "请输入简介信息 ",

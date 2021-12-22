@@ -20,7 +20,7 @@
   <!-- 活动公告 -->
   <view class="tag_style flexbetween">
     <view class="flexastart">
-      <van-icon name="underway" size="18" />
+      <van-icon name="../../../../images/nz.png" size="18" />
       <view class="hd_text flexastart">活动倒数计时：<van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
           <view class="timeData flexastart">
             <text class="tiemitem">{{ timeData.days }}</text>天
@@ -70,7 +70,8 @@
       <input class="search_input" type="text" placeholder="请输入名字或编号" bindinput="bindinput" />
     </view>
     <view class="search_r">
-      <van-button type="warning" bindclick="onSearch">搜索</van-button>
+      <!-- <van-button type="warning" bindclick="onSearch">搜索</van-button> -->
+      <view>搜索</view>
     </view>
   </view>
   <!-- 内容 -->
