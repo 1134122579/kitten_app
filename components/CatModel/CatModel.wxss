@@ -63,11 +63,12 @@
 }
 
 .M_id {
-  color: #ccc;
+  color: rgb(80, 80, 80);
+  font-weight: bold;
 }
 
 .M_desc {
-  color: rgba(166, 166, 166, 1);
+  color: rgb(80, 80, 80);
   font-size: 10px;
   display: block;
   overflow: hidden;
@@ -142,4 +143,7 @@ flex: 1;
 overflow: hidden;
 text-overflow:ellipsis;
 white-space: nowrap;
+}
+.isNullList{
+
 }

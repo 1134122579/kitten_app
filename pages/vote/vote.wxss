@@ -54,10 +54,11 @@
 
 .numnber_one {
   width: 33.3%;
+  /* font-weight: bold; */
 }
 
 .numnber_one .num {
-  font-size: 14px;
+  font-size: 18px;
   color: rgba(255, 87, 51, 1);
   margin-top: 4px;
   font-weight: 600;

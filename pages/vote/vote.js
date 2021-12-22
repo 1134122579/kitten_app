@@ -31,10 +31,12 @@ Page({
     }, {
       id: "ticket_num",
       title: '人气排行'
-    }, {
-      id: 3,
-      title: '活动简介'
-    }, {
+    },
+    //  {
+    //   id: 3,
+    //   title: '活动简介'
+    // },
+     {
       id: 4,
       title: '评选规则'
     }],
@@ -172,6 +174,7 @@ Page({
       res['djs_time'] = res['end_time'] * 1000 - (+new Date())
       res['end_time'] = formatDate(res['end_time'])
       res['start_time'] = formatDate(res['start_time'])
+      res['rule'] = res['rule'].replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
       this.setData({
         content: res
       })
