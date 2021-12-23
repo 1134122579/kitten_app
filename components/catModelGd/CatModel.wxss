@@ -2,13 +2,13 @@
   width:344rpx;
   /* width: 100%; */
   box-sizing: border-box;
-  box-shadow: 0 0 5px #ccc;
+  /* box-shadow: 0 0 5px #ccc; */
   font-size: 15px;
   padding-bottom: 10rpx;
-  margin-top: 20rpx;
+  margin-bottom: 20rpx;
   overflow: hidden;
   background: #fff;
-  border-radius: 10rpx;
+  /* border-radius: 10rpx; */
 }
 
 .block_image {
@@ -35,7 +35,7 @@
   border-radius: 4px;
   font-size: 10px;
   border-radius: 5px;
-  width:120rpx ;
+  width:140rpx ;
   height: 40rpx;
   overflow: hidden;
   text-align: center;
@@ -46,7 +46,6 @@
   background-color: rgba(255, 106, 110, 1);
   display: inline-block;
   flex: 1;
-
   height: 100%;
 }
 

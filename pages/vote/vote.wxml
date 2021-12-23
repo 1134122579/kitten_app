@@ -5,16 +5,7 @@
     <view>
       <!-- 是计算图片大小 -->
       <image style="width:100%;height: {{imgHeight}}px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
-      <!-- <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
-        {{content.title}}
-      </view>
-      <view class="vote_header_text">
-        {{content.stage_num}}猫咪选美大赛
-      </view> -->
     </view>
-    <!-- <view class="vote_header_time">
-      <text>活动时间：</text><text>{{content.start_time}} 至 {{content.end_time}}</text>
-    </view> -->
   </view>
   <!-- 活动公告 -->
   <view class="newStyle">
@@ -23,8 +14,10 @@
     </view>
     <view class="tag_style flexbetween">
       <view class="flexastart ">
-        <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;"/>
-        <view class="hd_text flexastart"><view>活动倒数计时：</view> <van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
+        <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;" />
+        <view class="hd_text flexastart">
+          <view>活动倒数计时：</view>
+          <van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
             <view class="timeData flexastart">
               <text class="tiemitem">{{ timeData.days }}</text>天
               <text class="tiemitem">{{ timeData.hours }}</text>小时
@@ -67,22 +60,23 @@
     </view>
   </view>
 
-  <!-- 搜索 -->
-  <view class="searchstyle flexbetween">
-    <view class="search_l flexastart">
-      <van-icon name="search" size="18" />
-      <input class="search_input" type="text" placeholder="请输入名字或编号" bindinput="bindinput" />
+  <view class="tab_b">
+    <!-- 搜索 -->
+    <view class="searchstyle flexbetween">
+      <view class="search_l flexastart">
+        <van-icon name="search" size="18" />
+        <input class="search_input" type="text" placeholder="请输入名字或编号" bindinput="bindinput" />
+      </view>
+      <view class="search_r" bindtap="onSearch">
+        搜索
+      </view>
     </view>
-    <view class="search_r">
-      <!-- <van-button type="warning" bindclick="onSearch">搜索</van-button> -->
-      <view>搜索</view>
-    </view>
+    <van-tabs line-width="54rpx" line-height="{{3}}" active="{{ activeLookId }}" bind:change="onChange" bind:click="onClick" tab-active-class="tabactiveclass">
+      <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
+    </van-tabs>
   </view>
   <!-- 内容 -->
   <view class="tab_content">
-    <van-tabs active="{{ activeLookId }}" bind:change="onChange" bind:click="onClick" tab-active-class="tabactiveclass">
-      <van-tab title="{{item.title}}" name="{{item.id}}" wx:for="{{tabList}}" wx:key="index"></van-tab>
-    </van-tabs>
     <!-- 列表 -->
     <!-- <ListModel wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" bind:join_vote="join_vote" list="{{list}}" isSearch="{{isSearch}}" isticket="{{isticket}}" isSwitchList="{{activeLookId}}" isNullList="{{isNullList}}" /> -->
     <view class="cat_list" wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}">

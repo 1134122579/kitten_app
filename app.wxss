@@ -15,6 +15,7 @@ page {
   box-sizing: border-box;
   /* overflow-y: auto; */
   /* overflow: hidden; */
+  --tabs-line-height:36px;
   --button-border-radius: 14rpx;
   --button-default-color: #d13027;
    --button-default-border-color:#d13027;

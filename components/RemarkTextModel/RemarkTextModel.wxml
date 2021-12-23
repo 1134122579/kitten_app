@@ -2,9 +2,9 @@
 
 
 <view class="remark">
-  <view class="remark_title">
+  <!-- <view class="remark_title">
     {{title}}
-  </view>
+  </view> -->
   <!-- 内容 -->
   <block wx:if="{{activeLookId==3}}">
     <view class="content" wx:if="{{content.desc}}">

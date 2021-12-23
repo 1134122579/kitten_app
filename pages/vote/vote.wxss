@@ -1,5 +1,5 @@
 .votePage {
-  /* background: #F2F2F2; */
+  background: #F2F2F2;
 }
 
 .vote_header {
@@ -62,7 +62,7 @@
 }
 
 .hd_text {
-  padding-left:16rpx;
+  padding-left: 16rpx;
   font-size: 14px;
 
 }
@@ -70,8 +70,9 @@
 /* 数据 */
 .number_list {
   /* padding: 20px; */
+  background: #fff;
   height: 112rpx;
-  padding:0 20rpx;
+  padding: 10rpx 20rpx;
   color: rgba(0, 0, 0, 1);
 }
 
@@ -83,7 +84,6 @@
 .numnber_one .num {
   font-size: 16px;
   color: rgba(255, 87, 51, 1);
-  margin-top: 4px;
   font-weight: bold;
 }
 
@@ -94,17 +94,20 @@
 
 /* 搜索 */
 .searchstyle {
-  box-sizing: border-box;
   border: 2px solid #FF6A6E;
   border-radius: 5px;
   margin: 16rpx 20rpx;
-  background: #fff;
+  background: #FF6A6E;
+  height: 80rpx;
+  overflow: hidden;
 }
 
 .search_l {
+  height: 100%;
   padding: 0 10px;
   font-size: 16px;
   flex: 1;
+  background: #fff;
 }
 
 .search_input {
@@ -118,10 +121,12 @@
 
 .search_r {
   background: #FF6A6E;
-  height: 80rpx;
+  height:100%;
   line-height: 80rpx;
+  /* margin-top: -2rpx; */
   color: #fff;
   padding: 0 36rpx;
+  margin: 0;
 }
 
 .timeData {
@@ -152,4 +157,10 @@
   font-size: 14px;
   color: #ccc;
   width: 100%;
+}
+
+.tab_b {
+  background: #fff;
+  padding: 10rpx 0;
+  margin: 20rpx 0;
 }

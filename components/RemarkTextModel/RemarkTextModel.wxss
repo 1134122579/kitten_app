@@ -5,9 +5,10 @@
 .remark {
   margin: 20rpx 0;
   border-radius: 10rpx;
-  border: 2px solid #FF6A6E;
+  /* border: 2px solid #FF6A6E; */
   overflow: hidden;
   box-sizing: border-box;
+  padding-bottom: 60rpx;
 }
 
 .remark_title {
@@ -16,6 +17,7 @@
   font-size: 16px;
   color: #fff;
   font-weight: bold;
+  margin-top: -2rpx;
   padding: 10rpx 0;
   box-sizing: border-box;
   letter-spacing: 4px;
@@ -23,7 +25,7 @@
 }
 
 .content {
-  padding: 20rpx;
+  /* padding: 20rpx; */
 }
 
 .nullStyle {

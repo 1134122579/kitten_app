@@ -42,7 +42,7 @@
     <view class="e_title">
       简介信息
     </view>
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪借鉴不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
   </view>
 <view class="button_">
   <van-button block round type="warning" bind:click="onClick">提交信息</van-button>
