@@ -20,7 +20,7 @@
         <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入猫咪姓名" border="{{ true }}" input-align="right" is-link />
         <!-- 性别 -->
         <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
-          <van-cell size="large" border="{{ true }}" required value="{{ sexList[sexIndex]['text']|| '选择性别'}}" title="性别" is-link />
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="请选择性别" value="{{ sexList[sexIndex]['text']}}"  readonly label="性别" is-link />
         </picker>
         <!-- 生日 -->
         <!-- <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
@@ -35,9 +35,6 @@
         <!-- <picker mode="selector" range="{{levelList}}" value="{{levelIndex}}" bindchange="bindlevelChange" range-key="text">
           <van-cell size="large" border="{{ true }}" required value="{{ levelList[levelIndex]['text']|| '选择级别'}}" title="级别 " is-link />
         </picker> -->
-
-
-
       </van-cell-group>
     </view>
   </view>
@@ -45,7 +42,7 @@
     <view class="e_title">
       简介信息
     </view>
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪借鉴不能超过180个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{180}}" />
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪借鉴不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
   </view>
 <view class="button_">
   <van-button block round type="warning" bind:click="onClick">提交信息</van-button>

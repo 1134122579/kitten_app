@@ -34,22 +34,45 @@
 }
 
 /* 公告 */
+.newStyle {
+  background: #FEEFE6;
+  padding: 20rpx;
+}
+
+.tag_header_title {
+  font-size: 36rpx;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
 .tag_style {
-  padding: 14px;
   background: #FEEFE6;
   color: rgba(255, 87, 51, 1);
   font-size: 14px;
 }
 
+.BM_bottom {
+  width: 162rpx;
+  height: 50rpx;
+  background: #FF6A6E;
+  color: #fff;
+  text-align: center;
+  border-radius: 50rpx;
+  line-height: 50rpx;
+}
+
 .hd_text {
-  padding-left: 10px;
+  padding-left:16rpx;
+  font-size: 14px;
+
 }
 
 /* 数据 */
 .number_list {
-  padding: 10px;
+  /* padding: 20px; */
+  height: 112rpx;
+  padding:0 20rpx;
   color: rgba(0, 0, 0, 1);
-  font-size: 14px;
 }
 
 .numnber_one {
@@ -58,10 +81,10 @@
 }
 
 .numnber_one .num {
-  font-size: 18px;
+  font-size: 16px;
   color: rgba(255, 87, 51, 1);
   margin-top: 4px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .borderLR {
@@ -74,7 +97,7 @@
   box-sizing: border-box;
   border: 2px solid #FF6A6E;
   border-radius: 5px;
-  margin: 14rpx;
+  margin: 16rpx 20rpx;
   background: #fff;
 }
 
@@ -100,19 +123,21 @@
   color: #fff;
   padding: 0 36rpx;
 }
-.timeData{
+
+.timeData {
   color: rgba(255, 87, 51, 1);
-  font-size: 12px;
+  font-size: 28rpx;
 }
 
 
 /* 内容 */
 .tab_content {
-  padding: 0 10px;
+  padding: 0 20rpx;
 }
-.cat_list{
+
+.cat_list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
 }
@@ -120,10 +145,11 @@
 .tabactiveclass {
   font-weight: 800;
 }
-.isNullList{
+
+.isNullList {
   padding: 10px;
   text-align: center;
-  font-size: 16px;
-  color:#ccc ;
+  font-size: 14px;
+  color: #ccc;
   width: 100%;
 }

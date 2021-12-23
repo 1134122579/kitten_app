@@ -7,7 +7,7 @@
     </image>
     <view class="M_pm flexbetween">
       <view class="M_pm_l flexbetween">
-        <view class="M_pm_text">·排名</view>
+        <view class="M_pm_text">· 排名</view>
         <view class="M_pm_num">{{item.sort_num}}</view>
       </view>
       <view class="">
@@ -32,8 +32,8 @@
       {{item.desc}}
     </view>
     <view class="M_button flexbetween">
-      <view class="M_button_l">
-        当前<text class="M_num"> {{split.indexOf(itemList, item.id)? (item.ticket_num+1):item.ticket_num}}</text>票
+      <view class="M_button_l flexcenter">
+        当前<view class="M_num"> {{split.indexOf(itemList, item.id)? (item.ticket_num+1):item.ticket_num}}</view>票
       </view>
       <view class="M_button_r flexcenter" bindtap="join_vote">
         <!-- <button size="mini" class="button">

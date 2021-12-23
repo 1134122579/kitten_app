@@ -4,36 +4,40 @@
   <view class="vote_header " style="height: {{imgHeight}}px;background-image: url('{{content.cover||nullImgUrl}}');">
     <view>
       <!-- 是计算图片大小 -->
-      <image style="position: absolute;top: -999px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
-      <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
-        <!-- 寻找最美猫咪 -->
+      <image style="width:100%;height: {{imgHeight}}px;" hidden="{{true}}" src="{{content.cover||nullImgUrl}}" bindload="imgLoad"></image>
+      <!-- <view class="vote_header_title" style="margin-top: {{navHeight}}px;">
         {{content.title}}
       </view>
       <view class="vote_header_text">
         {{content.stage_num}}猫咪选美大赛
-      </view>
+      </view> -->
     </view>
-    <view class="vote_header_time">
+    <!-- <view class="vote_header_time">
       <text>活动时间：</text><text>{{content.start_time}} 至 {{content.end_time}}</text>
-    </view>
+    </view> -->
   </view>
   <!-- 活动公告 -->
-  <view class="tag_style flexbetween">
-    <view class="flexastart">
-      <van-icon name="../../../../images/nz.png" size="18" />
-      <view class="hd_text flexastart">活动倒数计时：<van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
-          <view class="timeData flexastart">
-            <text class="tiemitem">{{ timeData.days }}</text>天
-            <text class="tiemitem">{{ timeData.hours }}</text>小时
-            <text class="tiemitem">{{ timeData.minutes }}</text>分钟
-            <text class="tiemitem">{{ timeData.seconds }}</text>秒
-          </view>
-        </van-count-down>
-      </view>
-
+  <view class="newStyle">
+    <view class="tag_header_title">
+      {{content.title}}
     </view>
-    <van-button round type="warning" size="small" bind:click="goBaobutton">我要报名</van-button>
+    <view class="tag_style flexbetween">
+      <view class="flexastart ">
+        <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;"/>
+        <view class="hd_text flexastart"><view>活动倒数计时：</view> <van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
+            <view class="timeData flexastart">
+              <text class="tiemitem">{{ timeData.days }}</text>天
+              <text class="tiemitem">{{ timeData.hours }}</text>小时
+              <text class="tiemitem">{{ timeData.minutes }}</text>分钟
+              <text class="tiemitem">{{ timeData.seconds }}</text>秒
+            </view>
+          </van-count-down>
+        </view>
+      </view>
+      <view class="BM_bottom" bindtap="goBaobutton">我要报名</view>
+    </view>
   </view>
+
   <!-- 数据 -->
 
   <view class="number_list flexaround">
@@ -81,7 +85,7 @@
     </van-tabs>
     <!-- 列表 -->
     <!-- <ListModel wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" bind:join_vote="join_vote" list="{{list}}" isSearch="{{isSearch}}" isticket="{{isticket}}" isSwitchList="{{activeLookId}}" isNullList="{{isNullList}}" /> -->
-    <view class="cat_list"  wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}" >
+    <view class="cat_list" wx:if="{{split.indexOf(sort_fieldList,activeLookId)}}">
       <block wx:for="{{list}}" wx:key="id">
         <catModelGd item="{{item}}" bind:join_vote="join_vote" isticket="{{isticket}}" />
       </block>
