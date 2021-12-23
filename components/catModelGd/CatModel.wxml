@@ -36,9 +36,12 @@
         当前<text class="M_num"> {{split.indexOf(itemList, item.id)? (item.ticket_num+1):item.ticket_num}}</text>票
       </view>
       <view class="M_button_r flexcenter" bindtap="join_vote">
-        <button size="mini" class="button">
+        <!-- <button size="mini" class="button">
           投票
-        </button>
+        </button> -->
+        <view class="button">
+          投票
+        </view>
       </view>
     </view>
   </view>

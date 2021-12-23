@@ -94,16 +94,22 @@
 
 .M_button {
   margin: 4rpx 0;
-  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #ccc;
   box-sizing: border-box;
+  height: 60rpx;
 }
 
 .M_button_l {
   font-weight: 600;
   flex: 1;
   text-align: center;
+  height: 60rpx;
+  border-radius: 40rpx 0 0 40rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  line-height: 60rpx;
+  border: 1px solid #ccc;
+  border-right: none;
 }
 
 .M_num {
@@ -121,8 +127,12 @@
 .button {
   border: none;
   color: #fff;
+  border-radius: 0  40rpx 40rpx 0;
   background-color: rgba(255, 106, 110, 1);
-  border-radius: 0;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-weight: 600;
+  padding:0 24rpx;
 }
 
 .sharebutton {
