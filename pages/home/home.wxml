@@ -1,5 +1,5 @@
 <view>
-	搜索
+	   <SearchNavModel pageName="123123"/>
 	<view>
 		列表
 	</view>

@@ -75,6 +75,7 @@
     ]
   },
   "usingComponents": {
+    "SearchNavModel": "./components/SearchNavModel/SearchNavModel",
     "catModelGd": "./components/catModelGd/CatModel",
     "CatModel": "./components/CatModel/CatModel",
     "RemarkTextModel": "./components/RemarkTextModel/RemarkTextModel",
