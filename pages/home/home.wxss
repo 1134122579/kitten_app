@@ -1,1 +1,51 @@
 /* pages/home/home.wxss */
+.homePage{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.listcontent{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.homeconten{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.homeconten{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+}
+.tabStyle{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tabStyle_l{
+  flex: 1;
+  overflow: hidden;
+}
+.tabStyle_r{
+  padding:0 30rpx ;
+  background: #fff;
+}
+.listStyle{
+  padding: 0 10rpx;
+  background: #fafafa;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+}

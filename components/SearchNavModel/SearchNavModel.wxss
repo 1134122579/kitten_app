@@ -13,6 +13,7 @@
 }
 
 .navbar-title {
+background: #ffffff;
   width: 100%;
   box-sizing: border-box;
   padding-left: 200rpx;
@@ -32,6 +33,7 @@
 
 .navbar-action-wrap {
   display: -webkit-flex;
+background: #ffffff;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;

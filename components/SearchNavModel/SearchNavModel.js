@@ -61,7 +61,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onsearch(){
+        wx.navigateTo({
+          url: '/pages/searchpage/searchpage',
+        })
+    },
     onClick(event) {
+      this.triggerEvent("tabType",event.detail.name)
       wx.showToast({
         title: `点击标签 ${event.detail.name}`,
         icon: 'none',

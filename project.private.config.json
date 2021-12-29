@@ -167,6 +167,12 @@
           "pathName": "pages/vippage/vip",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "投票",
+          "pathName": "pages/vote/vote",
+          "query": "",
+          "scene": null
         }
       ]
     }

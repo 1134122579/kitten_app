@@ -1,6 +1,32 @@
-<view>
-	   <SearchNavModel pageName="123123"/>
-	<view>
-		列表
+<view class="homePage">
+
+	<!-- 顶部搜索 -->
+	<SearchNavModel pageName="123123" />
+	<view class="listcontent">
+		<!-- 内容 -->
+		<view class="homeconten" style="margin-top: {{navHeight}}px;">
+
+			<!-- 分类 -->
+			<view class="tabStyle flexbetween">
+				<view class="tabStyle_l">
+					<van-tabs>
+						<van-tab wx:for="{{8}}" title="{{'标签 ' + index}}" wx:key="index">
+						</van-tab>
+					</van-tabs>
+				</view>
+				<view class="tabStyle_r">
+					<van-icon name="arrow-down" size="28rpx" />
+				</view>
+			</view>
+
+			<!-- 列表 -->
+			<ListModel list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}"/>
+			<!-- <view class="listStyle">
+				<BlockModel />
+				<BlockModel />
+			</view> -->
+
+
+		</view>
 	</view>
 </view>

@@ -1,13 +1,11 @@
-// pages/home/home.jslet
-
-let App=getApp()
+// pages/searchpage/searchpage.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navHeight:App.globalData.navHeight,
+
   },
 
   /**
@@ -21,9 +19,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-    navHeight:App.globalData.navHeight,
-    })
 
   },
 

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/searchpage/searchpage",
     "pages/vote/vote",
     "pages/enrollpage/enrollpage",
     "pages/shopCount/shopCount",
@@ -75,6 +76,7 @@
     ]
   },
   "usingComponents": {
+    "BlockModel": "./components/BlockModel/BlockModel",
     "SearchNavModel": "./components/SearchNavModel/SearchNavModel",
     "catModelGd": "./components/catModelGd/CatModel",
     "CatModel": "./components/CatModel/CatModel",

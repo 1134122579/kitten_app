@@ -1,7 +1,7 @@
 /* 内容 一个块 */
 
 .listModel{
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 .tab_content_list {
   /* box-sizing: border-box;*/
@@ -11,10 +11,12 @@
 
 .tab_left{
   width: 48.5%;
+  width: 360rpx;
   float: left;
 }
 .tab_right {
   width: 48.5%;
+  width: 360rpx;
   float: right;
 }
 .tab_content_list:after{

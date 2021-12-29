@@ -32,28 +32,28 @@ Component({
     isSwitchList:{
       type:String,
       observer(newV,oldV){
-        if(newV!=oldV){
-          // this.setData({
-          //   leftList: [], //左边数组
-          //   rightList: [], //右边数组
-          // })
-          console.log("isSwitchList",newV,oldV)
-          this.data.leftList=[]; //左边数组
-          this.data.rightList=[]; //左边数组
-        }
+        // if(newV!=oldV){
+        //   // this.setData({
+        //   //   leftList: [], //左边数组
+        //   //   rightList: [], //右边数组
+        //   // })
+        //   console.log("isSwitchList",newV,oldV)
+        //   this.data.leftList=[]; //左边数组
+        //   this.data.rightList=[]; //左边数组
+        // }
       }
     },
     isSearch:{
       type:Boolean,
       observer(newV,oldV){
-        if(newV){
-          this.data.leftList=[]; //左边数组
-          this.data.rightList=[]; //左边数组
-          // this.setData({
-          //   leftList: [], //左边数组
-          //   rightList: [], //右边数组
-          // })
-        }
+        // if(newV){
+        //   this.data.leftList=[]; //左边数组
+        //   this.data.rightList=[]; //左边数组
+        //   // this.setData({
+        //   //   leftList: [], //左边数组
+        //   //   rightList: [], //右边数组
+        //   // })
+        // }
       }
     },
     
@@ -87,7 +87,7 @@ Component({
       } = this.data;
       query = wx.createSelectorQuery().in(this); //  组件必须加上this
       for (const item of list) {
-        leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
+        leftHeight <= rightHeight ? leftList.concat([item]) : rightList.concat([item]); //判断两边高度，来觉得添加到那边
         let res = await this.getBoxHeight(leftList, rightList);
       }
     },

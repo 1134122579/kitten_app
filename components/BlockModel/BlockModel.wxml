@@ -1,0 +1,37 @@
+<wxs src="../../utils/split.wxs" module="split" />
+
+<view class="tab_content_list_one">
+  <view class="block_image">
+    <!-- <image mode="widthFix" class="M_imageurl" src="{{item.img||'/images/kongtu.png'}}">
+    </image> -->
+    <image mode="widthFix" class="M_imageurl" src="{{item.img||'http://cdn.catcius.com/Cat/20211227103118/743/tmp_16fa6ae8481f0913b6c4c5711dea6096.jpg?imageView2/3/w/300'}}">
+    </image>
+  </view>
+  <view class="M_text">
+    <view class="M_desc">
+      {{item.desc||"简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介"}}
+    </view>
+    <view class="block_header flexbetween">
+      <!-- 名字 -->
+      <view class="name flexastart">
+        <image class="headerImgae" src="http://cdn.catcius.com/Cat/20211227103118/743/tmp_16fa6ae8481f0913b6c4c5711dea6096.jpg?imageView2/3/w/300"></image>
+        <text class="name_text">{{item.cat_name||"名字名字名字名字"}}</text>
+      </view>
+      <!-- 点赞 -->
+      <view class="M_id flexbetween">
+        <van-icon name="like-o" size="18"/>
+        <view>{{item.id||"20万"}}</view>
+      </view>
+    </view>
+    <!-- <view class="M_button flexbetween">
+      <view class="M_button_l">
+        当前<text class="M_num"> {{split.indexOf(itemList, item.id)? (item.ticket_num+1):item.ticket_num}}</text>票
+      </view>
+      <view class="M_button_r flexcenter" bindtap="join_vote">
+        <button size="mini" class="button">
+          投票
+        </button>
+      </view>
+    </view> -->
+  </view>
+</view>
