@@ -83,12 +83,10 @@ Page({
             })
             App.globalData.userInfo=res
             App.globalData.is_login=false
-            wx.navigateTo({
-              url: '/pages/vote/vote',
+    
+            wx.switchTab({
+              url: '/pages/home/home',
             })
-            // wx.switchTab({
-            //   url: '/pages/vote/vote',
-            // })
           })
         })
       },

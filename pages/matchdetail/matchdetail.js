@@ -1,20 +1,17 @@
-// pages/home/home.jslet
-
-let App=getApp()
+// pages/matchdetail/matchdetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navHeight:App.globalData.navHeight,
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    App.tabbershow(this,0 );
 
   },
 
@@ -22,9 +19,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-    navHeight:App.globalData.navHeight,
-    })
 
   },
 

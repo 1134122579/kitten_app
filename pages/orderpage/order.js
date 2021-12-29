@@ -13,30 +13,68 @@ Page({
     navHeight:appInst.globalData.navHeight,
     ordertypeList: [
       {
-        title: "待确认",
+        title: "赛事报名",
         status: 2,
         disabled:false
       },
       {
-        title: "进行中",
+        title: "实时赛事",
         status: 1,
         disabled:false
       },
       {
-        title: "已完成",
+        title: "赛事回顾",
         status: 5,
         disabled:false
       },{
-        title: "",
+        title: "赛事积分",
         status: null,
-        disabled:true
-      },{
-        title: "",
-        status: null,
-        disabled:true
+        disabled:false
       }
     ],
-    list: [],
+    list: [{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    },{
+      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
+      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
+      zbf:'主办方：阿兹猫俱乐部',
+      time:'赛事时间：2021-6-23',
+      adress:'赛事地点：南京万达广场'
+    }],
   },
   onplayClose() {
     this.setData({
@@ -130,8 +168,7 @@ Page({
    */
   onShow: function () {
     appInst.tabbershow(this, 1);
-
-    this.getOrderList();
+    // this.getOrderList();
   },
 
   /**

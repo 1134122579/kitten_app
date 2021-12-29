@@ -1,4 +1,4 @@
 {
-    "navigationBarTitleText": "订单",
-    "usingComponents": {}
+    "usingComponents": {},
+    "navigationStyle": "custom"
 }

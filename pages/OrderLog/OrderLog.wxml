@@ -1,6 +1,4 @@
-<!-- <van-tabs active="{{ status }}" bind:change="onChange">
-  <van-tab wx:for="{{statusList}}" wx:key="{{status}}" title="{{item.title}}" name="{{item.status}}"></van-tab>
-</van-tabs> -->
+
 
 <view class="list" wx:if="{{list.length>0}}">
   <view wx:for="{{list}}" wx:key="room_id" class="_block">

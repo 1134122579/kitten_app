@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/matchdetail/matchdetail",
     "pages/searchpage/searchpage",
     "pages/vote/vote",
     "pages/enrollpage/enrollpage",

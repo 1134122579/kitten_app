@@ -173,6 +173,12 @@
           "pathName": "pages/vote/vote",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/orderpage/order",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,27 +1,29 @@
-<!-- <NavbarModel page-name="订单管理" text-color="#333" /> -->
-<!-- <view class="orderList" style="padding-top: {{navHeight}}px;"> -->
-	<view class="orderList flexcolumn" >
-	<view class="orderList_header">
-		<van-tabs active="{{ isStatus }}" bind:change="ontabChange">
-			<van-tab wx:for="{{ordertypeList}}" wx:key="status" data-id="{{item.status}}" name="{{item.status}}" disabled="{{item.disabled}}" title="{{item.title}}" />
-		</van-tabs>
-</view>
-
-	<!-- 列表 -->
-	<view class="orderList_content">
-		<block wx:if="{{list.length>0}}">
-			<block wx:for="{{list}}" wx:key="index">
-				<OrdeCard cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder"/>
+<view class="saishipage flexcolumn">
+<!-- 头部 -->
+	<view class="headerImage" >
+		<image class="imageStyle" mode="widthFix" src="https://img.js.design/assets/img/61b44a697eee4352133690cc.png"></image>
+	</view>
+	<view class="orderList flexcolumn">
+		<view class="orderList_header">
+			<van-tabs active="{{ isStatus }}"  bind:change="ontabChange" color="#333">
+				<van-tab wx:for="{{ordertypeList}}" wx:key="status" data-id="{{item.status}}" name="{{item.status}}" disabled="{{item.disabled}}" title="{{item.title}}" />
+			</van-tabs>
+		</view>
+		<!-- 列表 -->
+		<view class="orderList_content">
+			<block wx:if="{{list.length>0}}">
+				<block wx:for="{{list}}" wx:key="index">
+					<OrdeCard cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
+				</block>
 			</block>
-		</block>
-		<block wx:if="{{list.length<=0}}">
-				<EmptyModel description="暂无订单"/>
-		</block>
+			<block wx:if="{{list.length<=0}}">
+				<EmptyModel description="暂无订单" />
+			</block>
+		</view>
 	</view>
 </view>
 <!-- 充值成功 -->
-<van-popup show="{{is_okplayShow }}" closeable round 
-bind:click-overlay="onplayClose" bind:close="onplayClose">
+<van-popup show="{{is_okplayShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
 	<view class="okplayicon_content flexcolumn">
 		<view class="okplayicon ">
 			<image src="../../images/okplayicon.png"></image>
