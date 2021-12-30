@@ -9,72 +9,140 @@ Page({
   data: {
     // 1 进行中 2 待确认 5已完成
     isStatus: 2,
-    is_okplayShow:false,
-    navHeight:appInst.globalData.navHeight,
-    ordertypeList: [
-      {
+    listQuery: {
+      page: 1
+    },
+    is_okplayShow: false,
+    navHeight: appInst.globalData.navHeight,
+    ordertypeList: [{
         title: "赛事报名",
         status: 2,
-        disabled:false
+        disabled: false
       },
       {
         title: "实时赛事",
         status: 1,
-        disabled:false
+        disabled: false
       },
       {
         title: "赛事回顾",
         status: 5,
-        disabled:false
-      },{
+        disabled: false
+      }, {
         title: "赛事积分",
         status: null,
-        disabled:false
+        disabled: false
       }
     ],
-    list: [{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    },{
-      coverimg:'https://img.js.design/assets/img/61b44aa27eee43740236920f.png',
-      title:'素力高杯WCCF国际名猫文化主题巡回赛南京站',
-      zbf:'主办方：阿兹猫俱乐部',
-      time:'赛事时间：2021-6-23',
-      adress:'赛事地点：南京万达广场'
-    }],
+    list: [	{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},	{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},	{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		},	{
+			"id": 1,
+			"title": "上海市第一届猫咪秀大赛",
+			"master_name": "被猫互怼",
+			"cover": "",
+			"start_time": 1639561450,
+			"end_time": 1699561450,
+			"status": 1,
+			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
+		}],
   },
   onplayClose() {
     this.setData({
@@ -85,14 +153,16 @@ Page({
     let name = event.detail.name;
     console.log(event)
     this.setData({
-      isStatus:Number(name) ,
+      isStatus: Number(name),
     });
     this.getOrderList();
   },
 
   tag(event) {
     console.log(event);
-    let { id } = event.currentTarget.dataset;
+    let {
+      id
+    } = event.currentTarget.dataset;
     this.setData({
       isStatus: Number(id),
     });
@@ -100,28 +170,37 @@ Page({
   },
   //   获取订单列表
   getOrderList() {
-    let { isStatus } = this.data;
-    Api.getUserOrder({ status: isStatus }).then((res) => {
+    let {
+      listQuery
+    } = this.data;
+    Api.get_match(listQuery).then((res) => {
       this.setData({
         list: res,
       });
     });
   },
   // 取消
-  cancelOrder(event){
-    let {out_trade_no} = event.detail;
-    Api.cancelOrder({out_trade_no}).then(res=>{
+  cancelOrder(event) {
+    let {
+      out_trade_no
+    } = event.detail;
+    Api.cancelOrder({
+      out_trade_no
+    }).then(res => {
       this.getOrderList()
     })
   },
   //   支付成功
 
   payCarOrder(event) {
-    let {order_no,pay_type} = event.detail;
+    let {
+      order_no,
+      pay_type
+    } = event.detail;
     wx.showLoading({
       title: '支付中...',
-      icon:'none',
-      mask:true
+      icon: 'none',
+      mask: true
     })
     Api.payCarOrder({
       out_trade_no: order_no,
@@ -130,7 +209,7 @@ Page({
       wx.hideLoading()
       if (res.status == 200) {
         this.setData({
-          is_okplayShow:true
+          is_okplayShow: true
         })
         this.getOrderList()
         // wx.showToast({
@@ -145,9 +224,9 @@ Page({
           duration: 3000,
         });
       }
-//
+      //
     });
-  
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -159,7 +238,7 @@ Page({
    */
   onReady: function () {
     this.setData({
-    navHeight:appInst.globalData.navHeight,
+      navHeight: appInst.globalData.navHeight,
     })
   },
 

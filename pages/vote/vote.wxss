@@ -73,7 +73,7 @@
   background: #fff;
   height: 112rpx;
   padding: 10rpx 20rpx;
-  color: rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 0.801);
 }
 
 .numnber_one {

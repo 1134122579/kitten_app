@@ -179,6 +179,24 @@
           "pathName": "pages/orderpage/order",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "赛事列表",
+          "pathName": "pages/orderpage/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "赛事详情",
+          "pathName": "pages/matchdetail/matchdetail",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "报名页面",
+          "pathName": "pages/matchenroll/matchenroll",
+          "query": "match_id=1",
+          "scene": null
         }
       ]
     }

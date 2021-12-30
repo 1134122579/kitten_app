@@ -21,7 +21,7 @@ function loadingFun(loadingNum) {
   }
 }
 
-fly.config.baseURL = "https://api.catcius.com/api/v1/" // 开发
+fly.config.baseURL = "https://api.catcius.com/api/v2/" // 开发
 // fly.config.baseURL = "https://carshop.nxcsoft.top/api/v1/"; // 生产
 // 添加请求拦截器，加入微信用户sessionId头部
 fly.interceptors.request.use((request) => {

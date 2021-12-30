@@ -16,8 +16,8 @@
       <view class="flexastart ">
         <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;" />
         <view class="hd_text flexastart">
-          <view>活动倒数计时：</view>
-          <van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
+          <view>报名倒数计时：</view>
+          <van-count-down use-slot time="{{ getdata.djs_time }}" bind:change="oncountChange">
             <view class="timeData flexastart">
               <text class="tiemitem">{{ timeData.days }}</text>天
               <text class="tiemitem">{{ timeData.hours }}</text>小时

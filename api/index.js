@@ -430,7 +430,29 @@ export default {
       isThree: false,
     });
   },
-
-
+  get_match(params) {
+    return fly({
+      url: `get_match`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  get_match_details(params) {
+    return fly({
+      url: `get_match_details`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  joinMatch(params) {
+    return fly({
+      url: `joinMatch`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   
 };

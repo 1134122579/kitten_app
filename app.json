@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/matchdetail/matchdetail",
+    "pages/matchenroll/matchenroll",
     "pages/searchpage/searchpage",
     "pages/vote/vote",
     "pages/enrollpage/enrollpage",
@@ -77,6 +78,7 @@
     ]
   },
   "usingComponents": {
+    "van-skeleton": "@vant/weapp/skeleton/index",
     "BlockModel": "./components/BlockModel/BlockModel",
     "SearchNavModel": "./components/SearchNavModel/SearchNavModel",
     "catModelGd": "./components/catModelGd/CatModel",

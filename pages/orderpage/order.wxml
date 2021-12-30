@@ -23,7 +23,7 @@
 	</view>
 </view>
 <!-- 充值成功 -->
-<van-popup show="{{is_okplayShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
+<!-- <van-popup show="{{is_okplayShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
 	<view class="okplayicon_content flexcolumn">
 		<view class="okplayicon ">
 			<image src="../../images/okplayicon.png"></image>
@@ -32,4 +32,4 @@
 			支付成功
 		</view>
 	</view>
-</van-popup>
+</van-popup> -->

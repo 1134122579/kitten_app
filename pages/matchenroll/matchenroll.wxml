@@ -1,0 +1,55 @@
+<!-- 投票界面登记 -->
+
+<view class="enroll">
+  <!-- <view class="cat_detail">
+    <view class="e_title">
+      猫咪图片
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="1" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view> -->
+  <view class="cat_detail">
+    <view class="e_title">
+      基本信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+             <!-- 品种 -->
+             <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ sexList[sexIndex]['text']}}"  readonly label="品种"  />
+        </picker>
+          <!-- 性别 -->
+          <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}"  readonly label="性别"  />
+        </picker>
+        <!-- 姓名 -->
+        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名(证书全名)" required placeholder="请输入" border="{{ true }}" input-align="right"  />
+      
+        <!-- 生日 -->
+        <!-- <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
+          <van-cell required size="large" value="{{ birthday|| '选择生日'}}" title="生日"  />
+        </picker> -->
+        <!-- 投票期数 -->
+        <!-- <picker mode="selector" range="{{voteList}}" value="{{voteIndex}}" bindchange="bindvoteChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ voteList[voteIndex]['text']|| '选择投票期数'}}" title="投票期数 "  />
+        </picker> -->
+
+        <!-- 级别 -->
+        <!-- <picker mode="selector" range="{{levelList}}" value="{{levelIndex}}" bindchange="bindlevelChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ levelList[levelIndex]['text']|| '选择级别'}}" title="级别 "  />
+        </picker> -->
+      </van-cell-group>
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      简介信息
+    </view>
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+  </view>
+<view class="button_">
+  <van-button block round type="warning" bind:click="onClick">提交信息</van-button>
+</view>
+
+</view>
