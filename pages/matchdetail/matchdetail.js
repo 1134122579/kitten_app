@@ -16,7 +16,6 @@ Page({
   },
   // 倒计时
   oncountChange(e) {
-    console.log(e,123456)
     this.setData({
       timeData: e.detail
     })

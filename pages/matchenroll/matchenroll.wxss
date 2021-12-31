@@ -1,10 +1,12 @@
 /* pages/enrollpage/enrollpage.wxss */
 page{
   --cell-large-vertical-padding:40rpx;
+  background-color: rgba(232, 232, 232, 1);
 }
-/* .cat_detail{
-  
-} */
+.cat_detail{
+  margin-bottom: 20rpx;
+  background: #fff;
+} 
 .e_title{
   font-size: 16px;
   color: #333;
@@ -26,4 +28,5 @@ page{
 }
 .button_{
   padding: 20px;
+  background: #fff;
 }

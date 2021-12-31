@@ -17,6 +17,7 @@ Page({
     isshow: false,
     mobile: "",
     name: "",
+    desc:'',
     birthday: "", //生日
     signature: "", //签名
     currentDate: new Date().getTime(),
@@ -93,7 +94,7 @@ Page({
       birthday,
       signature,
       photo,
-      address
+      address,desc
     } = userInfo;
     this.setData({
       mobile,
@@ -101,7 +102,7 @@ Page({
       birthday,
       signature,
       photo,
-      address,
+      address,desc,
       fileList: photo ? [{
         url: photo
       }] : []
@@ -122,7 +123,8 @@ Page({
       signature,
       photo,
       address,
-      fileList
+      fileList,
+      desc
     } = this.data;
     photo = fileList?.[0]?.url
     if (!photo) {
@@ -170,6 +172,7 @@ Page({
         signature,
         photo,
         address,
+        desc
       })
       .then((res) => {
         Api.getUserInfo().then((res) => {

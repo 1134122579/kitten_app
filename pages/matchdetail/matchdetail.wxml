@@ -1,4 +1,5 @@
 <view class="saishipage flexcolumn">
+<Navheader/>
   <!-- 头部 -->
   <view class="headerImage">
     <image class="imageStyle" mode="widthFix" src="{{getdata.cover||nullheaderImage}}"></image>
@@ -39,9 +40,9 @@
         <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;" />
         <view class="hd_text flexastart">
           <view>活动倒数计时：</view>
-          <van-count-down use-slot time="{{ content.djs_time }}" bind:change="oncountChange">
+          <van-count-down use-slot time="{{ getdata.djs_time }}" bind:change="oncountChange">
             <view class="timeData flexastart">
-              <text class="tiemitem">{{ timeData.days }}</text>天
+              <!-- <text class="tiemitem">{{ timeData.days }}</text>天 -->
               <text class="tiemitem">{{ timeData.hours }}</text>小时
               <text class="tiemitem">{{ timeData.minutes }}</text>分钟
               <text class="tiemitem">{{ timeData.seconds }}</text>秒

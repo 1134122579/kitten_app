@@ -11,10 +11,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    cat_name: "", //姓名
-    sex: null, //性别
-    birthday: "", //生日
     match_id: '',
+    cat_pz:'',
+    sex: null, //性别
+    cat_name: "", //姓名
+    color:'',//颜色
+    birthday: "", //生日
+    eye_color:"",//眼睛颜色
+    register_no:"",//编号
+    father_name:'',//
+    father_pz:'',
+    father_color:'',
+    father_register_no:'',
+    mother_pz:'',
+    mother_color:'',
+    mother_name:'',
+    mother_register_no:'',
+    group_id:'',//组别*
+    match_id:'',//FUN SHOW
     desc:'',
     level: '',
     levelIndex: null,
@@ -31,6 +45,13 @@ Page({
     }, {
       id: 2,
       text: '第二级别'
+    }],
+    PzList: [{
+      id: 1,
+      text: '波斯猫'
+    }, {
+      id: 2,
+      text: '波斯猫2'
     }],
     voteList: [{
       id: 1,
@@ -86,6 +107,16 @@ Page({
       fileList: [],
     })
   },
+    // 品种
+    bindpzChange(event) {
+      let {
+        PzList
+      } = this.data
+      this.setData({
+        // sexIndex: event.detail.value,
+        cat_pz: PzList[event.detail.value]['text']
+      })
+    },
   // 性别
   bindsexChange(event) {
     let {

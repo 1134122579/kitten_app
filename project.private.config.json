@@ -197,6 +197,12 @@
           "pathName": "pages/matchenroll/matchenroll",
           "query": "match_id=1",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/userInfo/userInfo",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,5 +1,6 @@
 <wxs src="../../utils/split.wxs" module="split" />
 <view class="votePage">
+<Navheader/>
   <!-- 头 -->
   <view class="vote_header " style="height: {{imgHeight}}px;background-image: url('{{content.cover||nullImgUrl}}');">
     <view>

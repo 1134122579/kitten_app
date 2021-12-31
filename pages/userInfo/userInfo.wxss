@@ -1,5 +1,22 @@
 /* pages/userInfo/userInfo.wxss */
+page{
+  background: #F6F6F6;
+}
 .button_{
   margin-top: 40px;
   padding: 20px;
+}
+.userInfo{
+  padding: 20rpx;
+}
+.cell{
+  /* margin: 20rpx; */
+}
+.van-cell{
+  border-radius: 20rpx;
+  margin: 20rpx 0;
+}
+.block{
+  background: #fff;
+  border-radius: 20rpx;
 }

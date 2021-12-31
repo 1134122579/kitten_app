@@ -1,34 +1,99 @@
 <wxs src="../../utils/split.wxs" module="split" />
 
-<view class="morerpage" style="margin-top:{{navHeight-1}}px">
+<view class="morerpage">
 	<!-- nav  -->
-	<NavbarModel page-name="更多" text-color="#fff" bg-color="#D43C30"/>
-
 	<!-- 个人信息 -->
 	<view class="more_header">
 		<image class="header_bg" src="../../images/anoutbg.png"></image>
-		<view class="user_content">
+		<view class="user_content" style="margin-top:{{navHeight-1}}px">
 			<view class="user_content_t" bindtap="onuserInfo">
-				<van-image round width="80" height="80" src="{{userInfo.photo||'../../../../images/Group.png'}}"></van-image>
+				<van-image round width="100rpx" height="100rpx" src="{{userInfo.photo||'../../../../images/Group.png'}}"></van-image>
 				<view class="userName">{{userInfo.name||'未认证'}}</view>
 				<van-icon name="edit" size="18" />
 			</view>
+			<!-- 数据 -->
+			<view class="numList flexaround">
+				<view class="listBlock flexcolumn">
+					<view class="num">
+						99
+					</view>
+					<view class="numname">
+						消息
+					</view>
+				</view>
+				<view class="listBlock flexcolumn">
+					<view class="num">
+						99
+					</view>
+					<view class="numname">
+						关注
+					</view>
+				</view>
+				<view class="listBlock flexcolumn">
+					<view class="num">
+						99
+					</view>
+					<view class="numname">
+						收藏
+					</view>
+				</view>
+				<view class="listBlock flexcolumn">
+					<view class="num">
+						99
+					</view>
+					<view class="numname">
+						粉丝
+					</view>
+				</view>
+			</view>
 			<view class="header_footer">
-				<image class="header_bg" bindtap="goVip" src="../../images/vipdesc.png"></image>
+				<view class="hf_title flexbetween">
+					<view class="hf_title_l">
+						悠悠布偶猫舍
+					</view>
+					<view class="hf_title_r">
+						<image style="width: 100%;height: 100%;display: block;" src="/images/gocaticon.png"></image>
+					</view>
+				</view>
+				<view class="numList flexaround shop">
+					<view class="listBlock flexcolumn">
+						<view class="num">
+							99
+						</view>
+						<view class="numname">
+							待售
+						</view>
+					</view>
+					<view class="listBlock flexcolumn">
+						<view class="num">
+							99
+						</view>
+						<view class="numname">
+							展示
+						</view>
+					</view>
+					<view class="listBlock flexcolumn">
+						<view class="num">
+							99
+						</view>
+						<view class="numname">
+							种公
+						</view>
+					</view>
+					<view class="listBlock flexcolumn">
+						<view class="num">
+							99
+						</view>
+						<view class="numname">
+							种母
+						</view>
+					</view>
+				</view>
 			</view>
 		</view>
 
 	</view>
-	<!-- 卡券   车辆 -->
 
-	<view class="cardStyle">
-		<view class="imageStyle" bindtap="oncarClick">
-			<image src="../../images/car.png"></image>
-		</view>
-		<view class="imageStyle" bindtap="oncardClick">
-			<image src="../../images/card.png"></image>
-		</view>
-	</view>
 
 	<!-- 功能 -->
 
@@ -37,9 +102,9 @@
 			常用功能
 		</view>
 		<block wx:for="{{list}}" wx:key="title">
-			<view class="{{item.marginTop}}" hidden="{{!split.power(powerlist,item.is_power)}}">
-				<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}"
-					value="{{item.value}}" border="{{isborder}}" />
+			<!-- hidden="{{!split.power(powerlist,item.is_power)}}" -->
+			<view class="{{item.marginTop}}" >
+				<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}" value="{{item.value}}" border="{{isborder}}" />
 			</view>
 			<!-- 联系客服 -->
 			<!-- <view wx:if="{{item.isbutton}}" class="{{item.marginTop}}" wx:if="{{split.power(powerlist,item.is_power)}}">
@@ -47,10 +112,10 @@
 			</view> -->
 		</block>
 	</view>
-
-	<view class="contact">
-		<button class="button_style" open-type="contact" >
+  <!-- 客服 -->
+	<!-- <view class="contact">
+		<button class="button_style" open-type="contact">
 			<van-icon name="service-o" size="20"></van-icon>
 		</button>
-	</view>
+	</view> -->
 </view>

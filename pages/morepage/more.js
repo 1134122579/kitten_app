@@ -10,7 +10,7 @@ Page({
     userInfo: null,
     list: [
       {
-        title: "店长管理",
+        title: "我的动态",
         icon: "shield-o",
         to: "../../pages/scanpage/scanpage",
         linktype: "navigateTo",
@@ -22,9 +22,9 @@ Page({
         isbutton:false
       },
       {
-        title: "客流统计",
+        title: "投票活动",
         icon: "shield-o",
-        to: "../../pages/shopCount/shopCount",
+        to: "../../pages/vote/vote",
         linktype: "navigateTo",
         value: "",
         isborder: false,
@@ -34,20 +34,20 @@ Page({
         isbutton:false
       },
       {
-        title: "优惠券兑换",
+        title: "证书注册",
         icon: "coupon-o",
         to: "../../pages/exchangpage/exchangpage",
         linktype: "navigateTo",
         value: "",
         isborder: false,
-        marginTop: "marginTop",
+        // marginTop: "marginTop",
         is_power: "user",
         isLink:false,
         isbutton:false
 
       },
       {
-        title: "兑换会员",
+        title: "分享推荐",
         icon: "vip-card-o",
         to: "../../pages/vipchagepage/vipchagepage",
         linktype: "navigateTo",
@@ -60,9 +60,9 @@ Page({
 
       },
       {
-        title: "充值记录",
+        title: "意见建议",
         icon: "orders-o",
-        to: "../../pages/businesslist/businesslist",
+        to: "../../pages/fankui/fankui",
         linktype: "navigateTo",
         value: "",
         isborder: false,
@@ -70,30 +70,7 @@ Page({
         is_power: "user",
         isLink:false,
         isbutton:false
-      },
-      {
-        title: "会员协议",
-        icon: "records",
-        to: "../../pages/setting/setting",
-        linktype: "navigateTo",
-        value: "",
-        isborder: false,
-        marginTop: "marginTop",
-        is_power: "user",
-        isLink:false,
-        isbutton:false
-      },
-      {
-        title: "设置",
-        icon: "setting-o",
-        to: "../../pages/userInfo/userInfo",
-        linktype: "navigateTo",
-        value: "",
-        isborder: false,
-        marginTop: "marginTop",
-        isLink:false,
-        isbutton:false
-      },
+      }
     ],
   },
   goVip() {

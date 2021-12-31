@@ -34,11 +34,8 @@ Page({
     })
   },
   noUser(){
-    // wx.switchTab({
-    //   url: '/pages/vote/vote',
-    // })
-    wx.navigateTo({
-      url: '/pages/vote/vote',
+    wx.switchTab({
+      url: '/pages/home/home',
     })
   },
   getUserProfile(e) {

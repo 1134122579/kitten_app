@@ -15,26 +15,32 @@
     </view>
     <view class="e_block">
       <van-cell-group>
-             <!-- 品种 -->
-             <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ sexList[sexIndex]['text']}}"  readonly label="品种"  />
+        <!-- 品种 -->
+        <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
         </picker>
-          <!-- 性别 -->
-          <picker mode="selector" range="{{sexList}}" value="{{sexIndex}}" bindchange="bindsexChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}"  readonly label="性别"  />
+        <!-- 性别 -->
+        <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="性别" />
         </picker>
         <!-- 姓名 -->
-        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名(证书全名)" required placeholder="请输入" border="{{ true }}" input-align="right"  />
-      
+        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名(证书全名)" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 颜色 -->
+        <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+
         <!-- 生日 -->
-        <!-- <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
-          <van-cell required size="large" value="{{ birthday|| '选择生日'}}" title="生日"  />
-        </picker> -->
+        <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择日期" value="{{ birthday}}" readonly label="出生日期" />
+        </picker>
+        <!-- 眼睛颜色 -->
+        <van-field model:value="{{ eye_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="眼睛颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 注册号 -->
+        <van-field model:value="{{ register_no }}" size="large" label-class="labelClass" custom-style="inputStyle" label="注册号" required placeholder="请输入" border="{{ true }}" input-align="right" />
+
         <!-- 投票期数 -->
         <!-- <picker mode="selector" range="{{voteList}}" value="{{voteIndex}}" bindchange="bindvoteChange" range-key="text">
           <van-cell size="large" border="{{ true }}" required value="{{ voteList[voteIndex]['text']|| '选择投票期数'}}" title="投票期数 "  />
         </picker> -->
-
         <!-- 级别 -->
         <!-- <picker mode="selector" range="{{levelList}}" value="{{levelIndex}}" bindchange="bindlevelChange" range-key="text">
           <van-cell size="large" border="{{ true }}" required value="{{ levelList[levelIndex]['text']|| '选择级别'}}" title="级别 "  />
@@ -42,14 +48,72 @@
       </van-cell-group>
     </view>
   </view>
+  <!-- 父亲信息 -->
   <view class="cat_detail">
+    <view class="e_title">
+      父亲信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+        <!-- 姓名 -->
+        <van-field model:value="{{ father_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 品种 -->
+        <picker mode="selector" range="{{father_pz}}" bindchange="bindpzChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
+        </picker>
+        <!-- 颜色 -->
+        <van-field model:value="{{ father_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 注册号 -->
+        <van-field model:value="{{ father_register_no }}" size="large" label-class="labelClass" custom-style="inputStyle" label="注册号" required placeholder="请输入" border="{{ true }}" input-align="right" />
+      </van-cell-group>
+    </view>
+  </view>
+  <!-- 母亲信息 -->
+  <view class="cat_detail">
+    <view class="e_title">
+      母亲信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+        <!-- 姓名 -->
+        <van-field model:value="{{ mother_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 品种 -->
+        <picker mode="selector" range="{{mother_pz}}" bindchange="bindpzChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
+        </picker>
+        <!-- 颜色 -->
+        <van-field model:value="{{ mother_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 注册号 -->
+        <van-field model:value="{{ mother_register_no }}" size="large" label-class="labelClass" custom-style="inputStyle" label="注册号" required placeholder="请输入" border="{{ true }}" input-align="right" />
+      </van-cell-group>
+    </view>
+  </view>
+  <!-- 年龄比赛组别 -->
+  <view class="cat_detail">
+    <view class="e_title">
+      年龄比赛组别
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+        <!-- 性别 -->
+        <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="组别" />
+        </picker>
+        <!-- 性别 -->
+        <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="FUN SHOW" />
+        </picker>
+      </van-cell-group>
+    </view>
+  </view>
+  <!-- <view class="cat_detail">
     <view class="e_title">
       简介信息
     </view>
     <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+  </view> -->
+  <view class="button_">
+    <van-button block round type="warning" bind:click="onClick">提交信息</van-button>
   </view>
-<view class="button_">
-  <van-button block round type="warning" bind:click="onClick">提交信息</van-button>
-</view>
 
 </view>
