@@ -7,8 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // 1 进行中 2 待确认 5已完成
-    isStatus: 2,
+    // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
+    isStatus: 1,
+    
     listQuery: {
       page: 1
     },
@@ -16,146 +17,55 @@ Page({
     navHeight: appInst.globalData.navHeight,
     ordertypeList: [{
         title: "赛事报名",
-        status: 2,
-        disabled: false
-      },
-      {
-        title: "实时赛事",
         status: 1,
         disabled: false
       },
       {
+        title: "实时赛事",
+        status: 2,
+        disabled: false
+      },
+      {
         title: "赛事回顾",
-        status: 5,
+        status: 3,
         disabled: false
       }, {
         title: "赛事积分",
-        status: null,
+        status: 4,
         disabled: false
       }
     ],
-    list: [	{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},	{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},	{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		},	{
-			"id": 1,
-			"title": "上海市第一届猫咪秀大赛",
-			"master_name": "被猫互怼",
-			"cover": "",
-			"start_time": 1639561450,
-			"end_time": 1699561450,
-			"status": 1,
-			"address": "啥的健康富婆及时监控反馈链接即可【欧巴 看佛系记录卡J"
-		}],
+    list: [],
+    ssList:[{
+      id:1,text:"第一场赛事"
+    },{
+      id:1,text:"第一场赛事"
+    },{
+      id:1,text:"第一场赛事"
+    }]
   },
   onplayClose() {
     this.setData({
       is_okplayShow: false
     })
   },
-  ontabChange(event) {
-    let name = event.detail.name;
-    console.log(event)
+  // 赛事积分
+  bindpzChange(event) {
+    let {
+      ssList
+    } = this.data
     this.setData({
-      isStatus: Number(name),
+      // sexIndex: event.detail.value,
+      saishiValue: ssList[event.detail.value]['text']
+    })
+  },
+  ontabChange(event) {
+    let status = event.detail.name;
+    this.setData({
+      isStatus: Number(status),
     });
-    this.getOrderList();
+    // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
+      this.getOrderList();
   },
 
   tag(event) {
@@ -228,6 +138,13 @@ Page({
     });
 
   },
+
+  // 上来
+  onBottom(){
+      this.data.listQuery.page++
+      console.log(this.data.listQuery.page,112123123)
+      this.getOrderList()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -268,7 +185,9 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {},
+  onReachBottom: function () {
+    this.onBottom()
+  },
 
   /**
    * 用户点击右上角分享
