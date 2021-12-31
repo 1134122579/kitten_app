@@ -1,0 +1,75 @@
+<view class="mycathouse">
+  <Navheader />
+
+  <view class="headerimage">
+    <image class="topimg" mode="center" src="https://img.js.design/assets/img/61b4435e013b1b6072873de3.png"></image>
+  </view>
+  <!-- 内容 -->
+  <view class="mycontent">
+    <!-- 数据 -->
+    <view class="myheader flexbetween">
+      <view class="userImg">
+        <image style="width: 100%;height: 100%;display: block;" src="https://img.js.design/assets/img/61b44332c2794a93c34178dd.png"></image>
+      </view>
+      <view class="mynum flexcolumn">
+        <view class="mynum_text">
+          获赞
+        </view>
+        <view class="mun">
+          99
+        </view>
+      </view>
+      <view class="mynum flexcolumn">
+        <view class="mynum_text">
+          关注
+        </view>
+        <view class="mun">
+          99
+        </view>
+      </view>
+      <view class="mynum flexcolumn">
+        <view class="mynum_text">
+          浏览
+        </view>
+        <view class="mun">
+          99
+        </view>
+      </view>
+    </view>
+    <!-- 名字 -->
+    <view class="myheadername flexbetween">
+      <view class="username">
+        黑精灵猫舍
+      </view>
+      <view class="flexcenter">
+        <view class="mynum_button flexcenter">
+          <image style="width: 36rpx;height: 36rpx;display: block;margin-right: 10rpx;" src="/images/fx.png"></image>
+          <view>分享</view>
+        </view>
+        <view class="mynum_button flexcenter">
+          <image style="width: 36rpx;height: 36rpx;display: block;margin-right: 10rpx;" src="/images/gz.png"></image>
+          <view>分享</view>
+        </view>
+      </view>
+    </view>
+    <view class="mydesc">
+      本猫舍从事血统猫繁育5年，专注于布偶、德文的繁育，在各项比赛中获得过不俗成绩，猫舍位于美丽的上海，联系方式156XXXXXXX，欢迎猫友们一起交流学习经验...
+    </view>
+
+    <!-- 列表 -->
+    <view>
+      <view class="orderList_header">
+			<van-tabs active="{{ isStatus }}" bind:change="ontabChange" color="#333">
+				<van-tab wx:for="{{typeList}}" wx:key="status" data-id="{{item.status}}" name="{{item.status}}" title="{{item.title}}" />
+			</van-tabs>
+		</view>
+    </view>
+
+
+
+
+
+
+
+  </view>
+</view>

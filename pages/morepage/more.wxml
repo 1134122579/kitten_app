@@ -51,7 +51,7 @@
 					<view class="hf_title_l">
 						悠悠布偶猫舍
 					</view>
-					<view class="hf_title_r">
+					<view class="hf_title_r" bindtap="gocathouse">
 						<image style="width: 100%;height: 100%;display: block;" src="/images/gocaticon.png"></image>
 					</view>
 				</view>

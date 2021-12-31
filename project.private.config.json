@@ -203,6 +203,12 @@
           "pathName": "pages/userInfo/userInfo",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "猫舍",
+          "pathName": "pages/cathouse/cathouse",
+          "query": "",
+          "scene": null
         }
       ]
     }

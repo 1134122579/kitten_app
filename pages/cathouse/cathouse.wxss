@@ -1,0 +1,62 @@
+.mycathouse {
+  box-sizing: border-box;
+}
+
+.headerimage {
+  width: 100%;
+  height: 312rpx;
+  overflow: hidden;
+}
+
+.topimg {
+  width: 100%;
+}
+
+.mycontent {
+  padding: 0 20rpx;
+}
+
+.myheader {
+  padding: 10rpx 0;
+}
+
+.userImg {
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: -30rpx;
+}
+
+.mynum {
+  font-size: 24rpx;
+  font-weight: bold;
+  width: 140rpx;
+
+}
+
+.mynum_text {
+  font-weight: normal;
+  padding: 10rpx 0;
+}
+
+.myheadername {
+  padding: 20rpx 0;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #cccc;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.mynum_button {
+  width: 130rpx;
+  font-size: 24rpx;
+}
+
+.mydesc {
+  color: rgba(97, 97, 97, 1);
+  font-size: 24rpx;
+  padding: 10rpx 0;
+}

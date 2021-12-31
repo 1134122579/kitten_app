@@ -73,6 +73,12 @@ Page({
       }
     ],
   },
+  
+  gocathouse() {
+    wx.navigateTo({
+      url: "/pages/cathouse/cathouse",
+    });
+  },
   goVip() {
     wx.navigateTo({
       url: "/pages/vipdetail/vipdetail",

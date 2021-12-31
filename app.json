@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/matchdetail/matchdetail",
     "pages/matchenroll/matchenroll",
+    "pages/cathouse/cathouse",
     "pages/searchpage/searchpage",
     "pages/vote/vote",
     "pages/enrollpage/enrollpage",
