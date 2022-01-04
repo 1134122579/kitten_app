@@ -207,7 +207,7 @@
         {
           "name": "猫舍",
           "pathName": "pages/cathouse/cathouse",
-          "query": "",
+          "query": "user_id=35",
           "scene": null
         }
       ]

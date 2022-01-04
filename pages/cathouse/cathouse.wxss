@@ -1,5 +1,9 @@
+page{
+  background: #f1efef;
+}
 .mycathouse {
   box-sizing: border-box;
+  background: #fff;
 }
 
 .headerimage {
@@ -59,4 +63,6 @@
   color: rgba(97, 97, 97, 1);
   font-size: 24rpx;
   padding: 10rpx 0;
+}
+.list{
 }

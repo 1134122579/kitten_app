@@ -1,4 +1,5 @@
 var appInst = getApp();
+import storage from '../../utils/cache'
 
 Page({
   /**
@@ -7,7 +8,7 @@ Page({
   data: {
     powerlist: ["user"],
     navHeight: appInst.globalData.navHeight,
-    userInfo: null,
+    userInfo: {},
     list: [
       {
         title: "我的动态",
@@ -75,8 +76,9 @@ Page({
   },
   
   gocathouse() {
+    let {user_id}=storage.getUserInfo
     wx.navigateTo({
-      url: "/pages/cathouse/cathouse",
+      url: "/pages/cathouse/cathouse?user_id="+user_id ,
     });
   },
   goVip() {

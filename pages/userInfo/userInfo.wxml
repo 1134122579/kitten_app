@@ -8,13 +8,14 @@
 		</van-cell>
 		<view class="block">
 			<van-field model:value="{{ name }}" label="用户名" input-align="right" placeholder="请输入用户名" required />
-			<van-field model:value="{{ mobile }}" input-align="right" label="手机号" type="idcard" placeholder="请输入手机号" required />
+			<van-field model:value="{{ mobile }}" input-align="right" label="手机号" type="idcard" placeholder="请输入手机号" required maxlength="11" />
 			<picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
 				<van-field required input-align="right" readonly value="{{ birthday}}" placeholder="请输入生日" label="生日" />
 			</picker>
 		</view>
-		<van-field model:value="{{ address }}" input-align="right" label="地址" placeholder="请输入地址" border="{{ false }}" />
-		<van-field model:value="{{ desc }}"  input-align="right" label="签名" placeholder="请输入签名" border="{{ false }}" />
+		<van-field model:value="{{ home_name }}" required input-align="right" label="猫舍名字" placeholder="请输入猫舍名字" border="{{ false }}" />
+		<van-field model:value="{{ address }}"  required input-align="right" label="地址" placeholder="请输入地址" border="{{ false }}" />
+		<van-field model:value="{{ desc }}" required  input-align="right" label="签名" placeholder="请输入签名" border="{{ false }}" />
 	
 	</van-cell-group>
 

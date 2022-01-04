@@ -1,0 +1,45 @@
+
+<wxs src="../../utils/split.wxs" module="split" />
+
+<view class="tab_content_list_one">
+  <view class="block_image">
+    <image mode="widthFix" class="M_imageurl" src="{{item.img||'../../images/kongtu.png'}}">
+    </image>
+    <view class="M_pm flexbetween">
+      <view class="M_pm_l flexbetween">
+        <view class="M_pm_text">·排名</view>
+        <view class="M_pm_num">{{item.sort_num}}</view>
+      </view>
+      <view class="">
+        <!-- <button class=" sharebutton S_button ">
+            <image class="S_icon" src="https://img.js.design/assets/img/61b461127eee43a5a2374d2d.png"></image>
+        </button> -->
+      </view>
+    </view>
+  </view>
+  <view class="M_text">
+    <view class="block_header flexbetween">
+      <view class="name flexastart">
+        <text class="name_text">{{item.cat_name}}</text>
+        <van-icon wx:if="{{item.sex==1}}" size="18" name="../../../../images/gong_icon.png"></van-icon>
+        <van-icon wx:if="{{item.sex==2}}"  size="18" name="../../../../images/mu_icon.png"></van-icon>
+      </view>
+      <view class="M_id">
+        ID {{item.id}}
+      </view>
+    </view>
+    <view class="M_desc">
+      {{item.desc}}
+    </view>
+    <view class="M_button flexbetween">
+      <view class="M_button_l">
+        当前<text class="M_num"> {{split.indexOf(itemList, item.id)? (item.ticket_num+1):item.ticket_num}}</text>票
+      </view>
+      <view class="M_button_r flexcenter" bindtap="join_vote">
+        <button size="mini" class="button">
+          投票
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

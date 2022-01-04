@@ -20,6 +20,7 @@ Page({
     desc:'',
     birthday: "", //生日
     signature: "", //签名
+    home_name:'',
     currentDate: new Date().getTime(),
     minDate: new Date("1950-01-01").getTime(),
     formatter(type, value) {
@@ -94,11 +95,15 @@ Page({
       birthday,
       signature,
       photo,
-      address,desc
+      headimgurl,
+      address,desc,
+      home_name
     } = userInfo;
     this.setData({
       mobile,
       name,
+      headimgurl,
+      home_name,
       birthday,
       signature,
       photo,
@@ -124,7 +129,8 @@ Page({
       photo,
       address,
       fileList,
-      desc
+      desc,
+      home_name
     } = this.data;
     photo = fileList?.[0]?.url
     if (!photo) {
@@ -156,6 +162,13 @@ Page({
       });
       return;
     }
+    if (!home_name) {
+      wx.showToast({
+        title: "请输入猫舍名字",
+        icon: "none",
+      });
+      return;
+    }
     // if (!signature) {
     //   wx.showToast({
     //     title: '请输入签名',
@@ -172,7 +185,8 @@ Page({
         signature,
         photo,
         address,
-        desc
+        desc,
+        home_name
       })
       .then((res) => {
         Api.getUserInfo().then((res) => {

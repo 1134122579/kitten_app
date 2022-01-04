@@ -15,7 +15,7 @@
 			<view class="numList flexaround">
 				<view class="listBlock flexcolumn">
 					<view class="num">
-						99
+						{{userInfo.like_num}}
 					</view>
 					<view class="numname">
 						消息
@@ -23,7 +23,7 @@
 				</view>
 				<view class="listBlock flexcolumn">
 					<view class="num">
-						99
+						{{userInfo.follow_num}}
 					</view>
 					<view class="numname">
 						关注
@@ -39,7 +39,7 @@
 				</view>
 				<view class="listBlock flexcolumn">
 					<view class="num">
-						99
+						{{userInfo.fans_num}}
 					</view>
 					<view class="numname">
 						粉丝
@@ -49,7 +49,7 @@
 			<view class="header_footer">
 				<view class="hf_title flexbetween">
 					<view class="hf_title_l">
-						悠悠布偶猫舍
+						{{userInfo.home_name}}的猫舍
 					</view>
 					<view class="hf_title_r" bindtap="gocathouse">
 						<image style="width: 100%;height: 100%;display: block;" src="/images/gocaticon.png"></image>

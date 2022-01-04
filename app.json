@@ -79,6 +79,7 @@
     ]
   },
   "usingComponents": {
+    "MyCatModel": "./components/MyCatModel/MyCatModel",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "BlockModel": "./components/BlockModel/BlockModel",
     "SearchNavModel": "./components/SearchNavModel/SearchNavModel",

@@ -454,5 +454,12 @@ export default {
       isThree: false,
     });
   },
-  
+  getUserCatList(params) {
+    return fly({
+      url: `getUserCatList`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
 };

@@ -171,7 +171,7 @@ Page({
   get_vote_rule() {
     Api.get_vote_rule().then(res => {
       console.log('get_vote_rule', res)
-      res['djs_time'] = res['end_time'] * 1000 - (+new Date())
+      res['djs_time'] = res['end_time'] * 1000 - (+new Date())>=0?res['end_time'] * 1000 - (+new Date()):0
       res['end_time'] = formatDate(res['end_time'])
       res['start_time'] = formatDate(res['start_time'])
       res['rule'] = res['rule'].replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
