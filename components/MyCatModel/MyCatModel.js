@@ -11,13 +11,14 @@ Component({
     item: {
       type: Object,
       value: {},
+      observer(newV, oldV) {
+      }
     },
     isticket: {
       type: ["String", "Number"],
       value: '',
       observer(newV, oldV) {
         this.data.itemList.push(newV)
-        console.log('newV',newV, this.data.itemList)
         this.setData({
           itemList:this.data.itemList
         })
@@ -29,19 +30,42 @@ Component({
    * 组件的初始数据
    */
   data: {
-    itemList: []
+    itemList: [],
+    is_like:false,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    onLike(){
+      let {
+        id,
+        vote_id,
+        is_zan
+      } = this.data.item
+      let {is_like} =this.data
+      if(is_zan==1||is_like){
+        wx.showToast({
+          title: '已点赞',
+          icon:'none'
+        })
+      }
+      Api.onzanLike(
+        this.data.item
+      ).then(res=>{
+        this.setData({is_like:true})
+        wx.showToast({
+          title: '点赞成功',
+          icon:'none'
+        })
+      })
+    },
     join_vote() {
       let {
         id,
         vote_id
       } = this.data.item
-
       this.triggerEvent("join_vote", this.data.item)
 
     }

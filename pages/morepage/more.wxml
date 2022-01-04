@@ -21,7 +21,7 @@
 						消息
 					</view>
 				</view>
-				<view class="listBlock flexcolumn">
+				<view class="listBlock flexcolumn" bindtap="goList" data-id="3">
 					<view class="num">
 						{{userInfo.follow_num}}
 					</view>
@@ -29,7 +29,7 @@
 						关注
 					</view>
 				</view>
-				<view class="listBlock flexcolumn">
+				<view class="listBlock flexcolumn" bindtap="goList" data-id="1">
 					<view class="num">
 						99
 					</view>
@@ -37,7 +37,7 @@
 						收藏
 					</view>
 				</view>
-				<view class="listBlock flexcolumn">
+				<view class="listBlock flexcolumn"  bindtap="goList" data-id="2">
 					<view class="num">
 						{{userInfo.fans_num}}
 					</view>

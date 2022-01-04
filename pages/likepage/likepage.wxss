@@ -1,0 +1,85 @@
+/* pages/home/home.wxss */
+.homePage {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.listcontent {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.homeconten {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.homeconten {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+}
+
+.tabStyle {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tabStyle_l {
+  flex: 1;
+  overflow: hidden;
+}
+
+.tabStyle_r {
+  padding: 0 30rpx;
+  background: #fff;
+}
+
+.listStyle {
+  padding: 0 10rpx;
+  background: #fafafa;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.user {
+  margin: 0 20rpx;
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid #dad8d8;
+}
+
+.name {
+  margin-left: 18rpx;
+}
+
+.Qbutton {
+  width: 130rpx;
+  height: 48rpx;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1rpx solid rgba(166, 166, 166, 1);
+  border-radius: 412rpx;
+  line-height: 48rpx;
+  text-align: center;
+  color: rgba(255, 87, 51, 1);
+}
+.isnulllist{
+  color: rgba(166, 166, 166, 1);
+  text-align: center;
+  padding:20rpx;
+  font-size: 20rpx;
+}

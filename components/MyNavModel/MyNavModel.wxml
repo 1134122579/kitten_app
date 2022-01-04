@@ -1,0 +1,13 @@
+<view class="navbar " style='height:{{navHeight}}px;background-color:{{bgColor}}'>
+  <view class="navbar-action-wrap navbar-action-group row item-center flexcenter" bindtap="onsearch" style='top:{{navTop}}px;'>
+    <!-- <view class="navbar-action_item flexcenter" bindtap="_navBack"> -->
+    <!-- <van-icon name="" color="{{iconColor}}" size="23px"></van-icon> -->
+    <van-icon name="arrow-left" size="23px"/>
+    <!-- </view> -->
+  </view>
+  <view class='navbar-title' style='top:{{navTop}}px;'>
+    <van-tabs active="{{ tabId }}" bind:click="onClick" line-width="32rpx" line-height="3px" color="#333">
+      <van-tab wx:for="{{list}}" wx:key="index" name="{{item.id}}" title="{{item.title}}"></van-tab>
+    </van-tabs>
+  </view>
+</view>

@@ -462,4 +462,60 @@ export default {
       isThree: false,
     });
   },
+  addFollow(params) {
+    return fly({
+      url: `addFollow`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  onzanLike(params) {
+    return fly({
+      url: `zan_cat`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getHotLable(params) {
+    return fly({
+      url: `getHotLable`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
+  getFollow(params) {
+    return fly({
+      url: `getFollow`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getMyfans(params) {
+    return fly({
+      url: `getMyfans`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  cacheFollow(params) {
+    return fly({
+      url: `cacheFollow`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  addFollow(params) {
+    return fly({
+      url: `addFollow`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
 };

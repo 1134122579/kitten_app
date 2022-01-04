@@ -1,6 +1,7 @@
 // pages/home/home.jslet
 
 let App=getApp()
+import Api from '../../api/index'
 Page({
 
   /**
@@ -8,14 +9,21 @@ Page({
    */
   data: {
     navHeight:App.globalData.navHeight,
+    hotList:[],
   },
-
+  // 获取标签
+  getHotLable(){
+    Api.getHotLable().then(res=>{
+    this.setData({
+      hotList:res
+    })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     App.tabbershow(this,0 );
-
   },
 
   /**
@@ -32,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getHotLable()
   },
 
   /**

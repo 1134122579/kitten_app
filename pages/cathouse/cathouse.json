@@ -3,6 +3,5 @@
   "navigationStyle": "custom",
   "backgroundColor": "#D13127",
   "backgroundTextStyle": "dark",
-  "enablePullDownRefresh": true,
   "onReachBottomDistance":100
 }

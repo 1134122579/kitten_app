@@ -16,7 +16,7 @@
           获赞
         </view>
         <view class="mun">
-          99335
+        {{homenfo.follow_num}}
         </view>
       </view>
       <view class="mynum flexcolumn">
@@ -24,7 +24,7 @@
           关注
         </view>
         <view class="mun">
-          99
+        {{homenfo.fans_num}}
         </view>
       </view>
       <view class="mynum flexcolumn">
@@ -32,14 +32,14 @@
           浏览
         </view>
         <view class="mun">
-          99
+        {{homenfo.like_num}}
         </view>
       </view>
     </view>
     <!-- 名字 -->
     <view class="myheadername flexbetween">
       <view class="username">
-        黑精灵猫舍
+        {{homenfo.home_name||"暂未起名"}}
       </view>
       <view class="flexcenter">
         <label for="" class="">
@@ -49,7 +49,7 @@
           </view>
           <button open-type="share" />
         </label>
-        <view class="mynum_button flexcenter">
+        <view class="mynum_button flexcenter" bindtap="addFollow" wx:if="{{my_id==listQuery.user_id}}" >
           <image style="width: 36rpx;height: 36rpx;display: block;margin-right: 10rpx;" src="/images/gz.png"></image>
           <view>关注</view>
         </view>
@@ -57,7 +57,7 @@
 
     </view>
     <view class="mydesc">
-      本猫舍从事血统猫繁育5年，专注于布偶、德文的繁育，在各项比赛中获得过不俗成绩，猫舍位于美丽的上海，联系方式156XXXXXXX，欢迎猫友们一起交流学习经验...
+    {{homenfo.desc||"本猫舍从事血统猫繁育5年，专注于布偶、德文的繁育，在各项比赛中获得过不俗成绩，猫舍位于美丽的上海，联系方式156XXXXXXX，欢迎猫友们一起交流学习经验..."}}
     </view>
 
     <!-- 列表 分类 -->
@@ -72,5 +72,5 @@
 </view>
 <!-- 获取猫咪列表 -->
 <view class="list">
-  <ListModel list="{{catList}}" listType="{{listType}}" isNullList="{{isNullList}}" />
+  <ListModel list="{{catList}}" listType="{{listType}}" isNullList="{{isNullList}}"  isStatus="{{isStatus}}"/>
 </view>

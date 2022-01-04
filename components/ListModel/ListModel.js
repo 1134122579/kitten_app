@@ -1,4 +1,6 @@
 // components/ListModel/ListModel.js
+
+import Api from '../../api/index'
 let leftHeight = 0,
   rightHeight = 0; //分别定义左右两边的高度
 let query;
@@ -10,31 +12,50 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    listType:{
-    type:['Array','Number'],
+    isStatus: {
+      type: Number,
+      observer(newV, oldV) {
+        if(newV!=oldV){
+          console.log("isSwitchList",newV,oldV)
+          this.data.leftList=[]; //左边数组
+          this.data.rightList=[]; //左边数组
+        }
+      }
+    },
+    listType: {
+      type: String,
+      value: 'mycathouse'
     },
     list: {
       type: Array,
       value: [],
       observer(newV, oldV) {
-        // if (newV.length == oldV) {
-        // console.log(newV, oldV)
-        //   return
-        // }
-        // this.setData({
-        //   leftList: [], //左边数组
-        //   rightList: [], //右边数组
-        // })
+        let {
+          alllist
+        } = this.data
+        let idList = []
+        alllist.forEach(item => {
+          idList.push(item.id)
+        })
+        newV.forEach(item => {
+          if (!idList.includes(item.id)) {
+            alllist.push(item)
+          }
+        })
+        console.log(alllist)
+        this.setData({
+          alllist
+        })
         this.waterfallFlow()
       }
     },
-    isticket:{
-      type: ["String","Number"],
+    isticket: {
+      type: String,
       value: '',
     },
-    isSwitchList:{
-      type:String,
-      observer(newV,oldV){
+    isSwitchList: {
+      type: String,
+      observer(newV, oldV) {
         // if(newV!=oldV){
         //   // this.setData({
         //   //   leftList: [], //左边数组
@@ -46,23 +67,14 @@ Component({
         // }
       }
     },
-    isSearch:{
-      type:Boolean,
-      observer(newV,oldV){
-        // if(newV){
-        //   this.data.leftList=[]; //左边数组
-        //   this.data.rightList=[]; //左边数组
-        //   // this.setData({
-        //   //   leftList: [], //左边数组
-        //   //   rightList: [], //右边数组
-        //   // })
-        // }
-      }
+    isSearch: {
+      type: Boolean,
+      observer(newV, oldV) {}
     },
-    
-    isNullList:{
-      type:Boolean,
-      value:true,
+
+    isNullList: {
+      type: Boolean,
+      value: true,
     }
   },
 
@@ -70,6 +82,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    alllist: [],
     leftList: [], //左边数组
     rightList: [], //右边数组
   },
@@ -78,22 +91,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    join_vote(e){
-      this.triggerEvent("join_vote",e.detail)
+    join_vote(e) {
+      this.triggerEvent("join_vote", e.detail)
     },
     //瀑布流布局
     async waterfallFlow() { //在获取list后调用
       const {
-        list,
+        alllist,
         leftList,
         rightList,
       } = this.data;
       query = wx.createSelectorQuery().in(this); //  组件必须加上this
-      for (const item of list) {
-        leftHeight <= rightHeight ? leftList.concat([item]) : rightList.concat([item]); //判断两边高度，来觉得添加到那边
+      for (const item of alllist) {
+        leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         let res = await this.getBoxHeight(leftList, rightList);
       }
+      console.log(alllist, rightList, leftList, "瀑布流数据")
+
     },
+    // 校验高度
     getBoxHeight(leftList, rightList) {
       return new Promise((resolve, reject) => {
         this.setData({
@@ -109,5 +125,7 @@ Component({
         });
       })
     },
+    // 获取数据
+
   }
 })

@@ -1,24 +1,28 @@
 // pages/cathouse/cathouse.js
-import Api from '../../api/index'
+import Api from '../../api/index' 
+import storage from '../../utils/cache'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listType:'cathouse',
-    isNullList:true,
+    my_id:0,
+    listType: 'mycathouse',
+    isNullList: true,
     listQuery: {
       page: 1,
       user_id: 35,
       cat_status: 1,
     },
     homenfo: {}, //猫舍信息
-    catList: [{
+    catList: [
+      {
       "id": 1,
       "img": [
         "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
       ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
       "sex": 1,
       "cat_name": "小草",
       "like_num": 1000,
@@ -27,7 +31,92 @@ Page({
       "age_type": "成年猫",
       "nickname": "刘**",
       "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    }], //猫咪列表
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 1,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 0,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 0,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 0,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 0,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    },    {
+      "id": 1,
+      "img": [
+        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
+      ],
+      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
+      "sex": 1,
+      "cat_name": "小草",
+      "like_num": 1000,
+      "is_zan": 0,
+      "age": "1岁10个月",
+      "age_type": "成年猫",
+      "nickname": "刘**",
+      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
+    }
+  ], //猫咪列表
     isStatus: 1,
     typeList: [{
       status: 1,
@@ -48,36 +137,63 @@ Page({
     let status = event.detail.name;
     this.setData({
       isStatus: Number(status),
+      is_list:true
     });
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     this.getUserCatList();
   },
-  // 上拉加载
-  onflshpull() {
-    this.data.page++
-    this.getUserCatList
-  },
-  // 获取数据
-  getUserCatList() {
+  // 关注
+  addFollow() {
     let {
       listQuery
     } = this.data
+    wx.showLoading({
+      title: '关注中..',
+    })
+    Api.addFollow({
+      follow_user_id: listQuery.user_id
+    }).then(res => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '关注成功',
+        icon: 'none'
+      })
+
+    })
+  },
+  // 上拉加载
+  onflshpull() {
+    (this.data.listQuery.page)++
+    console.log(this.data.listQuery.page)
+    this.getUserCatList()
+  },
+  // 获取数据
+  getUserCatList() {
+    // let {
+    //   listQuery
+    // } = this.data
+    console.log(this.data.listQuery)
     Api.getUserCatList(this.data.listQuery).then(res => {
       let {
         homenfo,
         catiInfo
       } = res
+      console.log(res, '猫舍数据')
       this.setData({
-        isNullList:catiInfo.length>0?false:true
+        homenfo,
+        isNullList: catiInfo.length > 0 ? false : true
       })
-      if (listQuery.page == 1) {
-        this.setData({
-          homenfo,
-          catiInfo
-        })
-      }else{
-        
-      }
+      // if (listQuery.page == 1) {
+      //   this.setData({
+      //     ,
+      //     catList:catiInfo
+      //   })
+      // }else{
+      //   this.setData({
+      //     homenfo,
+      //     catList:catList.concat(catiInfo)
+      //   })
+      // }
     })
   },
 
@@ -86,8 +202,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let {user_id}=storage.getUserInfo
     this.setData({
       "listQuery.user_id": options.user_id
+    })
+    this.setData({
+    my_id:user_id
     })
     this.getUserCatList()
   },

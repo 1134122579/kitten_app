@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/likepage/likepage",
     "pages/matchdetail/matchdetail",
     "pages/matchenroll/matchenroll",
     "pages/cathouse/cathouse",
@@ -79,6 +80,7 @@
     ]
   },
   "usingComponents": {
+    "MyNavModel": "./components/MyNavModel/MyNavModel",
     "MyCatModel": "./components/MyCatModel/MyCatModel",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "BlockModel": "./components/BlockModel/BlockModel",

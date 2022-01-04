@@ -1,4 +1,4 @@
-<view class="saishipage flexcolumn">
+<view class="saishipage ">
 	<!-- 头部 -->
 	<view class="headerImage">
 		<image class="imageStyle" mode="widthFix" src="https://img.js.design/assets/img/61b44a697eee4352133690cc.png"></image>
@@ -13,11 +13,11 @@
 		<!-- 赛事报名 -->
 		<view class="orderList_content" wx:if="{{isStatus==1}}">
 			<block wx:if="{{list.length>0}}">
-				<block wx:for=" {{list}}" wx:key="index">
-					<OrdeCard cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
+				<block wx:for="{{list}}" wx:key="index">
+					<OrdeCard wx:if="{{item.id}}"  cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
 				</block>
+				<view hidden="{{isnullList}}" style="text-align: center; font-size: 20rpx;color: #ccc;padding: 20rpx;">暂无更多</view>
 			</block>
-
 			<block wx:if="{{list.length<=0}}">
 				<EmptyModel description="暂无订单" />
 			</block>
@@ -100,7 +100,6 @@
 				<EmptyModel description="暂无订单" />
 			</block>
 		</view>
-
 	</view>
 </view>
 <!-- 充值成功 -->

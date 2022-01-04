@@ -11,7 +11,7 @@ page {
 .headerImage{
   width: 100%;
   flex-shrink: 0;
-  background: #ff0000;
+  /* background: #ff0000; */
 }
 .imageStyle{
   display: block;

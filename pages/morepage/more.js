@@ -74,6 +74,13 @@ Page({
       }
     ],
   },
+  goList(e){
+    console.log(e)
+    let {id}=e.currentTarget.dataset
+    wx.navigateTo({
+      url:`/pages/likepage/likepage?id=${id}`,
+    });
+  },
   
   gocathouse() {
     let {user_id}=storage.getUserInfo

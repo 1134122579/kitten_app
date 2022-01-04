@@ -209,6 +209,12 @@
           "pathName": "pages/cathouse/cathouse",
           "query": "user_id=35",
           "scene": null
+        },
+        {
+          "name": "pages/likepage/likepage",
+          "pathName": "pages/likepage/likepage",
+          "query": "id=3%20",
+          "scene": null
         }
       ]
     }

@@ -1,14 +1,13 @@
 .tab_content_list_one {
-  width: 172px;
   width: 100%;
   box-sizing: border-box;
-  box-shadow: 0 0 5px #ccc;
-  font-size: 15px;
-  padding-bottom: 5px;
-  margin-top: 14px;
+  box-shadow: 0 0 10rpx #ccc;
+  font-size: 24rpx;
+  padding-bottom: 10rpx;
+  margin-top: 10rpx;
   overflow: hidden;
   background: #fff;
-  border-radius: 5px;
+  border-radius: 10rpx;
 }
 
 .block_image {
@@ -62,9 +61,10 @@
   padding-bottom: 4px;
 }
 
+
 .M_id {
-  color: rgb(80, 80, 80);
-  font-weight: bold;
+  color: rgba(102, 102, 102, 1);
+  font-size: 22rpx;
 }
 
 .M_desc {
@@ -143,4 +143,8 @@ flex: 1;
 overflow: hidden;
 text-overflow:ellipsis;
 white-space: nowrap;
+font-size: 20rpx;
+}
+.flooter{
+  margin-top: 10rpx;
 }

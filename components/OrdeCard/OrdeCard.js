@@ -16,9 +16,9 @@ Component({
       type: Object,
       value: {},
       observer(nv, ov) {
-        nv['end_time'] = formatDate(nv['end_time'])
-        nv['start_time'] = formatDate(nv['start_time'])
         console.log(nv, ov)
+        nv['end_time'] =nv['end_time']? formatDate(nv['end_time']):'未知'
+        nv['start_time'] = formatDate(nv['start_time'])
         this.setData({
           item: nv
         })

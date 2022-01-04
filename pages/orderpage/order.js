@@ -9,7 +9,7 @@ Page({
   data: {
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,
-    
+    isnullList:false,
     listQuery: {
       page: 1
     },
@@ -81,12 +81,23 @@ Page({
   //   获取订单列表
   getOrderList() {
     let {
-      listQuery
+      listQuery,
+      list
     } = this.data;
     Api.get_match(listQuery).then((res) => {
       this.setData({
-        list: res,
+        isnullList: res.length>0?false:true,
       });
+      if( listQuery.page==1){
+        this.setData({
+          list: res,
+        });
+      }else{
+        this.setData({
+          list: list.concat(res),
+        });
+      }
+ 
     });
   },
   // 取消
@@ -142,13 +153,13 @@ Page({
   // 上来
   onBottom(){
       this.data.listQuery.page++
-      console.log(this.data.listQuery.page,112123123)
       this.getOrderList()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {},
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -164,7 +175,10 @@ Page({
    */
   onShow: function () {
     appInst.tabbershow(this, 1);
-    // this.getOrderList();
+    this.getOrderList();
+    this.setData({
+      isStatus:1
+    })
   },
 
   /**

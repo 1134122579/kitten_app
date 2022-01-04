@@ -10,7 +10,7 @@
 			<view class="tabStyle flexbetween">
 				<view class="tabStyle_l">
 					<van-tabs>
-						<van-tab wx:for="{{8}}" title="{{'标签 ' + index}}" wx:key="index">
+						<van-tab wx:for="{{hotList}}" title="{{item.name}}" wx:key="index" ellipsis="false">
 						</van-tab>
 					</van-tabs>
 				</view>

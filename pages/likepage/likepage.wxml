@@ -1,0 +1,42 @@
+<view class="homePage">
+
+  <!-- 顶部搜索 -->
+  <MyNavModel tabId="{{tabId}}" bind:tabType="tabType" />
+  <view class="listcontent">
+    <!-- 内容 -->
+    <view class="homeconten" style="margin-top: {{navHeight}}px;">
+      <!-- 分类 -->
+      <!-- <view class="tabStyle flexbetween">
+      <view class="tabStyle_l">
+        <van-tabs>
+          <van-tab wx:for="{{hotList}}" title="{{item.name}}" wx:key="index" ellipsis="false">
+          </van-tab>
+        </van-tabs>
+      </view>
+      <view class="tabStyle_r">
+        <van-icon name="arrow-down" size="28rpx" />
+      </view>
+    </view> -->
+      <!-- 列表 -->
+      <block wx:if="{{list.length>0}}">
+        <ListModel wx:if="{{tabId==1}}" list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+        <view class="userList" wx:else>
+          <block wx:for="{{list}}" wx:key="index">
+            <view class="user flexbetween">
+              <view class="flexastart">
+                <image src="{{item.headimgurl}}" style="width: 82rpx;height: 82rpx;border-radius: 50%;"></image>
+                <view class="name">{{item.nickname}}</view>
+              </view>
+              <view class="Qbutton" wx:if="{{tabId==2}}" bindtap="addFollow" data-item="{{item}}">回关</view>
+              <view class="Qbutton" wx:if="{{tabId==3}}" bindtap="cacheFollow" data-item="{{item}}">取关</view>
+            </view>
+          </block>
+          <view class="isnulllist">暂无更多</view>
+        </view>
+      </block>
+      <view wx:else>
+        <EmptyModel />
+      </view>
+    </view>
+  </view>
+</view>

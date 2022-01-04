@@ -56,10 +56,10 @@ const handleResponse = ({
 }) => {
   loadingNum--;
   loadingFun(loadingNum); //loding
-  console.log("请求拦截======", {
-    config,
-    response,
-  });
+  // console.log("请求拦截======", {
+  //   config,
+  //   response,
+  // });
   // 是第三方的接口.直接返回
 
   if (config.isThree) {
