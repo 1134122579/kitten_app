@@ -15,10 +15,10 @@ Component({
     isStatus: {
       type: Number,
       observer(newV, oldV) {
-        if(newV!=oldV){
-          console.log("isSwitchList",newV,oldV)
-          this.data.leftList=[]; //左边数组
-          this.data.rightList=[]; //左边数组
+        if (newV != oldV) {
+          console.log("isSwitchList", newV, oldV)
+          this.data.leftList = []; //左边数组
+          this.data.rightList = []; //左边数组
         }
       }
     },
@@ -34,19 +34,25 @@ Component({
           alllist
         } = this.data
         let idList = []
-        alllist.forEach(item => {
-          idList.push(item.id)
-        })
-        newV.forEach(item => {
-          if (!idList.includes(item.id)) {
-            alllist.push(item)
-          }
-        })
-        console.log(alllist)
-        this.setData({
-          alllist
-        })
+        if (alllist?.length > 0) {
+          alllist.forEach(item => {
+            idList.push(item?.id)
+          })
+        }
+        if (newV?.length > 0) {
+          let newList=[]
+          newV.forEach(item => {
+            if (!idList.includes(item?.id)) {
+              newList.push(item)
+            }
+          })
+        console.log(alllist,1212321123)
+          // this.setData({
+          //   alllist:newList?.length>0?newList:[]
+          // })
+          this.data.alllist=newList?.length>0?newList:[]
         this.waterfallFlow()
+        }
       }
     },
     isticket: {
@@ -102,6 +108,7 @@ Component({
         rightList,
       } = this.data;
       query = wx.createSelectorQuery().in(this); //  组件必须加上this
+      if(alllist.length<=0)return
       for (const item of alllist) {
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         let res = await this.getBoxHeight(leftList, rightList);

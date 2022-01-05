@@ -1,5 +1,5 @@
 // pages/cathouse/cathouse.js
-import Api from '../../api/index' 
+import Api from '../../api/index'
 import storage from '../../utils/cache'
 Page({
 
@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    my_id:0,
+    my_id: 0,
     listType: 'mycathouse',
     isNullList: true,
     listQuery: {
@@ -16,107 +16,7 @@ Page({
       cat_status: 1,
     },
     homenfo: {}, //猫舍信息
-    catList: [
-      {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 1,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    },    {
-      "id": 1,
-      "img": [
-        "http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg"
-      ],
-      imgUrl:'http://cdn.521nuochen.cn/Cat/20211219114148/383/cat.jpg',
-      "sex": 1,
-      "cat_name": "小草",
-      "like_num": 1000,
-      "is_zan": 0,
-      "age": "1岁10个月",
-      "age_type": "成年猫",
-      "nickname": "刘**",
-      "headimgurl": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLWrhyxTsFdyh0UReAaqmge2VGQ17uCI8dBLgzR2ibFPyzkNYSzJ7RWlgK9BD6xUyJAncLRKiaCgrgQ/132"
-    }
-  ], //猫咪列表
+    catList: [], //猫咪列表
     isStatus: 1,
     typeList: [{
       status: 1,
@@ -137,7 +37,8 @@ Page({
     let status = event.detail.name;
     this.setData({
       isStatus: Number(status),
-      is_list:true
+      is_list: true,
+      "listQuery.page": 1
     });
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     this.getUserCatList();
@@ -163,17 +64,17 @@ Page({
   },
   // 上拉加载
   onflshpull() {
-    (this.data.listQuery.page)++
+    (this.data.listQuery.page) ++
     console.log(this.data.listQuery.page)
     this.getUserCatList()
   },
   // 获取数据
   getUserCatList() {
-    // let {
-    //   listQuery
-    // } = this.data
-    console.log(this.data.listQuery)
-    Api.getUserCatList(this.data.listQuery).then(res => {
+    let {
+      listQuery,
+      catList,
+    } = this.data
+    Api.getUserCatList(listQuery).then(res => {
       let {
         homenfo,
         catiInfo
@@ -181,19 +82,26 @@ Page({
       console.log(res, '猫舍数据')
       this.setData({
         homenfo,
-        isNullList: catiInfo.length > 0 ? false : true
+        isNullList: catiInfo?.length > 0 ? false : true
       })
-      // if (listQuery.page == 1) {
-      //   this.setData({
-      //     ,
-      //     catList:catiInfo
-      //   })
-      // }else{
-      //   this.setData({
-      //     homenfo,
-      //     catList:catList.concat(catiInfo)
-      //   })
-      // }
+      if (catiInfo?.length > 0) {
+        catiInfo = catiInfo.map(item => {
+          item['imgUrl'] = item['img'][0]
+          item['user_id'] = listQuery.user_id
+          return {
+            ...item,
+          }
+        })
+      }
+      if (listQuery.page == 1) {
+        this.setData({
+          catList: catiInfo
+        })
+      } else {
+        this.setData({
+          catList: catList.concat(catiInfo)
+        })
+      }
     })
   },
 
@@ -202,12 +110,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let {user_id}=storage.getUserInfo
+    let {
+      user_id
+    } = storage.getUserInfo
     this.setData({
       "listQuery.user_id": options.user_id
     })
     this.setData({
-    my_id:user_id
+      my_id: user_id
     })
     this.getUserCatList()
   },

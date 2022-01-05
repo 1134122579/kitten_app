@@ -1,7 +1,7 @@
 
 <wxs src="../../utils/split.wxs" module="split" />
 
-<view class="tab_content_list_one">
+<view class="tab_content_list_one" bindtap="gocatDteail">
   <view class="block_image">
     <image mode="widthFix" class="M_imageurl" src="{{item.imgUrl||'../../images/kongtu.png'}}">
     </image>
@@ -35,7 +35,7 @@
       </view>
       <view class="M_id flexcenter" bindtap="onLike">
         <van-icon name="{{item.is_zan==1||is_like?'like':'like-o'}}" size="18"/>
-        {{item.like_num}}
+        {{is_like?item.like_num+1:item.like_num}}
       </view>
     </view>
   </view>

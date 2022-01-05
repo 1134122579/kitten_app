@@ -11,8 +11,7 @@ Component({
     item: {
       type: Object,
       value: {},
-      observer(newV, oldV) {
-      }
+      observer(newV, oldV) {}
     },
     isticket: {
       type: ["String", "Number"],
@@ -20,7 +19,7 @@ Component({
       observer(newV, oldV) {
         this.data.itemList.push(newV)
         this.setData({
-          itemList:this.data.itemList
+          itemList: this.data.itemList
         })
       }
     },
@@ -31,33 +30,45 @@ Component({
    */
   data: {
     itemList: [],
-    is_like:false,
+    is_like: false,
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onLike(){
+    gocatDteail() {
+      let {
+        item
+      } = this.data
+      wx.navigateTo({
+        url: `/pages/catdetail/catdetail?user_id=${item.user_id}&cat_id=${item.id}`,
+      })
+    },
+    onLike() {
       let {
         id,
         vote_id,
         is_zan
       } = this.data.item
-      let {is_like} =this.data
-      if(is_zan==1||is_like){
+      let {
+        is_like
+      } = this.data
+      if (is_zan == 1 || is_like) {
         wx.showToast({
           title: '已点赞',
-          icon:'none'
+          icon: 'none'
         })
       }
       Api.onzanLike(
         this.data.item
-      ).then(res=>{
-        this.setData({is_like:true})
+      ).then(res => {
+        this.setData({
+          is_like: true
+        })
         wx.showToast({
           title: '点赞成功',
-          icon:'none'
+          icon: 'none'
         })
       })
     },

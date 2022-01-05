@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/likepage/likepage",
+    "pages/catdetail/catdetail",
     "pages/addcat/addcat",
     "pages/dongtai/dongtai",
     "pages/releasepage/releasepage",
