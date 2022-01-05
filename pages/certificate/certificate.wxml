@@ -1,8 +1,8 @@
 <!-- 投票界面登记 -->
 
 <view class="enroll">
-  <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
-    <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择证书注册" value="{{ birthday}}" readonly label="证书注册项目" />
+  <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="cat_name">
+    <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择证书注册" value="{{label}}" readonly label="证书注册项目" />
   </picker>
   <view class="cat_detail">
     <view class="e_title">
@@ -17,7 +17,7 @@
       小猫父母血统证书
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileListXT }}" max-count="{{maxcount}}" bind:after-read="afterfileListXTRead" bind:delete="deletefileListXTImage" />
     </view>
   </view>
   <view class="cat_detail">
@@ -25,7 +25,7 @@
       WCCF小猫证书申请表
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileListSQb }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deletefileListSQbImage" />
     </view>
   </view>
   <view class="pricre flexbetween">

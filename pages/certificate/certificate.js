@@ -11,7 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    maxcount: 8,
+    maxcount: 1,
+    cat_id:'',
     title: "",
     address: '',
     match_id: '',
@@ -29,6 +30,7 @@ Page({
     father_register_no: '',
     mother_pz: '',
     mother_color: '',
+    fileListXT:[],
     mother_name: '',
     mother_register_no: '',
     group_id: '', //组别*
@@ -38,6 +40,7 @@ Page({
     levelIndex: null,
     sexIndex: null,
     voteIndex: null,
+    fileListSQb:[],
     autoSize: {
       maxHeight: 200,
       minHeight: 100
@@ -68,7 +71,7 @@ Page({
   },
   // 获取标签
   getHotLable() {
-    Api.getHotLable().then(res => {
+    Api.getSelectCatList().then(res => {
       this.setData({
         PzList: res
       })
@@ -96,7 +99,7 @@ Page({
       }
     })
   },
-  // 上传
+  // 上传WCCF猫舍证书
   afterRead(event) {
     let that = this
     const {
@@ -117,10 +120,10 @@ Page({
       })
       return
     }
-    this.setData({
-      maxcount: file.type == 'image' ? 8 : 1,
-      type: file.type == 'image' ? 1 : 2
-    })
+    // this.setData({
+    //   maxcount: file.type == 'image' ? 8 : 1,
+    //   type: file.type == 'image' ? 1 : 2
+    // })
     console.log("afterRead", file);
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
@@ -147,6 +150,119 @@ Page({
       }
     });
   },
+  afterfileListXTRead(event) {
+    let that = this
+    const {
+      file
+    } = event.detail;
+    const {
+      fileListXT = []
+    } = that.data;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    wx.showLoading({
+      title: '上传中..',
+      mask: true
+    })
+    if (fileListXT.length > 0 && file.type != 'image') {
+      wx.showToast({
+        title: '已上传图片无法选择视频',
+        icon: "none"
+      })
+      return
+    }
+    // this.setData({
+    //   maxcount: file.type == 'image' ? 8 : 1,
+    //   type: file.type == 'image' ? 1 : 2
+    // })
+    console.log("afterRead", file);
+    wx.uploadFile({
+      url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
+      filePath: file.url,
+      name: "file",
+      success(res) {
+        // 上传完成需要更新 fileList
+        res = JSON.parse(res.data);
+        fileListXT.push({
+          ...file,
+          url: res.data.imgLink
+        })
+        that.setData({
+          fileListXT
+        });
+      },
+      complete() {
+        wx.hideLoading()
+      }
+    });
+  },
+  afterfileListSQbRead(event) {
+    let that = this
+    const {
+      file
+    } = event.detail;
+    const {
+      fileListSQb = []
+    } = that.data;
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    wx.showLoading({
+      title: '上传中..',
+      mask: true
+    })
+    if (fileListSQb.length > 0 && file.type != 'image') {
+      wx.showToast({
+        title: '已上传图片无法选择视频',
+        icon: "none"
+      })
+      return
+    }
+    // this.setData({
+    //   maxcount: file.type == 'image' ? 8 : 1,
+    //   type: file.type == 'image' ? 1 : 2
+    // })
+    console.log("afterRead", file);
+    wx.uploadFile({
+      url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
+      filePath: file.url,
+      name: "file",
+      success(res) {
+        // 上传完成需要更新 fileList
+        res = JSON.parse(res.data);
+        fileListSQb.push({
+          ...file,
+          url: res.data.imgLink
+        })
+        that.setData({
+          fileListSQb
+        });
+      },
+      complete() {
+        wx.hideLoading()
+      }
+    });
+  },
+  
+    // 删除
+    deletefileListXTImage(e) {
+      let {
+        fileListXT
+      } = this.data
+      console.log(e)
+      let delitem = e.detail
+      this.setData({
+        fileListXT: fileListXT.filter(item => item.url != delitem.file.url),
+      })
+    },
+  // 删除
+  deletefileListSQbImage(e) {
+    let {
+      fileListSQb
+    } = this.data
+    console.log(e)
+    let delitem = e.detail
+    this.setData({
+      fileListSQb: fileListSQb.filter(item => item.url != delitem.file.url),
+    })
+  },
   // 删除
   deleteImage(e) {
     let {
@@ -165,7 +281,8 @@ Page({
     } = this.data
     this.setData({
       // sexIndex: event.detail.value,
-      label: PzList[event.detail.value]['name']
+      cat_id:zList[event.detail.value]['id'],
+      label: PzList[event.detail.value]['cat_name']
     })
   },
   // 性别
