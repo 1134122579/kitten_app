@@ -83,7 +83,7 @@ Page({
   },
   
   gocathouse() {
-    let {user_id}=storage.getUserInfo
+    let {user_id}=storage.getUserInfo()
     wx.navigateTo({
       url: "/pages/cathouse/cathouse?user_id="+user_id ,
     });
