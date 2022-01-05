@@ -1,7 +1,5 @@
 /* pages/enrollpage/enrollpage.wxss */
-.cat_detail{
-  
-}
+
 .e_title{
   font-size: 16px;
   color: #333;

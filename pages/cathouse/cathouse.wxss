@@ -64,5 +64,3 @@ page{
   font-size: 24rpx;
   padding: 10rpx 0;
 }
-.list{
-}

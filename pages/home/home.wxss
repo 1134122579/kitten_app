@@ -74,8 +74,7 @@ page{
   box-sizing: border-box;
   padding:0 20rpx;
 }
-.CatClassList{
-}
+
 .arrClass{
   margin: 20rpx 0;
 }
