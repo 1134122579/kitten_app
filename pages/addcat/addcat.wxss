@@ -1,0 +1,34 @@
+/* pages/enrollpage/enrollpage.wxss */
+page{
+  --cell-large-vertical-padding:40rpx;
+  background-color: rgba(232, 232, 232, 1);
+  width: 100%;
+  height: 100%;
+}
+.cat_detail{
+  margin-bottom: 20rpx;
+  background: #fff;
+} 
+.e_title{
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  padding: 14px 10px;
+  letter-spacing: 2px;
+}
+.inputStyle{
+  padding: 10px 0;
+}
+.e_block .van-field {
+  padding: 10px 0;
+}
+.labelClass{
+  width: 120px;
+}
+.uplodaStyle{
+  padding:0 10px;
+}
+.button_{
+  padding: 20px;
+  background: #fff;
+}

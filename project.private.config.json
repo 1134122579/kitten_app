@@ -215,6 +215,18 @@
           "pathName": "pages/likepage/likepage",
           "query": "id=3%20",
           "scene": null
+        },
+        {
+          "name": "pages/dongtai/dongtai",
+          "pathName": "pages/dongtai/dongtai",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加猫咪",
+          "pathName": "pages/addcat/addcat",
+          "query": "",
+          "scene": null
         }
       ]
     }

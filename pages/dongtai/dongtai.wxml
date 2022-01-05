@@ -1,0 +1,41 @@
+<!-- 投票界面登记 -->
+
+<view class="enroll">
+  <view class="cat_detail">
+    <view class="e_title">
+      猫咪图片
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view>
+
+  <van-field model:value="{{ title }}" size="large" label-class="labelClass" custom-style="inputStyle" placeholder="添加标题" border="{{ true }}" input-align="left" />
+  <view class="cat_detail">
+    <!-- <view class="e_title">
+      简介信息
+    </view> -->
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+    <view class="labelStyle">
+      <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
+        <!-- <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" /> -->
+        <text class="label"># {{label||'标签'}}</text>
+      </picker>
+    </view>
+    <label for="">
+      <view class="dreass flexbetween" bindtap="getlocation">
+        <view class="left flexastart">
+          <van-icon name="location-o" />
+          <view class="lable_title">
+            {{address||'添加地点'}}
+          </view>
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </label>
+  </view>
+
+  <view class="button_">
+    <van-button block round type="warning" bind:click="onClick">发布动态</van-button>
+  </view>
+</view>

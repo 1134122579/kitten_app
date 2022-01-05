@@ -58,8 +58,8 @@
         <!-- 姓名 -->
         <van-field model:value="{{ father_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
         <!-- 品种 -->
-        <picker mode="selector" range="{{father_pz}}" bindchange="bindpzChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
+        <picker mode="selector" range="{{PzList}}" bindchange="bindfatherpzChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ father_pz}}" readonly label="品种" />
         </picker>
         <!-- 颜色 -->
         <van-field model:value="{{ father_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
@@ -78,8 +78,8 @@
         <!-- 姓名 -->
         <van-field model:value="{{ mother_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
         <!-- 品种 -->
-        <picker mode="selector" range="{{mother_pz}}" bindchange="bindpzChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
+        <picker mode="selector" range="{{PzList}}" bindchange="bindmotherpzChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ mother_pz}}" readonly label="品种" />
         </picker>
         <!-- 颜色 -->
         <van-field model:value="{{ mother_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />

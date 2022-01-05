@@ -11,6 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fileList: [],
+    is_jueyutext: '',
+    is_jueyu: '',
     match_id: '',
     cat_pz: '',
     sex: null, //性别
@@ -20,6 +23,7 @@ Page({
     eye_color: "", //眼睛颜色
     register_no: "", //编号
     father_name: '', //
+    weight: '',
     father_pz: '',
     father_color: '',
     father_register_no: '',
@@ -31,6 +35,8 @@ Page({
     match_id: '', //FUN SHOW
     desc: '',
     level: '',
+    cat_status: '',
+    cat_statustext: '',
     levelIndex: null,
     sexIndex: null,
     voteIndex: null,
@@ -41,18 +47,34 @@ Page({
     endTime: "2022-01-01",
     levelList: [{
       id: 1,
-      text: '第一级别'
+      text: '长毛组'
     }, {
       id: 2,
-      text: '第二级别'
+      text: '中长毛组'
+    }, {
+      id: 3,
+      text: '短毛组'
+    }, {
+      id: 4,
+      text: '东方体别'
+    }, {
+      id: 5,
+      text: '无毛组别'
     }],
-    PzList: [{
+    statusList: [{
       id: 1,
-      text: '波斯猫'
+      text: '展示'
     }, {
       id: 2,
-      text: '波斯猫2'
+      text: '待售 '
+    }, {
+      id: 3,
+      text: '种公'
+    }, {
+      id: 4,
+      text: '种母'
     }],
+    PzList: [],
     voteList: [{
       id: 1,
       text: '第一期'
@@ -67,6 +89,23 @@ Page({
       id: 2,
       text: '母'
     }],
+    jueyuList: [{
+      id: 1,
+      text: '是'
+    }, {
+      id: 2,
+      text: '否'
+    }],
+    xuexingList: [{
+      id: 1,
+      text: 'A'
+    }, {
+      id: 2,
+      text: 'B'
+    }, {
+      id: 3,
+      text: 'AB'
+    }],
   },
   // 上传
   afterRead(event) {
@@ -80,6 +119,9 @@ Page({
       mask: true
     })
     console.log("afterRead", file.url);
+    const {
+      fileList = []
+    } = this.data;
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
       filePath: file.url,
@@ -88,10 +130,10 @@ Page({
         // 上传完成需要更新 fileList
         res = JSON.parse(res.data);
         console.log(res, "upImage");
-        let fileList = [{
+        fileList.push({
           ...file,
           url: res.data.imgLink
-        }]
+        })
         that.setData({
           fileList
         });
@@ -102,9 +144,20 @@ Page({
     });
   },
   // 删除
-  deleteImage() {
+  deleteImage(e) {
+    let deleItem = e.detail
+    let {
+      fileList
+    } = this.data
     this.setData({
-      fileList: [],
+      fileList: fileList.filter(item => item.url != deleItem.file.url)
+    })
+  }, // 获取标签
+  getHotLable() {
+    Api.getHotLable().then(res => {
+      this.setData({
+        PzList: res
+      })
     })
   },
   // 品种
@@ -113,30 +166,28 @@ Page({
       PzList
     } = this.data
     this.setData({
-      // sexIndex: event.detail.value,
-      cat_pz: PzList[event.detail.value]['text']
+      cat_pz: PzList[event.detail.value]['name']
     })
   },
-    // mother品种
-    bindmotherpzChange(event) {
-      let {
-        PzList
-      } = this.data
-      this.setData({
-        // sexIndex: event.detail.value,
-        mother_pz: PzList[event.detail.value]['text']
-      })
-    },
-        // father品种
-        bindfatherpzChange(event) {
-          let {
-            PzList
-          } = this.data
-          this.setData({
-            // sexIndex: event.detail.value,
-            father_pz: PzList[event.detail.value]['text']
-          })
-        },
+  // 绝育
+  bindjueyuChange(event) {
+    let {
+      jueyuList
+    } = this.data
+    this.setData({
+      is_jueyu: jueyuList[event.detail.value]['id'],
+      is_jueyutext: jueyuList[event.detail.value]['text'],
+    })
+  },
+  // 血型
+  bindxuexingChange(event) {
+    let {
+      xuexingList
+    } = this.data
+    this.setData({
+      blood_type: xuexingList[event.detail.value]['text'],
+    })
+  },
   // 性别
   bindsexChange(event) {
     let {
@@ -158,13 +209,23 @@ Page({
     })
   },
   // 级别
+  bindstatusChange(event) {
+    let {
+      statusList
+    } = this.data
+    this.setData({
+      cat_status: statusList[event.detail.value]['id'],
+      cat_statustext: statusList[event.detail.value]['text']
+    })
+  },
+  // 类别
   bindlevelChange(event) {
     let {
       levelList
     } = this.data
     this.setData({
-      levelIndex: event.detail.value,
-      level: levelList[event.detail.value]['id']
+      group_id: levelList[event.detail.value]['id'],
+      group_name: levelList[event.detail.value]['text']
     })
   },
   // 生日
@@ -176,34 +237,42 @@ Page({
   // 提交
   onClick() {
     let {
-      level,
-      cat_pz,
-      sex,
       cat_name,
-      color,
       birthday,
-      eye_color,
-      register_no,
-      father_name,
-      father_pz,
-      father_color,
-      father_register_no,
-      mother_pz,
-      mother_color,
-      mother_name,
-      mother_register_no,
+      sex,
+      cat_pz,
+      color,
+      fileList,
       group_id,
-      match_id,
+      desc,
+      is_jueyu,
+      blood_type,
+      weight,
+      cat_status,
     } = this.data
     if (this.checkUpQuery()) {
       wx.showLoading({
-        title: '报名中..',
+        title: '添加中..',
         mask: true
       })
-      Api.joinMatch(this.data).then(res => {
+      let img = fileList.map(item => item.url)
+      Api.add_cat({
+        cat_name,
+        birthday,
+        sex,
+        cat_pz,
+        color,
+        group_id,
+        desc,
+        is_jueyu,
+        blood_type,
+        img,
+        weight,
+        cat_status,
+      }).then(res => {
         wx.hideLoading()
         wx.showToast({
-          title: '参赛成功，1.5秒自动返回',
+          title: '添加成功，1.5秒自动返回',
           icon: "none",
           mask: true,
         })
@@ -219,33 +288,27 @@ Page({
   // 校验上传数据
   checkUpQuery() {
     let {
-      level,
       cat_pz,
       sex,
+      desc,
+      weight,
+      fileList,
       cat_name,
       color,
+      is_jueyu,
+      blood_type,
+      cat_status,
       birthday,
-      eye_color,
-      register_no,
-      father_name,
-      father_pz,
-      father_color,
-      father_register_no,
-      mother_pz,
-      mother_color,
-      mother_name,
-      mother_register_no,
       group_id,
-      match_id,
     } = this.data
-    // let img = fileList?.[0]?.url
-    // if (!img) {
-    //   wx.showToast({
-    //     title: "请上传图片",
-    //     icon: "none",
-    //   });
-    //   return;
-    // }
+    let img = fileList?.[0]?.url
+    if (!img) {
+      wx.showToast({
+        title: "请上传图片",
+        icon: "none",
+      });
+      return;
+    }
     if (!cat_name.trim()) {
       wx.showToast({
         title: "请输入姓名",
@@ -274,90 +337,58 @@ Page({
       });
       return;
     }
-    if (!eye_color.trim()) {
+    if (!weight.trim()) {
       wx.showToast({
-        title: "请输入耳朵颜色",
+        title: "请输入体重",
         icon: "none",
       });
       return;
     }
-    if (!register_no.trim()) {
+    if (!birthday.trim()) {
       wx.showToast({
-        title: "请输入证书编号",
+        title: "请选择生日",
         icon: "none",
       });
       return;
     }
-    if (!father_name.trim()) {
+    if (!is_jueyu) {
       wx.showToast({
-        title: "请输入父亲名字",
+        title: "请选择是否绝育",
         icon: "none",
       });
       return;
     }
-    if (!father_pz.trim()) {
+    if (!group_id) {
       wx.showToast({
-        title: "请输入父亲品种",
+        title: "请选择类别",
         icon: "none",
       });
       return;
     }
-    if (!father_color.trim()) {
+    if (!cat_status) {
       wx.showToast({
-        title: "请输入父亲颜色",
+        title: "请选择组别",
         icon: "none",
       });
       return;
     }
-    if (!father_register_no.trim()) {
+
+    if (!blood_type.trim()) {
       wx.showToast({
-        title: "请输入父亲证书编号",
+        title: "请选择血型",
         icon: "none",
       });
       return;
     }
-    if (!mother_pz.trim()) {
+
+    if (!desc.trim()) {
       wx.showToast({
-        title: "请输入母亲证书编号",
+        title: "请输入简介",
         icon: "none",
       });
       return;
     }
-    if (!mother_color.trim()) {
-      wx.showToast({
-        title: "请输入母亲颜色",
-        icon: "none",
-      });
-      return;
-    }
-    if (!mother_name.trim()) {
-      wx.showToast({
-        title: "请输入母亲名字",
-        icon: "none",
-      });
-      return;
-    }
-    if (!mother_register_no.trim()) {
-      wx.showToast({
-        title: "请输入母亲编号",
-        icon: "none",
-      });
-      return;
-    }
-    if (!group_id.trim()) {
-      wx.showToast({
-        title: "请选择参赛组别",
-        icon: "none",
-      });
-      return;
-    }
-    if (!match_id.trim()) {
-      wx.showToast({
-        title: "请选择FUN SHOW",
-        icon: "none",
-      });
-      return;
-    }
+
     return true
 
   },
@@ -386,7 +417,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getHotLable()
   },
 
   /**

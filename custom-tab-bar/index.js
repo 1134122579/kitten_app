@@ -30,7 +30,7 @@ Component({
         selectedIconPath: "../images/jbicon.png",
       },
       {
-        pagePath: "pages/vippage/vip",
+        pagePath: "pages/releasepage/releasepage",
         text: "",
         iconPath: "../images/addicon.png",
         selectedIconPath: "../images/addicon.png",

@@ -518,4 +518,21 @@ export default {
       isThree: false,
     });
   },
+  addDynamic(params) {
+    return fly({
+      url: `addDynamic`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  add_cat(params) {
+    return fly({
+      url: `add_cat`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  
 };

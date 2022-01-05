@@ -1,0 +1,20 @@
+<view class="release flexcolumn">
+  <image src="/images/releaseicon.png" mode="widthFix"></image>
+
+  <view class="button_ flexbetween">
+    <view class="flexcolumn" bindtap="godongtai">
+      <image src="/images/dongtai.png" style="width: 80rpx;height: 80rpx;display: block;">
+      </image>
+      <view class="text">
+        发布动态
+      </view>
+    </view>
+    <view class="flexcolumn" bindtap="goaddcat">
+      <image src="/images/lingdang.png" style="width: 60rpx;height: 60rpx;display: block;">
+      </image>
+      <view class="text">
+        添加猫咪
+      </view>
+    </view>
+  </view>
+</view>

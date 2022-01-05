@@ -2,6 +2,9 @@
   "pages": [
     "pages/home/home",
     "pages/likepage/likepage",
+    "pages/addcat/addcat",
+    "pages/dongtai/dongtai",
+    "pages/releasepage/releasepage",
     "pages/matchdetail/matchdetail",
     "pages/matchenroll/matchenroll",
     "pages/cathouse/cathouse",
@@ -60,7 +63,7 @@
         "selectedIconPath": "./images/time_s.png"
       },
       {
-        "pagePath": "pages/vippage/vip",
+        "pagePath": "pages/releasepage/releasepage",
         "text": "会员",
         "iconPath": "./images/vipcard.png",
         "selectedIconPath": "./images/vipcard_s.png"

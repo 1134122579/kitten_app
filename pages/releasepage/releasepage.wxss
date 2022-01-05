@@ -1,0 +1,24 @@
+/* pages/releasepage/releasepage.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  
+}
+.release{
+  width: 100%;
+  height: 100%;
+  padding: 20rpx 0;
+  justify-content: space-between;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+}
+.button_{
+  width: 100%;
+  padding: 0 117rpx;
+  box-sizing: border-box;
+}
+.text {
+  color: rgba(0, 0, 0, 1);
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}

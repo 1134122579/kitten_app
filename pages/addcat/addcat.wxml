@@ -1,0 +1,89 @@
+<!-- 投票界面登记 -->
+
+<view class="enroll">
+  <view class="cat_detail">
+    <view class="e_title">
+      猫咪图片
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      基本信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+        <!-- 姓名 -->
+        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
+
+        <!-- 生日 -->
+        <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择日期" value="{{ birthday}}" readonly label="生日" />
+        </picker>
+        <!-- 性别 -->
+        <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="性别" />
+        </picker>
+        <!-- 品种 -->
+        <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
+        </picker>
+        <!-- 颜色 -->
+        <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="花色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 体重 -->
+        <van-field model:value="{{ weight }}" size="large" label-class="labelClass" type="number" custom-style="inputStyle" label="体重" required placeholder="请输入体重单位（kg）" border="{{ true }}" input-align="right" />
+        <!-- 眼睛颜色 -->
+        <!-- <van-field model:value="{{ eye_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="眼睛颜色" required placeholder="请输入" border="{{ true }}" input-align="right" /> -->
+        <!-- 注册号 -->
+        <!-- <van-field model:value="{{ register_no }}" size="large" label-class="labelClass" custom-style="inputStyle" label="注册号" required placeholder="请输入" border="{{ true }}" input-align="right" /> -->
+        <!-- 投票期数 -->
+        <!-- <picker mode="selector" range="{{voteList}}" value="{{voteIndex}}" bindchange="bindvoteChange" range-key="text">
+          <van-cell size="large" border="{{ true }}" required value="{{ voteList[voteIndex]['text']|| '选择投票期数'}}" title="投票期数 "  />
+        </picker> -->
+
+      </van-cell-group>
+    </view>
+  </view>
+  <!-- 年龄比赛组别 -->
+  <view class="cat_detail">
+    <view class="e_title">
+      拓展信息
+    </view>
+    <view class="e_block">
+      <van-cell-group>
+           <!-- 类别 -->
+           <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择级别" value="{{cat_statustext}}" readonly label="级别" />
+        </picker>
+        <!-- 类别 -->
+        <picker mode="selector" range="{{levelList}}" bindchange="bindlevelChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择类别" value="{{group_name}}" readonly label="类别" />
+        </picker>
+        <!-- 绝育 -->
+        <picker mode="selector" range="{{jueyuList}}" bindchange="bindjueyuChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择绝育" value="{{ is_jueyutext}}" readonly label="绝育" />
+        </picker>
+        <!-- 血型 -->
+        <picker mode="selector" range="{{xuexingList}}" bindchange="bindxuexingChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择血型" value="{{ blood_type}}" readonly label="血型" />
+        </picker>
+        <!-- 血型 -->
+        <!-- <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="性别" />
+        </picker> -->
+      </van-cell-group>
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      简介信息
+    </view>
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+  </view>
+  <view class="button_">
+    <van-button block round type="warning" bind:click="onClick">提交信息</van-button>
+  </view>
+
+</view>
