@@ -87,7 +87,7 @@ Page({
       if (catiInfo?.length > 0) {
         catiInfo = catiInfo.map(item => {
           item['imgUrl'] = item['img'][0]
-          item['user_id'] = listQuery.user_id
+          // item['user_id'] = listQuery.user_id
           return {
             ...item,
           }

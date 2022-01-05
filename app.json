@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/likepage/likepage",
+    "pages/certificate/certificate",
     "pages/catdetail/catdetail",
     "pages/addcat/addcat",
     "pages/dongtai/dongtai",
@@ -91,6 +92,8 @@
     "SearchNavModel": "./components/SearchNavModel/SearchNavModel",
     "catModelGd": "./components/catModelGd/CatModel",
     "CatModel": "./components/CatModel/CatModel",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
     "RemarkTextModel": "./components/RemarkTextModel/RemarkTextModel",
     "ListModel": "./components/ListModel/ListModel",
     "EmptyModel": "./components/EmptyModel/EmptyModel",

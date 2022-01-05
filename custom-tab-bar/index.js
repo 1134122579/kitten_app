@@ -57,23 +57,23 @@ Component({
   methods: {
     onChange(e) {
       const data = e.currentTarget.dataset;
-      console.log(data);
+      console.log(storage.getToken(),'token');
       const url = data.path;
       if (!storage.getToken()) {
         wx.navigateTo({
           url: "/pages/login/login", //能够带参数，在登陆页面接收
         });
-        return;
       } else {
         var appInst = getApp();
         appInst.globalData.userInfo = storage.getUserInfo();
+        this.setData({
+          selected: data.index,
+        });
+        wx.switchTab({
+          url: "/" + url,
+        });
       }
-      this.setData({
-        selected: data.index,
-      });
-      wx.switchTab({
-        url: "/" + url,
-      });
+    
     },
   },
 });

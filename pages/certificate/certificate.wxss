@@ -1,0 +1,62 @@
+/* pages/enrollpage/enrollpage.wxss */
+page{
+  --cell-large-vertical-padding:40rpx;
+  background-color: rgba(232, 232, 232, 1);
+}
+.cat_detail{
+  /* margin-bottom: 20rpx; */
+  background: #fff;
+  border-bottom: 1px solid #cccccc;
+} 
+.e_title{
+  color: #333;
+  font-weight: 600;
+  padding: 14px 10px;
+  font-size: 24rpx;
+  letter-spacing: 2px;
+}
+.inputStyle{
+  padding: 10px 0;
+}
+.e_block .van-field {
+  padding: 10px 0;
+}
+.labelClass{
+  width: 120px;
+}
+.uplodaStyle{
+  padding:0 10px;
+}
+.button_{
+  padding: 20px;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.labelStyle{
+  padding: 20rpx;
+}
+.label{
+padding:5rpx 20rpx ;
+background-color: rgb(212, 211, 211);
+border-radius: 30rpx;
+}
+.dreass{
+  padding: 18rpx;
+  
+}
+.lable_title{
+  margin-left: 10rpx;
+}
+.numstyle{
+font-size: 32rpx;
+color: rgba(255, 87, 51, 1);
+}
+.pricre{
+font-size: 32rpx;
+background: #fff;
+padding: 20rpx;
+margin-top: 10rpx;
+}

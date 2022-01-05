@@ -7,7 +7,7 @@ let $newstorage = new Storage()
 
 export default {
   // 获取数据
-  async getToken(callback) {
+ getToken(callback) {
     // let res = await $newstorage.get(name)
     return wx.getStorageSync(name)
 

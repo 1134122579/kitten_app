@@ -1,32 +1,61 @@
 <view class="homePage">
 
 	<!-- 顶部搜索 -->
-	<SearchNavModel pageName="123123" />
+	<view >
+		<SearchNavModel pageName="123123" bind:tabType="tabType" bgColor="#fff" />
+	</view>
 	<view class="listcontent">
 		<!-- 内容 -->
 		<view class="homeconten" style="margin-top: {{navHeight}}px;">
-
-			<!-- 分类 -->
-			<view class="tabStyle flexbetween">
-				<view class="tabStyle_l">
-					<van-tabs>
-						<van-tab wx:for="{{hotList}}" title="{{item.name}}" wx:key="index" ellipsis="false">
-						</van-tab>
-					</van-tabs>
+			<!-- 发现 -->
+			<block wx:if="{{tabName=='发现'}}">
+				<!-- 分类 -->
+				<view class="tabStyle flexbetween">
+					<view class="tabStyle_l">
+						<van-tabs>
+							<van-tab wx:for="{{hotList}}" title="{{item.name}}" wx:key="index" ellipsis="false">
+							</van-tab>
+						</van-tabs>
+					</view>
+					<view class="tabStyle_r">
+						<van-icon name="arrow-down" size="28rpx" />
+					</view>
 				</view>
-				<view class="tabStyle_r">
-					<van-icon name="arrow-down" size="28rpx" />
-				</view>
-			</view>
-
-			<!-- 列表 -->
-			<ListModel list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}"/>
-			<!-- <view class="listStyle">
+				<!-- 列表 -->
+				<ListModel list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+				<!-- <view class="listStyle">
 				<BlockModel />
 				<BlockModel />
 			</view> -->
 
-
+			</block>
+			<!-- 御猫馆 -->
+			<block wx:if="{{tabName=='御猫馆'}}">
+				<!-- 热门 -->
+				<view class="hotListStyle">
+					<view class="hotListStyle_title">热门分类</view>
+					<view class="hotListStyle_l flexastart">
+						<block wx:for="{{hotList}}" wx:key="*this">
+							<view class="blockHot flexcolumn">
+								<image src="{{item.cover}}" style="width: 124rpx;height: 124rpx;display: block;border-radius: 50%;margin-bottom: 10rpx;"></image>
+								{{item.name}}
+							</view>
+						</block>
+					</view>
+				</view>
+				<view class="hotListStyle_title arrClass" >所有分类</view>
+				<van-index-bar sticky-offset-top="{{navHeight-4}}">
+				<block wx:for="{{CatClassList}}" wx:key="*this">
+					<view class="CatClassList">
+						<van-index-anchor index="{{item.name}}" />
+						<block  wx:for="{{item.list}}" wx:for-item="j" wx:key="*this" >
+							<van-cell title="{{j.name}}" />
+						</block>
+					</view>
+				</block>
+				</van-index-bar>
+				<!-- 所有品类 -->
+			</block>
 		</view>
 	</view>
 </view>

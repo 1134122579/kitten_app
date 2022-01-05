@@ -1,6 +1,6 @@
 // pages/home/home.jslet
 
-let App=getApp()
+let App = getApp()
 import Api from '../../api/index'
 Page({
 
@@ -8,22 +8,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navHeight:App.globalData.navHeight,
-    hotList:[],
+    navHeight: App.globalData.navHeight,
+    hotList: [],
+    CatClassList:[],
+    tabName: '御猫馆'
+  },
+  tabType(e) {
+    let name = e.detail
+    this.setData({
+      tabName: name
+    })
+    console.log(e)
+  },
+  // 获取分类
+  getCatClass() {
+    Api.getCatClass().then(res => {
+      this.setData({
+        CatClassList: res
+      })
+    })
   },
   // 获取标签
-  getHotLable(){
-    Api.getHotLable().then(res=>{
-    this.setData({
-      hotList:res
-    })
+  getHotLable() {
+    Api.getHotLable().then(res => {
+      this.setData({
+        hotList: res
+      })
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    App.tabbershow(this,0 );
+    App.tabbershow(this, 0);
   },
 
   /**
@@ -31,7 +48,7 @@ Page({
    */
   onReady: function () {
     this.setData({
-    navHeight:App.globalData.navHeight,
+      navHeight: App.globalData.navHeight,
     })
 
   },
@@ -41,6 +58,7 @@ Page({
    */
   onShow: function () {
     this.getHotLable()
+    this.getCatClass()
   },
 
   /**

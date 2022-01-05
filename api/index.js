@@ -534,5 +534,20 @@ export default {
       isThree: false,
     });
   },
-  
+  getCatdetails(params) {
+    return fly({
+      url: `getCatdetails`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getCatClass(params) {
+    return fly({
+      url: `getCatClass`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
 };

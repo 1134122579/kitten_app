@@ -69,7 +69,7 @@ Component({
     onClick(event) {
       this.triggerEvent("tabType",event.detail.name)
       wx.showToast({
-        title: `点击标签 ${event.detail.name}`,
+        title: `${event.detail.name}`,
         icon: 'none',
       });
     },

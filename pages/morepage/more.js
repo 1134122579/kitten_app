@@ -10,18 +10,18 @@ Page({
     navHeight: appInst.globalData.navHeight,
     userInfo: {},
     list: [
-      {
-        title: "我的动态",
-        icon: "shield-o",
-        to: "../../pages/scanpage/scanpage",
-        linktype: "navigateTo",
-        value: "",
-        isborder: false,
-        marginTop: "marginTop",
-        is_power: "admin",
-        isLink:false,
-        isbutton:false
-      },
+      // {
+      //   title: "我的动态",
+      //   icon: "shield-o",
+      //   to: "../../pages/scanpage/scanpage",
+      //   linktype: "navigateTo",
+      //   value: "",
+      //   isborder: false,
+      //   marginTop: "marginTop",
+      //   is_power: "admin",
+      //   isLink:false,
+      //   isbutton:false
+      // },
       {
         title: "投票活动",
         icon: "shield-o",
@@ -37,7 +37,7 @@ Page({
       {
         title: "证书注册",
         icon: "coupon-o",
-        to: "../../pages/exchangpage/exchangpage",
+        to: "../../pages/certificate/certificate",
         linktype: "navigateTo",
         value: "",
         isborder: false,
@@ -45,7 +45,6 @@ Page({
         is_power: "user",
         isLink:false,
         isbutton:false
-
       },
       {
         title: "分享推荐",
@@ -58,7 +57,6 @@ Page({
         is_power: "user",
         isLink:false,
         isbutton:false
-
       },
       {
         title: "意见建议",

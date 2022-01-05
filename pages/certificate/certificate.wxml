@@ -1,0 +1,66 @@
+<!-- 投票界面登记 -->
+
+<view class="enroll">
+  <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
+    <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择证书注册" value="{{ birthday}}" readonly label="证书注册项目" />
+  </picker>
+  <view class="cat_detail">
+    <view class="e_title">
+      WCCF猫舍证书
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      小猫父母血统证书
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      WCCF小猫证书申请表
+    </view>
+    <view class="uplodaStyle">
+      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deleteImage" />
+    </view>
+  </view>
+  <view class="pricre flexbetween">
+    <view>
+      注册费用
+    </view>
+    <view class="flexastart">
+      <view>￥</view>
+      <view class="numstyle">400</view>
+    </view>
+  </view>
+  <!-- 
+  <van-field model:value="{{ title }}" size="large" label-class="labelClass" custom-style="inputStyle" placeholder="添加标题" border="{{ true }}" input-align="left" />
+  <view class="cat_detail">
+
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+    <view class="labelStyle">
+      <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
+        <text class="label"># {{label||'标签'}}</text>
+      </picker>
+    </view>
+    <label for="">
+      <view class="dreass flexbetween" bindtap="getlocation">
+        <view class="left flexastart">
+          <van-icon name="location-o" />
+          <view class="lable_title">
+            {{address||'添加地点'}}
+          </view>
+        </view>
+        <van-icon name="arrow" />
+      </view>
+    </label>
+  </view> -->
+
+  <view class="button_">
+    <van-button block round type="warning" bind:click="onClick">提交申请</van-button>
+  </view>
+</view>
