@@ -197,11 +197,10 @@ export default {
       isThree: false,
     });
   },
-  //   充值查询
-
-  queryRechargeOrder(params) {
+  //   证书查询
+  queryCertOrder(params) {
     return fly({
-      url: `queryRechargeOrder`,
+      url: `queryCertOrder`,
       method: "post",
       params,
       isThree: false,
@@ -550,4 +549,77 @@ export default {
       isThree: false,
     });
   },
+  payCertOrder(params) {
+    return fly({
+      url: `payCertOrder`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getSelectCatList(params) {
+    return fly({
+      url: `getSelectCatList`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
+  getCatList(params) {
+    return fly({
+      url: `getCatList`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getDynamicDetails(params) {
+    return fly({
+      url: `getDynamicDetails`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getComment(params) {
+    return fly({
+      url: `getComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  addComment(params) {
+    return fly({
+      url: `addComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  replyComment(params) {
+    return fly({
+      url: `replyComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  zanComment(params) {
+    return fly({
+      url: `zanComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  zanDynamic(params) {
+    return fly({
+      url: `zanDynamic`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  
 };

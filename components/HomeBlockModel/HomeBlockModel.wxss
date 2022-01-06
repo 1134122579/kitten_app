@@ -57,7 +57,6 @@
 }
 
 .block_header .name {
-  font-weight: 600;
   padding-bottom: 4px;
 }
 
@@ -137,7 +136,7 @@
   display:block;
 }
 .name_text{
-margin-left: 8rpx;
+padding-left: 8rpx;
 max-width: 100%;
 flex: 1;
 overflow: hidden;

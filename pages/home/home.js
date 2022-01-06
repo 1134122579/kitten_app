@@ -10,8 +10,36 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     hotList: [],
-    CatClassList:[],
-    tabName: '御猫馆'
+    CatClassList: [],
+    list: [],
+    isStatus:'',
+    listQuery:{
+      page:1,
+      label:'英国长毛猫(纯色)'
+    },
+    tabName: '发现',
+    listType: 'homeblockmodel',
+    ellipsis: false
+  },
+  // 获取列表
+  getCatList() {
+    Api.getCatList(this.data.listQuery).then(res => {
+      this.setData({
+        list: res,
+        isNullList: res.length > 0 ? false : true
+      })
+    })
+  },
+  typeChange(event) {
+    let {
+      name: item
+    } = event.detail
+    console.log(item, '猫咪类型')
+    this.setData({
+      "listQuery.label":item.name,
+      isStatus:item.id
+    })
+    this.getCatList()
   },
   tabType(e) {
     let name = e.detail
@@ -27,6 +55,11 @@ Page({
         CatClassList: res
       })
     })
+  },
+  // 上拉翻页
+  onpullpage(){
+    (this.data.listQuery.page)++
+    this.getCatList()
   },
   // 获取标签
   getHotLable() {
@@ -59,6 +92,9 @@ Page({
   onShow: function () {
     this.getHotLable()
     this.getCatClass()
+    if(this.data.tabName=="发现"){
+      this.getCatList()
+    }
   },
 
   /**
@@ -79,7 +115,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if(this.data.tabName=="发现"){
+      this.onpullpage()
+    }
   },
 
   /**

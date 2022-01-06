@@ -1,47 +1,54 @@
 /* pages/home/home.wxss */
-page{
-  --index-anchor-background-color:#F4F4F4
+page {
+  --index-anchor-background-color: #F4F4F4
+  width: 100%;
+  height: 100%;
 }
-.homePage{
+
+.homePage {
   width: 100%;
   height: 100%;
   background: #fff;
 }
-.listcontent{
+
+.listcontent {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
 }
-.homeconten{
+
+.homeconten {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  box-sizing: border-box;
 }
-.homeconten{
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
 
+.cdongtaiLsit {
+  flex: 1;
+  box-sizing: border-box;
+  padding-bottom:120px ;
 }
-.tabStyle{
-  width: 100%;
+
+.tabStyle {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.tabStyle_l{
+
+.tabStyle_l {
   flex: 1;
   overflow: hidden;
 }
-.tabStyle_r{
-  padding:0 30rpx ;
+
+.tabStyle_r {
+  padding: 0 30rpx;
   background: #fff;
 }
-.listStyle{
+
+.listStyle {
   padding: 0 10rpx;
   background: #fafafa;
   flex: 1;
@@ -49,13 +56,14 @@ page{
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  overflow: hidden;
 }
-.hotListStyle_title{
+
+.hotListStyle_title {
   font-size: 30rpx;
   font-weight: bold;
 }
-.blockHot{
+
+.blockHot {
   padding: 20rpx;
   border-radius: 10rpx;
   margin: 10rpx 10rpx 10rpx 0;
@@ -66,15 +74,17 @@ page{
   border: 1px solid #fafafa;
   box-shadow: 0 0 5rpx #cccccc;
 }
-.hotListStyle_l{
+
+.hotListStyle_l {
   overflow-x: auto;
 }
-.hotListStyle{
+
+.hotListStyle {
   width: 100%;
   box-sizing: border-box;
-  padding:0 20rpx;
+  padding: 0 20rpx;
 }
 
-.arrClass{
+.arrClass {
   margin: 20rpx 0;
 }

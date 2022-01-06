@@ -25,7 +25,7 @@
       WCCF小猫证书申请表
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileListSQb }}" max-count="{{maxcount}}" bind:after-read="afterRead" bind:delete="deletefileListSQbImage" />
+      <van-uploader file-list="{{ fileListSQb }}" max-count="{{maxcount}}" bind:after-read="afterfileListSQbRead" bind:delete="deletefileListSQbImage" />
     </view>
   </view>
   <view class="pricre flexbetween">

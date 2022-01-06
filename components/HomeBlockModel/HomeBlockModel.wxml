@@ -1,0 +1,33 @@
+<wxs src="../../utils/split.wxs" module="split" />
+
+<view class="tab_content_list_one" bindtap="gocatDteail">
+  <view class="block_image">
+    <image mode="widthFix" class="M_imageurl" src="{{item.link_url||'../../images/kongtu.png'}}">
+    </image>
+  </view>
+  <view class="M_text">
+    <view class="block_header flexbetween">
+      <view class="name flexastart">
+        <text class="name_text">{{item.cat_name}}</text>
+        <van-icon wx:if="{{item.sex==1}}" size="18" name="/images/gong_icon.png"></van-icon>
+        <van-icon wx:if="{{item.sex==2}}" size="18" name="/images/mu_icon.png"></van-icon>
+      </view>
+      <!-- <view class="M_id">
+        ID {{item.id}}
+      </view> -->
+    </view>
+    <view class="M_desc">
+      {{item.title}}
+    </view>
+    <view class="block_header flooter flexbetween">
+      <view class="name flexastart">
+        <image src="{{item.headimgurl}}" style="width: 36rpx;height:36rpx;border-radius: 50%;display: block;"></image>
+        <view class="name_text">{{item.nickname}}</view>
+      </view>
+      <view class="M_id flexcenter" bindtap="onLike">
+        <van-icon name="{{item.is_zan==1||is_like?'like':'like-o'}}" size="18" />
+        {{is_like?item.zan_num+1:item.zan_num}}
+      </view>
+    </view>
+  </view>
+</view>

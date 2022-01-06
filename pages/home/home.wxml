@@ -6,14 +6,14 @@
 	</view>
 	<view class="listcontent">
 		<!-- 内容 -->
-		<view class="homeconten" style="margin-top: {{navHeight}}px;">
+		<view class="homeconten" style="padding-top: {{navHeight}}px;">
 			<!-- 发现 -->
 			<block wx:if="{{tabName=='发现'}}">
 				<!-- 分类 -->
 				<view class="tabStyle flexbetween">
 					<view class="tabStyle_l">
-						<van-tabs>
-							<van-tab wx:for="{{hotList}}" title="{{item.name}}" wx:key="index" ellipsis="false">
+						<van-tabs bind:change="typeChange" ellipsis="{{ellipsis}}">
+							<van-tab wx:for="{{hotList}}" title="{{item.name}}" name="{{item}}" wx:key="index" >
 							</van-tab>
 						</van-tabs>
 					</view>
@@ -22,12 +22,9 @@
 					</view>
 				</view>
 				<!-- 列表 -->
-				<ListModel list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
-				<!-- <view class="listStyle">
-				<BlockModel />
-				<BlockModel />
-			</view> -->
-
+				<view class="cdongtaiLsit">
+					<ListModel list="{{list}}" listType="{{listType}}"  isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+				</view>
 			</block>
 			<!-- 御猫馆 -->
 			<block wx:if="{{tabName=='御猫馆'}}">

@@ -1,0 +1,13 @@
+<view class="navbar custom-class" style='height:{{navHeight}}px;background-color:{{bgColor}}'>
+  <view wx:if="{{showNav}}" class="navbar-action-wrap navbar-action-group row item-center flexcenter" style='top:{{navTop}}px;background-color:rgba(81,23,19,.6)'>
+    <view class="navbar-action_item flexcenter" bindtap="_navBack">
+      <van-icon name="arrow-left" color="{{iconColor}}" size="18px"></van-icon>
+    </view>
+    <view class="navbar-action_item flexcenter last" bindtap="_toIndex">
+      <van-icon name="wap-home-o" color="{{iconColor}}" size="18px"></van-icon>
+    </view>
+  </view>
+  <view class='navbar-title' style='top:{{navTop}}px;color: {{textColor}};'>
+    {{pageName}}
+  </view>
+</view>
