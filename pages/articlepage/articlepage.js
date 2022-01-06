@@ -1,5 +1,6 @@
 // pages/matchdetail/matchdetail.js
 import Api from '../../api/index'
+let App = getApp()
 import {
   formatDate
 } from '../../utils/util'
@@ -13,10 +14,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navHeight: App.globalData.navHeight,
     value: '',
     hfItem: {},
     isHf: false,
-    is_zplList:[],
+    is_zplList: [],
     autosize: {
       maxHeight: 250,
       minHeight: 100
@@ -43,7 +45,7 @@ Page({
       id: 5,
       text: '无毛组别'
     }],
-    is_zanDynamic:false,
+    is_zanDynamic: false,
     indicatorDots: true,
     vertical: false,
     autoplay: true,
@@ -70,17 +72,17 @@ Page({
     })
   },
   // 文章点赞
-  zanDynamic(){
+  zanDynamic() {
     let {
-        dynamic_id,
-        is_zanDynamic,
+      dynamic_id,
+      is_zanDynamic,
     } = this.data
-    if(is_zanDynamic){
+    if (is_zanDynamic) {
       wx.showToast({
         title: '已经点赞',
         icon: 'none'
       })
-      return 
+      return
     }
 
     Api.zanDynamic({
@@ -91,7 +93,7 @@ Page({
         icon: 'none'
       })
       this.setData({
-        is_zanDynamic:true
+        is_zanDynamic: true
       })
     })
   },
@@ -103,15 +105,17 @@ Page({
         id: comment_id
       }
     } = e.currentTarget.dataset
-let {is_zplList}=this.data
+    let {
+      is_zplList
+    } = this.data
 
-if(is_zplList.includes(comment_id)){
-  wx.showToast({
-    title: '已点赞',
-    icon: 'none'
-  })
-  return
-}
+    if (is_zplList.includes(comment_id)) {
+      wx.showToast({
+        title: '已点赞',
+        icon: 'none'
+      })
+      return
+    }
     Api.zanComment({
       dynamic_id,
       comment_id
@@ -121,7 +125,7 @@ if(is_zplList.includes(comment_id)){
         icon: 'none'
       })
       this.setData({
-        is_zplList:is_zplList.concat([comment_id])
+        is_zplList: is_zplList.concat([comment_id])
       })
     })
   },
@@ -287,7 +291,9 @@ if(is_zplList.includes(comment_id)){
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      navHeight: App.globalData.navHeight,
+    })
   },
 
   /**

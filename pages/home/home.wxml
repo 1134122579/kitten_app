@@ -2,7 +2,7 @@
 
 	<!-- 顶部搜索 -->
 	<view >
-		<SearchNavModel pageName="123123" bind:tabType="tabType" bgColor="#fff" />
+		<SearchNavModel  bind:tabType="tabType" bgColor="#fff" />
 	</view>
 	<view class="listcontent">
 		<!-- 内容 -->

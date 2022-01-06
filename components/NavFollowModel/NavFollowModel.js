@@ -9,6 +9,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    userInfo:Object,
     pageName:String,
     showNav:{
       type:Boolean,
@@ -24,7 +25,7 @@ Component({
     },
     textColor:{
       type: String,
-      value: '#fff'
+      value: '#333'
     },
     bgColor: {
       type: String,
@@ -36,8 +37,20 @@ Component({
    * 组件的初始数据
    */
   data: {
+    is_gz:false,
     navHeight:App.globalData.navHeight,
     navTop:App.globalData.navTop,
+    active:1,
+    list:[{
+      id:1,
+      title:'发现'
+    },{
+      id:2,
+      title:'御猫馆'
+    },{
+      id:3,
+      title:'关注'
+    }]
   },
   lifetimes: {
     attached: function () {
@@ -50,6 +63,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onsearch(){
+        wx.navigateTo({
+          url: '/pages/searchpage/searchpage',
+        })
+    },
+    onClick(event) {
+      this.triggerEvent("tabType",event.detail.name)
+let {is_gz}=this.data
+this.setData({
+  is_gz:!is_gz
+})
+
+      wx.showToast({
+        title:is_gz?'关注':'取消关注' ,
+        icon: 'none',
+      });
+    },
     //回退
     _navBack: function () {
         wx.navigateBack({

@@ -86,6 +86,7 @@
     ]
   },
   "usingComponents": {
+    "NavFollowModel": "./components/NavFollowModel/NavFollowModel",
     "MyNavModel": "./components/MyNavModel/MyNavModel",
     "HomeBlockModel": "./components/HomeBlockModel/HomeBlockModel",
     "MyCatModel": "./components/MyCatModel/MyCatModel",

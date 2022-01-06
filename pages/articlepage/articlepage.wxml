@@ -1,8 +1,8 @@
 <wxs src="../../utils/split.wxs" module="split" />
 <view class="saishipage flexcolumn">
-  <Navheader />
+  <NavFollowModel userInfo="{{getData}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType"/>
   <!-- 头部 -->
-  <view class="headerImage">
+  <view class="headerImage" style="margin-top: {{navHeight}}px;">
     <swiper class="headerImage" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{getData.link_url}}" wx:key="*this">
         <swiper-item>
