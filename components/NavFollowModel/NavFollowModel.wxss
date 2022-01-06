@@ -77,7 +77,7 @@
 }
 
 .name {
-  width: 30%;
+  max-width: 30%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
