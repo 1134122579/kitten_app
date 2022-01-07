@@ -41,6 +41,12 @@
           "pathName": "pages/articlepage/articlepage",
           "query": "user_id=38&dynamic_id=4",
           "scene": null
+        },
+        {
+          "name": "视频详情",
+          "pathName": "pages/videopage/videopage",
+          "query": "user_id=33&dynamic_id=7",
+          "scene": null
         }
       ]
     }

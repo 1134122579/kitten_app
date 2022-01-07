@@ -43,7 +43,7 @@ Component({
       } = this.data
       if (item.type == 2) {
         wx.navigateTo({
-          url: `/pages//catdetail?user_id=${item.user_id}&cat_id=${item.id}`,
+          url: `/pages/videopage/videopage?user_id=${item.user_id}&dynamic_id=${item.id}`,
         })
       } else {
         wx.navigateTo({

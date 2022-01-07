@@ -3,6 +3,7 @@
     "pages/home/home",
     "pages/articlepage/articlepage",
     "pages/likepage/likepage",
+    "pages/videopage/videopage",
     "pages/certificate/certificate",
     "pages/catdetail/catdetail",
     "pages/addcat/addcat",

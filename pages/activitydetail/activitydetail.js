@@ -33,9 +33,6 @@ wx.navigateTo({
       this.setData({
         detail: res
       })
-      wx.setNavigationBarTitle({
-        title:res.name
-     })
     })
   },
 
