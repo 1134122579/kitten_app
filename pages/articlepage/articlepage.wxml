@@ -1,0 +1,117 @@
+<wxs src="../../utils/split.wxs" module="split" />
+<view class="saishipage flexcolumn">
+  <NavFollowModel userInfo="{{getData}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType"/>
+  <!-- 头部 -->
+  <view class="headerImage" style="margin-top: {{navHeight}}px;">
+    <swiper class="headerImage" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{getData.link_url}}" wx:key="*this">
+        <swiper-item>
+          <view class="headerImage">
+            <image class="imageStyle" src="{{item}}"></image>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 内容 -->
+  <view class="header new_content">
+    <view class="header_title">
+      {{getData.title}}
+    </view>
+    <view class="header_desc">
+      {{getData.desc}}
+    </view>
+    <view class="header_label">
+      #{{getData.label}}
+    </view>
+    <view class="time flexbetween">
+      <view class="name flexastart">
+        <view>编辑于</view>
+        <view>{{getData.create_time}}</view>
+      </view>
+      <view class="header_R_f" style="width: 120rpx;">
+        <label for="">
+          <view>分享</view> <button open-type="share" class="shareButton" />
+        </label>
+      </view>
+    </view>
+  </view>
+  <!-- 评论 -->
+  <view class="pinglun">
+    <view class="pinglun_title">
+      共{{getData.pl_num}}条评论
+    </view>
+    <block wx:for="{{CommentList}}" wx:key="*this">
+      <view class="P_block flexastart">
+        <view class="header_l">
+          <image src="{{item.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+        </view>
+        <view class="header_R">
+          <view class="plContent">
+            <view class="P_name">
+              {{item.nickname}}
+            </view>
+            <view class="content flexbetween">
+              <view class="content_l" bindtap="onhf" data-item="{{item}}">
+                {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
+              </view>
+              <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
+                <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" /><view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
+              </view>
+            </view>
+          </view>
+          <block wx:for="{{item.replys}}" wx:for-item="reply" wx:key="*this">
+            <view class="P_block noborder flexastart">
+              <view class="header_l">
+                <image src="{{reply.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+              </view>
+              <view class="header_R">
+                <view class="plContent">
+                  <view class="P_name">
+                    {{reply.nickname}}
+                  </view>
+                  <view class="content flexbetween">
+                    <!-- bindtap="onhf"  -->
+                    <view class="content_l" data-item="{{reply}}">
+                      {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>
+                    </view>
+                    <!-- <view class="content_R flexcenter">
+                      <van-icon name="like-o" /> <view>{{reply.zan_num}}</view> 
+                    </view> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="foolter flexastart">
+  <!-- <input type="text" class="inputStyle" placeholder="随便聊聊"/> -->
+  <view class="inputStyle" bindtap="onPl">随便聊聊~~</view>
+  <view class="flexaround button_r">
+    <view class="flexcenter" bindtap="zanDynamic">
+      <van-icon name="{{is_zanDynamic?'like':'like-o'}}" size="20" />
+      <view class="num"> {{is_zanDynamic?getData.zan_num+1:getData.zan_num}}</view>
+    </view>
+    <view class="flexcenter">
+      <van-icon name="star-o" size="20" />
+      <view class="num">{{getData.sc_num}}</view>
+    </view>
+    <view class="flexcenter">
+      <van-icon name="chat-o" size="20" />
+      <view class="num">{{getData.pl_num}}</view>
+    </view>
+  </view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose">
+  <view class="plstyle">
+    <view class="plstyle_t">评论</view>
+    <van-cell-group>
+      <van-field model:value="{{ value }}" type="textarea" autosize="{{autosize}}" placeholder="请输入" border="{{ false }}" />
+    </van-cell-group>
+    <van-button plain hairline type="primary" block bindtap="addComment">发布</van-button>
+  </view>
+</van-popup>

@@ -12,7 +12,7 @@ Page({
    */
   data: {
     maxcount: 1,
-    cat_id:'',
+    cat_id: '',
     title: "",
     address: '',
     match_id: '',
@@ -30,7 +30,6 @@ Page({
     father_register_no: '',
     mother_pz: '',
     mother_color: '',
-    fileListXT:[],
     mother_name: '',
     mother_register_no: '',
     group_id: '', //组别*
@@ -40,7 +39,9 @@ Page({
     levelIndex: null,
     sexIndex: null,
     voteIndex: null,
-    fileListSQb:[],
+    fileListSQb: [],
+    fileListXT: [],
+    fileList: [],
     autoSize: {
       maxHeight: 200,
       minHeight: 100
@@ -240,18 +241,18 @@ Page({
       }
     });
   },
-  
-    // 删除
-    deletefileListXTImage(e) {
-      let {
-        fileListXT
-      } = this.data
-      console.log(e)
-      let delitem = e.detail
-      this.setData({
-        fileListXT: fileListXT.filter(item => item.url != delitem.file.url),
-      })
-    },
+
+  // 删除
+  deletefileListXTImage(e) {
+    let {
+      fileListXT
+    } = this.data
+    console.log(e)
+    let delitem = e.detail
+    this.setData({
+      fileListXT: fileListXT.filter(item => item.url != delitem.file.url),
+    })
+  },
   // 删除
   deletefileListSQbImage(e) {
     let {
@@ -281,7 +282,7 @@ Page({
     } = this.data
     this.setData({
       // sexIndex: event.detail.value,
-      cat_id:zList[event.detail.value]['id'],
+      cat_id: PzList[event.detail.value]['id'],
       label: PzList[event.detail.value]['cat_name']
     })
   },
@@ -324,36 +325,61 @@ Page({
   // 提交
   onClick() {
     let {
-      label,
-      fileList,
-      desc,
-      title,
-      type
+      cat_id,
+      fileListSQb = [],
+      fileListXT = [],
+      fileList = [],
     } = this.data
-    let link_url = fileList.map(item => item.url)
+    let home_cert_url = fileList?.[0]?.url
+    let parent_cret_url = fileListXT?.[0]?.url
+    let apply_table_url = fileListSQb?.[0]?.url
+    // let link_url = fileList.map(item => item.url)
     if (this.checkUpQuery()) {
       wx.showLoading({
-        title: '发布中..',
+        title: '认证中..',
         mask: true
       })
-      Api.addDynamic({
-        label,
-        link_url,
-        desc,
-        title,
-        type
+      Api.payCertOrder({
+        cat_id,
+        parent_cret_url,
+        apply_table_url,
+        home_cert_url,
       }).then(res => {
-        wx.hideLoading()
-        wx.showToast({
-          title: '添加成功，1.5秒自动返回',
-          icon: "none",
-          mask: true,
-        })
-        setTimeout(() => {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1500);
+        let {
+          nonceStr,
+          paySign,
+          signType,
+          timeStamp,
+          out_trade_no
+        } = res;
+        wx.requestPayment({
+          nonceStr,
+          signType,
+          package: res.package,
+          paySign,
+          timeStamp,
+          success(data) {
+            wx.hideLoading()
+            Api.queryCertOrder({
+              out_trade_no,
+            }).then((res) => {
+              appInst.getUserinfoFn(() => {
+                that.setUserinfo()
+                wx.hideLoading()
+                wx.showToast({
+                  title: '支付成功，1.5秒自动返回',
+                  icon: "none",
+                  mask: true,
+                })
+                setTimeout(() => {
+                  wx.navigateBack({
+                    delta: 1,
+                  })
+                }, 1500);
+              })
+            });
+          },
+        });
       })
     }
 
@@ -361,65 +387,37 @@ Page({
   // 校验上传数据
   checkUpQuery() {
     let {
-      level,
-      sex,
-      cat_name,
-      color,
-      title,
-      fileList,
-      label,
-      address,
-      desc,
-      birthday,
-      eye_color,
-      register_no,
-      father_name,
-      father_pz,
-      father_color,
-      father_register_no,
-      mother_pz,
-      mother_color,
-      mother_name,
-      mother_register_no,
-      group_id,
-      match_id,
+      cat_id,
+      fileListSQb = [],
+      fileListXT = [],
+      fileList = [],
     } = this.data
-    let img = fileList?.[0]?.url
-    if (!img) {
+    let home_cert_url = fileList?.[0]?.url
+    let parent_cret_url = fileListXT?.[0]?.url
+    let apply_table_url = fileListSQb?.[0]?.url
+    if (!home_cert_url) {
       wx.showToast({
-        title: "请上传文件",
+        title: "请上传猫舍证书",
         icon: "none",
       });
       return;
     }
-    if (!title.trim()) {
+
+    if (!apply_table_url) {
       wx.showToast({
-        title: "请输入标题",
+        title: "请上传申请表",
         icon: "none",
       });
       return;
     }
-    if (!label.trim()) {
+    if (!parent_cret_url) {
       wx.showToast({
-        title: "请选择标签",
+        title: "请上传血统证书",
         icon: "none",
       });
       return;
     }
-    if (!desc) {
-      wx.showToast({
-        title: "请输入内容",
-        icon: "none",
-      });
-      return;
-    }
-    if (!address) {
-      wx.showToast({
-        title: "请选择地点",
-        icon: "none",
-      });
-      return;
-    }
+
     return true
   },
 

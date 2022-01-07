@@ -1,0 +1,39 @@
+<view class="videoPage">
+  <!-- 顶部 -->
+  <Navheader />
+  <video class="videoStyle" src="http://1254951373.vod2.myqcloud.com/86bace87vodgzp1254951373/4262da1a8602268011302194817/Zr5w4NQctjoA.mp4" controls="{{controls}}" play-btn-position="{{playbtnposition}}" show-fullscreen-btn="{{showfullscreenbtn}}" enable-progress-gesture="{{	enableprogressgesture}}" enable-play-gesture="{{enableplaygesture}}"></video>
+  <!-- 内容 -->
+  <view class="contentVideo">
+    <view class="flexbetween">
+      <view class="flexastart">
+        <view>名字</view>
+      </view>
+      <view>关注</view>
+    </view>
+
+
+  </view>
+  <!-- d底部操作 -->
+  <view class="foolter flexastart">
+    <!-- <input type="text" class="inputStyle" placeholder="随便聊聊"/> -->
+    <label for="">
+      <view class="inputStyle" bindtap="onPl">
+        分享</view>
+      <button open-type="share"></button>
+    </label>
+    <view class="flexaround button_r">
+      <view class="flexcenter" bindtap="zanDynamic">
+        <van-icon name="{{is_zanDynamic?'like':'like-o'}}" size="20" />
+        <view class="num"> {{is_zanDynamic?getData.zan_num+1:getData.zan_num}}</view>
+      </view>
+      <view class="flexcenter">
+        <van-icon name="star-o" size="20" />
+        <view class="num">{{getData.sc_num}}</view>
+      </view>
+      <view class="flexcenter">
+        <van-icon name="chat-o" size="20" />
+        <view class="num">{{getData.pl_num}}</view>
+      </view>
+    </view>
+  </view>
+</view>

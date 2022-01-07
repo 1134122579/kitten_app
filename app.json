@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/articlepage/articlepage",
     "pages/likepage/likepage",
+    "pages/videopage/videopage",
     "pages/certificate/certificate",
     "pages/catdetail/catdetail",
     "pages/addcat/addcat",
@@ -85,7 +87,9 @@
     ]
   },
   "usingComponents": {
+    "NavFollowModel": "./components/NavFollowModel/NavFollowModel",
     "MyNavModel": "./components/MyNavModel/MyNavModel",
+    "HomeBlockModel": "./components/HomeBlockModel/HomeBlockModel",
     "MyCatModel": "./components/MyCatModel/MyCatModel",
     "van-skeleton": "@vant/weapp/skeleton/index",
     "BlockModel": "./components/BlockModel/BlockModel",
