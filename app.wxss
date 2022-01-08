@@ -15,36 +15,46 @@ page {
   box-sizing: border-box;
   /* overflow-y: auto; */
   /* overflow: hidden; */
-  --tabs-line-height:32px;
+  --tabs-line-height: 32px;
   --button-border-radius: 14rpx;
   --button-default-color: #d13027;
-   --button-default-border-color:#d13027;
-  --button-warning-background-color:rgba(255, 106, 110, 1);
+  --button-default-border-color: #d13027;
+  --button-warning-background-color: rgba(255, 106, 110, 1);
+  /* padding-bottom: constant(safe-area-inset-bottom); */
+  /*兼容 IOS<11.2*/
+  /* padding-bottom: env(safe-area-inset-bottom); */
+  /*兼容 IOS>11.2*/
 }
+
 .redBackground {
   background: #d13027;
 }
+
 .flexcenter {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .flexcolumn {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
+
 .flexaround {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+
 .flexbetween {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .flexastart {
   display: flex;
   justify-content: flex-start;

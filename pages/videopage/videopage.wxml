@@ -5,20 +5,25 @@
   <!-- 内容 -->
   <view class="contentVideo">
     <view class="flexbetween">
-      <view class="flexastart">
-        <view>名字</view>
+      <view class="namestyle flexastart">
+        <image src="/images/gocaticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;margin-right: 20rpx;"></image>
+        <view class="name">名字</view>
       </view>
-      <view>关注</view>
+      <view class="gzStyle">已关注</view>
     </view>
-
-
+    <view class="content_desc">
+      XX年XX月XX日经WCCF协会组织，天津玩具虎猫舍主办，正式举行...
+      <text class="Zk">展开全文</text> 
+    </view>
   </view>
   <!-- d底部操作 -->
   <view class="foolter flexastart">
     <!-- <input type="text" class="inputStyle" placeholder="随便聊聊"/> -->
     <label for="">
-      <view class="inputStyle" bindtap="onPl">
-        分享</view>
+      <view class="inputStyle flexcenter" bindtap="onPl">
+        <van-icon name="share-o" size="20" />
+        <view style="margin-left: 10rpx;">分享</view>
+      </view>
       <button open-type="share"></button>
     </label>
     <view class="flexaround button_r">
