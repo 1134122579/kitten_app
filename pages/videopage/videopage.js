@@ -13,43 +13,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-    enableplaygesture:true,//是否开启播放手势，即双击切换播放/暂停
-    enableprogressgesture:false,//是否开启控制进度的手势
-    showfullscreenbtn:false,//是否显示全屏按钮
-    controls:false,//是否显示默认播放控件（播放/暂停按钮、播放进度、时间）
-    is_zanDynamic:false,
-    playbtnposition:'center',//	播放按钮的位置
+    isPlShow: false,
+    isPlay: true,
+    videoHeight: 0,
+    contentBottom: 0,
+    CommentList:[],//评论
+    showcenterplaybtn: false, //是否显示视频中间的播放按钮
+    enableplaygesture: false, //是否开启播放手势，即双击切换播放/暂停
+    enableprogressgesture: false, //是否开启控制进度的手势
+    showfullscreenbtn: false, //是否显示全屏按钮
+    controls: false, //是否显示默认播放控件（播放/暂停按钮、播放进度、时间）
+    is_zanDynamic: false,
+    playbtnposition: 'center', //	播放按钮的位置
     navHeight: App.globalData.navHeight,
     page: 1,
-    getData:{}
+    is_Zk: false, //展开
+    is_Zkbutton: false,
+    getData: {}
   },
-    // 文章点赞
-    zanDynamic() {
-      let {
-        dynamic_id,
-        is_zanDynamic,
-      } = this.data
-      if (is_zanDynamic) {
-        wx.showToast({
-          title: '已经点赞',
-          icon: 'none'
-        })
-        return
-      }
-  
-      Api.zanDynamic({
-        dynamic_id,
-      }).then(res => {
-        wx.showToast({
-          title: '点赞成功',
-          icon: 'none'
-        })
-        this.setData({
-          is_zanDynamic: true
-        })
+  // 查看评论
+  onlookPl() {
+    this.setData({
+      isPlShow: true
+    })
+  },
+  onClose() {
+    this.setData({
+      isPlShow: false
+    })
+  },
+  // 文章点赞
+  zanDynamic() {
+    let {
+      dynamic_id,
+      is_zanDynamic,
+    } = this.data
+    if (is_zanDynamic) {
+      wx.showToast({
+        title: '已经点赞',
+        icon: 'none'
       })
-    },
-      // 点赞
+      return
+    }
+
+    Api.zanDynamic({
+      dynamic_id,
+    }).then(res => {
+      wx.showToast({
+        title: '点赞成功',
+        icon: 'none'
+      })
+      this.setData({
+        is_zanDynamic: true
+      })
+    })
+  },
+  // 点赞
   zanComment(e) {
     let {
       item: {
@@ -100,32 +119,35 @@ Page({
       return []
     }
   },
-    // 获取评论
-    getComment() {
-      let {
-        dynamic_id,
-        page,
-        CommentList
-      } = this.data
-      Api.getComment({
-        dynamic_id,
-        page
-      }).then(res => {
-        res = this.timeList(res)
-        console.log(res, 112132123)
-        if (page == 1) {
-          this.setData({
-            CommentList: res
-          })
-        } else {
-          this.setData({
-            CommentList: CommentList.concat(res)
-          })
-        }
-  
-      })
-    },
-// 获取详情
+  // 获取样式
+
+
+  // 获取评论
+  getComment() {
+    let {
+      dynamic_id,
+      page,
+      CommentList
+    } = this.data
+    Api.getComment({
+      dynamic_id,
+      page
+    }).then(res => {
+      res = this.timeList(res)
+      console.log(res, 112132123)
+      if (page == 1) {
+        this.setData({
+          CommentList: res
+        })
+      } else {
+        this.setData({
+          CommentList: CommentList.concat(res)
+        })
+      }
+
+    })
+  },
+  // 获取详情
   getDynamicDetails() {
     let {
       user_id,
@@ -135,10 +157,64 @@ Page({
       user_id,
       dynamic_id
     }).then(res => {
-      console.log(res, '文章详情')
+      console.log(res, '视频详情')
+      res['desc'] = "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+      let is_length = res.desc.length > 30
+      res['desccopy'] = `${res['desc'].slice(0,25)}...`
+      // 判断简介长度
       this.setData({
-        getData: res
+        getData: res,
+        is_Zk: is_length ? true : false,
+        is_Zkbutton: is_length ? true : false,
       })
+    })
+  },
+  ontextLook() {
+    this.setData({
+      is_Zk: !this.data.is_Zk
+    })
+  },
+  // 获取底部样式
+  getFooterStyle() {
+    var query = wx.createSelectorQuery()
+    var that = this;
+    query.select('.foolter').boundingClientRect(function (rect) {
+      console.log(rect);
+      that.setData({
+        contentBottom: `${rect.height}px`,
+        videoHeight: `${rect.top}px`
+      })
+      // console.log(that.data.objHeight);
+    }).exec();
+  },
+  // 开始播放
+  bindplay() {
+    console.log('开始播放')
+    this.setData({
+      isPlay: false,
+    })
+  },
+  // 暂停
+  bindpause() {
+    console.log('暂停')
+    this.setData({
+      isPlay: true,
+    })
+  },
+  // 播放
+  bindPlayVideo() {
+    console.log('1')
+    let {
+      isPlay
+    } = this.data
+    if (this.data.isPlay) {
+      this.videoContext.play()
+
+    } else {
+      this.videoContext.pause()
+    }
+    this.setData({
+      isPlay: !isPlay,
     })
   },
   /**
@@ -155,7 +231,6 @@ Page({
     })
     this.getDynamicDetails()
     this.getComment()
-
   },
 
   /**
@@ -165,13 +240,14 @@ Page({
     this.setData({
       navHeight: App.globalData.navHeight,
     })
+    this.videoContext = wx.createVideoContext('myVideo')
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getFooterStyle()
   },
 
   /**

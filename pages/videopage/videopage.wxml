@@ -1,9 +1,13 @@
+<wxs src="../../utils/split.wxs" module="split" />
 <view class="videoPage">
   <!-- 顶部 -->
   <Navheader />
-  <video class="videoStyle" src="http://1254951373.vod2.myqcloud.com/86bace87vodgzp1254951373/4262da1a8602268011302194817/Zr5w4NQctjoA.mp4" controls="{{controls}}" play-btn-position="{{playbtnposition}}" show-fullscreen-btn="{{showfullscreenbtn}}" enable-progress-gesture="{{	enableprogressgesture}}" enable-play-gesture="{{enableplaygesture}}"></video>
+  <video class="videoStyle"  id="myVideo" style="height: {{videoHeight}};" src="http://1254951373.vod2.myqcloud.com/86bace87vodgzp1254951373/4262da1a8602268011302194817/Zr5w4NQctjoA.mp4" controls="{{controls}}" play-btn-position="{{playbtnposition}}" show-fullscreen-btn="{{showfullscreenbtn}}" enable-progress-gesture="{{	enableprogressgesture}}" enable-play-gesture="{{enableplaygesture}}" 	show-center-play-btn="{{	showcenterplaybtn}}" bindplay="{{bindplay}}"  bindpause="{{bindpause}}"></video>
+    <view class="playIcon flexcolumn" style="bottom:{{contentBottom}}" bindtap="bindPlayVideo">
+        <image src="/images/playok.png"  wx:if="{{isPlay}}" style="width:90rpx;height:90rpx;"></image>
+    </view>
   <!-- 内容 -->
-  <view class="contentVideo">
+  <view class="contentVideo" style="bottom:{{contentBottom}}">
     <view class="flexbetween">
       <view class="namestyle flexastart">
         <image src="/images/gocaticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;margin-right: 20rpx;"></image>
@@ -12,13 +16,75 @@
       <view class="gzStyle">已关注</view>
     </view>
     <view class="content_desc">
-      XX年XX月XX日经WCCF协会组织，天津玩具虎猫舍主办，正式举行...
-      <text class="Zk">展开全文</text> 
+      {{is_Zk?getData.desccopy:getData.desc}}
+      <text class="Zk" wx:if="{{is_Zkbutton}}"  bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text>
     </view>
   </view>
+  <!-- 评论 -->
+  <van-popup
+  show="{{ isPlShow }}"
+  position="bottom"
+  custom-style="height: 40%;"
+  bind:close="onClose"
+>
+<view class="pinglun flexcolumn">
+    <view class="pinglun_title">
+      共{{getData.pl_num}}条评论
+    </view>
+    <!-- 评论内容 -->
+    <view style="flex:1;width:100%; overflow-y: auto;">
+      <block wx:for="{{CommentList}}" wx:key="*this">
+      <view class="P_block flexastart">
+        <view class="header_l">
+          <image src="{{item.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+        </view>
+        <view class="header_R">
+          <view class="plContent">
+            <view class="P_name">
+              {{item.nickname}}
+            </view>
+            <view class="content flexbetween">
+              <view class="content_l" bindtap="onhf" data-item="{{item}}">
+                {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
+              </view>
+              <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
+                <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" /><view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
+              </view>
+            </view>
+          </view>
+          <block wx:for="{{item.replys}}" wx:for-item="reply" wx:key="*this">
+            <view class="P_block noborder flexastart">
+              <view class="header_l">
+                <image src="{{reply.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+              </view>
+              <view class="header_R">
+                <view class="plContent">
+                  <view class="P_name">
+                    {{reply.nickname}}
+                  </view>
+                  <view class="content flexbetween">
+                    <!-- bindtap="onhf"  -->
+                    <view class="content_l" data-item="{{reply}}">
+                      {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>
+                    </view>
+                    <!-- <view class="content_R flexcenter">
+                      <van-icon name="like-o" /> <view>{{reply.zan_num}}</view> 
+                    </view> -->
+                  </view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </block>
+    </view>
+    <!-- 评论区 -->
+   <input  type="text" placeholder="请输入评论内容"/>
+  </view>
+</van-popup>
   <!-- d底部操作 -->
   <view class="foolter flexastart">
-    <!-- <input type="text" class="inputStyle" placeholder="随便聊聊"/> -->
     <label for="">
       <view class="inputStyle flexcenter" bindtap="onPl">
         <van-icon name="share-o" size="20" />
@@ -35,7 +101,7 @@
         <van-icon name="star-o" size="20" />
         <view class="num">{{getData.sc_num}}</view>
       </view>
-      <view class="flexcenter">
+      <view class="flexcenter" bindtap="onlookPl">
         <van-icon name="chat-o" size="20" />
         <view class="num">{{getData.pl_num}}</view>
       </view>

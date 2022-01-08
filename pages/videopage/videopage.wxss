@@ -3,7 +3,7 @@ page {
   width: 100%;
   height: 100%;
   overflow: hidden;
-
+  background:#333 ;
 }
 
 .videoPage {
@@ -82,6 +82,14 @@ page {
 .timestyle {
   font-size: 20rpx;
 }
+/* 播放 */
+.playIcon{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
 
 /* 内容 */
 .contentVideo {
@@ -123,7 +131,49 @@ page {
 font-size: 28rpx;
 line-height: 1.5;
 padding: 10rpx 0;
+max-height:250rpx;
+overflow-y: auto;
 }
 .Zk{
   color: rgb(20, 243, 0);
+}
+
+/* 评论 */
+.pinglun {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  background: #fff;
+  padding-bottom: 120rpx;
+}
+
+.pinglun_title {
+  color: rgba(87, 87, 87, 1);
+  font-size: 26rpx;
+}
+
+.P_block {
+  padding: 20rpx 0;
+  border-bottom: 1px solid rgb(240, 236, 236);
+  align-items: flex-start;
+}
+
+
+.P_name {
+  color: rgba(153, 153, 153, 1);
+  font-size: 26rpx;
+}
+
+.content_l {
+  flex: 1;
+  /* color: rgba(112, 112, 112, 1); */
+  font-size: 30rpx;
+  padding: 10rpx 0;
+}
+
+.content_R {
+  padding:0 10rpx;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 1;
 }
