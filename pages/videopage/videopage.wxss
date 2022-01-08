@@ -141,10 +141,16 @@ overflow-y: auto;
 /* 评论 */
 .pinglun {
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
   padding: 0 20rpx;
   background: #fff;
-  padding-bottom: 120rpx;
+  /* padding-bottom: 120rpx; */
+}
+.header_R{
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: 20rpx;
 }
 
 .pinglun_title {
@@ -153,6 +159,7 @@ overflow-y: auto;
 }
 
 .P_block {
+  width: 100%;
   padding: 20rpx 0;
   border-bottom: 1px solid rgb(240, 236, 236);
   align-items: flex-start;
@@ -176,4 +183,34 @@ overflow-y: auto;
   text-align: center;
   font-size: 24rpx;
   line-height: 1;
+}
+.pLStylebottom{
+background: #ccc;
+width: 100%;
+height: 80rpx;
+border-radius: 40rpx;
+text-align: center;
+font-size: 28rpx;
+margin: 10rpx 0;
+}
+.pLStylebottominput{
+  flex: 1;
+  padding:0 40rpx;
+  box-sizing: border-box;
+}
+.isunllCommentList{
+  text-align: center;
+  height: 100%;
+  color: #c7c5c5;
+  font-size: 26rpx;
+}
+.onPlpull{
+  flex-shrink: 0;
+  width: 120rpx;
+  border-radius: 40rpx;
+  background: rgb(23, 240, 42);
+  height: 100%;
+  line-height: 80rpx;
+  color: #fff;
+
 }

@@ -13,11 +13,16 @@ Page({
    * 页面的初始数据
    */
   data: {
+    dynamic_id: '',
+    value: '',
+    hfItem: '',
+    is_zplList:[],//点赞
+    isHf: false,
     isPlShow: false,
     isPlay: true,
     videoHeight: 0,
     contentBottom: 0,
-    CommentList:[],//评论
+    CommentList: [], //评论
     showcenterplaybtn: false, //是否显示视频中间的播放按钮
     enableplaygesture: false, //是否开启播放手势，即双击切换播放/暂停
     enableprogressgesture: false, //是否开启控制进度的手势
@@ -39,7 +44,9 @@ Page({
   },
   onClose() {
     this.setData({
-      isPlShow: false
+      isPlShow: false,
+      isHf:false,
+      value:''
     })
   },
   // 文章点赞
@@ -100,6 +107,7 @@ Page({
       })
     })
   },
+  // 翻页
   onpullpage() {
     (this.data.page) ++
     this.getComment()
@@ -119,8 +127,6 @@ Page({
       return []
     }
   },
-  // 获取样式
-
 
   // 获取评论
   getComment() {
@@ -158,7 +164,6 @@ Page({
       dynamic_id
     }).then(res => {
       console.log(res, '视频详情')
-      res['desc'] = "哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
       let is_length = res.desc.length > 30
       res['desccopy'] = `${res['desc'].slice(0,25)}...`
       // 判断简介长度
@@ -186,6 +191,82 @@ Page({
       })
       // console.log(that.data.objHeight);
     }).exec();
+  },
+  // 评论
+  onPl() {
+    this.setData({
+      show: true,
+      isHf: false,
+    })
+  },
+  // 回复
+  onhf(e) {
+    let {
+      item
+    } = e.currentTarget.dataset
+    this.setData({
+      show: true,
+      isHf: true,
+      value:'',
+      hfItem: item
+    })
+  },
+  bindblur(e) {
+    console.log('评论', e)
+    this.setData({
+      value: e.detail.value
+    })
+  },
+  // 发布评论
+  addComment() {
+    let {
+      value: content,
+      dynamic_id,
+      isHf,
+      hfItem
+    } = this.data
+    if (!content.trim()) {
+      wx.showToast({
+        title: '请输入评论内容',
+        icon: 'none'
+      })
+      return
+    }
+    if (!isHf) {
+      Api.addComment({
+        content,
+        dynamic_id
+      }).then(res => {
+        wx.showToast({
+          title: '评论成功',
+          icon: 'none',
+        })
+        this.setData({
+          page: 1,
+          show: false
+        })
+        this.getComment()
+        this.getDynamicDetails()
+      })
+    } else {
+      Api.replyComment({
+        content,
+        dynamic_id,
+        comment_id: hfItem.id
+      }).then(res => {
+        wx.showToast({
+          title: '评论成功',
+          icon: 'none',
+        })
+        this.setData({
+          page: 1,
+          show: false
+        })
+        this.getComment()
+        this.getDynamicDetails()
+      })
+    }
+
   },
   // 开始播放
   bindplay() {

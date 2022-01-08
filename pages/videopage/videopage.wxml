@@ -2,10 +2,10 @@
 <view class="videoPage">
   <!-- 顶部 -->
   <Navheader />
-  <video class="videoStyle"  id="myVideo" style="height: {{videoHeight}};" src="http://1254951373.vod2.myqcloud.com/86bace87vodgzp1254951373/4262da1a8602268011302194817/Zr5w4NQctjoA.mp4" controls="{{controls}}" play-btn-position="{{playbtnposition}}" show-fullscreen-btn="{{showfullscreenbtn}}" enable-progress-gesture="{{	enableprogressgesture}}" enable-play-gesture="{{enableplaygesture}}" 	show-center-play-btn="{{	showcenterplaybtn}}" bindplay="{{bindplay}}"  bindpause="{{bindpause}}"></video>
-    <view class="playIcon flexcolumn" style="bottom:{{contentBottom}}" bindtap="bindPlayVideo">
-        <image src="/images/playok.png"  wx:if="{{isPlay}}" style="width:90rpx;height:90rpx;"></image>
-    </view>
+  <video class="videoStyle" id="myVideo" style="height: {{videoHeight}};" src="http://1254951373.vod2.myqcloud.com/86bace87vodgzp1254951373/4262da1a8602268011302194817/Zr5w4NQctjoA.mp4" controls="{{controls}}" play-btn-position="{{playbtnposition}}" show-fullscreen-btn="{{showfullscreenbtn}}" enable-progress-gesture="{{	enableprogressgesture}}" enable-play-gesture="{{enableplaygesture}}" show-center-play-btn="{{	showcenterplaybtn}}" bindplay="{{bindplay}}" bindpause="{{bindpause}}"></video>
+  <view class="playIcon flexcolumn" style="bottom:{{contentBottom}}" bindtap="bindPlayVideo">
+    <image src="/images/playok.png" wx:if="{{isPlay}}" style="width:90rpx;height:90rpx;"></image>
+  </view>
   <!-- 内容 -->
   <view class="contentVideo" style="bottom:{{contentBottom}}">
     <view class="flexbetween">
@@ -17,72 +17,74 @@
     </view>
     <view class="content_desc">
       {{is_Zk?getData.desccopy:getData.desc}}
-      <text class="Zk" wx:if="{{is_Zkbutton}}"  bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text>
+      <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text>
     </view>
   </view>
   <!-- 评论 -->
-  <van-popup
-  show="{{ isPlShow }}"
-  position="bottom"
-  custom-style="height: 40%;"
-  bind:close="onClose"
->
-<view class="pinglun flexcolumn">
-    <view class="pinglun_title">
-      共{{getData.pl_num}}条评论
-    </view>
-    <!-- 评论内容 -->
-    <view style="flex:1;width:100%; overflow-y: auto;">
-      <block wx:for="{{CommentList}}" wx:key="*this">
-      <view class="P_block flexastart">
-        <view class="header_l">
-          <image src="{{item.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
-        </view>
-        <view class="header_R">
-          <view class="plContent">
-            <view class="P_name">
-              {{item.nickname}}
-            </view>
-            <view class="content flexbetween">
-              <view class="content_l" bindtap="onhf" data-item="{{item}}">
-                {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
-              </view>
-              <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
-                <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" /><view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
-              </view>
-            </view>
-          </view>
-          <block wx:for="{{item.replys}}" wx:for-item="reply" wx:key="*this">
-            <view class="P_block noborder flexastart">
+  <van-popup show="{{ isPlShow }}" position="bottom" custom-style="height: 50%;" bind:close="onClose">
+    <view class="pinglun flexcolumn">
+      <view class="pinglun_title">
+        共{{getData.pl_num}}条评论
+      </view>
+      <!-- 评论内容 -->
+      <view style="flex:1;width:100%;height: 100%; overflow-y: auto;">
+        <block wx:if="{{CommentList.length>0}}">
+          <block wx:for="{{CommentList}}" wx:key="*this">
+            <view class="P_block flexastart">
               <view class="header_l">
-                <image src="{{reply.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+                <image src="{{item.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
               </view>
               <view class="header_R">
                 <view class="plContent">
                   <view class="P_name">
-                    {{reply.nickname}}
+                    {{item.nickname}}
                   </view>
                   <view class="content flexbetween">
-                    <!-- bindtap="onhf"  -->
-                    <view class="content_l" data-item="{{reply}}">
-                      {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>
+                    <view class="content_l" bindtap="onhf" data-item="{{item}}">
+                      {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
                     </view>
-                    <!-- <view class="content_R flexcenter">
-                      <van-icon name="like-o" /> <view>{{reply.zan_num}}</view> 
-                    </view> -->
+                    <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
+                      <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" />
+                      <view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
+                    </view>
                   </view>
                 </view>
+                <block wx:for="{{item.replys}}" wx:for-item="reply" wx:key="*this">
+                  <view class="P_block noborder flexastart">
+                    <view class="header_l">
+                      <image src="{{reply.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
+                    </view>
+                    <view class="header_R">
+                      <view class="plContent">
+                        <view class="P_name">
+                          {{reply.nickname}}
+                        </view>
+                        <view class="content flexbetween">
+                          <!-- bindtap="onhf"  -->
+                          <view class="content_l" data-item="{{reply}}">
+                            {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </block>
               </view>
             </view>
           </block>
-        </view>
+        </block>
+        <block wx:else>
+          <view class="isunllCommentList flexcolumn">暂无评论~</view>
+        </block>
       </view>
-    </block>
+      <!-- 评论区 -->
+      <view class=" pLStylebottom flexaround">
+        <input type="text" class="pLStylebottominput" value="{{value}}" bindblur="bindblur" placeholder="{{isHf?'回复'+hfItem.nickname:'评论作者'}}" />
+        <view class="onPlpull" bindtap="addComment">发送</view>
+        <!-- <view class="onPlpull" wx:else bindtap="onhf" >回复</view> -->
+      </view>
     </view>
-    <!-- 评论区 -->
-   <input  type="text" placeholder="请输入评论内容"/>
-  </view>
-</van-popup>
+  </van-popup>
   <!-- d底部操作 -->
   <view class="foolter flexastart">
     <label for="">

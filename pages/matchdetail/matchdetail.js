@@ -39,7 +39,7 @@ Page({
     Api.get_match_details({
       match_id: id
     }).then(res => {
-      res['djs_time'] = res['end_time'] * 1000 - (+new Date())
+      res['djs_time'] = res['end_time'] * 1000 - (+new Date())>0?res['end_time'] * 1000 - (+new Date()):0
       res['start_time'] = formatDate(res['start_time'])
       res['end_time'] = formatDate(res['end_time'])
       console.log(res)

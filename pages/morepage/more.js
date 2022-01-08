@@ -49,7 +49,7 @@ Page({
       {
         title: "分享推荐",
         icon: "vip-card-o",
-        to: "../../pages/vipchagepage/vipchagepage",
+        to: "",
         linktype: "navigateTo",
         value: "",
         isborder: false,

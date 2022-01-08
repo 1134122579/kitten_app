@@ -37,7 +37,8 @@ Component({
         is_content:true
       },
       {
-        pagePath: "pages/spacepage/space",
+        // pages/spacepage/space
+        pagePath: "",
         text: "商城",
         iconPath: "../images/shopicon.png",
         selectedIconPath: "../images/shopicon.png",

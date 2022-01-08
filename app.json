@@ -53,36 +53,26 @@
     "custom": true,
     "color": "#272822",
     "selectedColor": "#D13027",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "./images/home.png",
-        "selectedIconPath": "./images/home_s.png"
+        "text": "首页"
       },
       {
         "pagePath": "pages/orderpage/order",
-        "text": "订单",
-        "iconPath": "./images/time.png",
-        "selectedIconPath": "./images/time_s.png"
+        "text": "订单"
       },
       {
         "pagePath": "pages/releasepage/releasepage",
-        "text": "会员",
-        "iconPath": "./images/vipcard.png",
-        "selectedIconPath": "./images/vipcard_s.png"
+        "text": "会员"
       },
       {
         "pagePath": "pages/spacepage/space",
-        "text": "空间",
-        "iconPath": "./images/list.png",
-        "selectedIconPath": "./images/list_s.png"
+        "text": "空间"
+
       },
       {
         "pagePath": "pages/morepage/more",
-        "text": "更多",
-        "iconPath": "./images/about.png",
-        "selectedIconPath": "./images/about_s.png"
+        "text": "更多"
       }
     ]
   },

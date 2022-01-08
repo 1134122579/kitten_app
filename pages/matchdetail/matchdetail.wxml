@@ -35,7 +35,7 @@
       </view>
     </view>
     <!-- 倒计时 -->
-    <view class="tag_style flexbetween">
+    <view class="tag_style flexbetween" wx:if="{{getdata.djs_time>0}}">
       <view class="flexastart ">
         <image src="/images/nz.png" size="18" style="width:18px;height: 18px;display: block;" />
         <view class="hd_text flexastart">
