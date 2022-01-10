@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/enroll/enroll",
     "pages/baomingpage/baomingpage",
     "pages/articlepage/articlepage",
     "pages/likepage/likepage",
