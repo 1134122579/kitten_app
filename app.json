@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/baomingpage/baomingpage",
     "pages/articlepage/articlepage",
     "pages/likepage/likepage",
     "pages/videopage/videopage",
@@ -77,6 +78,9 @@
     ]
   },
   "usingComponents": {
+    
+    "CatBmModel": "./components/CatBmModel/CatBmModel",
+    "CatListPopup": "./components/CatListPopup/CatListPopup",
     "NavFollowModel": "./components/NavFollowModel/NavFollowModel",
     "MyNavModel": "./components/MyNavModel/MyNavModel",
     "HomeBlockModel": "./components/HomeBlockModel/HomeBlockModel",

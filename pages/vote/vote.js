@@ -68,17 +68,13 @@ Page({
   },
   // 判断是否登录
   is_load(callback) {
-    storage.getToken(res => {
-      if (res && !App.globalData.is_login) {
-        callback();
-      } else {
-        wx.navigateTo({
-          url: "/pages/login/login",
-        });
-      }
-    })
-
-
+    if(storage.getToken() && !App.globalData.is_login){
+      callback();
+    }else{
+      wx.navigateTo({
+        url: "/pages/login/login",
+      });
+    }
   },
   // 投票
   join_vote(e) {
@@ -87,7 +83,7 @@ Page({
       id,
       vote_id
     } = e.detail
-
+    console.log(21)
     this.is_load(() => {
       Api.join_vote({
         id,

@@ -8,6 +8,7 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } */
+@import './myicon/iconfont.wxss';
 page {
   width: 100%;
   height: 100%;

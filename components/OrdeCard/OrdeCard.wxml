@@ -8,12 +8,12 @@
 		<view class="box_desc flexastart">
 			<view class="box_L">
 				<view class="box_p "><text>主办方：</text><text>{{item.master_name}}</text></view>
-				<view class="box_p"><text>时间：</text><text>{{item.start_time}}</text></view>
-				<view class="box_p"><text>地址：</text><text>{{item.address}}</text></view>
+				<view class="box_p"><text>赛事时间：</text><text>{{item.start_time}}</text></view>
+				<view class="box_p"><text>赛事地址：</text><text>{{item.address}}</text></view>
 			</view>
 			<view class="box_r flexastart">
 				<van-icon name="https://img.js.design/assets/img/61b449db7eee4381aa368d4c.png" size="36rpx"></van-icon>
-				<view class="NUm">33356</view>
+				<view class="NUm">{{item.match_pv}}</view>
 			</view>
 		</view>
 	</view>

@@ -47,8 +47,8 @@
 
 .M_imageurl {
   width: 100%;
-  /* min-height: 180px; */
-  max-height: 240px;
+  min-height: 200rpx;
+  max-height: 280rpx;
   /* margin-top: -50px; */
 }
 
@@ -146,4 +146,8 @@ font-size: 20rpx;
 }
 .flooter{
   margin-top: 10rpx;
+}
+.onLikenum{
+  font-size: 24rpx;
+  margin-left: 4rpx;
 }

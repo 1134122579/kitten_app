@@ -19,6 +19,7 @@ Component({
         console.log(nv, ov)
         nv['end_time'] =nv['end_time']? formatDate(nv['end_time']):'未知'
         nv['start_time'] = formatDate(nv['start_time'])
+        nv['match_pv'] =nv['match_pv']>9999?`${parseInt(nv['match_pv']/10000)}W`:nv['match_pv']
         this.setData({
           item: nv
         })

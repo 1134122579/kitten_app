@@ -1,0 +1,23 @@
+page {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fafafa;
+  font-size: 28rpx;
+}
+
+.lableStyle {
+  padding: 20rpx;
+  background: #fff;
+}
+
+.lable_value {
+  color: #dfd9d9;
+}
+
+/* 猫咪列表 */
+.catList {
+  padding: 20rpx;
+  box-sizing: border-box;
+
+}
+

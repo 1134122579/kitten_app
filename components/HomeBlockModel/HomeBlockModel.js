@@ -11,7 +11,12 @@ Component({
     item: {
       type: Object,
       value: {},
-      observer(newV, oldV) {}
+      observer(newV, oldV) {
+        newV['zan_num']=  newV['zan_num']>10000?newV['zan_num']+'w':newV['zan_num']
+      this.setData({
+        item:newV
+      })
+      }
     },
     isticket: {
       type: ["String", "Number"],
@@ -58,6 +63,8 @@ Component({
         vote_id,
         is_zan
       } = this.data.item
+      console.log('首页禁止点赞')
+      return
       let {
         is_like
       } = this.data

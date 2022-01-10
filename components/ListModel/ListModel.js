@@ -66,15 +66,6 @@ Component({
     isSwitchList: {
       type: String,
       observer(newV, oldV) {
-        // if(newV!=oldV){
-        //   // this.setData({
-        //   //   leftList: [], //左边数组
-        //   //   rightList: [], //右边数组
-        //   // })
-        //   console.log("isSwitchList",newV,oldV)
-        //   this.data.leftList=[]; //左边数组
-        //   this.data.rightList=[]; //左边数组
-        // }
       }
     },
     isSearch: {

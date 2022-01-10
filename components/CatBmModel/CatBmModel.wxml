@@ -1,0 +1,96 @@
+<wxs src="../../utils/split.wxs" module="split" />
+<view class="catBlock">
+  <view class="cat_header flexbetween">
+    <view class="flexastart">
+      <view>
+        <image src="/images/abouticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;"></image>
+      </view>
+      <view>
+        <view class="name flexastart">
+          <text class="name_text">{{item.cat_name}}</text>
+          <van-icon wx:if="{{item.sex==1}}" size="18" name="/images/gong_icon.png"></van-icon>
+          <van-icon wx:else size="18" name="/images/mu_icon.png"></van-icon>
+        </view>
+        <view>
+          {{item.birthday}}
+        </view>
+      </view>
+    </view>
+    <view class="typeButton" bindtap="onClick">
+      选择组别
+    </view>
+  </view>
+  <!-- 选项 -->
+  <view class="catList flexbetween" wx:if="{{isShowTypeList}}">
+    <block wx:for="{{looktypeList}}" wx:key="index">
+      <view class="typeBlock flexbetween">
+        <view class="flexbetween"><text>●</text><text style="margin-left: 10rpx;">{{item.name}}</text></view>
+        <view class="price">￥ <text style="color: #FF6A6E;">{{item.price}}</text> </view>
+      </view>
+    </block>
+  </view>
+</view>
+<!-- 弹窗 -->
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+  <view class="popupStyle flexcolumn">
+    <view class="popupStyle_header">
+      <view class="popupStyle_title">参赛组别</view>
+      <view class="flexbetween">
+        <!-- 左边 -->
+        <view class="typelisttitle">
+          环赛
+          <view class="tag">(必选/单选)</view>
+        </view>
+        <!-- 右边 -->
+        <view class="typelisttitle">
+          非环赛
+          <view class="tag">(非必选/可多选)</view>
+        </view>
+
+      </view>
+    </view>
+    <!-- 列表 -->
+    <view class="popupStyle_content flexbetween">
+      <!-- 左边 -->
+      <view class="Left typelist">
+        <block wx:for="{{matchGroupobj.beisai}}" wx:key="index">
+          <label>
+            <view class="t_b flexbetween" bindtap="onrideo" data-item="{{item}}">
+              <view>
+                {{item.name}} <text class="price">￥{{item.price}}</text>
+              </view>
+              <view class="iconfont {{isHuansai==item.id?'icon-danxuanxuanzhong':'icon-danxuanweixuanzhong'}} "></view>
+            </view>
+          </label>
+
+        </block>
+      </view>
+      <!-- 右边 -->
+      <view class="Left typelist">
+        <block wx:for="{{matchGroupobj.no_beisai}}" wx:key="index">
+          <label>
+            <view class="t_b flexbetween" data-item="{{item}}" bindtap="oncheck">
+              <view>
+                窝次组 <text class="price">¥400</text>
+              </view>
+              <view class="iconfont {{split.ridefilter(checkList,item.id)?'icon-danxuanxuanzhong':'icon-danxuanweixuanzhong'}} "></view>
+            </view>
+          </label>
+        </block>
+      </view>
+
+    </view>
+
+    <view class="button_ flexbetween">
+      <!-- 左边 -->
+      <view class="button_B" bindtap="onClose">
+        取消
+      </view>
+      <!-- 右边 -->
+      <view class="button_B" style="color: #FF6A6E;" bindtap="onokClick">
+        确认
+      </view>
+
+    </view>
+  </view>
+</van-popup>

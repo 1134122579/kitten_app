@@ -12,7 +12,32 @@ Page({
   data: {
     nullheaderImage: 'https://img.js.design/assets/img/61b44a697eee4352133690cc.png',
     getdata: {},
-    timeData:{}
+    timeData:{},
+    match_id:'',
+    page:1,
+    MatchImgList:[],  // 精彩瞬间
+  },
+  onPullDown(){
+(this.data.page)++
+this.getMatchImg()
+  },
+  // 精彩瞬间
+  getMatchImg(){
+    let {match_id,page,MatchImgList}=this.data
+Api.getMatchImg({match_id,page}).then(res=>{
+  this.setData({
+    isNullList:res.length>0?false:true
+  })
+  if(page==1){
+    this.setData({
+      MatchImgList:res
+    })
+  }else{
+    this.setData({
+      MatchImgList:MatchImgList.concat(res)
+    })
+  }
+})
   },
   // 倒计时
   oncountChange(e) {
@@ -26,7 +51,6 @@ Page({
     } = this.data.getdata
     wx.navigateTo({
       url: `/pages/matchenroll/matchenroll?match_id=${id}`,
-
     })
   },
   /**
@@ -36,6 +60,10 @@ Page({
     let {
       id
     } = options
+    this.setData({
+      match_id:id,
+      page:1
+    })
     Api.get_match_details({
       match_id: id
     }).then(res => {
@@ -47,7 +75,7 @@ Page({
         getdata: res
       })
     })
-
+    this.getMatchImg()
   },
 
   /**
@@ -82,7 +110,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+      this.onPullDown()
+      
   },
 
   /**

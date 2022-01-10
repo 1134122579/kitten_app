@@ -1,0 +1,23 @@
+<view>
+  <!-- 猫咪选择 -->
+  <label for="">
+    <view class="lableStyle flexbetween" bindtap="onClick">
+      <view class="lable_title">
+        选择猫咪
+      </view>
+      <view class="lable_value">
+        请选择
+      </view>
+    </view>
+  </label>
+  <!-- 猫咪列表 -->
+  <view class="catList">
+    <block wx:for="{{isCatObjlist}}" wx:if="{{isCatObjlist.length>0}}">
+      <CatBmModel catItem="{{item}}" matchGroupobj="{{matchGroupobj}}" isShowTypeList="{{isShowTypeList}}" bind:typeitem="cattypeitem" />
+    </block>
+    <block wx:if="{{isCatObjlist.length<=0}}">
+      <EmptyModel />
+    </block>
+  </view>
+  <CatListPopup catList="{{list}}" isShow="{{show}}" bindmyevent="myevent" />
+</view>

@@ -2,7 +2,7 @@
   margin: 0 27rpx;
   padding: 16rpx 0;
   box-sizing: border-box;
-  border-bottom: 1rpx solid rgba(166, 166, 166, 1);
+  border-bottom: 1rpx solid rgb(235, 234, 234);
 }
 
 .covreImg {
@@ -61,4 +61,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }

@@ -47,6 +47,12 @@
           "pathName": "pages/videopage/videopage",
           "query": "user_id=33&dynamic_id=7",
           "scene": null
+        },
+        {
+          "name": "报名页面",
+          "pathName": "pages/baomingpage/baomingpage",
+          "query": "id=1",
+          "scene": null
         }
       ]
     }

@@ -621,5 +621,21 @@ export default {
       isThree: false,
     });
   },
+  getMatchImg(params) {
+    return fly({
+      url: `getMatchImg`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  matchGroup(params) {
+    return fly({
+      url: `matchGroup`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
   
 };

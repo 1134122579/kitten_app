@@ -24,7 +24,7 @@
         </view>
         <view class="header_time flexastart">
           类型 ： <view class="time">
-            {{getdata.master_name}}
+            {{getdata.type_name}}
           </view>
         </view>
       </view>
@@ -66,7 +66,7 @@
       <view class="cell_title">协议酒店</view>
       <view class="cell_text flexastart">
         <view>
-          {{getdata.address}}
+          {{getdata.hotel}}
         </view>
         <image class="locationicon" src="/images/locationicon.png"></image>
       </view>
