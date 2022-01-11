@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/enroll/enroll",
+    "pages/dynamicpage/dynamicpage",
     "pages/baomingpage/baomingpage",
     "pages/articlepage/articlepage",
     "pages/likepage/likepage",

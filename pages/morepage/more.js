@@ -10,18 +10,18 @@ Page({
     navHeight: appInst.globalData.navHeight,
     userInfo: {},
     list: [
-      // {
-      //   title: "我的动态",
-      //   icon: "shield-o",
-      //   to: "../../pages/scanpage/scanpage",
-      //   linktype: "navigateTo",
-      //   value: "",
-      //   isborder: false,
-      //   marginTop: "marginTop",
-      //   is_power: "admin",
-      //   isLink:false,
-      //   isbutton:false
-      // },
+      {
+        title: "我的动态",
+        icon: "shield-o",
+        to: "../../pages/dynamicpage/dynamicpage",
+        linktype: "navigateTo",
+        value: "",
+        isborder: false,
+        marginTop: "marginTop",
+        is_power: "admin",
+        isLink:false,
+        isbutton:false
+      },
       {
         title: "投票活动",
         icon: "shield-o",

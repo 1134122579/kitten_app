@@ -1,0 +1,5 @@
+<!-- 我的动态 -->
+
+<view>
+<ListModel list="{{catList}}" listType="{{listType}}" isStatus="{{isStatus}}"/>
+</view>
