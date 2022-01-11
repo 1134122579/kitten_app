@@ -4,23 +4,23 @@
 	<!-- nav  -->
 	<!-- 个人信息 -->
 	<view class="more_header">
-		<image class="header_bg" src="../../images/anoutbg.png"></image>
+		<image class="header_bg" src="https://img.js.design/assets/img/61b45304013b1b249687edff.png"></image>
 		<view class="user_content" style="margin-top:{{navHeight-1}}px">
 			<view class="user_content_t" bindtap="onuserInfo">
-				<van-image round width="100rpx" height="100rpx" src="{{userInfo.photo||'../../../../images/Group.png'}}"></van-image>
+				<van-image round width="100rpx" height="100rpx" src="{{userInfo.headimgurl||'../../../../images/Group.png'}}"></van-image>
 				<view class="userName">{{userInfo.name||'未认证'}}</view>
 				<van-icon name="edit" size="18" />
 			</view>
 			<!-- 数据 -->
 			<view class="numList flexaround">
-				<view class="listBlock flexcolumn">
+				<!-- <view class="listBlock flexcolumn">
 					<view class="num">
 						{{userInfo.like_num}}
 					</view>
 					<view class="numname">
 						消息
 					</view>
-				</view>
+				</view> -->
 				<view class="listBlock flexcolumn" bindtap="goList" data-id="3">
 					<view class="num">
 						{{userInfo.follow_num}}
@@ -31,7 +31,7 @@
 				</view>
 				<view class="listBlock flexcolumn" bindtap="goList" data-id="1">
 					<view class="num">
-						99
+						{{userInfo.like_num}}
 					</view>
 					<view class="numname">
 						收藏
@@ -58,7 +58,7 @@
 				<view class="numList flexaround shop">
 					<view class="listBlock flexcolumn">
 						<view class="num">
-							99
+							{{userInfo.daishou}}
 						</view>
 						<view class="numname">
 							待售
@@ -66,7 +66,7 @@
 					</view>
 					<view class="listBlock flexcolumn">
 						<view class="num">
-							99
+							{{userInfo.zhanshi}}
 						</view>
 						<view class="numname">
 							展示
@@ -74,7 +74,7 @@
 					</view>
 					<view class="listBlock flexcolumn">
 						<view class="num">
-							99
+							{{userInfo.zhonggong}}
 						</view>
 						<view class="numname">
 							种公
@@ -82,7 +82,7 @@
 					</view>
 					<view class="listBlock flexcolumn">
 						<view class="num">
-							99
+							{{userInfo.zhongmu}}
 						</view>
 						<view class="numname">
 							种母

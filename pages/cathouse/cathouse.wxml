@@ -69,8 +69,8 @@
       </view>
     </view>
   </view>
-</view>
-<!-- 获取猫咪列表 -->
+  <!-- 获取猫咪列表 -->
 <view class="list">
   <ListModel list="{{catList}}" listType="{{listType}}" isNullList="{{isNullList}}"  isStatus="{{isStatus}}"/>
+</view>
 </view>

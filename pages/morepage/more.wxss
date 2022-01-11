@@ -44,6 +44,7 @@ page {
 
 .header_footer {
   margin: 20rpx;
+  margin-top: 45rpx;
   box-sizing: border-box;
   background: #6270ca;
   color: #fff;
@@ -104,7 +105,7 @@ height: 38rpx;
 .function_title {
   font-size: 36rpx;
   font-weight: 600;
-  padding: 0 20rpx;
+  padding:20rpx;
 }
 
 .contact {

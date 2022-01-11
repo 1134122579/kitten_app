@@ -177,7 +177,7 @@ App({
     is_login: true,
     longitude: '',
     latitude: '',
-    baseUrl: "https://api.catcius.com/api/v1/",
+    baseUrl: "https://api.catcius.com/api/v2/",
     userInfo: null,
     statusBarHeight: null,
     redBg: "#ff0000",

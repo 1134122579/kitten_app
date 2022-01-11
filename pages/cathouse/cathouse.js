@@ -12,7 +12,7 @@ Page({
     isNullList: true,
     listQuery: {
       page: 1,
-      user_id: 35,
+      user_id: '',
       cat_status: 1,
     },
     homenfo: {}, //猫舍信息
@@ -38,6 +38,7 @@ Page({
     this.setData({
       isStatus: Number(status),
       is_list: true,
+      "listQuery.cat_status": Number(status),
       "listQuery.page": 1
     });
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
@@ -93,6 +94,10 @@ Page({
           }
         })
       }
+      this.setData({
+        catList: catiInfo
+      })
+      return
       if (listQuery.page == 1) {
         this.setData({
           catList: catiInfo
