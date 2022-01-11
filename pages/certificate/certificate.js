@@ -11,6 +11,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ischeckbox:false,
     maxcount: 1,
     cat_id: '',
     title: "",
@@ -69,7 +70,24 @@ Page({
       id: 2,
       text: '母'
     }],
+    isShow:false,
+    rediocat:''
   },
+// 选择猫咪
+oncatShow(){
+  this.setData({
+    isShow: true,
+    ischeckbox:false
+  });
+},
+setCatItem(e) {
+  let { isShow, isCatObjlist, rediocat ,isCatList } = e.detail;
+    this.setData({
+      isShow: false,
+      rediocat,
+      cat_id:rediocat.id
+    });
+},
   // 获取标签
   getHotLable() {
     Api.getSelectCatList().then(res => {
@@ -395,6 +413,13 @@ Page({
     let home_cert_url = fileList?.[0]?.url
     let parent_cret_url = fileListXT?.[0]?.url
     let apply_table_url = fileListSQb?.[0]?.url
+    if (!cat_id) {
+      wx.showToast({
+        title: "请选择猫咪",
+        icon: "none",
+      });
+      return;
+    }
     if (!home_cert_url) {
       wx.showToast({
         title: "请上传猫舍证书",

@@ -53,6 +53,12 @@
           "pathName": "pages/baomingpage/baomingpage",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "name": "添加猫咪",
+          "pathName": "pages/addcat/addcat",
+          "query": "",
+          "scene": null
         }
       ]
     }

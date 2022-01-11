@@ -47,7 +47,7 @@ Page({
     );
     this.setData({
       isCatObjlist,
-      z_price,
+      z_price:z_price.toFixed(2),
     });
   },
   myevent(e) {
@@ -90,10 +90,9 @@ Page({
     });
     Api.joinMatch({ match_id, cat_info }).then((res) => {
       console.log(res, "创建订单成功");
-    let {oeder_no:out_trade_no}=res
       // 调用支付
       Api.payMatchOrder(res).then((res) => {
-        let { nonceStr, paySign, signType, timeStamp } = res;
+        let { nonceStr, paySign, signType, timeStamp ,out_trade_no} = res;
         wx.requestPayment({
           nonceStr,
           signType,
@@ -105,8 +104,14 @@ Page({
               out_trade_no,
             }).then((res) => {
               wx.showToast({
-                title: "参加成功",
+                title: "参加成功,1.5秒自动返回",
+                icon:'none'
               });
+              setTimeout(() => {
+                wx.navigateBack({
+                  delta: 1,
+                })
+              }, 1500);
             });
           },
           complete() {
@@ -133,7 +138,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      match_id: options.id,
+      match_id: options.match_id,
     });
     this.getSelectCatList();
     this.matchGroup();

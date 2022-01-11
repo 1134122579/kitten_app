@@ -1,9 +1,12 @@
 <!-- 投票界面登记 -->
 
 <view class="enroll">
-  <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="cat_name">
+  <!-- <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="cat_name">
     <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择证书注册" value="{{label}}" readonly label="证书注册项目" />
-  </picker>
+  </picker> -->
+  <label bindtap="oncatShow">
+    <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择证书注册" value="{{rediocat.cat_name}}" readonly label="证书注册项目" />
+  </label>
   <view class="cat_detail">
     <view class="e_title">
       WCCF猫舍证书
@@ -64,3 +67,4 @@
     <van-button block round type="warning" bind:click="onClick">提交申请</van-button>
   </view>
 </view>
+<CatListPopup catList="{{PzList}}" ischeckbox="{{ischeckbox}}" isShow="{{isShow}}" bind:myevent="setCatItem" />

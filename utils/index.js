@@ -64,7 +64,6 @@ export function formatTime(time, option) {
     }
     const d = new Date(time)
     const now = Date.now()
-
     const diff = (now - d) / 1000
 
     if (diff < 30) {

@@ -1,136 +1,123 @@
 // pages/matchdetail/matchdetail.js
-import Api from '../../api/index'
-import {
-  formatDate
-} from '../../utils/util'
+import Api from "../../api/index";
+import { formatDate } from "../../utils/util";
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    nullheaderImage: 'https://img.js.design/assets/img/61b44a697eee4352133690cc.png',
+    nullheaderImage:
+      "https://img.js.design/assets/img/61b44a697eee4352133690cc.png",
     getdata: {},
-    timeData:{},
-    match_id:'',
-    page:1,
-    MatchImgList:[],  // 精彩瞬间
+    timeData: {},
+    match_id: "",
+    page: 1,
+    MatchImgList: [], // 精彩瞬间
   },
-  onPullDown(){
-(this.data.page)++
-this.getMatchImg()
+  onPullDown() {
+    this.data.page++;
+    this.getMatchImg();
   },
   // 精彩瞬间
-  getMatchImg(){
-    let {match_id,page,MatchImgList}=this.data
-Api.getMatchImg({match_id,page}).then(res=>{
-  this.setData({
-    isNullList:res.length>0?false:true
-  })
-  if(page==1){
-    this.setData({
-      MatchImgList:res
-    })
-  }else{
-    this.setData({
-      MatchImgList:MatchImgList.concat(res)
-    })
-  }
-})
+  getMatchImg() {
+    let { match_id, page, MatchImgList } = this.data;
+    Api.getMatchImg({ match_id, page }).then((res) => {
+      this.setData({
+        isNullList: res.length > 0 ? false : true,
+        MatchImgList: res,
+      });
+      return
+      if (page == 1) {
+        this.setData({
+          MatchImgList: res,
+        });
+      } else {
+        this.setData({
+          MatchImgList: MatchImgList.concat(res),
+        });
+      }
+    });
   },
   // 倒计时
   oncountChange(e) {
     this.setData({
-      timeData: e.detail
-    })
+      timeData: e.detail,
+    });
   },
-  goBaobutton(){
-    let {
-      id
-    } = this.data.getdata
+  goBaobutton() {
+    let { id } = this.data.getdata;
     wx.navigateTo({
-      url: `/pages/matchenroll/matchenroll?match_id=${id}`,
-    })
+      url: `/pages/baomingpage/baomingpage?match_id=${id}`,
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let {
-      id
-    } = options
+    let { id } = options;
     this.setData({
-      match_id:id,
-      page:1
-    })
+      match_id: id,
+      page: 1,
+    });
     Api.get_match_details({
-      match_id: id
-    }).then(res => {
-      res['djs_time'] = res['end_time'] * 1000 - (+new Date())>0?res['end_time'] * 1000 - (+new Date()):0
-      res['start_time'] = formatDate(res['start_time'])
-      res['end_time'] = formatDate(res['end_time'])
-      console.log(res)
+      match_id: id,
+    }).then((res) => {
+      res["djs_time"] =
+        res["end_time"] * 1000 - +new Date() > 0
+          ? res["end_time"] * 1000 - +new Date()
+          : 0;
+      res["start_time"] = formatDate(res["start_time"]);
+      res["end_time"] = formatDate(res["end_time"]);
+      console.log(res);
       this.setData({
-        getdata: res
-      })
-    })
-    this.getMatchImg()
+        getdata: res,
+      });
+    });
+    this.getMatchImg();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
-  },
+  onReady: function () {},
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-
-  },
+  onUnload: function () {},
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-      this.onPullDown()
-      
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.onPullDown();
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    let {
-      getdata
-    } = this.data
+    let { getdata } = this.data;
     return {
       title: getdata.title,
-      imageUrl: getdata.cover
-    }
-  }
-})
+      imageUrl: getdata.cover,
+    };
+  },
+});

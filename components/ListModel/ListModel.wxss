@@ -3,7 +3,9 @@
 .listModel{
   /* padding-bottom: 20px; */
   /* background: #DBDBDB; */
+  width: 100%;
   padding:0 20rpx ;
+  box-sizing: border-box;
 }
 .tab_content_list {
   position: relative;
@@ -11,12 +13,12 @@
 
 .tab_left{
   width: 360rpx;
-  width: 48%;
+  width: 49%;
   float: left;
 }
 .tab_right {
-  width: 48%;
   width: 360rpx;
+  width: 49%;
   float: right;
 }
 .tab_content_list:after{

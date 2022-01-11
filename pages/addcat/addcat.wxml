@@ -53,8 +53,8 @@
     </view>
     <view class="e_block">
       <van-cell-group>
-           <!-- 类别 -->
-           <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
+        <!-- 类别 -->
+        <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择级别" value="{{cat_statustext}}" readonly label="级别" />
         </picker>
         <!-- 类别 -->
@@ -78,6 +78,44 @@
   </view>
   <view class="cat_detail">
     <view class="e_title">
+      父亲信息
+    </view>
+    <!-- 父亲信息 -->
+    <label bindtap="onfatherCatshow">
+      <!-- fatherCat -->
+      <van-field size="large" input-align="right" border="{{ true }}" placeholder="请选择" value="{{fatherCat.cat_name}}" readonly label="父亲信息" />
+    </label>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      母亲信息
+    </view>
+    <!-- 母亲信息 -->
+    <!-- mother -->
+    <label bindtap="onmothershow">
+      <van-field size="large" input-align="right" border="{{ true }}" placeholder="请选择" value="{{motherCat.cat_name}}" readonly label="母亲信息" />
+    </label>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
+      同窝信息
+    </view>
+    <!-- 同窝信息 -->
+    <label bindtap="onnestshow">
+      <van-field size="large" input-align="right" border="{{ true }}" placeholder="请选择" readonly label="同窝信息" use-button-slot>
+        <view slot="input" class="flexastart" style="justify-content: flex-end;width: 100%;">
+          <block wx:for="{{nestobjList}}" wx:key="index">
+            <text style="background: #ccc;padding:3rpx 14rpx;margin-left: 10rpx;border-radius: 30rpx;color: #fff;font-size: 24rpx;">{{item.cat_name}}</text>
+          </block>
+        </view>
+        <!-- <van-button slot="button" size="small" type="primary">
+          发送验证码
+        </van-button> -->
+      </van-field>
+    </label>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
       简介信息
     </view>
     <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
@@ -87,3 +125,5 @@
   </view>
 
 </view>
+<!-- 单选  父母-->
+<CatListPopup catList="{{catList}}" ischeckbox="{{ischeckbox}}" isShow="{{isShow}}" bind:myevent="setCatItem" />

@@ -34,6 +34,14 @@ Component({
       type: Array,
       value: [],
       observer(newV, oldV) {
+        if(this.data.listType=='MatchImgList'){
+          this.setData({
+            alllist:newV,
+            isNullList:newV.length>0?true:false
+          })
+          this.waterfallFlow()
+          return
+        }
         let {
           alllist
         } = this.data

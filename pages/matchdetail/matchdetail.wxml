@@ -1,5 +1,5 @@
 <view class="saishipage flexcolumn">
-<Navheader/>
+  <Navheader />
   <!-- 头部 -->
   <view class="headerImage">
     <image class="imageStyle" mode="widthFix" src="{{getdata.cover||nullheaderImage}}"></image>
@@ -71,10 +71,6 @@
         <image class="locationicon" src="/images/locationicon.png"></image>
       </view>
     </view>
-
-
-
-
   </view>
 
   <!-- 内容  活动人物-->
@@ -83,10 +79,10 @@
       开设组别
     </view>
     <view class="typeList flexastart">
-      <block wx:for="{{10}}" wx:key="index">
+      <block wx:for="{{getdata.group_info}}" wx:key="index">
         <view class="type_block flexcolumn">
-          <view class="typeListname">LITTER</view>
-          <view class="userdesc">窝次组</view>
+          <view class="typeListname">{{item.title}}</view>
+          <view class="userdesc">{{item.name}}</view>
         </view>
       </block>
     </view>
@@ -95,7 +91,7 @@
   <!-- 内容  裁判阵容-->
   <view class="new_content">
     <view class="typetitle">
-      开设组别
+      裁判阵容
     </view>
     <view class="typeList flexastart">
       <block wx:for="{{getdata.pwinfo}}" wx:key="index">
@@ -104,18 +100,19 @@
             <image style="width: 100%;height: 100%;display: block;" src="{{item.photos||nullheaderImage}}"></image>
           </view>
           <view class="typeListname">{{item.name}}</view>
-          <view class="userdesc">裁判</view>
+          <view class="userdesc">{{item.type}}裁判</view>
         </view>
       </block>
     </view>
   </view>
   <!-- 内容  精彩瞬间-->
-  <view class="new_content">
+  <view class="new_content jcsj">
     <view class="typetitle">
       精彩瞬间
     </view>
     <view class="typeList flexastart">
-      图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图
+      <!-- 瞬间 -->
+      <ListModel listType="MatchImgList" style="width: 100%;" list="{{MatchImgList}}" isStatus="{{}}" />
     </view>
   </view>
 </view>

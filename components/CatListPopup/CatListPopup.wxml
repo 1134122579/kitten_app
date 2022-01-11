@@ -1,9 +1,9 @@
 <!-- 弹窗 -->
 <wxs src="../../utils/split.wxs" module="split" />
-<van-popup show="{{ show }}" position="bottom" custom-style="height: 50%;" bind:close="onClose" round>
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
   <view class="popupStyle flexcolumn">
     <view class="popupStyle_header">
-      <view class="popupStyle_title">选择参赛猫咪</view>
+      <view class="popupStyle_title">选择猫咪</view>
     </view>
     <!-- 列表 -->
     <view class="popupStyle_content ">
@@ -26,21 +26,34 @@
                   </view>
                 </view>
               </view>
-              <view class="{{split.ridefilter(isCatList,item.id)?'typeButton trueCat ':'typeButton'}}" bindtap="onClick" data-item="{{item}}">
-                选择猫咪
-              </view>
+              <!-- 多选 -->
+              <block wx:if="{{ischeckbox}}">
+                <view class="{{split.ridefilter(isCatList,item.id)?'typeButton trueCat ':'typeButton'}}" bindtap="onClick" data-item="{{item}}">
+                  选择猫咪
+                </view>
+              </block>
+              <!-- 单选 -->
+              <block wx:if="{{!ischeckbox}}">
+                <view class="{{isredioId==item.id?'typeButton trueCat ':'typeButton'}}" bindtap="onClick" data-item="{{item}}">
+                  选择猫咪
+                </view>
+              </block>
+
             </view>
           </view>
         </block>
       </view>
-      <view wx:else  class="nullCat flexcolumn">
-              <view class="flexcenter">
-                <view>暂无猫咪</view>
-                <view class="goaddcat flexcenter" bindtap="goadd"> <view>前去添加</view>  <van-icon name="arrow" size="16" /></view>
-              </view>
+      <view wx:else class="nullCat flexcolumn">
+        <view class="flexcenter">
+          <view>暂无猫咪</view>
+          <view wx:if="{{ischeckbox}}" class="goaddcat flexcenter" bindtap="goadd">
+            <view>前去添加</view>
+            <van-icon name="arrow" size="16" />
+          </view>
+        </view>
       </view>
     </view>
-    <view class="button_ flexbetween">
+    <view class="button_cat flexbetween">
       <!-- 左边 -->
       <view class="button_B" bindtap="onClose">
         取消

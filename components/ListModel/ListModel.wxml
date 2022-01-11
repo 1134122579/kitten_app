@@ -6,6 +6,11 @@
         <MyCatModel item="{{item}}" wx:if="{{listType=='mycathouse'}}" bind:join_vote="join_vote" />
         <!-- 首页 -->
         <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
+        <!-- 精彩瞬间 -->
+        <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
+          <image mode="widthFix" style="width: 100%;" src="{{item.url}}"></image>
+        </view>
+
         <!-- <CatModel item="{{item}}"  bind:join_vote="join_vote"  isticket="{{isticket}}"/> -->
       </block>
     </view>
@@ -15,6 +20,10 @@
         <MyCatModel item="{{item}}" wx:if="{{listType=='mycathouse'}}" bind:join_vote="join_vote" />
         <!-- 首页 -->
         <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
+           <!-- 精彩瞬间 -->
+           <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
+          <image mode="widthFix" style="width: 100%;" src="{{item.url}}"></image>
+        </view>
         <!-- <CatModel item="{{item}}"  bind:join_vote="join_vote" isticket="{{isticket}}"/> -->
       </block>
     </view>

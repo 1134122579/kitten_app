@@ -16,10 +16,20 @@ Component({
         });
       },
     },
+    // 是否单选 多选
+    ischeckbox: {
+      type: Boolean,
+      value: true,
+    },
     // 显示隐藏
     isShow: {
       type: Boolean,
       observer(newV, oldV) {
+        if (!this.data.ischeckbox) {
+          this.setData({
+            isredioId: "",
+          });
+        }
         this.setData({
           show: newV,
         });
@@ -34,7 +44,9 @@ Component({
     list: [],
     show: false,
     isCatList: [],
-    isCatObjlist:[],
+    isCatObjlist: [],
+    isredioId: "",
+    rediocat: "",
   },
 
   /**
@@ -43,10 +55,25 @@ Component({
   methods: {
     // 选择猫咪
     onClick(e) {
-      let { isCatList ,isCatObjlist} = this.data;
-      let {
-        item,
-      } = e.currentTarget.dataset;
+      let { ischeckbox } = this.data;
+      if (ischeckbox) {
+        this.ischeckbox(e);
+      } else {
+        this.radio(e);
+      }
+    },
+    // 单选
+    radio(e) {
+      let { item } = e.currentTarget.dataset;
+      this.setData({
+        isredioId: item.id,
+        rediocat: item,
+      });
+    },
+    // 多选
+    ischeckbox(e) {
+      let { isCatList, isCatObjlist } = this.data;
+      let { item } = e.currentTarget.dataset;
       if (isCatList.includes(item.id)) {
         isCatList = isCatList.filter((catitem) => catitem != item.id);
         isCatObjlist = isCatObjlist.filter((catitem) => catitem.id != item.id);
@@ -56,34 +83,52 @@ Component({
       }
       this.setData({
         isCatList,
-        isCatObjlist
+        isCatObjlist,
       });
     },
-    goadd(){
-wx.navigateTo({
-  url: '/pages/addcat/addcat',
-})
+    goadd() {
+      wx.navigateTo({
+        url: "/pages/addcat/addcat",
+      });
     },
     onClose() {
-      // let {isCatObjlist=[]}=this.data
-      this.triggerEvent("myevent",  {
+      let { rediocat } = this.data;
+      this.triggerEvent("myevent", {
         isShow: !this.data.show,
-        isCatObjlist:[]
+        isCatObjlist: [],
+        rediocat,
       });
       this.setData({
         show: false,
-        isCatObjlist:[],isCatList:[]
+        // isredioId:'',
+        isCatObjlist: [],
+        isCatList: [],
       });
     },
     onOkClick(e) {
-      let {isCatObjlist}=this.data
-      this.triggerEvent(
-        "myevent",
-        {
-          isShow: !this.data.show,
-          isCatObjlist
-        }
-      );
+      let {
+        isCatObjlist,
+        ischeckbox,
+        isredioId,
+        rediocat,
+        isCatList,
+      } = this.data;
+      if (
+        (ischeckbox && isCatObjlist.length <= 0) ||
+        (!ischeckbox && !isredioId)
+      ) {
+        wx.showToast({
+          title: "亲，请选择猫咪",
+          icon: "none",
+        });
+        return;
+      }
+      this.triggerEvent("myevent", {
+        isShow: !this.data.show,
+        isCatObjlist,
+        rediocat,
+        isCatList,
+      });
       this.setData({
         show: false,
       });
