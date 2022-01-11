@@ -637,5 +637,21 @@ export default {
       isThree: false,
     });
   },
+  payMatchOrder(params) {
+    return fly({
+      url: `payMatchOrder`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  queryMatchOrder(params) {
+    return fly({
+      url: `queryMatchOrder`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   
 };

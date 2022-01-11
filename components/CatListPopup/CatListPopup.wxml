@@ -6,15 +6,14 @@
       <view class="popupStyle_title">选择参赛猫咪</view>
     </view>
     <!-- 列表 -->
-    <view class="popupStyle_content flexbetween">
-      <!-- 左边 -->
-      <view class=" typelist">
+    <view class="popupStyle_content ">
+      <view class=" typelist" wx:if="{{catList.length>0}}">
         <block wx:for="{{catList}}" wx:key="index">
           <view class="catBlock">
             <view class="cat_header flexbetween">
               <view class="flexastart">
                 <view>
-                  <image src="/images/abouticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;"></image>
+                  <image mode="aspectFill" src="{{item.img||'/images/abouticon.png'}}" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;"></image>
                 </view>
                 <view style="margin-left: 10rpx;">
                   <view class="name flexastart">
@@ -33,6 +32,12 @@
             </view>
           </view>
         </block>
+      </view>
+      <view wx:else  class="nullCat flexcolumn">
+              <view class="flexcenter">
+                <view>暂无猫咪</view>
+                <view class="goaddcat flexcenter" bindtap="goadd"> <view>前去添加</view>  <van-icon name="arrow" size="16" /></view>
+              </view>
       </view>
     </view>
     <view class="button_ flexbetween">

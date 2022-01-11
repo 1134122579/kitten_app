@@ -59,6 +59,11 @@ Component({
         isCatObjlist
       });
     },
+    goadd(){
+wx.navigateTo({
+  url: '/pages/addcat/addcat',
+})
+    },
     onClose() {
       // let {isCatObjlist=[]}=this.data
       this.triggerEvent("myevent",  {

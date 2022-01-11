@@ -8,11 +8,12 @@ Page({
     match_id: null,
     isShowTypeList: true,
     show: false,
+    z_price: 0,
     list: [],
     isCatObjlist: [],
     isHuansai: null,
     checkList: [],
-    matchGroupobj:{}
+    matchGroupobj: {},
   },
   getSelectCatList() {
     Api.getSelectCatList().then((res) => {
@@ -27,7 +28,27 @@ Page({
     });
   },
   cattypeitem(e) {
-    console.log(e, "选择类型");
+    let { cat, looktypeList, price, checkListId } = e.detail;
+    console.log(e, "猫咪选项");
+
+    let { isCatObjlist, z_price } = this.data;
+    isCatObjlist = isCatObjlist.map((item) => {
+      item["cat_id"] = item["id"];
+      if (item.id == cat.id) {
+        item["looktypeList"] = looktypeList;
+        item["price"] = price;
+        item["group_ids"] = checkListId;
+      }
+      return item;
+    });
+    isCatObjlist.forEach(
+      (item) =>
+        (z_price = Number(z_price.toFixed(2)) + Number(item.price.toFixed(2)))
+    );
+    this.setData({
+      isCatObjlist,
+      z_price,
+    });
   },
   myevent(e) {
     console.log(e);
@@ -37,6 +58,64 @@ Page({
       isCatObjlist,
     });
   },
+  // 创建订单
+  onPlay() {
+    let { isCatObjlist, match_id } = this.data;
+    let nullprice = isCatObjlist.some((item) => item.price == 0 || item.price);
+    console.log(nullprice);
+    if (isCatObjlist.length <= 0) {
+      wx.showToast({
+        title: "请选择猫咪",
+        icon: "none",
+      });
+      return;
+    }
+    if (!nullprice) {
+      wx.showToast({
+        title: "有猫咪没选择赛事",
+        icon: "none",
+      });
+      return;
+    }
+    wx.showLoading({
+      title: "提交中..",
+    });
+    let cat_info = isCatObjlist.map((item) => {
+      let obj = {};
+      obj["march_id"] = match_id;
+      obj["price"] = item["price"];
+      obj["cat_id"] = item["cat_id"];
+      obj["group_ids"] = item["group_ids"];
+      return obj;
+    });
+    Api.joinMatch({ match_id, cat_info }).then((res) => {
+      console.log(res, "创建订单成功");
+    let {oeder_no:out_trade_no}=res
+      // 调用支付
+      Api.payMatchOrder(res).then((res) => {
+        let { nonceStr, paySign, signType, timeStamp } = res;
+        wx.requestPayment({
+          nonceStr,
+          signType,
+          package: res.package,
+          paySign,
+          timeStamp,
+          success(data) {
+            Api.queryMatchOrder({
+              out_trade_no,
+            }).then((res) => {
+              wx.showToast({
+                title: "参加成功",
+              });
+            });
+          },
+          complete() {
+            wx.hideLoading();
+          },
+        });
+      });
+    });
+  },
   // 获取类型
   matchGroup() {
     let { match_id } = this.data;
@@ -44,7 +123,7 @@ Page({
       match_id,
     }).then((res) => {
       this.setData({
-        matchGroupobj:res
+        matchGroupobj: res,
       });
     });
   },
@@ -57,7 +136,7 @@ Page({
       match_id: options.id,
     });
     this.getSelectCatList();
-    this.matchGroup()
+    this.matchGroup();
   },
 
   /**
@@ -68,7 +147,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    this.setData({
+      show: false,
+    });
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

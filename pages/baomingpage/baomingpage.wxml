@@ -11,13 +11,19 @@
     </view>
   </label>
   <!-- 猫咪列表 -->
-  <view class="catList">
-    <block wx:for="{{isCatObjlist}}" wx:if="{{isCatObjlist.length>0}}">
-      <CatBmModel catItem="{{item}}" matchGroupobj="{{matchGroupobj}}" isShowTypeList="{{isShowTypeList}}" bind:typeitem="cattypeitem" />
+  <view class="catListPage">
+    <block wx:for="{{isCatObjlist}}" wx:key="index" wx:if="{{isCatObjlist.length>0}}">
+      <CatBmModel catItem="{{item}}" matchGroupobj="{{matchGroupobj}}" isShowTypeList="{{isShowTypeList}}" bind:typechecked="cattypeitem" />
     </block>
     <block wx:if="{{isCatObjlist.length<=0}}">
       <EmptyModel />
     </block>
   </view>
+  <!-- 弹窗 -->
   <CatListPopup catList="{{list}}" isShow="{{show}}" bindmyevent="myevent" />
+  <!-- 按钮 -->
+
+  <view class="button_">
+    <van-button type="default" bindtap="onPlay" color="#FF6A6E" block>￥{{z_price}}立即支付</van-button>
+  </view>
 </view>

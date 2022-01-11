@@ -31,16 +31,14 @@ Component({
     isHuansai: null,
     checkList: [],
     looktypeList: [],
+    looktypeListcheck:[]
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    // 选择类型
-    // typeitem(e) {
-    //   console.log('选择类型', e)
-    // },
+
     onrideo(e) {
       let { item } = e.currentTarget.dataset;
       this.setData({
@@ -49,7 +47,6 @@ Component({
     },
     onClick() {
       let { item } = this.data;
-      console.log(1231231231, item);
       let { isShowTypeList } = this.data;
       if (isShowTypeList) {
         this.setData({
@@ -65,41 +62,53 @@ Component({
       });
     },
     onokClick() {
-      let {matchGroupobj, checkList, isHuansai, looktypeList } = this.data;
-      let list=[]
-      if (!checkList) {
+      let { matchGroupobj,catItem, checkList, isHuansai, looktypeListcheck } = this.data;
+      let list = [];
+      let price=0
+      if (!isHuansai) {
         wx.showToast({
-          title: "赛事必选",
+          title: "环赛必选",
           icon: "none",
         });
         return;
       }
-      
-      if(!looktypeList.includes(item=>item.id==isHuansai)){
-        list = matchGroupobj.beisai.filter((item) => item.id == isHuansai);
-      }
+      // looktypeList = looktypeList.filter((item) => item.id != isHuansai);
+      // console.log(looktypeList)
+      list = matchGroupobj.beisai.filter((item) => item.id == isHuansai);
+      let newList = looktypeListcheck.concat(list);
+      newList.forEach(item=>{
+        price=price+Number(item.price) 
+      })
       this.setData({
         show: false,
-        looktypeList: looktypeList.concat(list),
+        isHuansai,
+        checkList,
+        looktypeList: newList,
       });
-      console.log(looktypeList)
-      this.triggerEvent("typechecked", { isHuansai, checkList,looktypeList });
+      console.log({ isHuansai, checkList, newList });
+      this.triggerEvent("typechecked", {
+        cat:catItem,
+        isHuansai,
+        checkList,
+        looktypeList: newList,
+        checkListId:checkList.concat([isHuansai]) ,
+        price
+      });
     },
     // 多选
     oncheck(e) {
-      let { checkList, looktypeList } = this.data;
       let { item } = e.currentTarget.dataset;
-      console.log(item);
+      let { checkList=[], looktypeListcheck=[] } = this.data;
       if (checkList.includes(item.id)) {
         checkList = checkList.filter((catitem) => catitem != item.id);
-        looktypeList = looktypeList.filter((catitem) => catitem != item.id);
+        looktypeListcheck = looktypeListcheck.filter((catitem) => catitem.id != item.id);
       } else {
         checkList.push(item.id);
-        looktypeList.push(item);
+        looktypeListcheck.push(item);
       }
       this.setData({
         checkList,
-        looktypeList,
+        looktypeListcheck,
       });
     },
   },

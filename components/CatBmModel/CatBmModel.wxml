@@ -3,9 +3,9 @@
   <view class="cat_header flexbetween">
     <view class="flexastart">
       <view>
-        <image src="/images/abouticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;"></image>
+        <image mode="aspectFill" src="{{item.img||'/images/abouticon.png'}}" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;"></image>
       </view>
-      <view>
+      <view style="margin-left: 18rpx;">
         <view class="name flexastart">
           <text class="name_text">{{item.cat_name}}</text>
           <van-icon wx:if="{{item.sex==1}}" size="18" name="/images/gong_icon.png"></van-icon>
@@ -71,7 +71,7 @@
           <label>
             <view class="t_b flexbetween" data-item="{{item}}" bindtap="oncheck">
               <view>
-                窝次组 <text class="price">¥400</text>
+                {{item.name}} <text class="price">￥{{item.price}}</text>
               </view>
               <view class="iconfont {{split.ridefilter(checkList,item.id)?'icon-danxuanxuanzhong':'icon-danxuanweixuanzhong'}} "></view>
             </view>

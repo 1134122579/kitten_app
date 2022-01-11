@@ -27,16 +27,28 @@
 
 .popupStyle_content {
   width: 100%;
-  box-sizing: border-box;
-  justify-content: flex-start;
-  align-items: flex-start;
-  overflow-y: auto;
+    height: 100%;
+    box-sizing: border-box;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 80rpx;
+}
+.nullCat{
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+}
+.goaddcat{
+margin-left: 10rpx;
+color: #1AAF19;
 }
 
 .typelist {
   box-sizing: border-box;
   text-align: center;
   width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 .button_{
   width: 100%;
