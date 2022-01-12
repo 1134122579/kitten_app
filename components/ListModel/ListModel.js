@@ -50,6 +50,15 @@ Component({
           this.waterfallFlow()
           return
         }
+        if(this.data.listType=='homeblockmodel'){
+          console.log('homeblockmodel',newV)
+          this.setData({
+            alllist:newV,
+            isNullList:newV.length>0?true:false
+          })
+          this.waterfallFlow()
+          return
+        }
         let {
           alllist
         } = this.data

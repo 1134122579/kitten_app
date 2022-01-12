@@ -67,6 +67,7 @@ export default {
       isThree: false,
     });
   },
+  
   getShopDetails(params) {
     return fly({
       url: `getShopDetails`,
@@ -86,6 +87,30 @@ export default {
   cancelOrder(params) {
     return fly({
       url: `cancelOrder`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getFollowDynamic(params) {
+    return fly({
+      url: `getFollowDynamic`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  getHotClass(params) {
+    return fly({
+      url: `getHotClass`,
+      method: "get",
+      params,
+      isThree: false,
+    });
+  },
+  getUserCollect(params) {
+    return fly({
+      url: `getUserCollect`,
       method: "post",
       params,
       isThree: false,
@@ -600,6 +625,14 @@ export default {
   addComment(params) {
     return fly({
       url: `addComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  addCollect(params) {
+    return fly({
+      url: `addCollect`,
       method: "post",
       params,
       isThree: false,

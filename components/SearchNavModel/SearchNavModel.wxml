@@ -5,7 +5,7 @@
     <!-- </view> -->
   </view>
   <view class='navbar-title' style='top:{{navTop}}px;'>
-    <van-tabs active="{{ active }}" bind:change="onClick" line-width="32rpx" line-height="3px" color="#333">
+    <van-tabs active="{{ tabName }}" bind:change="onClick" line-width="32rpx" line-height="3px" color="#333">
       <van-tab wx:for="{{list}}" wx:key="index" name="{{item.title}}" title="{{item.title}}"></van-tab>
     </van-tabs>
   </view>

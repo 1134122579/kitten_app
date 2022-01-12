@@ -1,0 +1,119 @@
+<view class="saishipage ">
+<Navheader />
+	<!-- 头部 -->
+	<view class="headerImage">
+		<image class="imageStyle" mode="widthFix" src="https://img.js.design/assets/img/61b44a697eee4352133690cc.png"></image>
+	</view>
+	<view class="orderList flexcolumn">
+		<view class="orderList_header">
+			<van-tabs active="{{ isStatus }}" bind:change="ontabChange" color="#333">
+				<van-tab wx:for="{{ordertypeList}}" wx:key="status" data-id="{{item.status}}" name="{{item.status}}" disabled="{{item.disabled}}" title="{{item.title}}" />
+			</van-tabs>
+		</view>
+		<!-- 列表 -->
+		<!-- 赛事报名 -->
+
+			<!--  -->
+			<view class="orderList_content"  wx:if="{{isStatus==1}}">
+			<block wx:if="{{list.length>0}}">
+				<block wx:for="{{list}}" wx:key="index">
+					<OrdeCard wx:if="{{item.id}}"  cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
+				</block>
+				<view hidden="{{isnullList}}" style="text-align: center; font-size: 20rpx;color: #ccc;padding: 20rpx;">暂无更多</view>
+			</block>
+			<block wx:if="{{list.length<=0}}">
+				<EmptyModel description="暂无订单" />
+			</block>
+		</view>
+	
+		<!-- 赛事积分 -->
+		<view class="orderList_content" wx:if="{{isStatus==4}}">
+			<view class="orderList_content_ul flexaround">
+				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
+					<view class="typeStyle flexcenter">
+						<view>{{saishiValue||"赛事"}}</view>
+						<view>
+							<van-icon name="arrow-down" />
+						</view>
+					</view>
+				</picker>
+				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
+					<view class=" typeStyle flexcenter">
+						<view>{{saishiValue||"场次"}}</view>
+						<view>
+							<van-icon name="arrow-down" />
+						</view>
+					</view>
+				</picker>
+				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
+					<view class=" typeStyle flexcenter">
+						<view>{{saishiValue||"组别"}}</view>
+						<view>
+							<van-icon name="arrow-down" />
+						</view>
+					</view>
+				</picker>
+				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
+					<view class=" typeStyle flexcenter">
+						<view>{{saishiValue||"排序"}}</view>
+						<view>
+							<van-icon name="arrow-down" />
+						</view>
+					</view>
+				</picker>
+			</view>
+			<block wx:if="{{list.length>0}}">
+				<view class=" B_ul flexaround">
+								<view class="B_li">
+									序号
+								</view>
+								<view class="B_li">
+									名称
+								</view>
+								<view class="B_li">
+									颜色代码
+								</view>
+								<view class="B_li">
+									品种代码
+								</view>
+								<view class="B_li">
+									积分
+								</view>
+						</view>
+				<block wx:for="{{20}}" wx:key="index">
+						<view class="B_ul flexaround">
+								<view class="B_li_value">
+									序号
+								</view>
+								<view class="B_li_value">
+									名称
+								</view>
+								<view class="B_li_value">
+									颜色代码
+								</view>
+								<view class="B_li_value">
+									品种代码
+								</view>
+								<view class="B_li_value">
+									积分
+								</view>
+						</view>
+				</block>
+			</block>
+			<block wx:if="{{list.length<=0}}">
+				<EmptyModel description="暂无订单" />
+			</block>
+		</view>
+	</view>
+</view>
+<!-- 充值成功 -->
+<!-- <van-popup show="{{is_okplayShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
+	<view class="okplayicon_content flexcolumn">
+		<view class="okplayicon ">
+			<image src="../../images/okplayicon.png"></image>
+		</view>
+		<view class="okplayicon_content_title">
+			支付成功
+		</view>
+	</view>
+</van-popup> -->

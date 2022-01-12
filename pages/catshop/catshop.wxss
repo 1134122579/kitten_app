@@ -1,0 +1,107 @@
+/* pages/orderpage/order.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.saishipage{
+  width: 100%;
+  height: 100%;
+}
+.headerImage{
+  width: 100%;
+  flex-shrink: 0;
+  /* background: #ff0000; */
+}
+.imageStyle{
+  display: block;
+  width: 100%;
+}
+
+.orderList {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20rpx 20rpx 0 0;
+  margin-top: -20rpx;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.orderList_header {
+  /* padding: 0 20rpx; */
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 10rpx 40rpx;
+}
+.ol_ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.ol_li {
+  margin-right: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #9c9c9c;
+}
+.sel_ol_li {
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #D13127;
+}
+.orderList_content{
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.okplayicon_content{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 84rpx ;
+}
+.okplayicon_content_title{
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.okplayicon{
+  width: 270rpx;
+  height: 250rpx;
+}
+.okplayicon image{
+  width: 100%;
+  height: 100%;
+}
+.orderList_content_ul{
+  padding: 0 20rpx;
+  margin: 10rpx;
+}
+.typeStyle{
+  width: 140rpx;
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  border: 1rpx solid #333;
+  border-radius: 30rpx;
+}
+.B_ul{
+  padding: 10rpx 0;
+}
+.B_li,.B_li_value{
+  font-size: 24rpx;
+  width:120rpx ;
+  text-align: center;
+}
+.B_li{
+  font-weight: 600;
+}
+
+/* 动画 */
+.blocktransition{
+  width: 100%;
+  box-sizing: border-box;
+}

@@ -19,7 +19,7 @@
     </view> -->
       <!-- 列表 -->
       <block wx:if="{{list.length>0}}">
-        <ListModel wx:if="{{tabId==1}}" list="{{list}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+        <ListModel wx:if="{{tabId==1}}" list="{{list}}" listType="homeblockmodel" isticket="{{isticket}}" isNullList="{{isNullList}}" />
         <view class="userList" wx:else>
           <block wx:for="{{list}}" wx:key="index">
             <view class="user flexbetween">

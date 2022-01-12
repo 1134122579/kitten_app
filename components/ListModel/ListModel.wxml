@@ -28,5 +28,5 @@
       </block>
     </view>
   </view>
-  <view class="isNull" hidden="{{isNullList||alllist.length<10}}">暂无更多~</view>
+  <view class="isNull" hidden="{{alllist.length>0}}">暂无更多~</view>
 </view>

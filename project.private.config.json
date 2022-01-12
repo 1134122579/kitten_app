@@ -65,6 +65,12 @@
           "pathName": "pages/dynamicpage/dynamicpage",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "御猫馆",
+          "pathName": "pages/catshop/catshop",
+          "query": "id=77",
+          "scene": null
         }
       ]
     }

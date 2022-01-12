@@ -14,6 +14,7 @@ Page({
     is_zplList: [], //点赞
     isHf: false,
     isPlShow: false,
+    is_addCollect:false,
     isPlay: true,
     videoHeight: 0,
     contentBottom: 0,
@@ -31,6 +32,14 @@ Page({
     is_Zkbutton: false,
     getData: {},
   },
+  // 前往猫舍
+  gocathouse(){
+  let  {getData}=this.data
+  wx.navigateTo({
+    url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
+  })
+
+  },
   // 查看评论
   onlookPl() {
     this.setData({
@@ -44,6 +53,29 @@ Page({
       value: "",
     });
   },
+// 收藏
+addCollect(){
+  let { dynamic_id, is_addCollect } = this.data;
+  if (is_addCollect) {
+    wx.showToast({
+      title: "已经收藏",
+      icon: "none",
+    });
+    return;
+  }
+  Api.addCollect({
+    dynamic_id,
+  }).then((res) => {
+    wx.showToast({
+      title: "收藏成功",
+      icon: "none",
+    });
+    this.setData({
+      is_addCollect: true,
+    });
+  });
+
+},
   // 文章点赞
   zanDynamic() {
     let { dynamic_id, is_zanDynamic } = this.data;
@@ -54,7 +86,6 @@ Page({
       });
       return;
     }
-
     Api.zanDynamic({
       dynamic_id,
     }).then((res) => {

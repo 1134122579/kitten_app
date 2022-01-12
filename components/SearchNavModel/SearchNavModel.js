@@ -10,6 +10,7 @@ Component({
    */
   properties: {
     pageName:String,
+    tabName:String,
     showNav:{
       type:Boolean,
       value:false
