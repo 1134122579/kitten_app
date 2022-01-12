@@ -34,6 +34,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    is_lazyload:true,//懒加载
     itemList: [],
     is_like: false,
   },

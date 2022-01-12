@@ -99,3 +99,9 @@ page {
 .B_li{
   font-weight: 600;
 }
+
+/* 动画 */
+.blocktransition{
+  width: 100%;
+  box-sizing: border-box;
+}

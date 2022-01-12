@@ -59,6 +59,12 @@
           "pathName": "pages/addcat/addcat",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "我的动态",
+          "pathName": "pages/dynamicpage/dynamicpage",
+          "query": "",
+          "scene": null
         }
       ]
     }

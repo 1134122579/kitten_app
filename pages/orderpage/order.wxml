@@ -11,7 +11,9 @@
 		</view>
 		<!-- 列表 -->
 		<!-- 赛事报名 -->
-		<view class="orderList_content" wx:if="{{isStatus==1}}">
+
+			<!--  -->
+			<view class="orderList_content"  wx:if="{{isStatus==1}}">
 			<block wx:if="{{list.length>0}}">
 				<block wx:for="{{list}}" wx:key="index">
 					<OrdeCard wx:if="{{item.id}}"  cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
@@ -22,6 +24,7 @@
 				<EmptyModel description="暂无订单" />
 			</block>
 		</view>
+	
 		<!-- 赛事积分 -->
 		<view class="orderList_content" wx:if="{{isStatus==4}}">
 			<view class="orderList_content_ul flexaround">

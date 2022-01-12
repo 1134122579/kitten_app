@@ -377,11 +377,32 @@ setCatItem(e) {
           paySign,
           timeStamp,
           success(data) {
+            // wx.hideLoading()
+            // Api.queryCertOrder({
+            //   out_trade_no,
+            // }).then((res) => {
+            //   App.getUserinfoFn(() => {
+            //     that.setUserinfo()
+            //     wx.hideLoading()
+            //     wx.showToast({
+            //       title: '支付成功，1.5秒自动返回',
+            //       icon: "none",
+            //       mask: true,
+            //     })
+            //     setTimeout(() => {
+            //       wx.navigateBack({
+            //         delta: 1,
+            //       })
+            //     }, 1500);
+            //   })
+            // });
+          },
+          complete(){
             wx.hideLoading()
             Api.queryCertOrder({
               out_trade_no,
             }).then((res) => {
-              appInst.getUserinfoFn(() => {
+              App.getUserinfoFn(() => {
                 that.setUserinfo()
                 wx.hideLoading()
                 wx.showToast({
@@ -396,7 +417,7 @@ setCatItem(e) {
                 }, 1500);
               })
             });
-          },
+          }
         });
       })
     }

@@ -17,7 +17,7 @@ Page({
     this.getDynamic()
   },
   getDynamic() {
-    let { id: user_id } = storage.getUserInfo();
+    let {  user_id } = storage.getUserInfo();
     let { page } = this.data;
     Api.getDynamic({ user_id, page }).then((res) => {
       this.setData({

@@ -2,7 +2,7 @@
 
 <view class="tab_content_list_one" bindtap="gocatDteail">
   <view class="block_image">
-    <image mode="widthFix" class="M_imageurl" src="{{item.link_url||'../../images/kongtu.png'}}">
+    <image mode="widthFix" class="M_imageurl"	lazy-load="{{	is_lazyload}}" src="{{item.link_url||'../../images/kongtu.png'}}">
     </image>
   </view>
   <view class="M_text">

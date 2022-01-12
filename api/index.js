@@ -573,6 +573,14 @@ export default {
       isThree: false,
     });
   },
+  getDynamic(params) {
+    return fly({
+      url: `getDynamic`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   getDynamicDetails(params) {
     return fly({
       url: `getDynamicDetails`,
