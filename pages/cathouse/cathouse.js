@@ -119,10 +119,8 @@ Page({
       user_id
     } = storage.getUserInfo
     this.setData({
-      "listQuery.user_id": options.user_id
-    })
-    this.setData({
-      my_id: user_id
+      "listQuery.user_id": options.user_id,
+      my_id: storage.getUserInfo().user_id
     })
     this.getUserCatList()
   },

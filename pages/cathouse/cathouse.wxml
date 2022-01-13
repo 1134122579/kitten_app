@@ -49,7 +49,7 @@
           </view>
           <button open-type="share" />
         </label>
-        <view class="mynum_button flexcenter" bindtap="addFollow" wx:if="{{my_id==listQuery.user_id}}" >
+        <view class="mynum_button flexcenter" bindtap="addFollow" wx:if="{{my_id!=listQuery.user_id}}" >
           <image style="width: 36rpx;height: 36rpx;display: block;margin-right: 10rpx;" src="/images/gz.png"></image>
           <view>关注</view>
         </view>
