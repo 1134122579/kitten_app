@@ -11,6 +11,7 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     value: "",
+    is_addCollect: false,
     hfItem: {},
     isHf: false,
     is_zplList: [],
@@ -57,11 +58,56 @@ Page({
     getData: {},
     timeData: {},
   },
+
+  // 收藏
+  addCollect() {
+    let that = this;
+    let { dynamic_id, is_addCollect, getData } = this.data;
+    if (getData.is_collect != 1) {
+      wx.showLoading({
+        title: "收藏中..",
+      });
+      Api.addCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "收藏成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+
+        this.setData({
+          is_addCollect: true,
+        });
+      });
+    } else {
+      wx.showLoading({
+        title: "取消收藏中..",
+      });
+      Api.cancelCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "取消成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+        that.setData({
+          is_addCollect: false,
+        });
+      });
+    }
+  },
   onPl() {
     this.setData({
       show: true,
       isHf: false,
     });
+  },
+  tabType() {
+    this.getDynamicDetails();
   },
   onhf(e) {
     let { item } = e.currentTarget.dataset;
@@ -73,15 +119,14 @@ Page({
   },
   // 文章点赞
   zanDynamic() {
-    let { dynamic_id, is_zanDynamic } = this.data;
-    if (is_zanDynamic) {
+    let { dynamic_id, is_zanDynamic, getData } = this.data;
+    if (getData.is_zan == 1) {
       wx.showToast({
         title: "已经点赞",
         icon: "none",
       });
       return;
     }
-
     Api.zanDynamic({
       dynamic_id,
     }).then((res) => {
@@ -89,6 +134,7 @@ Page({
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zanDynamic: true,
       });
@@ -100,7 +146,6 @@ Page({
       item: { dynamic_id, id: comment_id },
     } = e.currentTarget.dataset;
     let { is_zplList } = this.data;
-
     if (is_zplList.includes(comment_id)) {
       wx.showToast({
         title: "已点赞",
@@ -116,6 +161,7 @@ Page({
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zplList: is_zplList.concat([comment_id]),
       });

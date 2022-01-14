@@ -93,11 +93,11 @@
   <view class="inputStyle" bindtap="onPl">随便聊聊~~</view>
   <view class="flexaround button_r">
     <view class="flexcenter" bindtap="zanDynamic">
-      <van-icon name="{{is_zanDynamic?'like':'like-o'}}" size="20" />
-      <view class="num"> {{is_zanDynamic?getData.zan_num+1:getData.zan_num}}</view>
+      <van-icon name="{{getData.is_zan==1?'like':'like-o'}}" size="20" />
+      <view class="num"> {{getData.zan_num}}</view>
     </view>
-    <view class="flexcenter">
-      <van-icon name="star-o" size="20" />
+    <view class="flexcenter" bindtap="addCollect">
+      <van-icon  name="{{getData.is_collect==1?'star':'star-o'}}"  size="20" />
       <view class="num">{{getData.sc_num}}</view>
     </view>
     <view class="flexcenter">

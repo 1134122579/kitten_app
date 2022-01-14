@@ -494,6 +494,14 @@ export default {
       isThree: false,
     });
   },
+  cancelComment(params) {
+    return fly({
+      url: `cancelComment`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   onzanLike(params) {
     return fly({
       url: `zan_cat`,
@@ -513,6 +521,14 @@ export default {
   getFollow(params) {
     return fly({
       url: `getFollow`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
+  cancelCollect(params) {
+    return fly({
+      url: `cancelCollect`,
       method: "post",
       params,
       isThree: false,

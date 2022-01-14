@@ -15,13 +15,15 @@ Component({
     isStatus: {
       type: Number,
       observer(newV, oldV) {
+        console.log("isSwitchList", newV, oldV)
         if (newV != oldV) {
-          console.log("isSwitchList", newV, oldV)
           this.data.leftList = []; //左边数组
           this.data.rightList = []; //左边数组
+          this.data.alllist = []; //左边数组
           this.setData({
             leftList:[],
-            rightList:[]
+            rightList:[],
+            alllist:[],
           })
         }
       }

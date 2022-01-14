@@ -10,10 +10,10 @@
   <view class="contentVideo" style="bottom:{{contentBottom}}">
     <view class="flexbetween">
       <view class="namestyle flexastart" bindtap="gocathouse">
-        <image src="/images/gocaticon.png" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;margin-right: 20rpx;"></image>
-        <view class="name">名字</view>
+        <image src="{{getData.headimgurl}}" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;margin-right: 20rpx;"></image>
+        <view class="name">{{getData.nickname}}</view>
       </view>
-      <view class="gzStyle">已关注</view>
+      <view class="gzStyle" bindtap="onfollow">{{getData.is_follow==1?"已关注":"关注"}}</view>
     </view>
     <view class="content_desc">
       {{is_Zk?getData.desccopy:getData.desc}}
@@ -96,12 +96,12 @@
     </label>
     <view class="flexaround button_r">
       <view class="flexcenter" bindtap="zanDynamic">
-        <van-icon name="{{is_zanDynamic?'like':'like-o'}}" size="20" />
-        <view class="num"> {{is_zanDynamic?getData.zan_num+1:getData.zan_num}}</view>
+        <van-icon name="{{getData.is_zan ==1?'like':'like-o'}}" size="20" />
+        <view class="num"> {{getData.zan_num}}</view>
       </view>
       <view class="flexcenter" bindtap="addCollect">
-        <van-icon name="{{is_addCollect?'star':'star-o'}}" size="20" />
-        <view class="num">{{is_addCollect?getData.sc_num+1:getData.sc_num}}</view>
+        <van-icon name="{{getData.is_collect ==1?'star':'star-o'}}" size="20" />
+        <view class="num">{{getData.sc_num}}</view>
       </view>
       <view class="flexcenter" bindtap="onlookPl">
         <van-icon name="chat-o" size="20" />

@@ -56,7 +56,7 @@
 			<!-- 关注 -->
 			<block wx:if="{{tabName=='关注'}}">
 				<van-skeleton row="30" loading="{{ loading }}">
-					<block wx:if="{{list.length>0}}">
+					<block wx:if="{{!is_empty}}">
 						<view class="FollowDynamic">
 							<ListModel list="{{list}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
 						</view>

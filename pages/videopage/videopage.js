@@ -14,7 +14,7 @@ Page({
     is_zplList: [], //点赞
     isHf: false,
     isPlShow: false,
-    is_addCollect:false,
+    is_addCollect: false,
     isPlay: true,
     videoHeight: 0,
     contentBottom: 0,
@@ -33,12 +33,53 @@ Page({
     getData: {},
   },
   // 前往猫舍
-  gocathouse(){
-  let  {getData}=this.data
-  wx.navigateTo({
-    url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
-  })
-
+  gocathouse() {
+    let { getData } = this.data;
+    wx.navigateTo({
+      url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
+    });
+  },
+  // 文章关注
+  onfollow(event) {
+    let { getData } = this.data;
+    if (getData?.is_follow != 1) {
+      this.addFollow();
+    } else {
+      this.cacheFollow();
+    }
+  },
+  // 关注
+  addFollow(detail) {
+    let { getData, is_gz } = this.data;
+    wx.showLoading({
+      title: "关注中..",
+    });
+    Api.addFollow({
+      follow_user_id: getData.user_id,
+    }).then((res) => {
+      wx.hideLoading();
+      this.getDynamicDetails();
+      wx.showToast({
+        title: "关注成功",
+        icon: "none",
+      });
+    });
+  },
+  cacheFollow() {
+    let { getData } = this.data;
+    wx.showLoading({
+      title: "取关中..",
+    });
+    Api.cacheFollow({
+      follow_user_id: getData.user_id,
+    }).then((res) => {
+      wx.hideLoading();
+      this.getDynamicDetails();
+      wx.showToast({
+        title: "取消关注",
+        icon: "none",
+      });
+    });
   },
   // 查看评论
   onlookPl() {
@@ -53,33 +94,51 @@ Page({
       value: "",
     });
   },
-// 收藏
-addCollect(){
-  let { dynamic_id, is_addCollect } = this.data;
-  if (is_addCollect) {
-    wx.showToast({
-      title: "已经收藏",
-      icon: "none",
-    });
-    return;
-  }
-  Api.addCollect({
-    dynamic_id,
-  }).then((res) => {
-    wx.showToast({
-      title: "收藏成功",
-      icon: "none",
-    });
-    this.setData({
-      is_addCollect: true,
-    });
-  });
+  // 收藏
+  addCollect() {
+    let that = this;
+    let { dynamic_id, is_addCollect, getData } = this.data;
+    if (getData.is_collect != 1) {
+      wx.showLoading({
+        title: "收藏中..",
+      });
+      Api.addCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "收藏成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
 
-},
+        this.setData({
+          is_addCollect: true,
+        });
+      });
+    } else {
+      wx.showLoading({
+        title: "取消收藏中..",
+      });
+      Api.cancelCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "取消成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+        that.setData({
+          is_addCollect: false,
+        });
+      });
+    }
+  },
   // 文章点赞
   zanDynamic() {
-    let { dynamic_id, is_zanDynamic } = this.data;
-    if (is_zanDynamic) {
+    let { dynamic_id, is_zanDynamic, getData } = this.data;
+    if (getData.is_zan == 1) {
       wx.showToast({
         title: "已经点赞",
         icon: "none",
@@ -93,6 +152,7 @@ addCollect(){
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zanDynamic: true,
       });

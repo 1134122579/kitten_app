@@ -34,8 +34,12 @@ Page({
     if (tabName == "关注") {
       // 关注
       res = await Api.getFollowDynamic(this.data.listQuery);
+      this.setData({
+        isStatus:0
+      })
     }
     this.setData({
+      is_empty:this.data.listQuery.page==1&&res.length<=0,
       list: res,
       isNullList: res.length > 0 ? false : true,
       loading: false,
