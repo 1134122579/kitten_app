@@ -108,8 +108,8 @@ Page({
       signature,
       photo,
       address,desc,
-      fileList: photo ? [{
-        url: photo
+      fileList: headimgurl ? [{
+        url: headimgurl
       }] : []
     });
     return;
@@ -155,13 +155,13 @@ Page({
       return;
     }
 
-    if (!birthday) {
-      wx.showToast({
-        title: "请输入生日",
-        icon: "none",
-      });
-      return;
-    }
+    // if (!birthday) {
+    //   wx.showToast({
+    //     title: "请输入生日",
+    //     icon: "none",
+    //   });
+    //   return;
+    // }
     if (!home_name) {
       wx.showToast({
         title: "请输入猫舍名字",
