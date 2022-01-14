@@ -122,7 +122,6 @@ Page({
       "listQuery.user_id": options.user_id,
       my_id: storage.getUserInfo().user_id
     })
-    this.getUserCatList()
   },
 
   /**
@@ -136,7 +135,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserCatList()
   },
 
   /**

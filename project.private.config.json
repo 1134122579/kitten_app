@@ -21,7 +21,7 @@
         {
           "name": "猫详情",
           "pathName": "pages/catdetail/catdetail",
-          "query": "user_id=35&cat_id=15",
+          "query": "user_id=38&cat_id=18",
           "scene": null
         },
         {
@@ -70,6 +70,12 @@
           "name": "御猫馆",
           "pathName": "pages/catshop/catshop",
           "query": "id=77",
+          "scene": null
+        },
+        {
+          "name": "编辑猫咪",
+          "pathName": "pages/addcat/addcat",
+          "query": "cat_id=23",
           "scene": null
         }
       ]

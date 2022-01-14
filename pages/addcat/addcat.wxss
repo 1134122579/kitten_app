@@ -32,3 +32,9 @@ page{
   padding: 20px;
   background: #fff;
 }
+.ov_text{
+  overflow: hidden;
+  overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+}

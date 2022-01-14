@@ -41,11 +41,20 @@ export default {
       isThree: false,
     });
   },
+  
   // 充值明细
   getUserRecharge(params) {
     return fly({
       url: `getUserRecharge`,
       method: "get",
+      params,
+      isThree: false,
+    });
+  },
+  edit_cat(params) {
+    return fly({
+      url: `edit_cat`,
+      method: "post",
       params,
       isThree: false,
     });
