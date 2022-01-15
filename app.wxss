@@ -61,3 +61,16 @@ page {
   justify-content: flex-start;
   align-items: center;
 }
+.importHeaderImage{
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+  display: block;
+  overflow: hidden;
+}
+.texthidden{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

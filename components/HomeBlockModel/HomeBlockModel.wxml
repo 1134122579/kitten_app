@@ -1,5 +1,4 @@
 <wxs src="../../utils/split.wxs" module="split" />
-
 <view class="tab_content_list_one" bindtap="gocatDteail">
   <view class="block_image">
     <image mode="widthFix" class="M_imageurl"	lazy-load="{{	is_lazyload}}" src="{{item.link_url||'../../images/kongtu.png'}}">

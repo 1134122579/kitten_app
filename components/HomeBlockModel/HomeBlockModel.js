@@ -1,4 +1,4 @@
-import Api from "../../api/index"
+import Api from "../../api/index";
 
 Component({
   options: {
@@ -12,21 +12,27 @@ Component({
       type: Object,
       value: {},
       observer(newV, oldV) {
-        newV['zan_num']=  newV['zan_num']>10000?newV['zan_num']+'w':newV['zan_num']
-      this.setData({
-        item:newV
-      })
-      }
+        newV["zan_num"] =
+          newV["zan_num"] > 10000 ? newV["zan_num"] + "w" : newV["zan_num"];
+        if (newV["type"] == 2) {
+          newV["link_url"] =
+            newV["link_url"] + "?vframe/jpg/offset/0";
+          console.log(newV);
+        }
+        this.setData({
+          item: newV,
+        });
+      },
     },
     isticket: {
       type: ["String", "Number"],
-      value: '',
+      value: "",
       observer(newV, oldV) {
-        this.data.itemList.push(newV)
+        this.data.itemList.push(newV);
         this.setData({
-          itemList: this.data.itemList
-        })
-      }
+          itemList: this.data.itemList,
+        });
+      },
     },
   },
 
@@ -34,7 +40,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    is_lazyload:true,//懒加载
+    is_lazyload: true, //懒加载
     itemList: [],
     is_like: false,
   },
@@ -44,56 +50,41 @@ Component({
    */
   methods: {
     gocatDteail() {
-      let {
-        item
-      } = this.data
+      let { item } = this.data;
       if (item.type == 2) {
         wx.navigateTo({
           url: `/pages/videopage/videopage?user_id=${item.user_id}&dynamic_id=${item.id}`,
-        })
+        });
       } else {
         wx.navigateTo({
           url: `/pages/articlepage/articlepage?user_id=${item.user_id}&dynamic_id=${item.id}`,
-        })
+        });
       }
-
     },
     onLike() {
-      let {
-        id,
-        vote_id,
-        is_zan
-      } = this.data.item
-      console.log('首页禁止点赞')
-      return
-      let {
-        is_like
-      } = this.data
+      let { id, vote_id, is_zan } = this.data.item;
+      console.log("首页禁止点赞");
+      return;
+      let { is_like } = this.data;
       if (is_zan == 1 || is_like) {
         wx.showToast({
-          title: '已点赞',
-          icon: 'none'
-        })
+          title: "已点赞",
+          icon: "none",
+        });
       }
-      Api.onzanLike(
-        this.data.item
-      ).then(res => {
+      Api.onzanLike(this.data.item).then((res) => {
         this.setData({
-          is_like: true
-        })
+          is_like: true,
+        });
         wx.showToast({
-          title: '点赞成功',
-          icon: 'none'
-        })
-      })
+          title: "点赞成功",
+          icon: "none",
+        });
+      });
     },
     join_vote() {
-      let {
-        id,
-        vote_id
-      } = this.data.item
-      this.triggerEvent("join_vote", this.data.item)
-
-    }
-  }
-})
+      let { id, vote_id } = this.data.item;
+      this.triggerEvent("join_vote", this.data.item);
+    },
+  },
+});

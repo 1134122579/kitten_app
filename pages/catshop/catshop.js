@@ -7,23 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
+    is_Zkbutton:true,
+    is_Zk:false,
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,
-    isnullList:false,
+    isnullList: false,
     listQuery: {
-      page: 1
+      page: 1,
     },
     is_okplayShow: false,
     navHeight: appInst.globalData.navHeight,
-    ordertypeList: [{
+    ordertypeList: [
+      {
         title: "最新动态",
         status: 1,
-        disabled: false
+        disabled: false,
       },
       {
         title: "相关猫舍",
         status: 2,
-        disabled: false
+        disabled: false,
       },
       // {
       //   title: "赛事回顾",
@@ -36,28 +39,33 @@ Page({
       // }
     ],
     list: [],
-    ssList:[{
-      id:1,text:"第一场赛事"
-    },{
-      id:1,text:"第一场赛事"
-    },{
-      id:1,text:"第一场赛事"
-    }]
+    ssList: [
+      {
+        id: 1,
+        text: "第一场赛事",
+      },
+      {
+        id: 1,
+        text: "第一场赛事",
+      },
+      {
+        id: 1,
+        text: "第一场赛事",
+      },
+    ],
   },
   onplayClose() {
     this.setData({
-      is_okplayShow: false
-    })
+      is_okplayShow: false,
+    });
   },
   // 赛事积分
   bindpzChange(event) {
-    let {
-      ssList
-    } = this.data
+    let { ssList } = this.data;
     this.setData({
       // sexIndex: event.detail.value,
-      saishiValue: ssList[event.detail.value]['text']
-    })
+      saishiValue: ssList[event.detail.value]["text"],
+    });
   },
   ontabChange(event) {
     let status = event.detail.name;
@@ -65,74 +73,80 @@ Page({
       isStatus: Number(status),
     });
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
-      this.getOrderList();
+    this.getOrderList();
   },
 
   tag(event) {
     console.log(event);
-    let {
-      id
-    } = event.currentTarget.dataset;
+    let { id } = event.currentTarget.dataset;
     this.setData({
       isStatus: Number(id),
     });
     this.getOrderList();
   },
-  //   获取订单列表
-  getOrderList() {
-    let {
-      listQuery,
-      list
-    } = this.data;
-    Api.get_match(listQuery).then((res) => {
+  //   获取列表
+  async getOrderList() {
+    let { listQuery, list, isStatus } = this.data;
+    // 获取详情
+    let res = [];
+    if (isStatus == 1) {
+      // 最新动态
+      res = await Api.get_match(listQuery);
       this.setData({
-        isnullList: res.length>0?false:true,
+        list: res,
       });
-      if( listQuery.page==1){
+      return;
+    } else {
+      // 相关猫舍
+      res = await Api.get_match(listQuery);
+      this.setData({
+        isnullList: res.length > 0 ? false : true,
+      });
+      if (listQuery.page == 1) {
         this.setData({
           list: res,
+          is_empt:res.length>0?false:true
         });
-      }else{
+      } else {
         this.setData({
           list: list.concat(res),
         });
       }
- 
+    }
+  },
+  ontextLook() {
+    this.setData({
+      is_Zk: !this.data.is_Zk,
     });
   },
   // 取消
   cancelOrder(event) {
-    let {
-      out_trade_no
-    } = event.detail;
+    let { out_trade_no } = event.detail;
     Api.cancelOrder({
-      out_trade_no
-    }).then(res => {
-      this.getOrderList()
-    })
+      out_trade_no,
+    }).then((res) => {
+      this.getOrderList();
+    });
   },
   //   支付成功
 
   payCarOrder(event) {
-    let {
-      order_no,
-      pay_type
-    } = event.detail;
+    let { order_no, pay_type } = event.detail;
     wx.showLoading({
-      title: '支付中...',
-      icon: 'none',
-      mask: true
-    })
+      title: "支付中...",
+      icon: "none",
+      mask: true,
+    });
     Api.payCarOrder({
       out_trade_no: order_no,
       pay_type,
     }).then((res) => {
-      wx.hideLoading()
+      wx.hideLoading();
       if (res.status == 200) {
         this.setData({
-          is_okplayShow: true
-        })
-        this.getOrderList()
+          is_okplayShow: true,
+        });
+        this.getOrderList();
         // wx.showToast({
         //   title: "支付成功",
         //   duration: 3000,
@@ -147,19 +161,17 @@ Page({
       }
       //
     });
-
   },
 
   // 上来
-  onBottom(){
-      this.data.listQuery.page++
-      this.getOrderList()
+  onBottom() {
+    this.data.listQuery.page++;
+    this.getOrderList();
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {},
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -167,7 +179,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: appInst.globalData.navHeight,
-    })
+    });
   },
 
   /**
@@ -177,8 +189,8 @@ Page({
     appInst.tabbershow(this, 1);
     this.getOrderList();
     this.setData({
-      isStatus:1
-    })
+      isStatus: 1,
+    });
   },
 
   /**
@@ -200,7 +212,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.onBottom()
+    this.onBottom();
   },
 
   /**

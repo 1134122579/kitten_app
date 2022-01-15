@@ -105,15 +105,19 @@ Page({
     this.setData({
       navHeight: App.globalData.navHeight,
     });
+    this.getHotLable();
+    this.getCatClass();
+    this.getCatList();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getHotLable();
-    this.getCatClass();
-    this.getCatList();
+    this.setData({
+      tabName:"发现"
+    })
+
   },
 
   /**

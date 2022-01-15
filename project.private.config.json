@@ -77,6 +77,18 @@
           "pathName": "pages/addcat/addcat",
           "query": "cat_id=23",
           "scene": null
+        },
+        {
+          "name": "御猫馆",
+          "pathName": "pages/catshop/catshop",
+          "query": "id=106",
+          "scene": null
+        },
+        {
+          "name": "视频",
+          "pathName": "pages/videopage/videopage",
+          "query": "user_id=35&dynamic_id=10",
+          "scene": null
         }
       ]
     }

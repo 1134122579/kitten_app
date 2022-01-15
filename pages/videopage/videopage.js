@@ -261,7 +261,7 @@ Page({
       .boundingClientRect(function (rect) {
         console.log(rect);
         that.setData({
-          contentBottom: `${rect.height}px`,
+          contentBottom: `${rect.height+14}px`,
           videoHeight: `${rect.top}px`,
         });
         // console.log(that.data.objHeight);
@@ -384,13 +384,13 @@ Page({
       navHeight: App.globalData.navHeight,
     });
     this.videoContext = wx.createVideoContext("myVideo");
+    this.getFooterStyle();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getFooterStyle();
   },
 
   /**
