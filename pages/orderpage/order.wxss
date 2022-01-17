@@ -120,7 +120,6 @@ page {
   flex: 1;
   overflow: hidden;
   font-size: 28rpx;
-  
 }
 .typeValue_t{
   flex-shrink: 0;

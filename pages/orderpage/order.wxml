@@ -82,7 +82,7 @@
 					<view class="typeText fontBlod">搜索</view>
 					<view class="typeValue flexastart inputStyle">
 						<van-icon name="search" />
-						<input type="text" style="" class="input" placeholder="请输入猫咪名字（大写英文）" />
+						<input type="text" class="input" placeholder="请输入猫咪名字（大写英文）" />
 					</view>
 					<view class="headertag "> </view>
 				</view>
