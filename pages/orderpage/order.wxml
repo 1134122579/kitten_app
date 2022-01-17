@@ -12,11 +12,11 @@
 		<!-- 列表 -->
 		<!-- 赛事报名 -->
 
-			<!--  -->
-			<view class="orderList_content"  wx:if="{{isStatus==1}}">
+		<!--  -->
+		<view class="orderList_content" wx:if="{{isStatus==1}}">
 			<block wx:if="{{list.length>0}}">
 				<block wx:for="{{list}}" wx:key="index">
-					<OrdeCard wx:if="{{item.id}}"  cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
+					<OrdeCard wx:if="{{item.id}}" cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" />
 				</block>
 				<view hidden="{{isnullList}}" style="text-align: center; font-size: 20rpx;color: #ccc;padding: 20rpx;">暂无更多</view>
 			</block>
@@ -24,79 +24,105 @@
 				<EmptyModel description="暂无订单" />
 			</block>
 		</view>
-	
+
 		<!-- 赛事积分 -->
 		<view class="orderList_content" wx:if="{{isStatus==4}}">
-			<view class="orderList_content_ul flexaround">
-				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
-					<view class="typeStyle flexcenter">
-						<view>{{saishiValue||"赛事"}}</view>
-						<view>
-							<van-icon name="arrow-down" />
-						</view>
+			<view class="orderList_content_ul">
+				<view class="flexastart">
+					<view class="typeText fontBlod">赛事</view>
+					<view class="typeValue flexastart classStyle">
+						<van-tabs bind:change="typeChange" active="{{timeactive}}" line-height="0" title-active-color="#333" title-inactive-color="rgba(92, 92, 92, 1)" swipeable ellipsis="{{ellipsis}}">
+							<van-tab wx:for="{{timeList}}" title="{{item}}" name="{{item}}" wx:key="index">
+							</van-tab>
+						</van-tabs>
 					</view>
-				</picker>
-				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
-					<view class=" typeStyle flexcenter">
-						<view>{{saishiValue||"场次"}}</view>
-						<view>
-							<van-icon name="arrow-down" />
-						</view>
+					<view class="headertag "> 必选/单选</view>
+				</view>
+				<view class="flexastart">
+					<view class="typeText fontBlod">城市</view>
+					<view class="typeValue flexastart">
+						<view class="typeValue_t  {{csiValue?'colorH':''}}" bindtap="arrCsClick">全国城市</view>
+						<picker mode="selector" range="{{ssList}}" bindchange="bindcsChange" range-key="text">
+							<view class="typeStyle flexaround {{csiValue?'':'colorH'}}">
+								<view>{{csiValue||"选择城市"}}</view>
+								<view>
+									<van-icon name="arrow-down" />
+								</view>
+							</view>
+						</picker>
 					</view>
-				</picker>
-				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
-					<view class=" typeStyle flexcenter">
-						<view>{{saishiValue||"组别"}}</view>
-						<view>
-							<van-icon name="arrow-down" />
-						</view>
+					<view class="headertag ">可选全国或单城市</view>
+				</view>
+				<view class="flexastart">
+					<view class="typeText fontBlod">时间</view>
+					<view class="typeValue flexastart">
+						<view class="typeValue_t  {{sjiValue?'colorH':''}}" bindtap="arrsjClick">本赛季</view>
+						<picker mode="selector" range="{{ssList}}" bindchange="bindsjChange" range-key="text">
+							<view class="typeStyle flexaround {{sjiValue?'':'colorH'}}">
+								<view>{{sjiValue||"选择时间"}}</view>
+								<view>
+									<van-icon name="arrow-down" />
+								</view>
+							</view>
+						</picker>
 					</view>
-				</picker>
-				<picker mode="selector" range="{{ssList}}" bindchange="bindssChange" range-key="text">
-					<view class=" typeStyle flexcenter">
-						<view>{{saishiValue||"排序"}}</view>
-						<view>
-							<van-icon name="arrow-down" />
-						</view>
+					<!-- <view class="headertag "> 必选/单选</view> -->
+				</view>
+				<view class="flexastart">
+					<view class="typeText fontBlod">组别</view>
+					<view class="typeValue flexastart classStyle">
+						<van-tabs bind:change="classChange" swipe-threshold="10" active="{{classctive}}" line-height="0" title-active-color="rgba(92, 92, 92, 1)" title-inactive-color="#ccc" swipeable ellipsis="{{ellipsis}}">
+							<van-tab wx:for="{{classList}}" title="{{item}}" name="{{item}}" wx:key="index">
+							</van-tab>
+						</van-tabs>
 					</view>
-				</picker>
+					<view class="headertag "> 必选/单选</view>
+				</view>
+				<view class="flexastart">
+					<view class="typeText fontBlod">搜索</view>
+					<view class="typeValue flexastart inputStyle">
+						<van-icon name="search" />
+						<input type="text" style="" class="input" placeholder="请输入猫咪名字（大写英文）" />
+					</view>
+					<view class="headertag "> </view>
+				</view>
 			</view>
 			<block wx:if="{{list.length>0}}">
 				<view class=" B_ul flexaround">
-								<view class="B_li">
-									序号
-								</view>
-								<view class="B_li">
-									名称
-								</view>
-								<view class="B_li">
-									颜色代码
-								</view>
-								<view class="B_li">
-									品种代码
-								</view>
-								<view class="B_li">
-									积分
-								</view>
-						</view>
+					<view class="B_li">
+						 Rank
+					</view>
+					<view class="B_li">
+						 Name
+					</view>
+					<view class="B_li">
+						 Breed
+					</view>
+					<view class="B_li">
+						 Points
+					</view>
+					<!-- <view class="B_li">
+						积分
+					</view> -->
+				</view>
 				<block wx:for="{{20}}" wx:key="index">
-						<view class="B_ul flexaround">
-								<view class="B_li_value">
-									序号
-								</view>
-								<view class="B_li_value">
-									名称
-								</view>
-								<view class="B_li_value">
-									颜色代码
-								</view>
-								<view class="B_li_value">
-									品种代码
-								</view>
-								<view class="B_li_value">
-									积分
-								</view>
+					<view class="B_ul flexaround">
+						<view class="B_li_value">
+							序号
 						</view>
+						<view class="B_li_value">
+							名称
+						</view>
+						<view class="B_li_value">
+							颜色代码
+						</view>
+						<view class="B_li_value">
+							品种代码
+						</view>
+						<!-- <view class="B_li_value">
+							积分
+						</view> -->
+					</view>
 				</block>
 			</block>
 			<block wx:if="{{list.length<=0}}">

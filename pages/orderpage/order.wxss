@@ -78,14 +78,12 @@ page {
   height: 100%;
 }
 .orderList_content_ul{
-  padding: 0 20rpx;
   margin: 10rpx;
 }
 .typeStyle{
-  width: 140rpx;
+  width: 160rpx;
   padding: 10rpx 0;
   font-size: 24rpx;
-  border: 1rpx solid #333;
   border-radius: 30rpx;
 }
 .B_ul{
@@ -104,4 +102,53 @@ page {
 .blocktransition{
   width: 100%;
   box-sizing: border-box;
+}
+
+/* 赛事积分 */
+.fontBlod{
+  font-weight: bold;
+  color:rgba(255, 87, 51, 1)
+}
+.typeText{
+  font-size: 32rpx;
+  width:110rpx;
+  text-align: center;
+  flex-shrink: 0;
+  text-align: center;
+}
+.typeValue{
+  flex: 1;
+  overflow: hidden;
+  font-size: 28rpx;
+  
+}
+.typeValue_t{
+  flex-shrink: 0;
+  padding:10rpx 10rpx;
+}
+.headertag{
+  color: rgba(59, 252, 0, 1);
+  font-size: 28rpx;
+  padding: 0 10rpx;
+}
+.colorH{
+  color: rgba(92, 92, 92, 1);
+}
+.inputStyle{
+  border: 1px solid #333;
+  flex: 1;
+  border-radius: 40rpx;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+}
+.input{
+  flex: 1;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.classStyle{
+  padding-left: -80rpx;
+}
+.typeValue .van-tabs__wrap--scrollable{
+  margin-left: -30rpx
 }

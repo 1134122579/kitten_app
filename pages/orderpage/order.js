@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timeactive:'2018-2019',
+    ellipsis:false,
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,
     isnullList:false,
@@ -39,14 +41,53 @@ Page({
     ssList:[{
       id:1,text:"第一场赛事"
     },{
-      id:1,text:"第一场赛事"
+      id:2,text:"第2场赛事"
     },{
-      id:1,text:"第一场赛事"
-    }]
+      id:3,text:"第一场赛事"
+    }],
+    classctive:"幼猫组",
+    timeList:['2021-2022',"2020-2021","2019-2020","2018-2019",'2017-2018'],
+    classList:["幼猫组","少年组","少年组2","少年组3",'少年组4'],
+    csiValue:'',//选择城市
+    sjiValue:"",//选择时间
   },
   onplayClose() {
     this.setData({
       is_okplayShow: false
+    })
+  },
+  arrCsClick(){
+    this.setData({
+      csiValue: ""
+    })
+  },
+  arrsjClick(){
+    this.setData({
+      sjiValue: ""
+    })
+  },
+  classChange(event) {
+    let { name: item } = event.detail;
+    console.log(item, "赛事组别");
+  },
+  bindcsChange(event) {
+    let {
+      ssList
+    } = this.data
+    console.log(event)
+    this.setData({
+      // sexIndex: event.detail.value,
+      csiValue: ssList[event.detail.value]['text']
+    })
+  },
+  bindsjChange(event) {
+    let {
+      ssList
+    } = this.data
+    console.log(event)
+    this.setData({
+      // sexIndex: event.detail.value,
+      sjiValue: ssList[event.detail.value]['text']
     })
   },
   // 赛事积分
@@ -58,6 +99,10 @@ Page({
       // sexIndex: event.detail.value,
       saishiValue: ssList[event.detail.value]['text']
     })
+  },
+  typeChange(event) {
+    let { name: item } = event.detail;
+    console.log(item, "赛事日期");
   },
   ontabChange(event) {
     let status = event.detail.name;

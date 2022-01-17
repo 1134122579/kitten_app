@@ -12,7 +12,7 @@
 				<!-- 分类 -->
 				<view class="tabStyle flexbetween">
 					<view class="tabStyle_l">
-						<van-tabs bind:change="typeChange" ellipsis="{{ellipsis}}">
+						<van-tabs bind:change="typeChange" swipeable ellipsis="{{ellipsis}}">
 							<van-tab wx:for="{{hotList}}" title="{{item.name}}" name="{{item}}" wx:key="index">
 							</van-tab>
 						</van-tabs>

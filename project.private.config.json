@@ -89,6 +89,12 @@
           "pathName": "pages/videopage/videopage",
           "query": "user_id=35&dynamic_id=10",
           "scene": null
+        },
+        {
+          "name": "赛事列表",
+          "pathName": "pages/orderpage/order",
+          "query": "",
+          "scene": null
         }
       ]
     }
