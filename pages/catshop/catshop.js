@@ -17,6 +17,7 @@ Page({
     isnullList: false,
     listQuery: {
       page: 1,
+      label:1,
     },
     is_okplayShow: false,
     navHeight: appInst.globalData.navHeight,
@@ -96,7 +97,7 @@ Page({
       return;
     } else {
       // 相关猫舍
-      res = await Api.get_match(listQuery);
+      res = await Api.getAboutCatHome(listQuery);
       this.setData({
         catList:[],
         isnullList: res.length > 0 ? false : true,

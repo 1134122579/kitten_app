@@ -117,6 +117,14 @@ export default {
       isThree: false,
     });
   },
+  getAboutCatHome(params) {
+    return fly({
+      url: `getAboutCatHome`,
+      method: "post",
+      params,
+      isThree: false,
+    });
+  },
   getUserCollect(params) {
     return fly({
       url: `getUserCollect`,
