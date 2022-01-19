@@ -29,10 +29,10 @@
 		<!-- 最新动态 -->
 
 		<view class="orderList_content" wx:if="{{isStatus==1}}">
-			<block wx:if="{{is_empt}}">
-
-			</block>
 			<block wx:if="{{!is_empt}}">
+				<ListModel list="{{catList}}" listType="{{listType}}" isStatus="{{isStatus}}"/>
+			</block>
+			<block wx:else>
 				<EmptyModel />
 			</block>
 		</view>

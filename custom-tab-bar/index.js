@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    Zindex: 9999,
+    Zindex: 99,
     active: 0,
     color: "#272822",
     selectedColor: "#D13127",

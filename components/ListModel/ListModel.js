@@ -15,8 +15,8 @@ Component({
     isStatus: {
       type: Number,
       observer(newV, oldV) {
-        console.log("isSwitchList", newV, oldV)
         if (newV != oldV) {
+        console.log("isSwitchList1", newV, oldV)
           this.data.leftList = []; //左边数组
           this.data.rightList = []; //左边数组
           this.data.alllist = []; //左边数组
@@ -61,6 +61,7 @@ Component({
           this.waterfallFlow()
           return
         }
+        return
         let {
           alllist
         } = this.data
@@ -99,7 +100,22 @@ Component({
       type: Boolean,
       observer(newV, oldV) {}
     },
-
+    isEmpty: {
+      type: Boolean,
+      observer(newV, oldV) {
+        console.log(newV,212313)
+        if(newV){
+          this.data.leftList = []; //左边数组
+          this.data.rightList = []; //左边数组
+          this.data.alllist = []; //左边数组
+          this.setData({
+            leftList:[],
+            rightList:[],
+            alllist:[],
+          })
+        }
+      }
+    },
     isNullList: {
       type: Boolean,
       value: true,

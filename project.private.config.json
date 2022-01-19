@@ -95,6 +95,12 @@
           "pathName": "pages/orderpage/order",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "发布动态",
+          "pathName": "pages/dongtai/dongtai",
+          "query": "",
+          "scene": null
         }
       ]
     }

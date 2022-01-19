@@ -7,8 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    is_Zkbutton:true,
-    is_Zk:false,
+    isEmpty:true,
+    listType: "homeblockmodel",
+    is_Zkbutton: true,
+    is_Zk: false,
+    catList: [],
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,
     isnullList: false,
@@ -28,15 +31,6 @@ Page({
         status: 2,
         disabled: false,
       },
-      // {
-      //   title: "赛事回顾",
-      //   status: 3,
-      //   disabled: false
-      // }, {
-      //   title: "赛事积分",
-      //   status: 4,
-      //   disabled: false
-      // }
     ],
     list: [],
     ssList: [
@@ -69,10 +63,12 @@ Page({
   },
   ontabChange(event) {
     let status = event.detail.name;
+    console.log(status)
     this.setData({
+      "listQuery.page":1,
       isStatus: Number(status),
+      isEmpty:status==1
     });
-    // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     this.getOrderList();
   },
 
@@ -92,20 +88,22 @@ Page({
     if (isStatus == 1) {
       // 最新动态
       res = await Api.get_match(listQuery);
+      console.log(res)
       this.setData({
-        list: res,
+        catList: res,
+        is_empt: listQuery.page == 1 && res.length <= 0 ? true : false,
       });
       return;
     } else {
       // 相关猫舍
       res = await Api.get_match(listQuery);
       this.setData({
+        catList:[],
         isnullList: res.length > 0 ? false : true,
       });
       if (listQuery.page == 1) {
         this.setData({
           list: res,
-          is_empt:res.length>0?false:true
         });
       } else {
         this.setData({
@@ -129,7 +127,6 @@ Page({
     });
   },
   //   支付成功
-
   payCarOrder(event) {
     let { order_no, pay_type } = event.detail;
     wx.showLoading({
@@ -171,7 +168,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
