@@ -3,7 +3,7 @@
 <view class="enroll">
   <view class="cat_detail">
     <view class="e_title">
-      猫咪图片
+      猫咪图片/视频
     </view>
     <view class="uplodaStyle">
       <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" accept="media"  bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" />
@@ -15,7 +15,7 @@
     <!-- <view class="e_title">
       简介信息
     </view> -->
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}"  />
     <view class="labelStyle">
       <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
         <!-- <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" /> -->

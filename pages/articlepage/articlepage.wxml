@@ -1,6 +1,6 @@
 <wxs src="../../utils/split.wxs" module="split" />
 <view class="saishipage flexcolumn">
-  <NavFollowModel userInfo="{{getData}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType"/>
+  <NavFollowModel userInfo="{{getData}}" myuserID="{{myuserID}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType"/>
   <!-- 头部 -->
   <view class="headerImage" style="margin-top: {{navHeight}}px;">
     <swiper class="headerImage" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">

@@ -3,6 +3,7 @@ import Api from "../../api/index";
 let App = getApp();
 import { formatDate } from "../../utils/util";
 import { formatTime } from "../../utils/index";
+import storage from '../../utils/cache'
 Page({
   /**
    * 页面的初始数据
@@ -31,6 +32,7 @@ Page({
     is_Zk: false, //展开
     is_Zkbutton: false,
     getData: {},
+    myuserID:''
   },
   // 前往猫舍
   gocathouse() {
@@ -382,6 +384,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
+      myuserID:storage.getUserInfo().user_id
     });
     this.videoContext = wx.createVideoContext("myVideo");
     this.getFooterStyle();

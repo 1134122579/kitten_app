@@ -6,7 +6,7 @@
     <view class="userInfo flexastart">
       <image src="{{userInfo.headimgurl}}" style="width: 58rpx;height: 58rpx;display: block;border-radius: 50%;"></image>
       <view class="name">{{userInfo.nickname}}</view>
-      <view class="{{userInfo.is_follow==1||is_gz?'gzstyle':'gzstyle'}}" bindtap="onClick">
+      <view  wx:if="{{myuserID!=userInfo.user_id}}" class="{{userInfo.is_follow==1||is_gz?'gzstyle':'gzstyle'}}" bindtap="onClick">
         {{userInfo.is_follow==1||is_gz?'已关注':'关注'}}
       </view>
     </view>

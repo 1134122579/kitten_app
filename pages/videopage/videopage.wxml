@@ -15,7 +15,7 @@
         <image src="{{getData.headimgurl}}" style="width: 80rpx;height: 80rpx;border-radius: 50%;display: block;margin-right: 20rpx;"></image>
         <view class="name">{{getData.nickname}}</view>
       </view>
-      <view class="gzStyle" bindtap="onfollow">{{getData.is_follow==1?"已关注":"关注"}}</view>
+      <view class="gzStyle" wx:if="{{myuserID!=getData.user_id}}" bindtap="onfollow">{{getData.is_follow==1?"已关注":"关注"}}</view>
     </view>
     <view class="content_desc">
       {{is_Zk?getData.desccopy:getData.desc}}

@@ -9,13 +9,17 @@ Page({
   data: {
     navHeight: App.globalData.navHeight,
     hotList: [],
+    mValue: "",
     loading: false,
     CatClassList: [],
+    isEmpty: false,
+    is_empty: false,
     list: [],
+    gzlist: [],
     isStatus: "",
     listQuery: {
       page: 1,
-      label: "英国长毛猫(纯色)",
+      label: "",
     },
     tabName: "发现",
     listType: "homeblockmodel",
@@ -23,42 +27,58 @@ Page({
   },
   // 获取动态列表
   async getCatList() {
-    let { tabName } = this.data;
+    let { tabName, mValue } = this.data;
     let res = [];
     this.setData({
       loading: true,
     });
     if (tabName == "发现") {
       res = await Api.getCatList(this.data.listQuery);
+      this.setData({
+        is_empty: this.data.listQuery.page == 1 && res.length <= 0,
+        gzlist: [],
+        list: res,
+        isNullList: res.length > 0 ? false : true,
+        loading: false,
+      });
     }
     if (tabName == "关注") {
       // 关注
       res = await Api.getFollowDynamic(this.data.listQuery);
       this.setData({
-        isStatus:0
-      })
+        isStatus: 0,
+      });
+      this.setData({
+        is_empty: this.data.listQuery.page == 1 && res.length <= 0,
+        gzlist: res,
+        list: [],
+        isNullList: res.length > 0 ? false : true,
+        loading: false,
+      });
     }
-    this.setData({
-      is_empty:this.data.listQuery.page==1&&res.length<=0,
-      list: res,
-      isNullList: res.length > 0 ? false : true,
-      loading: false,
-    });
   },
+  // 品种切换
   typeChange(event) {
-    let { name: item } = event.detail;
-    console.log(item, "猫咪类型");
+    let { name } = event.detail;
     this.setData({
-      "listQuery.label": item.name,
-      isStatus: item.id,
+      "listQuery.label": name,
+      "listQuery.page": 1,
+      isStatus: name,
+      isEmpty: true,
     });
     this.getCatList();
   },
+  // 顶部切换
   tabType(e) {
     let name = e.detail;
+    let { mValue } = this.data;
+    console.log("tabType", name);
     this.setData({
       tabName: name,
+      isEmpty: true,
+      isStatus: "",
       "listQuery.page": 1,
+      "listQuery.label": mValue,
     });
     this.getCatList();
   },
@@ -72,6 +92,9 @@ Page({
   },
   // 上拉翻页l
   onpullpage() {
+    this.setData({
+      isEmpty: false,
+    });
     this.data.listQuery.page++;
     this.getCatList();
   },
@@ -80,7 +103,11 @@ Page({
     Api.getHotClass().then((res) => {
       this.setData({
         hotList: res,
+        "listQuery.label": res[0].name,
+        mValue: res[0].name,
       });
+      this.selectComponent('#tabs').resize();
+      this.getCatList();
     });
   },
   // 前往
@@ -97,28 +124,22 @@ Page({
   onLoad: function (options) {
     App.tabbershow(this, 0);
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
+      tabName: "发现",
     });
     this.getHotLable();
     this.getCatClass();
-    this.getCatList();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.setData({
-      tabName:"发现"
-    })
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

@@ -47,8 +47,9 @@
 
 .M_imageurl {
   width: 100%;
-  min-height: 200rpx;
-  max-height: 280rpx;
+  /* min-height: 200rpx; */
+  max-height: 380rpx;
+  min-height: 280rpx;
   /* margin-top: -50px; */
 }
 
@@ -74,7 +75,7 @@
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp:2;
+  -webkit-line-clamp: 2;
   /*! autoprefixer: ignore next */
   -webkit-box-orient: vertical;
   word-break: break-all;
@@ -105,24 +106,27 @@
   /* padding: 2px 8px; */
   color: #fff;
 }
-.button{
+
+.button {
   border: none;
   color: #fff;
   background-color: rgba(255, 106, 110, 1);
   border-radius: 0;
 }
-.sharebutton{
+
+.sharebutton {
   border-radius: 50%;
   overflow: hidden;
   width: 24px;
   height: 24px;
   display: block;
-  line-height:1;
+  line-height: 1;
   padding: 0;
   margin: 0;
   /* background: #FF623E; */
 }
-.sharebutton .S_button{
+
+.sharebutton .S_button {
   width: 24px;
   height: 24px;
   width: 100%;
@@ -130,24 +134,37 @@
   display: block;
   border: none;
 }
-.S_icon{
+
+.S_icon {
   width: 100%;
   height: 100%;
-  display:block;
+  display: block;
 }
-.name_text{
-padding-left: 8rpx;
-max-width: 100%;
-flex: 1;
-overflow: hidden;
-text-overflow:ellipsis;
-white-space: nowrap;
-font-size: 20rpx;
+
+.name_text {
+  padding-left: 8rpx;
+  max-width: 100%;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 20rpx;
 }
-.flooter{
+
+.flooter {
   margin-top: 10rpx;
 }
-.onLikenum{
+
+.onLikenum {
   font-size: 24rpx;
   margin-left: 4rpx;
+}
+
+/* 播放按钮 */
+.playok {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60rpx;
+  height: 60rpx;
 }

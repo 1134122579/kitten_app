@@ -1,6 +1,7 @@
 // components/navbar/index.js
 const App = getApp();
 import Api from "../../api/index";
+import storage from "../../utils/cache";
 
 Component({
   options: {
@@ -10,6 +11,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    myuserID:String,
     userInfo: Object,
     pageName: String,
     showNav: {
@@ -94,7 +96,7 @@ Component({
         this.setData({
           is_gz: !is_gz,
         });
-      this.triggerEvent("tabType",detail.name);
+        this.triggerEvent("tabType", detail.name);
         wx.showToast({
           title: "关注成功",
           icon: "none",
@@ -110,7 +112,7 @@ Component({
         follow_user_id: userInfo.user_id,
       }).then((res) => {
         wx.hideLoading();
-      this.triggerEvent("tabType",detail.name);
+        this.triggerEvent("tabType", detail.name);
         this.setData({
           is_gz: !is_gz,
         });

@@ -3,12 +3,14 @@ import Api from "../../api/index";
 let App = getApp();
 import { formatDate } from "../../utils/util";
 import { formatTime } from "../../utils/index";
+import storage from "../../utils/cache";
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    myuserID: storage.getUserInfo().user_id,
     navHeight: App.globalData.navHeight,
     value: "",
     is_addCollect: false,
@@ -313,6 +315,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
+    myuserID: storage.getUserInfo().user_id,
     });
   },
 

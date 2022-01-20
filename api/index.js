@@ -14,6 +14,7 @@ export default {
       url: `wx_mini_login`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -22,6 +23,7 @@ export default {
       url: `getUserInfo`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -30,6 +32,7 @@ export default {
       url: `checkToken`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -38,16 +41,18 @@ export default {
       url: `wxlogin`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  
+
   // 充值明细
   getUserRecharge(params) {
     return fly({
       url: `getUserRecharge`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -56,6 +61,7 @@ export default {
       url: `edit_cat`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -65,23 +71,26 @@ export default {
       url: `shopCount`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
-  },  // 门店列表
+  }, // 门店列表
   getShop(params) {
     return fly({
       url: `getShop`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  
+
   getShopDetails(params) {
     return fly({
       url: `getShopDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -90,6 +99,7 @@ export default {
       url: `makeOrderUseCoupon`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -98,6 +108,7 @@ export default {
       url: `cancelOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -106,6 +117,7 @@ export default {
       url: `getFollowDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -114,6 +126,7 @@ export default {
       url: `getHotClass`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -122,6 +135,7 @@ export default {
       url: `getAboutCatHome`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -130,6 +144,7 @@ export default {
       url: `getUserCollect`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -139,6 +154,7 @@ export default {
       url: `add_order`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -147,6 +163,7 @@ export default {
       url: `getProduct`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -155,6 +172,7 @@ export default {
       url: `getUserCoupon`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -163,6 +181,7 @@ export default {
       url: `shopRechargeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -171,6 +190,7 @@ export default {
       url: `makeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -180,6 +200,7 @@ export default {
       url: `getNews`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -189,6 +210,7 @@ export default {
       url: `getNewsDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -198,6 +220,7 @@ export default {
       url: `exchangeVip`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -207,6 +230,7 @@ export default {
       url: `exchangeCoupon`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -216,6 +240,7 @@ export default {
       url: `getClass`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -225,6 +250,7 @@ export default {
       url: `payCarOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: true, //=======================
     });
   },
@@ -236,6 +262,7 @@ export default {
       url: `rechargeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -245,6 +272,7 @@ export default {
       url: `queryCertOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -254,6 +282,7 @@ export default {
       url: `upImage`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -262,6 +291,7 @@ export default {
       url: `queryorder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -271,6 +301,7 @@ export default {
       url: `getRoom`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -280,6 +311,7 @@ export default {
       url: `getBanner`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -289,6 +321,7 @@ export default {
       url: `getActivity`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -298,6 +331,7 @@ export default {
       url: `getActivityDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -309,6 +343,7 @@ export default {
       url: `payVipOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -319,6 +354,7 @@ export default {
       url: `payRoomOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -328,6 +364,7 @@ export default {
       url: `getRoomDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -336,6 +373,7 @@ export default {
       url: `queryQueueRoom`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -345,6 +383,7 @@ export default {
       url: `editCar`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -353,6 +392,7 @@ export default {
       url: `addCar`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -362,6 +402,7 @@ export default {
       url: `getUserCar`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -371,6 +412,7 @@ export default {
       url: `editUserInfo`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -380,6 +422,7 @@ export default {
       url: `getVipDesc`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -388,6 +431,7 @@ export default {
       url: `getVip`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -396,6 +440,7 @@ export default {
       url: `getUserRank`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -404,6 +449,7 @@ export default {
       url: `getUserOrder`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -412,6 +458,7 @@ export default {
       url: `getUserOrderLog`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -420,6 +467,7 @@ export default {
       url: `queryOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -428,6 +476,7 @@ export default {
       url: `nextPayRoomOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -436,6 +485,7 @@ export default {
       url: `userVisit`,
       method: "post",
       params,
+      loading: false,
       isThree: true,
     });
   },
@@ -444,6 +494,7 @@ export default {
       url: `catVoteList`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -452,6 +503,7 @@ export default {
       url: `get_vote_rule`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -460,6 +512,7 @@ export default {
       url: `join_vote`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -468,6 +521,7 @@ export default {
       url: `JoinCatVote`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -476,6 +530,7 @@ export default {
       url: `get_match`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -484,6 +539,7 @@ export default {
       url: `get_match_details`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -492,6 +548,7 @@ export default {
       url: `joinMatch`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -500,6 +557,7 @@ export default {
       url: `getUserCatList`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -508,6 +566,7 @@ export default {
       url: `addFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -516,6 +575,7 @@ export default {
       url: `cancelComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -524,6 +584,7 @@ export default {
       url: `zan_cat`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -532,6 +593,7 @@ export default {
       url: `getHotLable`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -540,6 +602,7 @@ export default {
       url: `getFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -548,6 +611,7 @@ export default {
       url: `cancelCollect`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -556,6 +620,7 @@ export default {
       url: `getMyfans`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -564,6 +629,7 @@ export default {
       url: `cacheFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -572,6 +638,7 @@ export default {
       url: `addFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -580,6 +647,7 @@ export default {
       url: `addDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -588,6 +656,7 @@ export default {
       url: `add_cat`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -596,6 +665,7 @@ export default {
       url: `getCatdetails`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -604,6 +674,7 @@ export default {
       url: `getCatClass`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -612,6 +683,7 @@ export default {
       url: `payCertOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -620,6 +692,7 @@ export default {
       url: `getSelectCatList`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -628,6 +701,7 @@ export default {
       url: `getCatList`,
       method: "post",
       params,
+      loading: true,
       isThree: false,
     });
   },
@@ -636,6 +710,7 @@ export default {
       url: `getDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -644,6 +719,16 @@ export default {
       url: `getDynamicDetails`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getPzDetial(params) {
+    return fly({
+      url: `getPzDetial`,
+      method: "get",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -652,6 +737,7 @@ export default {
       url: `getComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -660,6 +746,7 @@ export default {
       url: `addComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -668,6 +755,7 @@ export default {
       url: `addCollect`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -676,6 +764,7 @@ export default {
       url: `replyComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -684,6 +773,7 @@ export default {
       url: `zanComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -692,6 +782,7 @@ export default {
       url: `zanDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -700,6 +791,7 @@ export default {
       url: `getMatchImg`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -708,6 +800,7 @@ export default {
       url: `matchGroup`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -716,6 +809,7 @@ export default {
       url: `payMatchOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -724,8 +818,8 @@ export default {
       url: `queryMatchOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  
 };

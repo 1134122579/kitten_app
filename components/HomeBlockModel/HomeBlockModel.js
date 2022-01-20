@@ -17,7 +17,6 @@ Component({
         if (newV["type"] == 2) {
           newV["link_url"] =
             newV["link_url"] + "?vframe/jpg/offset/0";
-          console.log(newV);
         }
         this.setData({
           item: newV,
