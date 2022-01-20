@@ -103,6 +103,15 @@ export default {
       isThree: false,
     });
   },
+  getAboutDynamic(params) {
+    return fly({
+      url: `getAboutDynamic`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   cancelOrder(params) {
     return fly({
       url: `cancelOrder`,

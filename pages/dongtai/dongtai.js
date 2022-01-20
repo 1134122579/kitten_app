@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show:false,
     maxcount: 8,
     title: "",
     address: "",
@@ -71,6 +72,16 @@ Page({
         text: "母",
       },
     ],
+  },
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onclosebuttonPopup() {
+    this.setData({ show: false });
+  },
+
+  onClose() {
+    this.setData({ show: false });
   },
 
   // 获取标签
@@ -164,7 +175,7 @@ Page({
           console.log(res, "complete");
         },
       });
-      return
+      return;
     }
     console.log("afterRead", file);
     that.uploadFile(fileList, file);
@@ -341,6 +352,12 @@ Page({
       return;
     }
     return true;
+  },
+  bindbqclick(e) {
+    console.log(e);
+    this.setData({
+      label: e.currentTarget.dataset.item.name,
+    });
   },
 
   /**

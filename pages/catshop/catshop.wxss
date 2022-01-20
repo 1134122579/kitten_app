@@ -42,8 +42,9 @@ page {
 
 /* 简介内容 */
 .catShop_content {
-  font-size: 28rpx;
+  font-size: 26rpx;
   padding: 20rpx;
+  line-height: 1.5;
 }
 
 .catShop_content_title {
@@ -159,6 +160,7 @@ page {
   box-shadow: 0 0 6rpx #ccc;
   box-sizing: border-box;
   width: 100%;
+  margin-top: 10rpx;
 }
 
 .headertImage {
@@ -171,6 +173,7 @@ page {
 .textContent {
   font-size: 24rpx;
   width: 100%;
+  line-height: 1.6;
 }
 
 .text {

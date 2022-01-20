@@ -123,6 +123,7 @@ Page({
    */
   onShow: function () {
     appInst.tabbershow(this, 4);
+    appInst.getUserinfoFn(()=>{})
     let {
       powerlist
     } = this.data;

@@ -50,6 +50,9 @@ Component({
   methods: {
     gocatDteail() {
       let { item } = this.data;
+      wx.showLoading({
+        title: '加载中..',
+      })
       if (item.type == 2) {
         wx.navigateTo({
           url: `/pages/videopage/videopage?user_id=${item.user_id}&dynamic_id=${item.id}`,

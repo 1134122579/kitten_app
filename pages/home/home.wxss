@@ -1,7 +1,6 @@
 /* pages/home/home.wxss */
 page {
-  --index-anchor-background-color: #F4F4F4
-  width: 100%;
+  --index-anchor-background-color: #F4F4F4 width: 100%;
   height: auto;
 }
 
@@ -25,13 +24,15 @@ page {
   justify-content: flex-start;
   flex-direction: column;
 }
-.FollowDynamic{
-  padding-bottom:120px ;
+
+.FollowDynamic {
+  padding-bottom: 120px;
 }
+
 .cdongtaiLsit {
   flex: 1;
   box-sizing: border-box;
-  padding-bottom:120px ;
+  padding-bottom: 120px;
 
 }
 
@@ -39,6 +40,7 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .tabStyle_l {
@@ -49,6 +51,7 @@ page {
 .tabStyle_r {
   padding: 0 30rpx;
   background: #fff;
+  position: relative;
 }
 
 .listStyle {
@@ -90,5 +93,54 @@ page {
 
 .arrClass {
   margin: 20rpx 0;
-  padding:  0 20rpx;
+  padding: 0 20rpx;
+}
+
+/* 标签 */
+.poupList {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  top:68rpx;
+  z-index: 12;
+  background: rgba(0,0,0,.4);
+  border-radius: 0 0 20rpx 20rpx ;
+}
+
+.labelStyle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex: 1;
+  background: #fff;
+  overflow-y: auto;
+  padding: 20rpx;
+}
+
+.listname {
+  border: 1px solid #e7e4e4;
+  padding: 10rpx 20rpx;
+  margin: 10rpx;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}
+
+.suer {
+  border: 1px solid #1CA261;
+  color: #1CA261;
+}
+
+.button_list {
+  background: #1CA261;
+  width: 80%;
+  margin: 20rpx auto;
+  flex-shrink: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 40rpx;
 }

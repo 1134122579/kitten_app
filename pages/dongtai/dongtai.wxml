@@ -6,7 +6,7 @@
       猫咪图片/视频
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" accept="media"  bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" />
     </view>
   </view>
 
@@ -15,12 +15,13 @@
     <!-- <view class="e_title">
       简介信息
     </view> -->
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}"  />
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="添加内容" autosize="{{autoSize}}" border="{{ true }}" />
     <view class="labelStyle">
-      <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
-        <!-- <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" /> -->
+      <!-- <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
         <text class="label"># {{label||'标签'}}</text>
-      </picker>
+      </picker> -->
+      <text bindtap="showPopup" class="label"># {{label||'标签'}}</text>
+
     </view>
     <label for="">
       <view class="dreass flexbetween" bindtap="getlocation">
@@ -39,3 +40,13 @@
     <van-button block round type="warning" bind:click="onClick">发布动态</van-button>
   </view>
 </view>
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+  <view class="poupList">
+    <view class="listStyle">
+      <block wx:for="{{PzList}}" wx:key="index">
+        <view class="listname {{item.name==label&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
+      </block>
+    </view>
+    <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view>
+  </view>
+</van-popup>

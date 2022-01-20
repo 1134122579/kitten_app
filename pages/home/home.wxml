@@ -12,18 +12,27 @@
 				<!-- 分类 -->
 				<view class="tabStyle flexbetween">
 					<view class="tabStyle_l">
-						<van-tabs bind:change="typeChange"  id="tabs"color="#333" active="{{ listQuery.label }}" swipeable ellipsis="{{ellipsis}}">
-							<van-tab wx:for="{{hotList}}"  title="{{item.name}}" name="{{item.name}}" wx:key="index">
+						<van-tabs bind:change="typeChange" id="tabs" color="#333" active="{{ listQuery.label }}" swipeable ellipsis="{{ellipsis}}">
+							<van-tab wx:for="{{hotList}}" title="{{item.name}}" name="{{item.name}}" wx:key="index">
 							</van-tab>
 						</van-tabs>
 					</view>
-					<view class="tabStyle_r">
+					<view class="tabStyle_r" bindtap="showPopup">
 						<van-icon name="arrow-down" size="28rpx" />
 					</view>
+							<!-- 下拉 -->
+							<view class="poupList" wx:if="{{show}}">
+							<view class="labelStyle">
+								<block wx:for="{{hotList}}" wx:key="index">
+									<view class="listname {{item.name==listQuery.label&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
+								</block>
+							</view>
+							<!-- <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view> -->
+						</view>
 				</view>
 				<!-- 列表 -->
 				<view class="cdongtaiLsit">
-					<ListModel list="{{list}}" listType="{{listType}}"  isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+					<ListModel list="{{list}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
 				</view>
 			</block>
 			<!-- 御猫馆 -->

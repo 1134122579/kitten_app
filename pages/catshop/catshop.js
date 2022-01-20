@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isEmpty:true,
+    options: "",
+    isEmpty: true,
     listType: "homeblockmodel",
     is_Zkbutton: true,
     is_Zk: false,
@@ -17,7 +18,7 @@ Page({
     isnullList: false,
     listQuery: {
       page: 1,
-      label:1,
+      label: 1,
     },
     is_okplayShow: false,
     navHeight: appInst.globalData.navHeight,
@@ -49,6 +50,16 @@ Page({
       },
     ],
   },
+  // 前往猫舍
+  goHouse(e){
+    let {item}=e.currentTarget.dataset
+    wx.showLoading({
+      title: '进入中...',
+    })
+    wx.navigateTo({
+      url: '/pages/cathouse/cathouse?user_id='+item.user_id,
+    })
+  },
   onplayClose() {
     this.setData({
       is_okplayShow: false,
@@ -64,11 +75,11 @@ Page({
   },
   ontabChange(event) {
     let status = event.detail.name;
-    console.log(status)
+    console.log(status);
     this.setData({
-      "listQuery.page":1,
-      isStatus: Number(status),
-      isEmpty:status==1
+      "listQuery.page": 1,
+      isStatus: status,
+      isEmpty: status == 1,
     });
     this.getOrderList();
   },
@@ -88,8 +99,8 @@ Page({
     let res = [];
     if (isStatus == 1) {
       // 最新动态
-      res = await Api.get_match(listQuery);
-      console.log(res)
+      res = await Api.getAboutDynamic(listQuery);
+      console.log(res);
       this.setData({
         catList: res,
         is_empt: listQuery.page == 1 && res.length <= 0 ? true : false,
@@ -99,7 +110,7 @@ Page({
       // 相关猫舍
       res = await Api.getAboutCatHome(listQuery);
       this.setData({
-        catList:[],
+        catList: [],
         isnullList: res.length > 0 ? false : true,
       });
       if (listQuery.page == 1) {
@@ -113,6 +124,7 @@ Page({
       }
     }
   },
+
   ontextLook() {
     this.setData({
       is_Zk: !this.data.is_Zk,
@@ -160,16 +172,32 @@ Page({
       //
     });
   },
-
-  // 上来
+  // s上拉
   onBottom() {
     this.data.listQuery.page++;
+    this.getOrderList();
+  },
+  // 获取详情
+  async getPzDetial() {
+    let { options } = this.data;
+    let res = await Api.getPzDetial(options);
+    res["desccopy"] = `${res["desc"].slice(0, 50)}...`;
+    this.setData({
+      detail: res,
+      is_Zkbutton: res.desc.length > 50 ? true : false,
+      "listQuery.label":res.name
+    });
     this.getOrderList();
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      options,
+      isStatus: 1,
+    });
+    this.getPzDetial();
   },
 
   /**
@@ -186,10 +214,6 @@ Page({
    */
   onShow: function () {
     appInst.tabbershow(this, 1);
-    this.getOrderList();
-    this.setData({
-      isStatus: 1,
-    });
   },
 
   /**

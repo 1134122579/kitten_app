@@ -21,6 +21,7 @@ Page({
     console.log(id);
     this.setData({
       tabId: id,
+      list:[]
     });
     this.getFollow();
   },
@@ -70,6 +71,7 @@ Page({
         title: "取消关注",
         icon: "none",
       });
+      this.getFollow()
     });
   },
   // 关注
@@ -81,6 +83,7 @@ Page({
         title: "关注",
         icon: "none",
       });
+      this.getFollow()
     });
   },
   /**

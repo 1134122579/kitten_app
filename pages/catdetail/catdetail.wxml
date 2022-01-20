@@ -6,7 +6,7 @@
       <block wx:for="{{getdata.img}}" wx:key="*this">
         <swiper-item>
           <view class="headerImage">
-            <image class="imageStyle" src="{{item}}"></image>
+            <image class="imageStyle"  mode="aspectFill" src="{{item}}"></image>
           </view>
         </swiper-item>
       </block>
@@ -117,7 +117,7 @@
       <view class="fm_typeList ">
         <view class="flexastart fm_li">
           <view class="userImg">
-            <image style="width: 100%;height: 100%;display: block;" src="{{getdata.mother_info.img||nullheaderImage}}"></image>
+            <image style="width: 100%;height: 100%;display: block;"  mode="aspectFill" src="{{getdata.mother_info.img||nullheaderImage}}"></image>
           </view>
           <view class="fm_content">
             <view class="fm_typeListname flexastart">
@@ -129,7 +129,7 @@
         </view>
         <view class="flexastart fm_li" style="border-top: 1px solid rgba(233, 230, 230, 0.8);">
           <view class="userImg">
-            <image style="width: 100%;height: 100%;display: block;" src="{{getdata.father_info.img||nullheaderImage}}"></image>
+            <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{getdata.father_info.img||nullheaderImage}}"></image>
           </view>
           <view class="fm_content">
             <view class="fm_typeListname flexastart">
@@ -150,7 +150,7 @@
         <block wx:for="{{getdata.nest_info}}" wx:key="index">
           <view class="type_block flexcolumn">
             <view class="userImg">
-              <image style="width: 100%;height: 100%;display: block;" src="{{item.img||nullheaderImage}}"></image>
+              <image style="width: 100%;height: 100%;display: block;"   mode="aspectFill" src="{{item.img||nullheaderImage}}"></image>
             </view>
             <view class="typeListname flexcenter">{{item.cat_name}} <van-icon wx:if="{{item.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{item.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>

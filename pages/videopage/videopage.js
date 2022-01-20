@@ -60,11 +60,12 @@ Page({
       follow_user_id: getData.user_id,
     }).then((res) => {
       wx.hideLoading();
-      this.getDynamicDetails();
       wx.showToast({
         title: "关注成功",
         icon: "none",
+        duration:1500
       });
+      this.getDynamicDetails();
     });
   },
   cacheFollow() {

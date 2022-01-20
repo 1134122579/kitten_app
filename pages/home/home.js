@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    show: false,
     navHeight: App.globalData.navHeight,
     hotList: [],
     mValue: "",
@@ -24,6 +25,16 @@ Page({
     tabName: "发现",
     listType: "homeblockmodel",
     ellipsis: false,
+  },
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onclosebuttonPopup() {
+    this.setData({ show: false });
+  },
+
+  onClose() {
+    this.setData({ show: false });
   },
   // 获取动态列表
   async getCatList() {
@@ -65,6 +76,7 @@ Page({
       "listQuery.page": 1,
       isStatus: name,
       isEmpty: true,
+      show: false,
     });
     this.getCatList();
   },
@@ -77,10 +89,26 @@ Page({
       tabName: name,
       isEmpty: true,
       isStatus: "",
+      list: [],
+      gzlist: [],
+      show: false,
       "listQuery.page": 1,
       "listQuery.label": mValue,
     });
     this.getCatList();
+  },
+  bindbqclick(e) {
+    if(this.data.listQuery.label==e.currentTarget.dataset.item.name){
+      return
+    }
+    this.setData({
+      "listQuery.label": e.currentTarget.dataset.item.name,
+      "listQuery.page": 1,
+      isStatus: e.currentTarget.dataset.item.name,
+      isEmpty: true,
+      show: false,
+    });
+    // this.getCatList();
   },
   // 获取分类
   getCatClass() {
@@ -106,7 +134,7 @@ Page({
         "listQuery.label": res[0].name,
         mValue: res[0].name,
       });
-      this.selectComponent('#tabs').resize();
+      this.selectComponent("#tabs").resize();
       this.getCatList();
     });
   },
@@ -114,6 +142,9 @@ Page({
   goShop(e) {
     console.log(e);
     let { item } = e.currentTarget.dataset;
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.navigateTo({
       url: `/pages/catshop/catshop?id=${item.id}`,
     });

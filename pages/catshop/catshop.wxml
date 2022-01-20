@@ -2,20 +2,22 @@
 	<Navheader />
 	<!-- 头部 -->
 	<view class="headerImage">
-		<image class="imageStyle" mode="widthFix" src="https://img.js.design/assets/img/61b44a697eee4352133690cc.png"></image>
+		<image class="imageStyle" mode="widthFix" src="{{detail.cover}}"></image>
 	</view>
 	<view class="orderList flexcolumn">
 		<view class="orderList_header">
 			<!-- 内容 -->
 			<view class="catShop_content">
 				<view class="catShop_content_title">
-					美国短毛猫
+					{{detail.name}}
 				</view>
 				<view class="flexbetween">
-					<view>asdasdasdasd</view>
-					<view class="catShop_content_class">品种标准</view>
+					<view>
+						{{detail.breed}}
+					</view>
+					<view class="catShop_content_class">{{detail.code}}</view>
 				</view>
-				<view class="catShop_content_desc">{{is_Zk?'美国短毛猫(American Shorthair)是原产美国的一种猫，其祖先为欧洲早期移民带到北美的猫种，与英国短毛猫和欧...':'美国短毛猫(American Shorthair)是原产美国的一种猫，其祖先为欧洲早期移民带到北美的猫种，与英国短毛猫和欧美国短毛猫(American Shorthair)是原产美国的一种猫，其祖先为欧洲早期移民带到北美的猫种，与英国短毛猫和欧.'}} <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text> </view>
+				<view class="catShop_content_desc">{{is_Zk?detail.desccopy:detail.desc}} <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text> </view>
 			</view>
 			<!-- 分类 -->
 			<view class="tbsStyle">
@@ -42,13 +44,13 @@
 			<block wx:if="{{list.length>0}}">
 				<block wx:for="{{list}}" wx:key="index">
 					<!-- <OrdeCard wx:if="{{item.id}}"  cardItem="{{item}}" bind:payCarOrder="payCarOrder" bind:cancelOrderClick="cancelOrder" /> -->
-					<view class="block flexastart">
+					<view class="block flexastart" bindtap="goHouse" data-item="{{item}}">
 						<view class="headertImage">
-							<image src="{{item.cover}}" class="importHeaderImage"></image>
+							<image src="{{item.headimgurl}}" class="importHeaderImage"></image>
 						</view>
 						<view class="textContent ">
-							<view class="text">爱说大话即将开始的就你声卡的考虑凯撒爱说大话即将开始的就你声卡的考虑凯撒 阿松大</view>
-							<view class="text">爱说大话即将开始的就你声卡的考虑凯撒爱说大话即将开始的就你声卡的考虑凯撒 阿松大</view>
+							<view class="text">{{item.home_name}}</view>
+							<view class="text">{{item.desc}}</view>
 						</view>
 					</view>
 				</block>
