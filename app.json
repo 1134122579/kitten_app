@@ -81,7 +81,7 @@
     ]
   },
   "usingComponents": {
-    
+    "image-cropper": "./components/image-cropper/index",
     "CatBmModel": "./components/CatBmModel/CatBmModel",
     "CatListPopup": "./components/CatListPopup/CatListPopup",
     "NavFollowModel": "./components/NavFollowModel/NavFollowModel",

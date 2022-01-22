@@ -1,0 +1,44 @@
+<!-- <canvas  id="image-cropper-canvas" type="2d" style="position:fixed;left:800rpx;width: {{canvas.width}}px;height:{{canvas.height}}px;"></canvas> -->
+
+<canvas  canvas-id="image-cropper-canvas-id" style="position:fixed;left:800rpx;width: {{canvas.width}}px;height:{{canvas.height}}px;"></canvas>
+
+<view class="crop_image_content">
+  <!-- 原图 灰底 -->
+  <image class="cropimg1" 
+    style="width:{{viewImagesLocation.width}}rpx;height:{{viewImagesLocation.height}}rpx;top:{{viewImagesLocation.top}}rpx;left:{{viewImagesLocation.left}}rpx;" 
+    src="{{ imagePath }}"/>
+
+  <!-- 原图 裁剪框范围 -->
+  <image class="cropimg2" 
+    style="width:{{viewImagesLocation.width}}rpx;height:{{viewImagesLocation.height}}rpx;top:{{viewImagesLocation.top}}rpx;left:{{viewImagesLocation.left}}rpx;clip: rect({{crop.top}}rpx, {{crop.right}}rpx, {{crop.bottom}}rpx, {{crop.left}}rpx);" 
+    src="{{ imagePath }}"/>
+
+  <!-- 裁剪框边框 -->
+  <view class="mainBox"  style="top:{{crop.top + viewImagesLocation.top}}rpx;left:{{crop.left + viewImagesLocation.left}}rpx;width: {{crop.right - crop.left}}rpx;height: {{crop.bottom - crop.top}}rpx;" catchtouchstart="_cropViewTouchstart" catchtouchmove="_cropViewMove">
+      <view class="minBox left-up">
+        <view class="click c-left-up" catchtouchmove="_leftUpTouchmove"></view>
+      </view>
+      <view wx:if="{{!isProportion}}" class="minBox up">
+        <view class="click c-up" catchtouchmove="_upTouchmove"></view>
+      </view>
+      <view class="minBox right-up">
+        <view class="click c-right-up" catchtouchmove="_rightUpTouchmove"></view>
+      </view>
+      <view wx:if="{{!isProportion}}" class="minBox right">
+        <view class="click c-right" catchtouchmove="_rightTouchmove"></view>
+      </view>
+      <view class="minBox right-down">
+        <view class="click c-right-down" catchtouchmove="_rightDownTouchmove"></view>
+      </view>
+      <view wx:if="{{!isProportion}}" class="minBox down" >
+        <view class="click c-down" catchtouchmove="_downTouchmove"></view>
+      </view>
+      <view class="minBox left-down">
+        <view class="click c-left-down" catchtouchmove="_leftDownTouchmove"></view>
+      </view>
+      <view wx:if="{{!isProportion}}" class="minBox left">
+        <view class="click c-left" catchtouchmove="_leftTouchmove"></view>
+      </view>
+  </view>
+  <slot></slot>
+</view> 

@@ -39,7 +39,7 @@ page{
   height: 116rpx;
   border-radius: 50%;
   overflow: hidden;
-  margin-top: -30rpx;
+  margin-top: -50rpx;
 }
 
 .mynum {

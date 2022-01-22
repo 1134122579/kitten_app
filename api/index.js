@@ -36,6 +36,43 @@ export default {
       isThree: false,
     });
   },
+  
+  getSelectMathCity(params) {
+    return fly({
+      url: `getSelectMathCity`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathDate(params) {
+    return fly({
+      url: `getSelectMathDate`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathCompetition(params) {
+    return fly({
+      url: `getSelectMathCompetition`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathGroup(params) {
+    return fly({
+      url: `getSelectMathGroup`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   wxlogin(params) {
     return fly({
       url: `wxlogin`,
@@ -45,7 +82,15 @@ export default {
       isThree: false,
     });
   },
-
+  getMatchScore(params) {
+    return fly({
+      url: `getMatchScore`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   // 充值明细
   getUserRecharge(params) {
     return fly({

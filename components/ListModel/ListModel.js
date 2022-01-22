@@ -154,6 +154,7 @@ Component({
       if (alllist.length <= 0) return;
       for (const item of alllist) {
       let { leftList, rightList } = this.data;
+      console.log(leftList, rightList )
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         // leftListnew=[...leftList,item]
         // leftHeight <= rightHeight

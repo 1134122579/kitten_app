@@ -19,10 +19,10 @@ Page({
     catList: [], //猫咪列表
     isStatus: 1,
     typeList: [{
-      status: 1,
+      status: 2,
       title: '代售'
     }, {
-      status: 2,
+      status: 1,
       title: '展示'
     }, {
       status: 3,
@@ -122,6 +122,7 @@ Page({
       "listQuery.user_id": options.user_id,
       my_id: storage.getUserInfo().user_id
     })
+    // this.getUserCatList()
   },
 
   /**
@@ -135,7 +136,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getUserCatList()
   },
 
   /**

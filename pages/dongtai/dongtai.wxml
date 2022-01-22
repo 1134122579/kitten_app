@@ -6,7 +6,7 @@
       猫咪图片/视频
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}" max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileList }}"  max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" compressed="false"/>
     </view>
   </view>
 

@@ -107,6 +107,12 @@
           "pathName": "pages/likepage/likepage",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "name": "个人信息",
+          "pathName": "pages/userInfo/userInfo",
+          "query": "",
+          "scene": null
         }
       ]
     }

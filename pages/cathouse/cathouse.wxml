@@ -2,7 +2,7 @@
   <Navheader />
 
   <view class="headerimage">
-    <image class="topimg" mode="aspectFill" src="https://img.js.design/assets/img/61b4435e013b1b6072873de3.png"></image>
+    <image class="topimg" mode="aspectFill" src="{{homenfo.cat_bg||'https://img.js.design/assets/img/61b4435e013b1b6072873de3.png'}}"></image>
   </view>
   <!-- 内容 -->
   <view class="mycontent">
@@ -24,15 +24,15 @@
           关注
         </view>
         <view class="mun">
-        {{homenfo.fans_num}}
+        {{homenfo.like_num}}
         </view>
       </view>
       <view class="mynum flexcolumn">
         <view class="mynum_text">
-          浏览
+          粉丝
         </view>
         <view class="mun">
-        {{homenfo.like_num}}
+        {{homenfo.fans_num}}
         </view>
       </view>
     </view>

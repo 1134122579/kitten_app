@@ -96,23 +96,26 @@ Page({
   getlocation() {
     console.log(1);
     let that = this;
-    wx.getLocation({
-      type: "gcj02", //返回可以用于wx.openLocation的经纬度
-      success(res) {
-        const latitude = res.latitude;
-        const longitude = res.longitude;
-        wx.chooseLocation({
-          latitude,
-          longitude,
-          success(res) {
-            console.log(res);
-            that.setData({
-              address: res.address,
-            });
-          },
-        });
-      },
-    });
+    App.isGetlocation(()=>{
+      wx.getLocation({
+        type: "gcj02", //返回可以用于wx.openLocation的经纬度
+        success(res) {
+          const latitude = res.latitude;
+          const longitude = res.longitude;
+          wx.chooseLocation({
+            latitude,
+            longitude,
+            success(res) {
+              console.log(res);
+              that.setData({
+                address: res.address,
+              });
+            },
+          });
+        },
+      });
+    })
+ 
   },
   // 上传前
   beforeread(event) {
@@ -142,7 +145,6 @@ Page({
     const { fileList = [] } = that.data;
     console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-
     if (fileList.length > 0 && file.type != "image") {
       wx.showToast({
         title: "已上传图片无法选择视频",

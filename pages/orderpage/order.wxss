@@ -79,9 +79,16 @@ page {
 }
 .orderList_content_ul{
   margin: 10rpx;
+  box-sizing: border-box;
+  /* width: 100%; */
+}
+.blokrow{
+  padding-right: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 .typeStyle{
-  width: 160rpx;
+  width: 200rpx;
   padding: 10rpx 0;
   font-size: 24rpx;
   border-radius: 30rpx;
@@ -91,7 +98,7 @@ page {
 }
 .B_li,.B_li_value{
   font-size: 24rpx;
-  width:120rpx ;
+  width:200rpx;
   text-align: center;
 }
 .B_li{
@@ -110,7 +117,7 @@ page {
   color:rgba(255, 87, 51, 1)
 }
 .typeText{
-  font-size: 32rpx;
+  font-size: 30rpx;
   width:110rpx;
   text-align: center;
   flex-shrink: 0;
@@ -150,4 +157,10 @@ page {
 }
 .typeValue .van-tabs__wrap--scrollable{
   margin-left: -30rpx
+}
+.isnullList{
+  text-align: center;
+  font-size: 20rpx;
+  padding: 20rpx 0;
+  color: #bebebe;
 }
