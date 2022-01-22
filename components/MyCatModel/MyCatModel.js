@@ -52,6 +52,8 @@ Component({
         vote_id,
         is_zan
       } = this.data.item
+      console.log('禁止点赞')
+      return
       let {
         is_like
       } = this.data

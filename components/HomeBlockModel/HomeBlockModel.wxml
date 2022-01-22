@@ -1,6 +1,6 @@
 <wxs src="../../utils/split.wxs" module="split" />
-  <view class="tab_content_list_one" bindtap="gocatDteail">
-<van-skeleton row="8" loading="{{ loading }}">
+<view class="tab_content_list_one" bindtap="gocatDteail">
+  <van-skeleton row="8" loading="{{ loading }}">
     <view class="block_image">
       <image mode="widthFix" class="M_imageurl" lazy-load="{{is_lazyload}}" bindload="imageload" src="{{item.link_url||'../../images/kongtu.png'}}">
       </image>
@@ -28,5 +28,5 @@
         </view>
       </view>
     </view>
-</van-skeleton>
-  </view>
+  </van-skeleton>
+</view>

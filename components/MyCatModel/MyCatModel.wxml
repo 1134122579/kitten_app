@@ -3,7 +3,7 @@
 
 <view class="tab_content_list_one" bindtap="gocatDteail">
   <view class="block_image">
-    <image mode="widthFix" class="M_imageurl"	lazy-load="{{is_lazyload}}"  src="{{item.img||'../../images/kongtu.png'}}">
+    <image mode="widthFix" class="M_imageurl"	lazy-load="{{is_lazyload}}"  src="{{item.img}}">
     </image>
   </view>
   <view class="M_text">
@@ -20,7 +20,7 @@
     <view class="M_desc">
       {{item.age}}
     </view>
-    <view class="block_header flooter flexbetween" catchtap="nodetail">
+    <view class="block_header flooter flexbetween" >
       <view class="name flexastart">
       <image src="{{item.headimgurl}}" style="width: 36rpx;height:36rpx;border-radius: 50%;display: block;"></image>
         <text class="name_text">{{item.cat_name}}</text>

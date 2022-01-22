@@ -68,8 +68,8 @@ Component({
         });
       }
     },
-    nodetail(){
-
+    nodetail(e) {
+      console.log(e);
     },
     onLike() {
       let { id, vote_id, is_zan } = this.data.item;
