@@ -1,6 +1,7 @@
 // pages/likepage/likepage.js
 let App = getApp();
 import Api from "../../api/index";
+import storage from "../../utils/cache";
 Page({
   /**
    * 页面的初始数据
@@ -9,7 +10,9 @@ Page({
     tabId: null,
     navHeight: App.globalData.navHeight,
     isnullLsit: false,
+    sclist: [],
     list: [],
+    isEmy: false,
     UserCollectList: [],
     lisQuery: {
       page: 1,
@@ -20,15 +23,16 @@ Page({
     let id = e.detail;
     console.log(id);
     this.setData({
+      "lisQuery.page": 1,
       tabId: id,
-      list:[]
+      list: [],
     });
     this.getFollow();
   },
   // 翻页
   onpullpage() {
     this.data.lisQuery.page++;
-      this.getFollow();
+    this.getFollow();
   },
   // 数据
   async getFollow() {
@@ -38,9 +42,10 @@ Page({
       // 收藏
       res = await Api.getUserCollect(lisQuery);
       this.setData({
-        list: res,
+        sclist: res,
+        isEmy: lisQuery.page == 1 && res.length <= 0 ? true : false,
       });
-      return
+      return;
     } else if (tabId == 2) {
       // 粉丝
       res = await Api.getMyfans(lisQuery);
@@ -48,13 +53,13 @@ Page({
       // 关注
       res = await Api.getFollow(lisQuery);
     }
-    console.log(res, 121231231);
     this.setData({
       isnullLsit: res.length > 0 ? false : true,
     });
     if (lisQuery.page == 1) {
       this.setData({
         list: res,
+        isEmy:  res.length <= 0 ? true : false,
       });
     } else {
       this.setData({
@@ -66,24 +71,26 @@ Page({
   cacheFollow(e) {
     console.log(e);
     let { item } = e.currentTarget.dataset;
-    Api.cacheFollow(item).then((res) => {
+    let { user_id } = storage.getUserInfo();
+    Api.cacheFollow({ user_id, follow_user_id: item.user_id }).then((res) => {
+      this.getFollow();
       wx.showToast({
         title: "取消关注",
         icon: "none",
       });
-      this.getFollow()
     });
   },
   // 关注
   addFollow(e) {
     console.log(e);
+    let { user_id } = storage.getUserInfo();
     let { item } = e.currentTarget.dataset;
-    Api.addFollow(item).then((res) => {
+    Api.addFollow({ user_id, follow_user_id: item.user_id }).then((res) => {
+      this.getFollow();
       wx.showToast({
-        title: "关注",
+        title: "关注成功",
         icon: "none",
       });
-      this.getFollow()
     });
   },
   /**
@@ -125,14 +132,14 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    this.onpullpage();
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {},
+  onReachBottom: function () {
+    this.onpullpage();
+  },
 
   /**
    * 用户点击右上角分享

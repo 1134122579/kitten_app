@@ -126,7 +126,7 @@ export default {
       url: `getFollowDynamic`,
       method: "post",
       params,
-      loading: false,
+      loading: true,
       isThree: false,
     });
   },

@@ -59,6 +59,7 @@
 
 .block_header .name {
   padding-bottom: 4px;
+  max-width: 70%;
 }
 
 
@@ -143,12 +144,11 @@
 
 .name_text {
   padding-left: 8rpx;
-  max-width: 100%;
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 20rpx;
+  word-break:break-all;
 }
 
 .flooter {

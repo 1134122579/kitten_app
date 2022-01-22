@@ -3,7 +3,7 @@ import Api from "../../api/index";
 let App = getApp();
 import { formatDate } from "../../utils/util";
 import { formatTime } from "../../utils/index";
-import storage from '../../utils/cache'
+import storage from "../../utils/cache";
 Page({
   /**
    * 页面的初始数据
@@ -32,7 +32,7 @@ Page({
     is_Zk: false, //展开
     is_Zkbutton: false,
     getData: {},
-    myuserID:''
+    myuserID: "",
   },
   // 前往猫舍
   gocathouse() {
@@ -63,7 +63,7 @@ Page({
       wx.showToast({
         title: "关注成功",
         icon: "none",
-        duration:1500
+        duration: 1500,
       });
       this.getDynamicDetails();
     });
@@ -200,7 +200,7 @@ Page({
     if (res.length > 0) {
       res = res.map((item) => {
         item["create_time"] = formatTime(
-          new Date(item["create_time"]),
+          new Date(item["create_time"].replaceAll("-", "/")),
           "{m}月{d}日 {h}时{i}分"
         );
         item["replys"] = this.timeList(item["replys"]);
@@ -264,7 +264,7 @@ Page({
       .boundingClientRect(function (rect) {
         console.log(rect);
         that.setData({
-          contentBottom: `${rect.height+14}px`,
+          contentBottom: `${rect.height + 14}px`,
           videoHeight: `${rect.top}px`,
         });
         // console.log(that.data.objHeight);
@@ -316,6 +316,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -333,6 +334,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -366,6 +368,12 @@ Page({
       isPlay: !isPlay,
     });
   },
+  // 播放完毕
+  bindended() {
+    this.setData({
+      isPlay: true,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -385,7 +393,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
-      myuserID:storage.getUserInfo().user_id
+      myuserID: storage.getUserInfo().user_id,
     });
     this.videoContext = wx.createVideoContext("myVideo");
     this.getFooterStyle();
@@ -394,8 +402,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

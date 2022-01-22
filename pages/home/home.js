@@ -27,7 +27,11 @@ Page({
     ellipsis: false,
   },
   showPopup() {
-    this.setData({ show: true });
+    let { show } = this.data;
+    this.setData({ show: !show });
+  },
+  onpoup(e) {
+    console.log(e, "阻止冒泡");
   },
   onclosebuttonPopup() {
     this.setData({ show: false });
@@ -98,8 +102,8 @@ Page({
     this.getCatList();
   },
   bindbqclick(e) {
-    if(this.data.listQuery.label==e.currentTarget.dataset.item.name){
-      return
+    if (this.data.listQuery.label == e.currentTarget.dataset.item.name) {
+      return;
     }
     this.setData({
       "listQuery.label": e.currentTarget.dataset.item.name,
@@ -143,8 +147,8 @@ Page({
     console.log(e);
     let { item } = e.currentTarget.dataset;
     wx.showLoading({
-      title: '加载中...',
-    })
+      title: "加载中...",
+    });
     wx.navigateTo({
       url: `/pages/catshop/catshop?id=${item.id}`,
     });

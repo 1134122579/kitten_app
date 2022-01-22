@@ -36,7 +36,7 @@
 							</van-tab>
 						</van-tabs>
 					</view>
-					<view class="headertag "> 必选/单选</view>
+					<!-- <view class="headertag "> 必选/单选</view> -->
 				</view>
 				<view class="flexastart">
 					<view class="typeText fontBlod">城市</view>
@@ -51,7 +51,7 @@
 							</view>
 						</picker>
 					</view>
-					<view class="headertag ">可选全国或单城市</view>
+					<!-- <view class="headertag ">可选全国或单城市</view> -->
 				</view>
 				<view class="flexastart">
 					<view class="typeText fontBlod">时间</view>
@@ -76,7 +76,7 @@
 							</van-tab>
 						</van-tabs>
 					</view>
-					<view class="headertag "> 必选/单选</view>
+					<!-- <view class="headertag "> 必选/单选</view> -->
 				</view>
 				<view class="flexastart">
 					<view class="typeText fontBlod">搜索</view>
@@ -84,7 +84,7 @@
 						<van-icon name="search" />
 						<input type="text" class="input" placeholder="请输入猫咪名字（大写英文）" />
 					</view>
-					<view class="headertag "> </view>
+					<!-- <view class="headertag "> </view> -->
 				</view>
 			</view>
 			<block wx:if="{{list.length>0}}">

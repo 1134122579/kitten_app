@@ -101,6 +101,12 @@
           "pathName": "pages/dongtai/dongtai",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "收藏！！",
+          "pathName": "pages/likepage/likepage",
+          "query": "id=1",
+          "scene": null
         }
       ]
     }

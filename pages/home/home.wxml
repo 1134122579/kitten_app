@@ -20,15 +20,15 @@
 					<view class="tabStyle_r" bindtap="showPopup">
 						<van-icon name="arrow-down" size="28rpx" />
 					</view>
-							<!-- 下拉 -->
-							<view class="poupList" wx:if="{{show}}">
-							<view class="labelStyle">
-								<block wx:for="{{hotList}}" wx:key="index">
-									<view class="listname {{item.name==listQuery.label&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
-								</block>
-							</view>
-							<!-- <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view> -->
+					<!-- 下拉 -->
+					<view class="poupList" wx:if="{{show}}" bindtap="onclosebuttonPopup">
+						<view class="labelStyle" catchtap="onpoup">
+							<block wx:for="{{hotList}}" wx:key="index">
+								<view class="listname {{item.name==listQuery.label&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
+							</block>
 						</view>
+						<!-- <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view> -->
+					</view>
 				</view>
 				<!-- 列表 -->
 				<view class="cdongtaiLsit">
@@ -64,7 +64,7 @@
 			</block>
 			<!-- 关注 -->
 			<block wx:if="{{tabName=='关注'}}">
-				<van-skeleton row="30" loading="{{ loading }}">
+	
 					<block wx:if="{{!is_empty}}">
 						<view class="FollowDynamic">
 							<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
@@ -73,7 +73,6 @@
 					<block wx:else>
 						<EmptyModel />
 					</block>
-				</van-skeleton>
 			</block>
 		</view>
 	</view>

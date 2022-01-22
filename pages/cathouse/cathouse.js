@@ -170,6 +170,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    let {homenfo}=this.data
+      return{
+        title:homenfo.home_name
+      }
   }
 })

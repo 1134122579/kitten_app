@@ -245,7 +245,7 @@ Page({
     if (res.length > 0) {
       res = res.map((item) => {
         item["create_time"] = formatTime(
-          new Date(item["create_time"]),
+          new Date(item["create_time"].replaceAll('-','/')),
           "{m}月{d}日 {h}时{i}分"
         );
         item["replys"] = this.timeList(item["replys"]);

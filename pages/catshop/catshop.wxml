@@ -135,7 +135,7 @@
 				</block>
 			</block>
 			<block wx:if="{{list.length<=0}}">
-				<EmptyModel description="暂无订单" />
+				<EmptyModel description="暂无数据" />
 			</block>
 		</view>
 	</view>

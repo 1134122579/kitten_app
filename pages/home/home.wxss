@@ -129,12 +129,12 @@ page {
 }
 
 .suer {
-  border: 1px solid #1CA261;
-  color: #1CA261;
+  border: 1px solid #FF6A6E;
+  color: #FF6A6E;
 }
 
 .button_list {
-  background: #1CA261;
+  background: #FF6A6E;
   width: 80%;
   margin: 20rpx auto;
   flex-shrink: 0;

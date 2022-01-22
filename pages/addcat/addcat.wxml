@@ -55,7 +55,7 @@
       <van-cell-group>
         <!-- 类别 -->
         <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择级别" value="{{cat_statustext}}" readonly label="级别" />
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择类型" value="{{cat_statustext}}" readonly label="类型" />
         </picker>
         <!-- 类别 -->
         <picker mode="selector" range="{{levelList}}" bindchange="bindlevelChange" range-key="text">

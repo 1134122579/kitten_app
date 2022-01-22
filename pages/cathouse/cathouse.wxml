@@ -2,14 +2,14 @@
   <Navheader />
 
   <view class="headerimage">
-    <image class="topimg" mode="center" src="https://img.js.design/assets/img/61b4435e013b1b6072873de3.png"></image>
+    <image class="topimg" mode="aspectFill" src="https://img.js.design/assets/img/61b4435e013b1b6072873de3.png"></image>
   </view>
   <!-- 内容 -->
   <view class="mycontent">
     <!-- 数据 -->
     <view class="myheader flexbetween">
       <view class="userImg">
-        <image style="width: 100%;height: 100%;display: block;" src="https://img.js.design/assets/img/61b44332c2794a93c34178dd.png"></image>
+        <image style="width: 100%;height: 100%;display: block;" src="{{homenfo.headimgurl}}"></image>
       </view>
       <view class="mynum flexcolumn">
         <view class="mynum_text">
@@ -57,7 +57,7 @@
 
     </view>
     <view class="mydesc">
-    {{homenfo.desc||"本猫舍从事血统猫繁育5年，专注于布偶、德文的繁育，在各项比赛中获得过不俗成绩，猫舍位于美丽的上海，联系方式156XXXXXXX，欢迎猫友们一起交流学习经验..."}}
+    {{homenfo.desc||"暂未添加"}}
     </view>
 
     <!-- 列表 分类 -->

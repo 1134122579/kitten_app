@@ -5,14 +5,6 @@
   <view class="block_image">
     <image mode="widthFix" class="M_imageurl"	lazy-load="{{is_lazyload}}"  src="{{item.img||'../../images/kongtu.png'}}">
     </image>
-    <!-- <view class="M_pm flexbetween">
-      <view class="M_pm_l flexbetween">
-        <view class="M_pm_text">·排名</view>
-        <view class="M_pm_num">{{item.sort_num}}</view>
-      </view>
-      <view class="">
-      </view>
-    </view> -->
   </view>
   <view class="M_text">
     <view class="block_header flexbetween">
@@ -28,7 +20,7 @@
     <view class="M_desc">
       {{item.age}}
     </view>
-    <view class="block_header flooter flexbetween">
+    <view class="block_header flooter flexbetween" catchtap="nodetail">
       <view class="name flexastart">
       <image src="{{item.headimgurl}}" style="width: 36rpx;height:36rpx;border-radius: 50%;display: block;"></image>
         <text class="name_text">{{item.cat_name}}</text>

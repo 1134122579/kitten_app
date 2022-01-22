@@ -13,7 +13,7 @@ Component({
    */
   properties: {
     isStatus: {
-      type:[String,Number],
+      type: [String, Number],
       observer(newV, oldV) {
         console.log("isSwitchList1", newV, oldV);
         if (newV != oldV) {
@@ -36,8 +36,14 @@ Component({
     },
     list: {
       type: Array,
-      value: [],
       observer(newV, oldV) {
+        console.log(newV, "newV");
+        this.setData({
+          alllist: newV,
+          isNullList: newV.length > 0 ? true : false,
+        });
+          this.waterfallFlow();
+        return;
         if (this.data.listType == "MatchImgList") {
           this.setData({
             alllist: newV,
@@ -101,7 +107,7 @@ Component({
     isEmpty: {
       type: Boolean,
       observer(newV, oldV) {
-        console.log(newV, '清空所有数据');
+        console.log(newV, "清空所有数据");
         if (newV) {
           leftHeight = 0;
           rightHeight = 0; //分别定义左右两边的高度
@@ -141,11 +147,19 @@ Component({
     //瀑布流布局
     async waterfallFlow() {
       //在获取list后调用
-      const { alllist, leftList, rightList } = this.data;
+      let { alllist, leftList, rightList } = this.data;
+      let leftListnew = [];
+      let rightListnew = [];
       query = wx.createSelectorQuery().in(this); //  组件必须加上this
       if (alllist.length <= 0) return;
       for (const item of alllist) {
+      let { leftList, rightList } = this.data;
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
+        // leftListnew=[...leftList,item]
+        // leftHeight <= rightHeight
+        //   ? (leftListnew = [...leftList, item])
+        //   : (rightListnew = [...rightList, item]); //判断两边高度，来觉得添加到那边
+        // console.log(leftListnew, "leftList");
         let res = await this.getBoxHeight(leftList, rightList);
       }
       // console.log(alllist, rightList, leftList, "瀑布流数据");
@@ -162,6 +176,7 @@ Component({
         query.exec((res) => {
           leftHeight = res[0]?.height; //获取左边列表的高度
           rightHeight = res[1]?.height; //获取右边列表的高度
+          console.log(leftHeight,rightHeight)
           resolve(res);
         });
       });
