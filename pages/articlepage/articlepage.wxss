@@ -15,6 +15,7 @@ page {
 .content {
   box-sizing: border-box;
   width: 100%;
+  align-items: flex-start;
 }
 
 .headerImage {
@@ -276,6 +277,8 @@ page {
 .content_l {
   flex: 1;
   /* color: rgba(112, 112, 112, 1); */
+  
+word-break:break-all;
   font-size: 30rpx;
   padding: 10rpx 0;
 }
@@ -285,6 +288,8 @@ page {
   text-align: center;
   font-size: 24rpx;
   line-height: 1;
+  margin-top: 20rpx;
+
 }
 
 .foolter {
@@ -314,9 +319,10 @@ page {
 }
 .plstyle{
   width: 90vw;
-  padding: 10rpx;
+  padding: 20rpx;
   border-radius: 20rpx;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .plstyle_t{
   width: 100%;
@@ -329,4 +335,12 @@ page {
 }
 .timestyle{
   font-size: 20rpx;
+}
+
+/* 暂无更多 */
+.pinglun .isNullList{
+  text-align: center;
+  font-size: 20rpx;
+  padding: 10rpx 0;
+  color: #c7c5c5;
 }

@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isNullList: false,
     myuserID: storage.getUserInfo().user_id,
     navHeight: App.globalData.navHeight,
     value: "",
@@ -205,6 +206,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -222,6 +224,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -245,7 +248,7 @@ Page({
     if (res.length > 0) {
       res = res.map((item) => {
         item["create_time"] = formatTime(
-          new Date(item["create_time"].replaceAll('-','/')),
+          new Date(item["create_time"].replaceAll("-", "/")),
           "{m}月{d}日 {h}时{i}分"
         );
         item["replys"] = this.timeList(item["replys"]);
@@ -265,7 +268,9 @@ Page({
       page,
     }).then((res) => {
       res = this.timeList(res);
-      console.log(res, 112132123);
+      this.setData({
+        isNullList: res.length > 0 ? false : true,
+      });
       if (page == 1) {
         this.setData({
           CommentList: res,
@@ -315,7 +320,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
-    myuserID: storage.getUserInfo().user_id,
+      myuserID: storage.getUserInfo().user_id,
     });
   },
 

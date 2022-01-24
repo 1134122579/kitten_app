@@ -38,6 +38,9 @@ Page({
   // 前往猫舍
   gocathouse() {
     let { getData } = this.data;
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.navigateTo({
       url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
     });

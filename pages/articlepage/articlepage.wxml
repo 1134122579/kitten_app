@@ -86,6 +86,7 @@
         </view>
       </view>
     </block>
+    <view class="isNullList" wx:if="{{isNullList}}">暂无更多~</view>
   </view>
 </view>
 <view class="foolter flexastart">
@@ -106,12 +107,12 @@
     </view>
   </view>
 </view>
-<van-popup show="{{ show }}" bind:close="onClose">
+<van-popup show="{{ show }}" bind:close="onClose" round>
   <view class="plstyle">
     <view class="plstyle_t">评论</view>
     <van-cell-group>
       <van-field model:value="{{ value }}" type="textarea" autosize="{{autosize}}" placeholder="请输入" border="{{ false }}" />
     </van-cell-group>
-    <van-button plain hairline type="primary" block bindtap="addComment">发布</van-button>
+    <van-button  hairline type="warning" block bindtap="addComment">发布</van-button>
   </view>
 </van-popup>

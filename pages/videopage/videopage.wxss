@@ -183,10 +183,14 @@ flex-direction: column;
   color: rgba(153, 153, 153, 1);
   font-size: 26rpx;
 }
+.content {
+  align-items: flex-start;
+}
 
 .content_l {
   flex: 1;
   /* color: rgba(112, 112, 112, 1); */
+word-break:break-all;
   font-size: 30rpx;
   padding: 10rpx 0;
 }
@@ -196,6 +200,7 @@ flex-direction: column;
   text-align: center;
   font-size: 24rpx;
   line-height: 1;
+  margin-top: 20rpx;
 }
 
 .pLStylebottom {
