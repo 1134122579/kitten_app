@@ -20,6 +20,7 @@ page {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  padding-bottom: 160rpx;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -83,6 +84,7 @@ page {
 
 .hotListStyle_l {
   overflow-x: auto;
+  padding:0 10rpx ;
 }
 
 .hotListStyle {
@@ -100,9 +102,9 @@ page {
 .poupList {
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  height:  90vh;
   box-sizing: border-box;
-  top:68rpx;
+  top:66rpx;
   z-index: 12;
   background: rgba(0,0,0,.4);
   border-radius: 0 0 20rpx 20rpx ;

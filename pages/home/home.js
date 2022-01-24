@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    highlightColor:'rgba(255, 106, 110, 1)',
+    indexList: [],
     show: false,
     navHeight: App.globalData.navHeight,
     hotList: [],
@@ -117,7 +119,10 @@ Page({
   // 获取分类
   getCatClass() {
     Api.getCatClass().then((res) => {
+      res = res.filter((item) => item.list.length > 0);
+      let indexList = res.map((item) => item.name);
       this.setData({
+        indexList,
         CatClassList: res,
       });
     });
@@ -179,7 +184,11 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function () {
+    this.setData({
+      show:false
+    })
+  },
 
   /**
    * 生命周期函数--监听页面卸载

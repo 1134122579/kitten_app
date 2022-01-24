@@ -52,7 +52,7 @@
 	</view>
 </view>
 
-<view class="imagecropper" wx:if="{{isimagecropper}}">
+<view class="imagecropper" hidden="{{!isimagecropper}}">
 	<!-- 裁剪框标签 -->
 	<image-cropper id="my-cropper" src="{{imagecropper.src}}" aspectRatio="{{imagecropper.aspectRatio}}" isProportion="{{imagecropper.isProportion}}" quality="{{imagecropper.quality}}">
 		<!-- 操作按钮 -->

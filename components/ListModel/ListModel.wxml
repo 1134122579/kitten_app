@@ -8,9 +8,8 @@
         <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
         <!-- 精彩瞬间 -->
         <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
-          <image mode="widthFix" style="width: 100%;" src="{{item.url}}"></image>
+          <image mode="widthFix" style="width: 100%; border-radius: 6rpx;display: block;overflow: hidden;" src="{{item.url}}"></image>
         </view>
-
         <!-- <CatModel item="{{item}}"  bind:join_vote="join_vote"  isticket="{{isticket}}"/> -->
       </block>
     </view>
@@ -22,7 +21,7 @@
         <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
         <!-- 精彩瞬间 -->
         <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
-          <image mode="widthFix" style="width: 100%;" src="{{item.url}}"></image>
+          <image mode="widthFix" style="width: 100%; border-radius: 6rpx;display: block;overflow: hidden;" src="{{item.url}}"></image>
         </view>
         <!-- <CatModel item="{{item}}"  bind:join_vote="join_vote" isticket="{{isticket}}"/> -->
       </block>

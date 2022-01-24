@@ -27,7 +27,7 @@ Page({
         isNullList: res.length > 0 ? false : true,
         MatchImgList: res,
       });
-      return
+      return;
       if (page == 1) {
         this.setData({
           MatchImgList: res,
@@ -51,6 +51,19 @@ Page({
       url: `/pages/baomingpage/baomingpage?match_id=${id}`,
     });
   },
+  // 前往地址
+  openLocation(e) {
+    console.log('前往地址');
+    return;
+    let name = e.currentTarget.dataset.address;
+    wx.openLocation({
+      latitude,
+      longitude,
+      scale: 18,
+      name,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -100,8 +113,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  },
+  onPullDownRefresh: function () {},
 
   /**
    * 页面上拉触底事件的处理函数

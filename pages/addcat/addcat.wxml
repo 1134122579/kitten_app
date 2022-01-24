@@ -3,7 +3,7 @@
 <view class="enroll">
   <view class="cat_detail">
     <view class="e_title">
-      猫咪图片
+      猫咪图片 <text style="font-size: 24rpx;font-weight: normal;">最多8张</text> 
     </view>
     <view class="uplodaStyle">
       <van-uploader file-list="{{ fileList }}" max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
@@ -16,7 +16,7 @@
     <view class="e_block">
       <van-cell-group>
         <!-- 姓名 -->
-        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="姓名" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <van-field model:value="{{ cat_name }}" size="large" label-class="labelClass" custom-style="inputStyle" label="名称" required placeholder="请输入" border="{{ true }}" input-align="right" />
 
         <!-- 生日 -->
         <picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
@@ -27,9 +27,10 @@
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sextext}}" readonly label="性别" />
         </picker>
         <!-- 品种 -->
-        <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
+        <!-- <picker mode="selector" range="{{PzList}}" bindchange="bindpzChange" range-key="name">
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
-        </picker>
+        </picker> -->
+        <van-field size="large" input-align="right" border="{{ true }}" required bindtap="showPopup" placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
         <!-- 颜色 -->
         <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="花色" required placeholder="请输入" border="{{ true }}" input-align="right" />
         <!-- 体重 -->
@@ -118,7 +119,7 @@
     <view class="e_title">
       简介信息
     </view>
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
+    <van-field  model:value="{{ desc }}" type="textarea" placeholder="猫咪简介不能超过26个字" autosize="{{autoSize}}" border="{{ true }}" maxlength="{{26}}" />
   </view>
   <view class="button_">
     <van-button wx:if="{{!cat_id}}" block round type="warning" bind:click="onClick">提交信息</van-button>
@@ -128,3 +129,13 @@
 </view>
 <!-- 单选  父母-->
 <CatListPopup catList="{{catList}}" ischeckbox="{{ischeckbox}}" isShow="{{isShow}}" bind:myevent="setCatItem" />
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+  <view class="poupList">
+    <view class="listStyle">
+      <block wx:for="{{PzList}}" wx:key="index">
+        <view class="listname {{item.name==cat_pz&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
+      </block>
+    </view>
+    <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view>
+  </view>
+</van-popup>

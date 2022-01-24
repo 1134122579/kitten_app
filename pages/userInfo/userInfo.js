@@ -96,6 +96,8 @@ Page({
     let that = this;
     const { file } = event.detail;
     console.log("afterRead", event);
+    console.log("file-==================filefilefilefilefilefilefile", file);
+
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     this.setData({
       isimagecropper: true,
@@ -324,6 +326,7 @@ Page({
     this.setData({
       endTime: getDate(new Date()),
     });
+    cropper = this.selectComponent("#my-cropper");
     this.getUserinfo();
   },
 

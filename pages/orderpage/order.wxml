@@ -21,7 +21,7 @@
 				<view hidden="{{isnullList}}" style="text-align: center; font-size: 20rpx;color: #ccc;padding: 20rpx;">暂无更多</view>
 			</block>
 			<block wx:if="{{list.length<=0}}">
-				<EmptyModel description="暂无订单" />
+				<EmptyModel  />
 			</block>
 		</view>
 
@@ -127,7 +127,7 @@
 				<view class="isnullList" wx:if="{{isnullList}}" >暂无更多~</view>
 			</block>
 			<block wx:if="{{!isEmy}}">
-				<EmptyModel description="暂无订单" />
+				<EmptyModel />
 			</block>
 		</view>
 	</view>

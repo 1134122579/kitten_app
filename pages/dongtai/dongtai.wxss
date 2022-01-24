@@ -77,11 +77,11 @@ border-radius: 30rpx;
   font-size: 24rpx;
 }
 .suer{
-  border: 1px solid #1CA261;
-  color: #1CA261;
+  border: 1px solid var(--button-warning-background-color);
+  color: var(--button-warning-background-color);
 }
 .button_list{
-    background:#1CA261 ;
+    background:var(--button-warning-background-color) ;
     width: 80%;
     margin: 20rpx auto;
     flex-shrink: 0;

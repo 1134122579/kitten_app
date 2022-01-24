@@ -173,9 +173,11 @@ page {
 }
 
 .type_block {
-  padding: 10rpx 20rpx;
+  padding: 14rpx 20rpx;
   border-radius: 10rpx;
   /* border: 1rpx solid rgb(180, 177, 177); */
+  min-width: 120rpx;
+  text-align: center;
   margin: 5rpx;
   margin-left: 14rpx;
   flex-shrink: 0;

@@ -53,6 +53,9 @@
     "navigationBarTitleText": "WCCF协会",
     "navigationBarTextStyle": "black"
   },
+  "navigateToMiniProgramAppIdList": [
+    "wx23f0e224e37e69bd"
+  ],
   "tabBar": {
     "custom": true,
     "color": "#272822",

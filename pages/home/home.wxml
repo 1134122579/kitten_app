@@ -1,4 +1,4 @@
-<view class="homePage">
+<view class="homePage" style="{{show&&'overflow:hideen'}}">
 
 	<!-- 顶部搜索 -->
 	<view>
@@ -12,7 +12,7 @@
 				<!-- 分类 -->
 				<view class="tabStyle flexbetween">
 					<view class="tabStyle_l">
-						<van-tabs bind:change="typeChange" id="tabs" color="#333" active="{{ listQuery.label }}" swipeable ellipsis="{{ellipsis}}">
+						<van-tabs bind:change="typeChange" id="tabs" color="{{highlightColor}}" title-active-color="{{highlightColor}}" active="{{ listQuery.label }}" swipeable ellipsis="{{ellipsis}}">
 							<van-tab wx:for="{{hotList}}" title="{{item.name}}" name="{{item.name}}" wx:key="index">
 							</van-tab>
 						</van-tabs>
@@ -21,12 +21,15 @@
 						<van-icon name="arrow-down" size="28rpx" />
 					</view>
 					<!-- 下拉 -->
+			
 					<view class="poupList" wx:if="{{show}}" bindtap="onclosebuttonPopup">
-						<view class="labelStyle" catchtap="onpoup">
+						<van-transition name="fade-down" show="{{ show }}">
+							<view class="labelStyle" catchtap="onpoup">
 							<block wx:for="{{hotList}}" wx:key="index">
 								<view class="listname {{item.name==listQuery.label&&'suer'}}" bindtap="bindbqclick" data-item="{{item}}">{{item.name}}</view>
 							</block>
 						</view>
+					</van-transition>
 						<!-- <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view> -->
 					</view>
 				</view>
@@ -41,7 +44,7 @@
 				<view class="hotListStyle">
 					<view class="hotListStyle_title">热门分类</view>
 					<view class="hotListStyle_l flexastart">
-						<block wx:for="{{hotList}}" wx:key="index">
+						<block wx:for="{{hotList}}" wx:key="index" wx:if="{{item.name!=='推荐'}}">
 							<view class="blockHot flexcolumn" bindtap="goShop" data-item="{{item}}">
 								<image src="{{item.cover}}" style="width: 124rpx;height: 124rpx;display: block;border-radius: 50%;margin-bottom: 10rpx;"></image>
 								{{item.name}}
@@ -50,7 +53,7 @@
 					</view>
 				</view>
 				<view class="hotListStyle_title arrClass">所有分类</view>
-				<van-index-bar sticky-offset-top="{{navHeight-4}}">
+				<van-index-bar sticky-offset-top="{{navHeight-4}}" index-list="{{ indexList }}" highlight-color="{{highlightColor}}">
 					<block wx:for="{{CatClassList}}" wx:key="index">
 						<view class="CatClassList">
 							<van-index-anchor index="{{item.name}}" />
@@ -64,15 +67,15 @@
 			</block>
 			<!-- 关注 -->
 			<block wx:if="{{tabName=='关注'}}">
-	
-					<block wx:if="{{!is_empty}}">
-						<view class="FollowDynamic">
-							<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
-						</view>
-					</block>
-					<block wx:else>
-						<EmptyModel />
-					</block>
+
+				<block wx:if="{{!is_empty}}">
+					<view class="FollowDynamic">
+						<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+					</view>
+				</block>
+				<block wx:else>
+					<EmptyModel />
+				</block>
 			</block>
 		</view>
 	</view>

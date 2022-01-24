@@ -55,7 +55,7 @@
     <!-- 列  -->
     <view class="cell flexbetween">
       <view class="cell_title">赛事地点</view>
-      <view class="cell_text flexastart">
+      <view class="cell_text flexastart" data-address="{{getdata.address}}" bindtap="openLocation">
         <view>
           {{getdata.address}}
         </view>
@@ -64,7 +64,7 @@
     </view>
     <view class="cell flexbetween">
       <view class="cell_title">协议酒店</view>
-      <view class="cell_text flexastart">
+      <view class="cell_text flexastart"  data-address="{{getdata.hotel}}" bindtap="openLocation">
         <view>
           {{getdata.hotel}}
         </view>

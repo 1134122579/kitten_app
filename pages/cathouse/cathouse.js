@@ -18,12 +18,14 @@ Page({
     homenfo: {}, //猫舍信息
     catList: [], //猫咪列表
     isStatus: 1,
-    typeList: [{
+    typeList: [
+      {
+        status: 1,
+        title: '展示'
+      },
+      {
       status: 2,
       title: '代售'
-    }, {
-      status: 1,
-      title: '展示'
     }, {
       status: 3,
       title: '种公'
@@ -122,7 +124,7 @@ Page({
       "listQuery.user_id": options.user_id,
       my_id: storage.getUserInfo().user_id
     })
-    // this.getUserCatList()
+    this.getUserCatList()
   },
 
   /**

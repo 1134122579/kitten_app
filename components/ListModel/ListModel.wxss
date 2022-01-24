@@ -40,6 +40,5 @@
   margin-top: 14rpx;
   border-radius: 6rpx;
   overflow: hidden;
-  min-height: 340rpx;
   max-height: 380rpx;
 }

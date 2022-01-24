@@ -200,11 +200,15 @@ page {
 .name {
   color: rgba(0, 0, 0, 1);
   font-weight: bold;
+  font-size: 36rpx;
 }
-
+.headerName{
+  align-items: flex-end;
+}
 .desc {
   color: rgb(201, 201, 201);
   font-size: 24rpx;
+  line-height: 2;
 }
 
 .userList {

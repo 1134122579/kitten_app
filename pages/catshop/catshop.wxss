@@ -13,6 +13,7 @@ page {
 .headerImage {
   width: 100%;
   flex-shrink: 0;
+  min-height:230rpx ;
   /* background: #ff0000; */
 }
 

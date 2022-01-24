@@ -17,7 +17,7 @@ Page({
         linktype: "navigateTo",
         value: "",
         isborder: false,
-        marginTop: "marginTop",
+        marginTop: "",
         is_power: "admin",
         isLink:false,
         isbutton:false
@@ -82,26 +82,41 @@ Page({
   
   gocathouse() {
     let {user_id}=storage.getUserInfo()
+    wx.showLoading({
+      title: '加载中..',
+    })
     wx.navigateTo({
       url: "/pages/cathouse/cathouse?user_id="+user_id ,
     });
   },
   goVip() {
+    wx.showLoading({
+      title: '加载中..',
+    })
     wx.navigateTo({
       url: "/pages/vipdetail/vipdetail",
     });
   },
   onuserInfo() {
+    wx.showLoading({
+      title: '加载中..',
+    })
     wx.navigateTo({
       url: '/pages/userInfo/userInfo',
     })
   },
   oncarClick() {
+    wx.showLoading({
+      title: '加载中..',
+    })
     wx.navigateTo({
       url: '/pages/cardList/cardList',
     })
   },
   oncardClick() {
+    wx.showLoading({
+      title: '加载中..',
+    })
     wx.navigateTo({
       url: '/pages/couponpage/couponpage',
     })

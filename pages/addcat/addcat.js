@@ -140,6 +140,22 @@ Page({
       },
     ],
   },
+  showPopup() {
+    this.setData({ show: true });
+  },
+  onclosebuttonPopup() {
+    this.setData({ show: false });
+  },
+  onClose() {
+    this.setData({ show: false });
+  },
+  bindbqclick(e) {
+    console.log(e);
+    this.setData({
+      cat_pz:e.currentTarget.dataset.item.name,
+    });
+  },
+
   // 获取喵咪列表
   getSelectCatList() {
     Api.getSelectCatList().then((res) => {
@@ -326,7 +342,7 @@ Page({
       cat_pz,
       color,
       fileList,
-      group_id,
+      group_id="",
       desc,
       is_jueyu,
       blood_type,
@@ -340,8 +356,8 @@ Page({
     } = this.data;
     console.log(nest_ids, 12312123);
     if (this.checkUpQuery()) {
-      let father_id = fatherCat?.id;
-      let mother_id = motherCat?.id;
+      let father_id = fatherCat?.id||'';
+      let mother_id = motherCat?.id||'';
       wx.showLoading({
         title: "上传中..",
         mask: true,

@@ -96,7 +96,20 @@ Page({
   getlocation() {
     console.log(1);
     let that = this;
-    App.isGetlocation(()=>{
+    App.isGetlocation((res)=>{
+      const latitude = res.latitude;
+          const longitude = res.longitude;
+          wx.chooseLocation({
+            latitude,
+            longitude,
+            success(res) {
+              console.log(res);
+              that.setData({
+                address: res.address,
+              });
+            },
+          });
+          return
       wx.getLocation({
         type: "gcj02", //返回可以用于wx.openLocation的经纬度
         success(res) {
