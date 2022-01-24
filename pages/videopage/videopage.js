@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isNullList:false,
     dynamic_id: "",
     value: "",
     hfItem: "",
@@ -191,6 +192,7 @@ Page({
   // 翻页
   onpullpage() {
     this.data.page++;
+    console.log("上拉")
     this.getComment();
   },
   timeList(res) {
@@ -220,7 +222,9 @@ Page({
       page,
     }).then((res) => {
       res = this.timeList(res);
-      console.log(res, 112132123);
+      this.setData({
+        isNullList:res.length>0?false:true
+      })
       if (page == 1) {
         this.setData({
           CommentList: res,
