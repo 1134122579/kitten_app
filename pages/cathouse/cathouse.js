@@ -68,7 +68,6 @@ Page({
   // 上拉加载
   onflshpull() {
     (this.data.listQuery.page) ++
-    console.log(this.data.listQuery.page)
     this.getUserCatList()
   },
   // 获取数据

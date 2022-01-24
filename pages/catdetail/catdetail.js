@@ -62,6 +62,9 @@ Page({
   },
   goBaobutton() {
     let { id } = this.data.getdata;
+    wx.showLoading({
+      title: '加载中...',
+    })
     wx.navigateTo({
       url: `/pages/matchenroll/matchenroll?match_id=${id}`,
     });
