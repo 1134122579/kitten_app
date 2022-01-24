@@ -72,7 +72,7 @@ Page({
     console.log(e);
     let { item } = e.currentTarget.dataset;
     let { user_id } = storage.getUserInfo();
-    Api.cacheFollow({ user_id, follow_user_id: item.user_id }).then((res) => {
+    Api.cacheFollow({ user_id, follow_user_id: item.follow_user_id }).then((res) => {
       this.getFollow();
       wx.showToast({
         title: "取消关注",

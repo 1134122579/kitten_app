@@ -152,7 +152,7 @@ Page({
   bindbqclick(e) {
     console.log(e);
     this.setData({
-      cat_pz:e.currentTarget.dataset.item.name,
+      cat_pz: e.currentTarget.dataset.item.name,
     });
   },
 
@@ -169,10 +169,19 @@ Page({
     let that = this;
     const { file } = event.detail;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.showLoading({
-      title: "上传中..",
-      mask: true,
+    // wx.showLoading({
+    //   title: "上传中..",
+    //   mask: true,
+    // });
+   let fileArray = file.map((item) => {
+      item["isupload"] = true;
+      return item;
     });
+    console.log(fileArray);
+    fileArray.forEach((item) => {
+      that.uploadFile(item);
+    });
+    return;
     console.log("afterRead", file.url);
     const { fileList = [] } = this.data;
     wx.uploadFile({
@@ -187,6 +196,33 @@ Page({
           ...file,
           url: res.data.imgLink,
         });
+        that.setData({
+          fileList,
+        });
+      },
+      complete() {
+        wx.hideLoading();
+      },
+    });
+  },
+  uploadFile(file) {
+    console.log(file);
+    let that = this;
+    const { fileList = [] } = this.data;
+    wx.uploadFile({
+      url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
+      filePath: file.url,
+      name: "file",
+      success(res) {
+        // 上传完成需要更新 fileList
+        res = JSON.parse(res.data);
+        console.log(res, "upImage");
+        fileList.push({
+          ...file,
+          url: res.data.imgLink,
+          isupload:false
+        });
+        console.log(fileList,"fileListfileListfileListfileListfileListfileList")
         that.setData({
           fileList,
         });
@@ -342,28 +378,28 @@ Page({
       cat_pz,
       color,
       fileList,
-      group_id="",
+      group_id = "",
       desc,
       is_jueyu,
       blood_type,
       weight,
       cat_status,
       fatherCat,
-      nest_ids,
+      nest_ids=[],
       motherCat,
       cat_id,
-      id
+      id,
     } = this.data;
     console.log(nest_ids, 12312123);
     if (this.checkUpQuery()) {
-      let father_id = fatherCat?.id||'';
-      let mother_id = motherCat?.id||'';
+      let father_id = fatherCat?.id || "";
+      let mother_id = motherCat?.id || "";
       wx.showLoading({
         title: "上传中..",
         mask: true,
       });
       let img = fileList.map((item) => item.url);
-      if(cat_id){
+      if (cat_id) {
         Api.edit_cat({
           id,
           cat_name,
@@ -394,7 +430,7 @@ Page({
             });
           }, 1500);
         });
-      }else{
+      } else {
         Api.add_cat({
           cat_name,
           birthday,
@@ -425,7 +461,6 @@ Page({
           }, 1500);
         });
       }
- 
     }
   },
   // 校验上传数据
@@ -445,6 +480,14 @@ Page({
       group_id,
     } = this.data;
     let img = fileList?.[0]?.url;
+    console.log(fileList,'fileList校验')
+    if(fileList.includes(item=>item.isupload)){
+      wx.showToast({
+        title: "图片上传中..",
+        icon: "none",
+      });
+      return;
+    }
     if (!img) {
       wx.showToast({
         title: "请上传图片",
@@ -543,9 +586,9 @@ Page({
     }).then((res) => {
       console.log(res, "猫咪详情");
       let obj = { ...res };
-      obj["mother_id"] = res["mother_info"].id;
-      obj["father_id"] = res["father_info"].id;
-      obj["nest_ids"] = res["nest_info"].map(item=>item.id);
+      obj["mother_id"] = res["mother_info"]?.id;
+      obj["father_id"] = res["father_info"]?.id;
+      obj["nest_ids"] =res['nest_info']&&res["nest_info"].map((item) => item.id);
       obj["motherCat"] = res["mother_info"];
       obj["nestobjList"] = res["nest_info"];
       obj["fatherCat"] = res["father_info"];
@@ -583,8 +626,8 @@ Page({
     if (options?.cat_id) {
       this.getCatdetails();
       wx.setNavigationBarTitle({
-        title: '修改猫咪',
-      })
+        title: "修改猫咪",
+      });
     }
   },
 

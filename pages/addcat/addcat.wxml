@@ -6,7 +6,7 @@
       猫咪图片 <text style="font-size: 24rpx;font-weight: normal;">最多8张</text> 
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}" max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileList }}"  multiple max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
     </view>
   </view>
   <view class="cat_detail">
