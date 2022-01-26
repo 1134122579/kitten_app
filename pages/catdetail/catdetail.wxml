@@ -123,7 +123,7 @@
             <view class="fm_typeListname flexastart">
               <view> {{getdata.mother_info.cat_name}}</view>
               <!-- <view class="fm_tag">{{getdata.mother_info.sex==1?'/猫妈':"/猫爸"}}</view> -->
-              <view class="fm_tag">猫妈</view>
+              <view class="fm_tag">/猫妈</view>
             </view>
             <view class="fm_userdesc">{{getdata.mother_info.desc}}</view>
           </view>
@@ -136,7 +136,7 @@
             <view class="fm_typeListname flexastart">
               <view> {{getdata.father_info.cat_name}}</view>
               <!-- <view class="fm_tag">{{getdata.father_info.sex==1?'/猫妈':"/猫爸"}}</view> -->
-              <view class="fm_tag">猫爸</view>
+              <view class="fm_tag">/猫爸</view>
             </view>
             <view class="fm_userdesc">{{getdata.father_info.desc}}</view>
           </view>

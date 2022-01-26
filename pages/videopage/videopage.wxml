@@ -86,7 +86,7 @@
         <view class="onPlpull" bindtap="addComment">发送</view>
       </view> -->
       <view class="pLStylebottom">
-        <van-field model:value="{{ value }}" placeholder-style="font-size:20rpx;color:#fafafa;" autosize="{{autosize}}" type="textarea" center clearable placeholder="{{isHf?'回复'+hfItem.nickname:'评论作者'}}" use-button-slot>
+        <van-field model:value="{{ value }}"  autosize="{{autosize}}" type="textarea" center clearable placeholder="{{isHf?'回复'+hfItem.nickname:'评论作者'}}" use-button-slot>
           <van-button slot="button" type="warning" size="small" bindtap="addComment">
             发送
           </van-button>
