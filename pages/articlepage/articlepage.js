@@ -61,7 +61,14 @@ Page({
     getData: {},
     timeData: {},
   },
-
+  //预览图片
+  previewImage(e) {
+    var index = e.target.dataset.index;
+    wx.previewImage({
+      current: this.data.getData.link_url[index], //当前点击的图片链接
+      urls: this.data.getData.link_url, //图片数组
+    });
+  },
   // 收藏
   addCollect() {
     let that = this;

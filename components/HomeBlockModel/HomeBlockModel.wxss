@@ -4,7 +4,7 @@
   box-shadow: 0 0 10rpx #ccc;
   font-size: 24rpx;
   padding-bottom: 10rpx;
-  margin-top: 10rpx;
+  margin-top: 14rpx;
   overflow: hidden;
   background: #fff;
   border-radius: 10rpx;
@@ -12,9 +12,14 @@
 
 .block_image {
   width: 100%;
-  max-height: 240px;
+  max-height: 460rpx;
+  min-height: 280rpx;
   overflow: hidden;
   position: relative;
+}
+
+.M_imageurl {
+  width: 100%;
 }
 
 .M_pm {
@@ -43,14 +48,6 @@
 
 .M_pm_num {
   padding: 0 5px;
-}
-
-.M_imageurl {
-  width: 100%;
-  /* min-height: 200rpx; */
-  max-height: 380rpx;
-  min-height: 280rpx;
-  /* margin-top: -50px; */
 }
 
 .M_text {

@@ -4,7 +4,7 @@
   box-shadow: 0 0 10rpx #ccc;
   font-size: 24rpx;
   padding-bottom: 10rpx;
-  margin-top: 10rpx;
+  margin-top: 14rpx;
   overflow: hidden;
   background: #fff;
   border-radius: 10rpx;
@@ -12,12 +12,14 @@
 
 .block_image {
   width: 100%;
-  min-height: 200rpx;
-  max-height: 340rpx;
+  /* min-height: 260rpx; */
+  max-height: 420rpx;
   overflow: hidden;
   position: relative;
 }
-
+.M_imageurl {
+  width: 100%;
+}
 .M_pm {
   position: absolute;
   bottom: 3px;
@@ -46,12 +48,7 @@
   padding: 0 5px;
 }
 
-.M_imageurl {
-  width: 100%;
-  /* min-height: 180px; */
-  /* max-height: 240px; */
-  /* margin-top: -50px; */
-}
+
 
 .M_text {
   padding: 0 4px;

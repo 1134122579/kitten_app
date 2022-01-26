@@ -20,8 +20,9 @@ page {
 
 .headerImage {
   width: 100%;
-  height: 531rpx;
+height: 685rpx;
   flex-shrink: 0;
+  background: #333;
 }
 
 .imageStyle {

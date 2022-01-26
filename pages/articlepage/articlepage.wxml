@@ -7,7 +7,7 @@
       <block wx:for="{{getData.link_url}}" wx:key="*this">
         <swiper-item>
           <view class="headerImage">
-            <image class="imageStyle" src="{{item}}" mode=""></image>
+            <image class="imageStyle" src="{{item}}" data-index='{{index}}' mode="aspectFill"  bindtap="previewImage"></image>
           </view>
         </swiper-item>
       </block>

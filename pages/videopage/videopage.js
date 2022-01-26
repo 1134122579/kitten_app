@@ -9,7 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isNullList:false,
+    autosize: { maxHeight: 100 },
+    iscontentlook:false,
+    iscontentlookId:null,
+    isNullList: false,
     dynamic_id: "",
     value: "",
     hfItem: "",
@@ -35,12 +38,25 @@ Page({
     getData: {},
     myuserID: "",
   },
+  catchtap(e){
+    console.log(e,'禁止')
+  },
+  iscontentlookclick(e){
+    let {
+      item
+    } = e.currentTarget.dataset;
+    let {iscontentlookId}=this.data
+    this.setData({
+      iscontentlook:!this.data.iscontentlook,
+      iscontentlookId:item.id==iscontentlookId?null:item.id
+    })
+  },
   // 前往猫舍
   gocathouse() {
     let { getData } = this.data;
     wx.showLoading({
-      title: '加载中...',
-    })
+      title: "加载中...",
+    });
     wx.navigateTo({
       url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
     });
@@ -195,7 +211,7 @@ Page({
   // 翻页
   onpullpage() {
     this.data.page++;
-    console.log("上拉")
+    console.log("上拉");
     this.getComment();
   },
   timeList(res) {
@@ -204,6 +220,8 @@ Page({
     }
     if (res.length > 0) {
       res = res.map((item) => {
+        item["contentcopy"] = `${item["content"].slice(0, 50)}...`;
+        item["iscontentcopy"] = item["content"].length>50?true:false
         item["create_time"] = formatTime(
           new Date(item["create_time"].replaceAll("-", "/")),
           "{m}月{d}日 {h}时{i}分"
@@ -226,8 +244,8 @@ Page({
     }).then((res) => {
       res = this.timeList(res);
       this.setData({
-        isNullList:res.length>0?false:true
-      })
+        isNullList: res.length > 0 ? false : true,
+      });
       if (page == 1) {
         this.setData({
           CommentList: res,

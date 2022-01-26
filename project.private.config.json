@@ -37,12 +37,6 @@
           "scene": null
         },
         {
-          "name": "文章详情",
-          "pathName": "pages/articlepage/articlepage",
-          "query": "user_id=38&dynamic_id=4",
-          "scene": null
-        },
-        {
           "name": "视频详情",
           "pathName": "pages/videopage/videopage",
           "query": "user_id=33&dynamic_id=7",
@@ -112,6 +106,12 @@
           "name": "个人信息",
           "pathName": "pages/userInfo/userInfo",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "文章",
+          "pathName": "pages/articlepage/articlepage",
+          "query": "user_id=38&dynamic_id=19",
           "scene": null
         }
       ]
