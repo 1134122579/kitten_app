@@ -24,7 +24,11 @@ height: 685rpx;
   flex-shrink: 0;
   background: #333;
 }
-
+.iscontentlookStyle{
+  font-size: 24rpx;
+  padding:0 14rpx;
+  color: #FF6A6E;
+}
 .imageStyle {
   display: block;
   width: 100%;

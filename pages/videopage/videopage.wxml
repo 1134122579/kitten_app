@@ -26,7 +26,7 @@
   <van-popup show="{{ isPlShow }}" position="bottom" round custom-style="height: 60%;" bind:close="onClose">
     <view class="pinglun flexcolumn">
       <view class="pinglun_title">
-        共{{getData.pl_num}}条评论
+        共 {{getData.pl_num}} 条评论
       </view>
       <!-- 评论内容 -->
       <view style="flex:1;width:100%;height: 100%; overflow-y: auto;">
@@ -61,7 +61,6 @@
                             {{reply.nickname}}
                           </view>
                           <view class="content flexbetween">
-                            <!-- bindtap="onhf"  -->
                             <view class="content_l"><text  data-item="{{reply}}">{{iscontentlookId==reply.id?reply.content:reply.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{reply}}" bindtap="iscontentlookclick" wx:if="{{reply.iscontentcopy}}">{{iscontentlookId==reply.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{reply.create_time}}</text></view>
                             <!-- <view class="content_l" data-item="{{reply}}"> -->
                               <!-- {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text> -->
@@ -87,7 +86,7 @@
         <view class="onPlpull" bindtap="addComment">发送</view>
       </view> -->
       <view class="pLStylebottom">
-        <van-field model:value="{{ value }}" autosize="{{autosize}}" type="textarea" center clearable placeholder="{{isHf?'回复'+hfItem.nickname:'评论作者'}}" use-button-slot>
+        <van-field model:value="{{ value }}" placeholder-style="font-size:20rpx;color:#fafafa;" autosize="{{autosize}}" type="textarea" center clearable placeholder="{{isHf?'回复'+hfItem.nickname:'评论作者'}}" use-button-slot>
           <van-button slot="button" type="warning" size="small" bindtap="addComment">
             发送
           </van-button>

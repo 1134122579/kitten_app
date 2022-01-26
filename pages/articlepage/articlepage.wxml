@@ -1,13 +1,13 @@
 <wxs src="../../utils/split.wxs" module="split" />
 <view class="saishipage flexcolumn">
-  <NavFollowModel userInfo="{{getData}}" myuserID="{{myuserID}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType"/>
+  <NavFollowModel userInfo="{{getData}}" myuserID="{{myuserID}}" bgColor="#fff" iconColor="#000" bind:tabType="tabType" />
   <!-- 头部 -->
   <view class="headerImage" style="margin-top: {{navHeight}}px;">
     <swiper class="headerImage" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{getData.link_url}}" wx:key="*this">
         <swiper-item>
           <view class="headerImage">
-            <image class="imageStyle" src="{{item}}" data-index='{{index}}' mode="aspectFill"  bindtap="previewImage"></image>
+            <image class="imageStyle" src="{{item}}" data-index='{{index}}' mode="aspectFill" bindtap="previewImage"></image>
           </view>
         </swiper-item>
       </block>
@@ -41,7 +41,7 @@
     <view class="pinglun_title">
       共{{getData.pl_num}}条评论
     </view>
-    <block wx:for="{{CommentList}}" wx:key="*this">
+    <block wx:for="{{CommentList}}" wx:key="index">
       <view class="P_block flexastart">
         <view class="header_l">
           <image src="{{item.headimgurl}}" style="width: 61rpx;height: 61rpx;border-radius: 50%;"></image>
@@ -52,11 +52,13 @@
               {{item.nickname}}
             </view>
             <view class="content flexbetween">
-              <view class="content_l" bindtap="onhf" data-item="{{item}}">
+              <view class="content_l"><text bindtap="onhf" data-item="{{item}}">{{iscontentlookId==item.id?item.content:item.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{item}}" bindtap="iscontentlookclick" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{item.create_time}}</text></view>
+              <!-- <view class="content_l" bindtap="onhf" data-item="{{item}}">
                 {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
-              </view>
+              </view> -->
               <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
-                <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" /><view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
+                <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" />
+                <view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
               </view>
             </view>
           </view>
@@ -71,10 +73,11 @@
                     {{reply.nickname}}
                   </view>
                   <view class="content flexbetween">
+                    <view class="content_l"><text  data-item="{{reply}}">{{iscontentlookId==reply.id?reply.content:reply.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{reply}}" bindtap="iscontentlookclick" wx:if="{{reply.iscontentcopy}}">{{iscontentlookId==reply.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{reply.create_time}}</text></view>
                     <!-- bindtap="onhf"  -->
-                    <view class="content_l" data-item="{{reply}}">
+                    <!-- <view class="content_l" data-item="{{reply}}">
                       {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>
-                    </view>
+                    </view> -->
                     <!-- <view class="content_R flexcenter">
                       <van-icon name="like-o" /> <view>{{reply.zan_num}}</view> 
                     </view> -->
@@ -98,7 +101,7 @@
       <view class="num"> {{getData.zan_num}}</view>
     </view>
     <view class="flexcenter" bindtap="addCollect">
-      <van-icon  name="{{getData.is_collect==1?'star':'star-o'}}"  size="20" />
+      <van-icon name="{{getData.is_collect==1?'star':'star-o'}}" size="20" />
       <view class="num">{{getData.sc_num}}</view>
     </view>
     <view class="flexcenter">
@@ -113,6 +116,6 @@
     <van-cell-group>
       <van-field model:value="{{ value }}" type="textarea" autosize="{{autosize}}" placeholder="请输入" border="{{ false }}" />
     </van-cell-group>
-    <van-button  hairline type="warning" block bindtap="addComment">发布</van-button>
+    <van-button hairline type="warning" block bindtap="addComment">发布</van-button>
   </view>
 </van-popup>

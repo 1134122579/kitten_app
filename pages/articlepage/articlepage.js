@@ -60,6 +60,18 @@ Page({
       "https://img.js.design/assets/img/61b44a697eee4352133690cc.png",
     getData: {},
     timeData: {},
+    iscontentlook:false,
+    iscontentlookId:null,
+  },
+  iscontentlookclick(e){
+    let {
+      item
+    } = e.currentTarget.dataset;
+    let {iscontentlookId}=this.data
+    this.setData({
+      iscontentlook:!this.data.iscontentlook,
+      iscontentlookId:item.id==iscontentlookId?null:item.id
+    })
   },
   //预览图片
   previewImage(e) {
@@ -254,6 +266,8 @@ Page({
     }
     if (res.length > 0) {
       res = res.map((item) => {
+        item["contentcopy"] = `${item["content"].slice(0, 50)}...`;
+        item["iscontentcopy"] = item["content"].length>50?true:false
         item["create_time"] = formatTime(
           new Date(item["create_time"].replaceAll("-", "/")),
           "{m}月{d}日 {h}时{i}分"
