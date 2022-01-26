@@ -84,6 +84,7 @@
     ]
   },
   "usingComponents": {
+    "iconfont": "/compoents/iconfont/iconfont",
     "image-cropper": "./components/image-cropper/index",
     "CatBmModel": "./components/CatBmModel/CatBmModel",
     "CatListPopup": "./components/CatListPopup/CatListPopup",

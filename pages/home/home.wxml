@@ -67,7 +67,6 @@
 			</block>
 			<!-- 关注 -->
 			<block wx:if="{{tabName=='关注'}}">
-
 				<block wx:if="{{!is_empty}}">
 					<view class="FollowDynamic">
 						<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />

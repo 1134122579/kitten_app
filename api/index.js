@@ -91,7 +91,6 @@ export default {
       isThree: false,
     });
   },
-  // 充值明细
   getUserRecharge(params) {
     return fly({
       url: `getUserRecharge`,
@@ -110,7 +109,6 @@ export default {
       isThree: false,
     });
   },
-  // 客流评估
   shopCount(params) {
     return fly({
       url: `shopCount`,
@@ -202,7 +200,6 @@ export default {
       isThree: false,
     });
   },
-  // 上传完成
   add_order(params) {
     return fly({
       url: `add_order`,
@@ -248,7 +245,6 @@ export default {
       isThree: false, //=======================
     });
   },
-  // 企业动态
   getNews(params) {
     return fly({
       url: `getNews`,
@@ -258,7 +254,6 @@ export default {
       isThree: false, //=======================
     });
   },
-  // 动态详情
   getNewsDetails(params) {
     return fly({
       url: `getNewsDetails`,
@@ -268,7 +263,6 @@ export default {
       isThree: false, //=======================
     });
   },
-  // vipdui兑换
   exchangeVip(params) {
     return fly({
       url: `exchangeVip`,
@@ -278,7 +272,6 @@ export default {
       isThree: false, //=======================
     });
   },
-  // 兑换优惠券
   exchangeCoupon(params) {
     return fly({
       url: `exchangeCoupon`,
@@ -288,7 +281,6 @@ export default {
       isThree: false, //=======================
     });
   },
-  //   项目
   getClass(params) {
     return fly({
       url: `getClass`,
@@ -298,7 +290,6 @@ export default {
       isThree: false,
     });
   },
-  //   立即支付（消费订单）
   payCarOrder(params) {
     return fly({
       url: `payCarOrder`,
@@ -308,9 +299,6 @@ export default {
       isThree: true, //=======================
     });
   },
-
-  //   充值
-
   rechargeOrder(params) {
     return fly({
       url: `rechargeOrder`,
@@ -320,7 +308,6 @@ export default {
       isThree: false,
     });
   },
-  //   证书查询
   queryCertOrder(params) {
     return fly({
       url: `queryCertOrder`,
@@ -330,7 +317,6 @@ export default {
       isThree: false,
     });
   },
-  //   上传文件
   upImage(params) {
     return fly({
       url: `upImage`,
@@ -349,7 +335,6 @@ export default {
       isThree: false,
     });
   },
-  // 获取舞蹈室 /getRoom
   getRoom(params) {
     return fly({
       url: `getRoom`,
@@ -359,7 +344,6 @@ export default {
       isThree: false,
     });
   },
-  // 轮播图 /getBanner
   getBanner(params) {
     return fly({
       url: `getBanner`,
@@ -369,7 +353,6 @@ export default {
       isThree: false,
     });
   },
-  // 活动列表 /getActivity
   getActivity(params) {
     return fly({
       url: `getActivity`,
@@ -379,7 +362,6 @@ export default {
       isThree: false,
     });
   },
-  // 活动详情 /getActivityDetails
   getActivityDetails(params) {
     return fly({
       url: `getActivityDetails`,
@@ -390,7 +372,6 @@ export default {
     });
   },
 
-  // 微信支付会员费 /payVipOrder
 
   payVipOrder(params) {
     return fly({
@@ -402,7 +383,6 @@ export default {
     });
   },
 
-  // 支付舞蹈室费用 /payRoomOrder
   payRoomOrder(params) {
     return fly({
       url: `payRoomOrder`,
@@ -412,7 +392,6 @@ export default {
       isThree: false,
     });
   },
-  // 舞蹈室详情
   getRoomDetails(params) {
     return fly({
       url: `getRoomDetails`,
@@ -431,7 +410,6 @@ export default {
       isThree: false,
     });
   },
-  // 修改车辆
   editCar(params) {
     return fly({
       url: `editCar`,
@@ -450,7 +428,6 @@ export default {
       isThree: false,
     });
   },
-  // 获取车辆列表
   getUserCar(params) {
     return fly({
       url: `getUserCar`,
@@ -460,7 +437,6 @@ export default {
       isThree: false,
     });
   },
-  // 修改用户信息
   editUserInfo(params) {
     return fly({
       url: `editUserInfo`,
@@ -470,7 +446,6 @@ export default {
       isThree: false,
     });
   },
-  // 会员权益
   getVipDesc(params) {
     return fly({
       url: `getVipDesc`,
