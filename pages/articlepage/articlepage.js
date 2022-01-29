@@ -3,14 +3,18 @@ import Api from "../../api/index";
 let App = getApp();
 import { formatDate } from "../../utils/util";
 import { formatTime } from "../../utils/index";
+import storage from "../../utils/cache";
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    isNullList: false,
+    myuserID: storage.getUserInfo().user_id,
     navHeight: App.globalData.navHeight,
     value: "",
+    is_addCollect: false,
     hfItem: {},
     isHf: false,
     is_zplList: [],
@@ -56,12 +60,76 @@ Page({
       "https://img.js.design/assets/img/61b44a697eee4352133690cc.png",
     getData: {},
     timeData: {},
+    iscontentlook:false,
+    iscontentlookId:null,
+  },
+  iscontentlookclick(e){
+    let {
+      item
+    } = e.currentTarget.dataset;
+    let {iscontentlookId}=this.data
+    this.setData({
+      iscontentlook:!this.data.iscontentlook,
+      iscontentlookId:item.id==iscontentlookId?null:item.id
+    })
+  },
+  //预览图片
+  previewImage(e) {
+    var index = e.target.dataset.index;
+    wx.previewImage({
+      current: this.data.getData.link_url[index], //当前点击的图片链接
+      urls: this.data.getData.link_url, //图片数组
+    });
+  },
+  // 收藏
+  addCollect() {
+    let that = this;
+    let { dynamic_id, is_addCollect, getData } = this.data;
+    if (getData.is_collect != 1) {
+      wx.showLoading({
+        title: "收藏中..",
+      });
+      Api.addCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "收藏成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+
+        this.setData({
+          is_addCollect: true,
+        });
+      });
+    } else {
+      wx.showLoading({
+        title: "取消收藏中..",
+      });
+      Api.cancelCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "取消成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+        that.setData({
+          is_addCollect: false,
+        });
+      });
+    }
   },
   onPl() {
     this.setData({
       show: true,
       isHf: false,
     });
+  },
+  tabType() {
+    this.getDynamicDetails();
   },
   onhf(e) {
     let { item } = e.currentTarget.dataset;
@@ -73,15 +141,14 @@ Page({
   },
   // 文章点赞
   zanDynamic() {
-    let { dynamic_id, is_zanDynamic } = this.data;
-    if (is_zanDynamic) {
+    let { dynamic_id, is_zanDynamic, getData } = this.data;
+    if (getData.is_zan == 1) {
       wx.showToast({
         title: "已经点赞",
         icon: "none",
       });
       return;
     }
-
     Api.zanDynamic({
       dynamic_id,
     }).then((res) => {
@@ -89,6 +156,7 @@ Page({
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zanDynamic: true,
       });
@@ -100,7 +168,6 @@ Page({
       item: { dynamic_id, id: comment_id },
     } = e.currentTarget.dataset;
     let { is_zplList } = this.data;
-
     if (is_zplList.includes(comment_id)) {
       wx.showToast({
         title: "已点赞",
@@ -116,6 +183,7 @@ Page({
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zplList: is_zplList.concat([comment_id]),
       });
@@ -157,6 +225,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -174,6 +243,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -196,8 +266,11 @@ Page({
     }
     if (res.length > 0) {
       res = res.map((item) => {
+        item["contentcopy"] = `${item["content"].slice(0, 50)}...`;
+        item["iscontentcopy"] = item["content"].length>50?true:false
         item["create_time"] = formatTime(
-          new Date(parseInt(item["create_time"]))
+          new Date(item["create_time"].replaceAll("-", "/")),
+          "{m}月{d}日 {h}时{i}分"
         );
         item["replys"] = this.timeList(item["replys"]);
         return item;
@@ -216,7 +289,9 @@ Page({
       page,
     }).then((res) => {
       res = this.timeList(res);
-      console.log(res, 112132123);
+      this.setData({
+        isNullList: res.length > 0 ? false : true,
+      });
       if (page == 1) {
         this.setData({
           CommentList: res,
@@ -266,6 +341,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
+      myuserID: storage.getUserInfo().user_id,
     });
   },
 

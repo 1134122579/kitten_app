@@ -33,6 +33,12 @@
   text-align: center;
   width: 100%;
   padding: 10px 0;
-  font-size: 14px;
+  font-size: 24rpx;
   color: #ccc;
+}
+.MatchImgList{
+  margin-top: 14rpx;
+  border-radius: 6rpx;
+  overflow: hidden;
+  max-height: 380rpx;
 }

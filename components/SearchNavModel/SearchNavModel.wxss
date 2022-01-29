@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 99;
   flex-shrink: 0;
   /* padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top); */

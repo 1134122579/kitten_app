@@ -11,43 +11,48 @@ Component({
    * 组件的初始数据
    */
   data: {
-    Zindex: 9999,
+    Zindex: 99,
     active: 0,
     color: "#272822",
-    selectedColor: "#D13127",
+    selectedColor: "#FECE2D",
     selected: 0,
     list: [
       {
         pagePath: "pages/home/home",
         text: "首页",
-        iconPath: "../images/homeicon.png",
+        iconPath: "../images/home.png",
         selectedIconPath: "../images/home_s.png",
+        isnavigatetominiprogram: false,
       },
       {
         pagePath: "pages/orderpage/order",
         text: "赛事",
         iconPath: "../images/jbicon.png",
-        selectedIconPath: "../images/jbicon.png",
+        selectedIconPath: "../images/jbicon_s.png",
+        isnavigatetominiprogram: false,
       },
       {
         pagePath: "pages/releasepage/releasepage",
         text: "",
         iconPath: "../images/addicon.png",
-        selectedIconPath: "../images/addicon.png",
-        is_content:true
+        selectedIconPath: "../images/adddicon_s.png",
+        isnavigatetominiprogram: false,
+        is_content: true,
       },
       {
         // pages/spacepage/space
         pagePath: "",
         text: "商城",
         iconPath: "../images/shopicon.png",
-        selectedIconPath: "../images/shopicon.png",
+        selectedIconPath: "../images/shopicon_s.png",
+        isnavigatetominiprogram: true,
       },
       {
         pagePath: "pages/morepage/more",
         text: "我的",
         iconPath: "../images/abouticon.png",
-        selectedIconPath: "../images/abouticon.png",
+        selectedIconPath: "../images/abouticon_s.png",
+        isnavigatetominiprogram: false,
       },
     ],
   },
@@ -56,9 +61,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    navigateToMiniProgram() {
+      wx.navigateToMiniProgram({
+        appId: "wx23f0e224e37e69bd",
+        path: "pages/index/index",
+        envVersion: "release", // 打开正式版
+        success(res) {
+          // 打开成功
+          console.log(res);
+        },
+        fail: function (err) {
+          console.log(err);
+        },
+      });
+    },
     onChange(e) {
       const data = e.currentTarget.dataset;
-      console.log(storage.getToken(),'token');
+      console.log(storage.getToken(), "token");
       const url = data.path;
       if (!storage.getToken()) {
         wx.navigateTo({
@@ -67,6 +86,10 @@ Component({
       } else {
         var appInst = getApp();
         appInst.globalData.userInfo = storage.getUserInfo();
+        if (data.isnavigatetominiprogram) {
+          this.navigateToMiniProgram();
+          return;
+        }
         this.setData({
           selected: data.index,
         });
@@ -74,7 +97,6 @@ Component({
           url: "/" + url,
         });
       }
-    
     },
   },
 });

@@ -12,18 +12,20 @@
     <view class="D_header flexbetween">
       <view class="header_L">
         <view class="header_time flexastart">
-          <view class="lable">时间 ： </view>
+          <view class="lable">时间 ：</view>
           <view class="time">
             {{getdata.start_time}}至{{getdata.end_time}}
           </view>
         </view>
         <view class="header_time flexastart">
-          主办 ： <view class="time">
+          <view class="lable">主办 ：</view>
+           <view class="time">
             {{getdata.master_name}}
           </view>
         </view>
         <view class="header_time flexastart">
-          类型 ： <view class="time">
+          <view class="lable"> 类型 ：</view>
+          <view class="time">
             {{getdata.type_name}}
           </view>
         </view>
@@ -55,7 +57,7 @@
     <!-- 列  -->
     <view class="cell flexbetween">
       <view class="cell_title">赛事地点</view>
-      <view class="cell_text flexastart">
+      <view class="cell_text flexastart" data-address="{{getdata.address}}" bindtap="openLocation">
         <view>
           {{getdata.address}}
         </view>
@@ -64,7 +66,7 @@
     </view>
     <view class="cell flexbetween">
       <view class="cell_title">协议酒店</view>
-      <view class="cell_text flexastart">
+      <view class="cell_text flexastart"  data-address="{{getdata.hotel}}" bindtap="openLocation">
         <view>
           {{getdata.hotel}}
         </view>

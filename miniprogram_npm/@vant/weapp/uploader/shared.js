@@ -5,7 +5,7 @@ exports.chooseVideoProps = exports.chooseImageProps = void 0;
 exports.chooseImageProps = {
     sizeType: {
         type: Array,
-        value: ['compressed'],
+        value: ['original', 'compressed'],
     },
     capture: {
         type: Array,

@@ -1,5 +1,7 @@
 // components/navbar/index.js
 const App = getApp();
+import Api from "../../api/index";
+import storage from "../../utils/cache";
 
 Component({
   options: {
@@ -9,89 +11,128 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    userInfo:Object,
-    pageName:String,
-    showNav:{
-      type:Boolean,
-      value:false
+    myuserID:String,
+    userInfo: Object,
+    pageName: String,
+    showNav: {
+      type: Boolean,
+      value: false,
     },
     showHome: {
       type: Boolean,
-      value: true
+      value: true,
     },
     iconColor: {
       type: String,
-      value: '#fff'
+      value: "#fff",
     },
-    textColor:{
+    textColor: {
       type: String,
-      value: '#333'
+      value: "#333",
     },
     bgColor: {
       type: String,
-      value: 'rgba(0,0 ,0 ,0)'
-    }
+      value: "rgba(0,0 ,0 ,0)",
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    is_gz:false,
-    navHeight:App.globalData.navHeight,
-    navTop:App.globalData.navTop,
-    active:1,
-    list:[{
-      id:1,
-      title:'发现'
-    },{
-      id:2,
-      title:'御猫馆'
-    },{
-      id:3,
-      title:'关注'
-    }]
+    is_gz: false,
+    navHeight: App.globalData.navHeight,
+    navTop: App.globalData.navTop,
+    active: 1,
+    list: [
+      {
+        id: 1,
+        title: "发现",
+      },
+      {
+        id: 2,
+        title: "御猫馆",
+      },
+      {
+        id: 3,
+        title: "关注",
+      },
+    ],
   },
   lifetimes: {
     attached: function () {
       this.setData({
-        navH: App.globalData.navHeight
-      })
-     }
+        navH: App.globalData.navHeight,
+      });
+    },
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    onsearch(){
-        wx.navigateTo({
-          url: '/pages/searchpage/searchpage',
-        })
+    onsearch() {
+      wx.navigateTo({
+        url: "/pages/searchpage/searchpage",
+      });
     },
     onClick(event) {
-      this.triggerEvent("tabType",event.detail.name)
-let {is_gz}=this.data
-this.setData({
-  is_gz:!is_gz
-})
-
-      wx.showToast({
-        title:is_gz?'关注':'取消关注' ,
-        icon: 'none',
+      let { is_gz, userInfo } = this.data;
+      if (userInfo?.is_follow != 1) {
+        this.addFollow(event.detail);
+      } else {
+        this.cacheFollow(event.detail);
+      }
+    },
+    // 关注
+    addFollow(detail) {
+      let { userInfo, is_gz } = this.data;
+      wx.showLoading({
+        title: "关注中..",
+      });
+      Api.addFollow({
+        follow_user_id: userInfo.user_id,
+      }).then((res) => {
+        wx.hideLoading();
+        this.setData({
+          is_gz: !is_gz,
+        });
+        this.triggerEvent("tabType", detail.name);
+        wx.showToast({
+          title: "关注成功",
+          icon: "none",
+        });
+      });
+    },
+    cacheFollow(detail) {
+      let { userInfo, is_gz } = this.data;
+      wx.showLoading({
+        title: "取关中..",
+      });
+      Api.cacheFollow({
+        follow_user_id: userInfo.user_id,
+      }).then((res) => {
+        wx.hideLoading();
+        this.triggerEvent("tabType", detail.name);
+        this.setData({
+          is_gz: !is_gz,
+        });
+        wx.showToast({
+          title: "取消关注",
+          icon: "none",
+        });
       });
     },
     //回退
     _navBack: function () {
-        wx.navigateBack({
-          delta: 1
-        })      
+      wx.navigateBack({
+        delta: 1,
+      });
     },
     //回主页
     _toIndex: function () {
       wx.switchTab({
-        url: '/pages/home/home'
-      })
+        url: "/pages/home/home",
+      });
     },
   },
-})
-
+});

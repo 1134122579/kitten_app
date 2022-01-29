@@ -14,6 +14,7 @@ export default {
       url: `wx_mini_login`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -22,6 +23,7 @@ export default {
       url: `getUserInfo`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -30,6 +32,44 @@ export default {
       url: `checkToken`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  
+  getSelectMathCity(params) {
+    return fly({
+      url: `getSelectMathCity`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathDate(params) {
+    return fly({
+      url: `getSelectMathDate`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathCompetition(params) {
+    return fly({
+      url: `getSelectMathCompetition`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getSelectMathGroup(params) {
+    return fly({
+      url: `getSelectMathGroup`,
+      method: "get",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -38,40 +78,62 @@ export default {
       url: `wxlogin`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 充值明细
+  getMatchScore(params) {
+    return fly({
+      url: `getMatchScore`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   getUserRecharge(params) {
     return fly({
       url: `getUserRecharge`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 客流评估
+  edit_cat(params) {
+    return fly({
+      url: `edit_cat`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   shopCount(params) {
     return fly({
       url: `shopCount`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
-  },  // 门店列表
+  }, // 门店列表
   getShop(params) {
     return fly({
       url: `getShop`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
+
   getShopDetails(params) {
     return fly({
       url: `getShopDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -80,6 +142,16 @@ export default {
       url: `makeOrderUseCoupon`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getAboutDynamic(params) {
+    return fly({
+      url: `getAboutDynamic`,
+      method: "post",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -88,15 +160,52 @@ export default {
       url: `cancelOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 上传完成
+  getFollowDynamic(params) {
+    return fly({
+      url: `getFollowDynamic`,
+      method: "post",
+      params,
+      loading: true,
+      isThree: false,
+    });
+  },
+  getHotClass(params) {
+    return fly({
+      url: `getHotClass`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getAboutCatHome(params) {
+    return fly({
+      url: `getAboutCatHome`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getUserCollect(params) {
+    return fly({
+      url: `getUserCollect`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
   add_order(params) {
     return fly({
       url: `add_order`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -105,6 +214,7 @@ export default {
       url: `getProduct`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -113,6 +223,7 @@ export default {
       url: `getUserCoupon`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -121,6 +232,7 @@ export default {
       url: `shopRechargeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
@@ -129,89 +241,88 @@ export default {
       url: `makeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
-  // 企业动态
   getNews(params) {
     return fly({
       url: `getNews`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
-  // 动态详情
   getNewsDetails(params) {
     return fly({
       url: `getNewsDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
-  // vipdui兑换
   exchangeVip(params) {
     return fly({
       url: `exchangeVip`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
-  // 兑换优惠券
   exchangeCoupon(params) {
     return fly({
       url: `exchangeCoupon`,
       method: "post",
       params,
+      loading: false,
       isThree: false, //=======================
     });
   },
-  //   项目
   getClass(params) {
     return fly({
       url: `getClass`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  //   立即支付（消费订单）
   payCarOrder(params) {
     return fly({
       url: `payCarOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: true, //=======================
     });
   },
-
-  //   充值
-
   rechargeOrder(params) {
     return fly({
       url: `rechargeOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  //   证书查询
   queryCertOrder(params) {
     return fly({
       url: `queryCertOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  //   上传文件
   upImage(params) {
     return fly({
       url: `upImage`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -220,72 +331,73 @@ export default {
       url: `queryorder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 获取舞蹈室 /getRoom
   getRoom(params) {
     return fly({
       url: `getRoom`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 轮播图 /getBanner
   getBanner(params) {
     return fly({
       url: `getBanner`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 活动列表 /getActivity
   getActivity(params) {
     return fly({
       url: `getActivity`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 活动详情 /getActivityDetails
   getActivityDetails(params) {
     return fly({
       url: `getActivityDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
 
-  // 微信支付会员费 /payVipOrder
 
   payVipOrder(params) {
     return fly({
       url: `payVipOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
 
-  // 支付舞蹈室费用 /payRoomOrder
   payRoomOrder(params) {
     return fly({
       url: `payRoomOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 舞蹈室详情
   getRoomDetails(params) {
     return fly({
       url: `getRoomDetails`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -294,15 +406,16 @@ export default {
       url: `queryQueueRoom`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 修改车辆
   editCar(params) {
     return fly({
       url: `editCar`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -311,33 +424,34 @@ export default {
       url: `addCar`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 获取车辆列表
   getUserCar(params) {
     return fly({
       url: `getUserCar`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 修改用户信息
   editUserInfo(params) {
     return fly({
       url: `editUserInfo`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  // 会员权益
   getVipDesc(params) {
     return fly({
       url: `getVipDesc`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -346,6 +460,7 @@ export default {
       url: `getVip`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -354,6 +469,7 @@ export default {
       url: `getUserRank`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -362,6 +478,7 @@ export default {
       url: `getUserOrder`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -370,6 +487,7 @@ export default {
       url: `getUserOrderLog`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -378,6 +496,7 @@ export default {
       url: `queryOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -386,6 +505,7 @@ export default {
       url: `nextPayRoomOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -394,6 +514,7 @@ export default {
       url: `userVisit`,
       method: "post",
       params,
+      loading: false,
       isThree: true,
     });
   },
@@ -402,6 +523,7 @@ export default {
       url: `catVoteList`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -410,6 +532,7 @@ export default {
       url: `get_vote_rule`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -418,6 +541,7 @@ export default {
       url: `join_vote`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -426,6 +550,7 @@ export default {
       url: `JoinCatVote`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -434,6 +559,7 @@ export default {
       url: `get_match`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -442,6 +568,7 @@ export default {
       url: `get_match_details`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -450,6 +577,7 @@ export default {
       url: `joinMatch`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -458,6 +586,7 @@ export default {
       url: `getUserCatList`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -466,6 +595,16 @@ export default {
       url: `addFollow`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  cancelComment(params) {
+    return fly({
+      url: `cancelComment`,
+      method: "post",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -474,6 +613,7 @@ export default {
       url: `zan_cat`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -482,6 +622,7 @@ export default {
       url: `getHotLable`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -490,6 +631,16 @@ export default {
       url: `getFollow`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  cancelCollect(params) {
+    return fly({
+      url: `cancelCollect`,
+      method: "post",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -498,6 +649,7 @@ export default {
       url: `getMyfans`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -506,6 +658,7 @@ export default {
       url: `cacheFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -514,6 +667,7 @@ export default {
       url: `addFollow`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -522,6 +676,7 @@ export default {
       url: `addDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -530,6 +685,7 @@ export default {
       url: `add_cat`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -538,6 +694,7 @@ export default {
       url: `getCatdetails`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -546,6 +703,7 @@ export default {
       url: `getCatClass`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -554,6 +712,7 @@ export default {
       url: `payCertOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -562,6 +721,7 @@ export default {
       url: `getSelectCatList`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -570,6 +730,16 @@ export default {
       url: `getCatList`,
       method: "post",
       params,
+      loading: true,
+      isThree: false,
+    });
+  },
+  getDynamic(params) {
+    return fly({
+      url: `getDynamic`,
+      method: "post",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -578,6 +748,16 @@ export default {
       url: `getDynamicDetails`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  getPzDetial(params) {
+    return fly({
+      url: `getPzDetial`,
+      method: "get",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -586,6 +766,7 @@ export default {
       url: `getComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -594,6 +775,16 @@ export default {
       url: `addComment`,
       method: "post",
       params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  addCollect(params) {
+    return fly({
+      url: `addCollect`,
+      method: "post",
+      params,
+      loading: false,
       isThree: false,
     });
   },
@@ -602,6 +793,7 @@ export default {
       url: `replyComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -610,6 +802,7 @@ export default {
       url: `zanComment`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -618,6 +811,7 @@ export default {
       url: `zanDynamic`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -626,6 +820,7 @@ export default {
       url: `getMatchImg`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -634,6 +829,7 @@ export default {
       url: `matchGroup`,
       method: "get",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -642,6 +838,7 @@ export default {
       url: `payMatchOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
@@ -650,8 +847,8 @@ export default {
       url: `queryMatchOrder`,
       method: "post",
       params,
+      loading: false,
       isThree: false,
     });
   },
-  
 };

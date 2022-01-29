@@ -3,7 +3,7 @@ page {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background:#333 ;
+  background: #000;
 }
 
 .videoPage {
@@ -11,24 +11,28 @@ page {
   height: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+flex-direction: column;
 }
 
 .videoStyle {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   overflow: hidden;
-
+  flex: 1;
 }
 
 /* 底部 */
 
 .foolter {
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
-  padding: 20rpx;
-  background: rgba(0, 0, 0, 0.7);
+  margin: 14rpx 0;
+  /* background: rgba(0, 0, 0, 0.7); */
   width: 100%;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   color: #fff;
   padding-bottom: constant(safe-area-inset-bottom);
   /*兼容 IOS<11.2*/
@@ -75,15 +79,21 @@ page {
   font-size: 28rpx;
 }
 
-.noborder {
+.header_R .noborder {
   border: none;
 }
 
 .timestyle {
   font-size: 20rpx;
 }
+.iscontentlookStyle{
+  font-size: 24rpx;
+  padding:0 14rpx;
+  color: #FF6A6E;
+}
+
 /* 播放 */
-.playIcon{
+.playIcon {
   position: absolute;
   top: 0;
   right: 0;
@@ -95,11 +105,12 @@ page {
 .contentVideo {
   position: absolute;
   bottom: 60px;
-  background: rgba(0,0,0, .2);
+  /* background: rgba(0, 0, 0, .1); */
   color: #fff;
   width: 80%;
   box-sizing: border-box;
   padding: 20rpx;
+  left: 0;
   padding-bottom: constant(safe-area-inset-bottom);
   /*兼容 IOS<11.2*/
   padding-bottom: env(safe-area-inset-bottom);
@@ -120,22 +131,27 @@ page {
 }
 
 .gzStyle {
-  width: 120rpx;
+  width: 140rpx;
   flex-shrink: 0;
   border: 1px solid #ccc;
   text-align: center;
   border-radius: 30rpx;
 }
-.content_desc{
+
+.content_desc {
   color: rgba(255, 255, 255, 1);
-font-size: 28rpx;
-line-height: 1.5;
-padding: 10rpx 0;
-max-height:250rpx;
-overflow-y: auto;
+  font-size: 28rpx;
+  line-height: 1.5;
+  padding: 10rpx 0;
+  max-height: 250rpx;
+  overflow-y: auto;
 }
-.Zk{
-  color: rgb(20, 243, 0);
+
+.Zk {
+  /* color: rgb(20, 243, 0); */
+  color: #fff;
+  font-weight: bold;
+  
 }
 
 /* 评论 */
@@ -147,7 +163,8 @@ overflow-y: auto;
   background: #fff;
   /* padding-bottom: 120rpx; */
 }
-.header_R{
+
+.header_R {
   width: 100%;
   box-sizing: border-box;
   margin-left: 20rpx;
@@ -156,6 +173,8 @@ overflow-y: auto;
 .pinglun_title {
   color: rgba(87, 87, 87, 1);
   font-size: 26rpx;
+  padding: 14rpx 0;
+  text-align: center;
 }
 
 .P_block {
@@ -170,47 +189,65 @@ overflow-y: auto;
   color: rgba(153, 153, 153, 1);
   font-size: 26rpx;
 }
+.content {
+  align-items: flex-start;
+}
 
 .content_l {
   flex: 1;
   /* color: rgba(112, 112, 112, 1); */
+word-break:break-all;
   font-size: 30rpx;
   padding: 10rpx 0;
 }
 
 .content_R {
-  padding:0 10rpx;
+  padding: 0 10rpx;
   text-align: center;
   font-size: 24rpx;
   line-height: 1;
+  margin-top: 20rpx;
 }
-.pLStylebottom{
-background: #ccc;
-width: 100%;
-height: 80rpx;
-border-radius: 40rpx;
-text-align: center;
-font-size: 28rpx;
-margin: 10rpx 0;
+
+.pLStylebottom {
+  background: #ccc;
+  width: 100%;
+  min-height: 70rpx;
+  /* border-radius: 40rpx; */
+  text-align: center;
+  /* font-size: 28rpx; */
+  margin: 10rpx 0;
+  box-sizing: border-box;
+  box-shadow: 0 0 5rpx rgb(233, 233, 233);
 }
-.pLStylebottominput{
+
+.pLStylebottominput {
   flex: 1;
-  padding:0 40rpx;
+  padding: 0 40rpx;
   box-sizing: border-box;
 }
-.isunllCommentList{
+
+.isunllCommentList {
   text-align: center;
   height: 100%;
   color: #c7c5c5;
   font-size: 26rpx;
 }
-.onPlpull{
+
+.onPlpull {
   flex-shrink: 0;
-  width: 120rpx;
+  width: 180rpx;
   border-radius: 40rpx;
-  background: rgb(23, 240, 42);
+  /* background: rgb(23, 240, 42); */
+  background: var(--button-warning-background-color);
   height: 100%;
-  line-height: 80rpx;
+  line-height: 70rpx;
   color: #fff;
 
+}
+.isNullList{
+  text-align: center;
+  font-size: 20rpx;
+  padding: 10rpx 0;
+  color: #c7c5c5;
 }

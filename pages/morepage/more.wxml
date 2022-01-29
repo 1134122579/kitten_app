@@ -4,10 +4,10 @@
 	<!-- nav  -->
 	<!-- 个人信息 -->
 	<view class="more_header">
-		<image class="header_bg" src="https://img.js.design/assets/img/61b45304013b1b249687edff.png"></image>
-		<view class="user_content" style="margin-top:{{navHeight-1}}px">
+		<image class="header_bg" mode="aspectFill" src="https://img.js.design/assets/img/61b45304013b1b249687edff.png"></image>
+		<view class="user_content" >
 			<view class="user_content_t" bindtap="onuserInfo">
-				<van-image round width="100rpx" height="100rpx" src="{{userInfo.headimgurl||'../../../../images/Group.png'}}"></van-image>
+				<van-image round width="100rpx" height="100rpx" src="{{userInfo.headimgurl}}"></van-image>
 				<view class="userName">{{userInfo.name||'未认证'}}</view>
 				<van-icon name="edit" size="18" />
 			</view>
@@ -31,7 +31,7 @@
 				</view>
 				<view class="listBlock flexcolumn" bindtap="goList" data-id="1">
 					<view class="num">
-						{{userInfo.like_num}}
+						{{userInfo.sc_num}}
 					</view>
 					<view class="numname">
 						收藏
@@ -91,7 +91,6 @@
 				</view>
 			</view>
 		</view>
-
 	</view>
 
 

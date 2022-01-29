@@ -3,20 +3,25 @@
 
 		<van-cell class="cell" title="用户头像" border="{{ false}}" required>
 			<view>
-				<van-uploader file-list="{{ fileList }}" max-count="1" bind:after-read="afterRead" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+				<!-- <van-uploader file-list="{{ fileList }}" max-count="1" bind:after-read="afterRead" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" /> -->
+				<image style="width: 100rpx;height: 100rpx;border-radius: 20rpx;" src="{{headimgurl}}"></image>
 			</view>
 		</van-cell>
 		<view class="block">
 			<van-field model:value="{{ name }}" label="用户名" input-align="right" placeholder="请输入用户名" required />
-			<van-field model:value="{{ mobile }}" input-align="right" label="手机号" type="idcard" placeholder="请输入手机号" required maxlength="11" />
+			<!-- <van-field model:value="{{ mobile }}" input-align="right" label="手机号" type="idcard" placeholder="请输入手机号" required maxlength="11" />
 			<picker mode="date" value="{{birthday}}" start="1950-01-01" end="{{endTime}}" bindchange="bindDateChange">
 				<van-field required input-align="right" readonly value="{{ birthday}}" placeholder="请输入生日" label="生日" />
-			</picker>
+			</picker> -->
 		</view>
 		<van-field model:value="{{ home_name }}" required input-align="right" label="猫舍名字" placeholder="请输入猫舍名字" border="{{ false }}" />
-		<van-field model:value="{{ address }}"  required input-align="right" label="地址" placeholder="请输入地址" border="{{ false }}" />
-		<van-field model:value="{{ desc }}" required  input-align="right" label="签名" placeholder="请输入签名" border="{{ false }}" />
-	
+		<!-- <van-field model:value="{{ address }}"  required input-align="right" label="地址" placeholder="请输入地址" border="{{ false }}" /> -->
+		<van-field model:value="{{ desc }}" autosize="{{autosize}}" type="textarea" required input-align="right" label="猫舍简介" placeholder="请输入猫舍简介" border="{{ false }}" />
+		<van-cell class="cell" title="猫舍背景" border="{{ false}}">
+			<view>
+				<van-uploader file-list="{{fileListcat_bg}}" max-count="1"  use-before-read bind:before-read='beforeRead' bind:after-read="aftercat_bgRead" accept="image" bind:delete="deletecat_bgImage" />
+			</view>
+		</van-cell>
 	</van-cell-group>
 
 	<van-popup show="{{ isshow }}" position="bottom" round>
@@ -45,4 +50,23 @@
 			立即修改
 		</van-button>
 	</view>
+</view>
+
+<view class="imagecropper" hidden="{{!isimagecropper}}">
+	<!-- 裁剪框标签 -->
+	<image-cropper id="my-cropper" src="{{imagecropper.src}}" aspectRatio="{{imagecropper.aspectRatio}}" isProportion="{{imagecropper.isProportion}}" quality="{{imagecropper.quality}}">
+		<!-- 操作按钮 -->
+		<view style="position: absolute;bottom:30rpx;left:30rpx;width: 100%;">
+			<!-- <view class="white">裁剪框宽高比值</view>
+			<slider min="0.4" max="3" step="0.1" value="{{aspectRatio}}" show-value="true" style="width:400rpx" bindchange="btn1"></slider>
+			<view class="white">裁剪图片质量</view>
+			<slider min="0.1" max="1" step="0.1" value="{{quality}}" show-value="true" style="width:400rpx" bindchange="btn2"></slider>
+			<view style="display:flex">
+				<button class="black" bindtap="btn3">等比缩放</button>
+				<button class="black" bindtap="btn4">自由缩放</button>
+			</view> -->
+			<!-- <button class="black" bindtap="btn5">获取裁切参数</button> -->
+			<view class="blackbutton" bindtap="btn6">确认裁剪</view>
+		</view> 
+	</image-cropper>
 </view>

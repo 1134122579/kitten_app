@@ -168,18 +168,21 @@ page {
 
 .typeList {
   flex-wrap: nowrap;
-  margin-top: 28rpx;
+  margin-top: 10rpx;
   overflow-x: auto;
 }
 
 .type_block {
-  padding: 20rpx;
+  padding: 14rpx 20rpx;
   border-radius: 10rpx;
-  border: 1rpx solid rgba(166, 166, 166, 1);
+  /* border: 1rpx solid rgb(180, 177, 177); */
+  min-width: 120rpx;
+  text-align: center;
+  margin: 5rpx;
   margin-left: 14rpx;
   flex-shrink: 0;
   font-size: 24rpx;
-
+  box-shadow: 0 0 5rpx rgb(180, 177, 177) ;
 }
 
 .typeListname {
@@ -196,6 +199,6 @@ page {
 }
 
 .userdesc {
-  font-size: 18rpx;
+  font-size: 20rpx;
   font-weight: normal;
 }

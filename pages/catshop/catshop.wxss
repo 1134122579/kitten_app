@@ -1,0 +1,186 @@
+/* pages/orderpage/order.wxss */
+page {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+.saishipage {
+  width: 100%;
+  height: 100%;
+}
+
+.headerImage {
+  width: 100%;
+  flex-shrink: 0;
+  min-height:230rpx ;
+  /* background: #ff0000; */
+}
+
+.imageStyle {
+  display: block;
+  width: 100%;
+  height: 250rpx;
+}
+
+.orderList {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 20rpx 20rpx 0 0;
+  margin-top: -20rpx;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.orderList_header {
+  /* padding: 0 20rpx; */
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+/* 简介内容 */
+.catShop_content {
+  font-size: 26rpx;
+  padding: 20rpx;
+  line-height: 1.5;
+}
+
+.catShop_content_title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.catShop_content_class {
+  color: #c0c0c0;
+}
+
+.catShop_content_title {
+  text-align: left;
+}
+.Zk {
+  color: rgba(255, 188, 173, 1);
+}
+.catShop_content_desc{
+  margin-top: 14rpx;
+}
+
+.tbsStyle {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10rpx 40rpx;
+}
+
+.ol_ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ol_li {
+  margin-right: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #9c9c9c;
+}
+
+.sel_ol_li {
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #D13127;
+}
+
+.orderList_content {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+.okplayicon_content {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60rpx 84rpx;
+}
+
+.okplayicon_content_title {
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.okplayicon {
+  width: 270rpx;
+  height: 250rpx;
+}
+
+.okplayicon image {
+  width: 100%;
+  height: 100%;
+}
+
+.orderList_content_ul {
+  padding: 0 20rpx;
+  margin: 10rpx;
+}
+
+.typeStyle {
+  width: 140rpx;
+  padding: 10rpx 0;
+  font-size: 24rpx;
+  border: 1rpx solid #333;
+  border-radius: 30rpx;
+}
+
+.B_ul {
+  padding: 10rpx 0;
+}
+
+.B_li,
+.B_li_value {
+  font-size: 24rpx;
+  width: 120rpx;
+  text-align: center;
+}
+
+.B_li {
+  font-weight: 600;
+}
+
+/* 动画 */
+.blocktransition {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 相关猫舍*/
+.block {
+  padding: 20rpx;
+  box-shadow: 0 0 6rpx #ccc;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10rpx;
+}
+
+.headertImage {
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  width: 82rpx;
+  height: 82rpx;
+}
+
+.textContent {
+  font-size: 24rpx;
+  width: 100%;
+  line-height: 1.6;
+}
+
+.text {
+  width: 548rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

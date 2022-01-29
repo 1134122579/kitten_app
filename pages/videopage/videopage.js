@@ -3,17 +3,23 @@ import Api from "../../api/index";
 let App = getApp();
 import { formatDate } from "../../utils/util";
 import { formatTime } from "../../utils/index";
+import storage from "../../utils/cache";
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    autosize: { maxHeight: 100 },
+    iscontentlook:false,
+    iscontentlookId:null,
+    isNullList: false,
     dynamic_id: "",
     value: "",
     hfItem: "",
     is_zplList: [], //点赞
     isHf: false,
     isPlShow: false,
+    is_addCollect: false,
     isPlay: true,
     videoHeight: 0,
     contentBottom: 0,
@@ -30,6 +36,73 @@ Page({
     is_Zk: false, //展开
     is_Zkbutton: false,
     getData: {},
+    myuserID: "",
+  },
+  catchtap(e){
+    console.log(e,'禁止')
+  },
+  iscontentlookclick(e){
+    let {
+      item
+    } = e.currentTarget.dataset;
+    let {iscontentlookId}=this.data
+    this.setData({
+      iscontentlook:!this.data.iscontentlook,
+      iscontentlookId:item.id==iscontentlookId?null:item.id
+    })
+  },
+  // 前往猫舍
+  gocathouse() {
+    let { getData } = this.data;
+    wx.showLoading({
+      title: "加载中...",
+    });
+    wx.navigateTo({
+      url: `/pages/cathouse/cathouse?user_id=${getData.user_id}`,
+    });
+  },
+  // 文章关注
+  onfollow(event) {
+    let { getData } = this.data;
+    if (getData?.is_follow != 1) {
+      this.addFollow();
+    } else {
+      this.cacheFollow();
+    }
+  },
+  // 关注
+  addFollow(detail) {
+    let { getData, is_gz } = this.data;
+    wx.showLoading({
+      title: "关注中..",
+    });
+    Api.addFollow({
+      follow_user_id: getData.user_id,
+    }).then((res) => {
+      wx.hideLoading();
+      wx.showToast({
+        title: "关注成功",
+        icon: "none",
+        duration: 1500,
+      });
+      this.getDynamicDetails();
+    });
+  },
+  cacheFollow() {
+    let { getData } = this.data;
+    wx.showLoading({
+      title: "取关中..",
+    });
+    Api.cacheFollow({
+      follow_user_id: getData.user_id,
+    }).then((res) => {
+      wx.hideLoading();
+      this.getDynamicDetails();
+      wx.showToast({
+        title: "取消关注",
+        icon: "none",
+      });
+    });
   },
   // 查看评论
   onlookPl() {
@@ -44,17 +117,57 @@ Page({
       value: "",
     });
   },
+  // 收藏
+  addCollect() {
+    let that = this;
+    let { dynamic_id, is_addCollect, getData } = this.data;
+    if (getData.is_collect != 1) {
+      wx.showLoading({
+        title: "收藏中..",
+      });
+      Api.addCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "收藏成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+
+        this.setData({
+          is_addCollect: true,
+        });
+      });
+    } else {
+      wx.showLoading({
+        title: "取消收藏中..",
+      });
+      Api.cancelCollect({
+        dynamic_id,
+      }).then((res) => {
+        wx.hideLoading();
+        wx.showToast({
+          title: "取消成功",
+          icon: "none",
+        });
+        this.getDynamicDetails();
+        that.setData({
+          is_addCollect: false,
+        });
+      });
+    }
+  },
   // 文章点赞
   zanDynamic() {
-    let { dynamic_id, is_zanDynamic } = this.data;
-    if (is_zanDynamic) {
+    let { dynamic_id, is_zanDynamic, getData } = this.data;
+    if (getData.is_zan == 1) {
       wx.showToast({
         title: "已经点赞",
         icon: "none",
       });
       return;
     }
-
     Api.zanDynamic({
       dynamic_id,
     }).then((res) => {
@@ -62,6 +175,7 @@ Page({
         title: "点赞成功",
         icon: "none",
       });
+      this.getDynamicDetails();
       this.setData({
         is_zanDynamic: true,
       });
@@ -97,6 +211,7 @@ Page({
   // 翻页
   onpullpage() {
     this.data.page++;
+    console.log("上拉");
     this.getComment();
   },
   timeList(res) {
@@ -105,8 +220,11 @@ Page({
     }
     if (res.length > 0) {
       res = res.map((item) => {
+        item["contentcopy"] = `${item["content"].slice(0, 50)}...`;
+        item["iscontentcopy"] = item["content"].length>50?true:false
         item["create_time"] = formatTime(
-          parseInt(new Date(item["create_time"]))
+          new Date(item["create_time"].replaceAll("-", "/")),
+          "{m}月{d}日 {h}时{i}分"
         );
         item["replys"] = this.timeList(item["replys"]);
         return item;
@@ -125,7 +243,9 @@ Page({
       page,
     }).then((res) => {
       res = this.timeList(res);
-      console.log(res, 112132123);
+      this.setData({
+        isNullList: res.length > 0 ? false : true,
+      });
       if (page == 1) {
         this.setData({
           CommentList: res,
@@ -169,7 +289,7 @@ Page({
       .boundingClientRect(function (rect) {
         console.log(rect);
         that.setData({
-          contentBottom: `${rect.height}px`,
+          contentBottom: `${rect.height + 14}px`,
           videoHeight: `${rect.top}px`,
         });
         // console.log(that.data.objHeight);
@@ -221,6 +341,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -238,6 +359,7 @@ Page({
         this.setData({
           page: 1,
           show: false,
+          value: "",
         });
         this.getComment();
         this.getDynamicDetails();
@@ -271,6 +393,12 @@ Page({
       isPlay: !isPlay,
     });
   },
+  // 播放完毕
+  bindended() {
+    this.setData({
+      isPlay: true,
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -290,16 +418,16 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: App.globalData.navHeight,
+      myuserID: storage.getUserInfo().user_id,
     });
     this.videoContext = wx.createVideoContext("myVideo");
+    this.getFooterStyle();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.getFooterStyle();
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

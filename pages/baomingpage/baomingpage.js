@@ -100,6 +100,9 @@ Page({
           paySign,
           timeStamp,
           success(data) {
+          },
+          complete() {
+            wx.hideLoading();
             Api.queryMatchOrder({
               out_trade_no,
             }).then((res) => {
@@ -113,9 +116,6 @@ Page({
                 })
               }, 1500);
             });
-          },
-          complete() {
-            wx.hideLoading();
           },
         });
       });

@@ -7,132 +7,248 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timeactive: "",
+    searchvalue:'',
+    ellipsis: false,
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,
-    isnullList:false,
+    isnullList: false,
+    numlist:[],
     listQuery: {
-      page: 1
+      page: 1,
     },
     is_okplayShow: false,
     navHeight: appInst.globalData.navHeight,
-    ordertypeList: [{
+    ordertypeList: [
+      {
         title: "赛事报名",
         status: 1,
-        disabled: false
+        disabled: false,
       },
       {
         title: "实时赛事",
         status: 2,
-        disabled: false
+        disabled: false,
       },
       {
         title: "赛事回顾",
         status: 3,
-        disabled: false
-      }, {
+        disabled: false,
+      },
+      {
         title: "赛事积分",
         status: 4,
-        disabled: false
-      }
+        disabled: false,
+      },
     ],
     list: [],
-    ssList:[{
-      id:1,text:"第一场赛事"
-    },{
-      id:1,text:"第一场赛事"
-    },{
-      id:1,text:"第一场赛事"
-    }]
+    ssList: [],
+    sjList: [],
+    classctive: "幼猫组",
+    timeList: [],
+    classList: ["幼猫组", "少年组", "少年组2", "少年组3", "少年组4"],
+    csiValue: "", //选择城市
+    sjiValue: "", //选择时间
+    isEmy:false,
   },
+  // 获取列表
+  getSelectMathCity() {
+    Api.getSelectMathCity().then((res) => {
+      this.setData({
+        ssList: res,
+        csiValue:''
+      });
+    });
+    Api.getSelectMathDate().then((res) => {
+      this.setData({
+        sjList: res,
+        sjiValue:'',
+      });
+    });
+    Api.getSelectMathCompetition().then((res) => {
+      this.setData({
+        timeList: res,
+        timeactive: res[0],
+      });
+    });
+    Api.getSelectMathGroup().then((res) => {
+      this.setData({
+        classList: res,
+        classctive: res[0],
+      });
+    });
+  },
+
   onplayClose() {
     this.setData({
-      is_okplayShow: false
-    })
+      is_okplayShow: false,
+    });
+  },
+  arrCsClick() {
+    if(!this.data.csiValue)return
+    this.setData({
+      csiValue: "",
+      "listQuery.page":1
+    });
+    this.getOrderList();
+  },
+  arrsjClick() {
+    if(!this.data.sjiValue)return
+    this.setData({
+      sjiValue: "",
+      "listQuery.page":1
+    });
+    this.getOrderList();
+  },
+  classChange(event) {
+    let { name: item } = event.detail;
+    console.log(item, "赛事组别");
+    this.setData({
+      classctive:item,
+      "listQuery.page":1
+    });
+    this.getOrderList();
+  },
+  bindcsChange(event) {
+    let { ssList } = this.data;
+    console.log(event);
+    this.setData({
+      // sexIndex: event.detail.value,
+      csiValue: ssList[event.detail.value],
+      "listQuery.page":1
+    });
+    this.getOrderList();
+  },
+  bindsjChange(event) {
+    let { sjList } = this.data;
+    console.log(event);
+    this.setData({
+      // sexIndex: event.detail.value,
+      sjiValue: sjList[event.detail.value],
+      "listQuery.page":1
+    });
+    this.getOrderList();
   },
   // 赛事积分
   bindpzChange(event) {
-    let {
-      ssList
-    } = this.data
+    let { ssList } = this.data;
     this.setData({
       // sexIndex: event.detail.value,
-      saishiValue: ssList[event.detail.value]['text']
-    })
+      saishiValue: ssList[event.detail.value]["text"],
+      "listQuery.page":1
+    });
+    this.getOrderList();
+  },
+  typeChange(event) {
+    let { name: item } = event.detail;
+    console.log(item, "赛事日期");
+    this.setData({
+      timeactive:item,
+      "listQuery.page":1
+    });
+    this.getOrderList();
   },
   ontabChange(event) {
     let status = event.detail.name;
     this.setData({
       isStatus: Number(status),
+      "listQuery.page": 1,
     });
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
-      this.getOrderList();
+    this.getOrderList();
   },
 
   tag(event) {
     console.log(event);
-    let {
-      id
-    } = event.currentTarget.dataset;
+    let { id } = event.currentTarget.dataset;
     this.setData({
       isStatus: Number(id),
     });
     this.getOrderList();
   },
   //   获取订单列表
-  getOrderList() {
-    let {
-      listQuery,
-      list
-    } = this.data;
-    Api.get_match(listQuery).then((res) => {
-      this.setData({
-        isnullList: res.length>0?false:true,
+  async getOrderList() {
+    let { numlist,listQuery, list, isStatus,sjiValue,classctive ,csiValue,timeactive,searchvalue} = this.data;
+    let res = [];
+    if (isStatus == 4) {
+      res = await Api.getMatchScore({
+        page:listQuery.page,
+        competition:timeactive,
+        city:csiValue,
+        group:classctive,
+        date:sjiValue,
+        name:searchvalue,
       });
-      if( listQuery.page==1){
+      this.setData({
+        isnullList: res.length > 0 ? false : true,
+      });
+      if (listQuery.page == 1) {
         this.setData({
-          list: res,
+          numlist:res,
+          isEmy: res.length > 0 ? true : false,
         });
-      }else{
+      } else {
         this.setData({
+          numlist: numlist.concat(res),
+        });
+      }
+    } else {
+      res = await Api.get_match(listQuery);
+      this.setData({
+        isnullList: res.length > 0 ? false : true,
+      });
+      if (listQuery.page == 1) {
+        this.setData({
+          numlist:res,
+          list: res,
+          isEmy: res.length > 0 ? true : false,
+        });
+      } else {
+        this.setData({
+          numlist: numlist.concat(res),
           list: list.concat(res),
         });
       }
- 
+    }
+  },
+  // 搜索
+  search(e) {
+    console.log(e.detail);
+    this.setData({
+      searchvalue: e.detail.value.trim(),
     });
+    if (e.detail.value.trim().length > 3||!e.detail.value) {
+      this.getOrderList();
+    }
   },
   // 取消
   cancelOrder(event) {
-    let {
-      out_trade_no
-    } = event.detail;
+    let { out_trade_no } = event.detail;
     Api.cancelOrder({
-      out_trade_no
-    }).then(res => {
-      this.getOrderList()
-    })
+      out_trade_no,
+    }).then((res) => {
+      this.getOrderList();
+    });
   },
   //   支付成功
 
   payCarOrder(event) {
-    let {
-      order_no,
-      pay_type
-    } = event.detail;
+    let { order_no, pay_type } = event.detail;
     wx.showLoading({
-      title: '支付中...',
-      icon: 'none',
-      mask: true
-    })
+      title: "支付中...",
+      icon: "none",
+      mask: true,
+    });
     Api.payCarOrder({
       out_trade_no: order_no,
       pay_type,
     }).then((res) => {
-      wx.hideLoading()
+      wx.hideLoading();
       if (res.status == 200) {
         this.setData({
-          is_okplayShow: true
-        })
-        this.getOrderList()
+          is_okplayShow: true,
+        });
+        this.getOrderList();
         // wx.showToast({
         //   title: "支付成功",
         //   duration: 3000,
@@ -147,19 +263,19 @@ Page({
       }
       //
     });
-
   },
 
   // 上来
-  onBottom(){
-      this.data.listQuery.page++
-      this.getOrderList()
+  onBottom() {
+    this.data.listQuery.page++;
+    this.getOrderList();
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
-  
+  onLoad: function (options) {
+    this.getSelectMathCity();
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -167,7 +283,7 @@ Page({
   onReady: function () {
     this.setData({
       navHeight: appInst.globalData.navHeight,
-    })
+    });
   },
 
   /**
@@ -177,8 +293,8 @@ Page({
     appInst.tabbershow(this, 1);
     this.getOrderList();
     this.setData({
-      isStatus:1
-    })
+      isStatus: 1,
+    });
   },
 
   /**
@@ -200,7 +316,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.onBottom()
+    this.onBottom();
   },
 
   /**

@@ -17,7 +17,7 @@ Page({
     this.getDynamic()
   },
   getDynamic() {
-    let { id: user_id } = storage.getUserInfo();
+    let {  user_id } = storage.getUserInfo();
     let { page } = this.data;
     Api.getDynamic({ user_id, page }).then((res) => {
       this.setData({
@@ -34,13 +34,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {},
+  onReady: function () {
+    this.getDynamic()
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getDynamic()
   },
 
   /**

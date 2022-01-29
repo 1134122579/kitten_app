@@ -18,12 +18,14 @@ Page({
     homenfo: {}, //猫舍信息
     catList: [], //猫咪列表
     isStatus: 1,
-    typeList: [{
-      status: 1,
-      title: '代售'
-    }, {
+    typeList: [
+      {
+        status: 1,
+        title: '展示'
+      },
+      {
       status: 2,
-      title: '展示'
+      title: '代售'
     }, {
       status: 3,
       title: '种公'
@@ -66,7 +68,6 @@ Page({
   // 上拉加载
   onflshpull() {
     (this.data.listQuery.page) ++
-    console.log(this.data.listQuery.page)
     this.getUserCatList()
   },
   // 获取数据
@@ -119,10 +120,8 @@ Page({
       user_id
     } = storage.getUserInfo
     this.setData({
-      "listQuery.user_id": options.user_id
-    })
-    this.setData({
-      my_id: user_id
+      "listQuery.user_id": options.user_id,
+      my_id: storage.getUserInfo().user_id
     })
     this.getUserCatList()
   },
@@ -138,7 +137,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**
@@ -173,6 +171,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    let {homenfo}=this.data
+      return{
+        title:homenfo.home_name
+      }
   }
 })

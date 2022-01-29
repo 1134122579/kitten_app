@@ -1,22 +1,51 @@
 /* pages/userInfo/userInfo.wxss */
-page{
+page {
   background: #F6F6F6;
 }
-.button_{
+
+.button_ {
   margin-top: 40px;
   padding: 20px;
 }
-.userInfo{
+
+.userInfo {
   padding: 20rpx;
 }
-.cell{
+
+.cell {
   /* margin: 20rpx; */
 }
-.van-cell{
+
+.van-cell {
   border-radius: 20rpx;
   margin: 20rpx 0;
 }
-.block{
+
+.block {
   background: #fff;
   border-radius: 20rpx;
+}
+
+/* 裁剪 */
+.imagecropper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  z-index: 10;
+}
+
+.blackbutton {
+  background: var(--button-warning-background-color);
+  /* color: var(--button-warning-background-color); */
+  color: #fff;
+  border-radius: 10rpx;
+  line-height: 80rpx;
+  width: 60%;
+  height: 80rpx;
+  text-align: center;
+  margin: 0 auto;
+
 }

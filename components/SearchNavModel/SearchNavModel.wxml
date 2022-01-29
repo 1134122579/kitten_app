@@ -1,11 +1,12 @@
 <view class="navbar " style='height:{{navHeight}}px;background-color:{{bgColor}}'>
-  <view class="navbar-action-wrap navbar-action-group row item-center flexcenter" bindtap="onsearch" style='top:{{navTop}}px;'>
+  <view class="navbar-action-wrap navbar-action-group row item-center flexcenter"  style='top:{{navTop}}px;'>
+    <!-- bindtap="onsearch" -->
     <!-- <view class="navbar-action_item flexcenter" bindtap="_navBack"> -->
-    <van-icon name="/images/sousuoicon.png" color="{{iconColor}}" size="23px"></van-icon>
+    <!-- <van-icon name="/images/sousuoicon.png" color="{{iconColor}}" size="23px"></van-icon> -->
     <!-- </view> -->
   </view>
   <view class='navbar-title' style='top:{{navTop}}px;'>
-    <van-tabs active="{{ active }}" bind:change="onClick" line-width="32rpx" line-height="3px" color="#333">
+    <van-tabs active="{{ tabName }}" bind:change="onClick" line-width="32rpx" line-height="3px" color="#333">
       <van-tab wx:for="{{list}}" wx:key="index" name="{{item.title}}" title="{{item.title}}"></van-tab>
     </van-tabs>
   </view>

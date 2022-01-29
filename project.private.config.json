@@ -21,7 +21,7 @@
         {
           "name": "猫详情",
           "pathName": "pages/catdetail/catdetail",
-          "query": "user_id=35&cat_id=15",
+          "query": "user_id=38&cat_id=18",
           "scene": null
         },
         {
@@ -34,12 +34,6 @@
           "name": "证书注册",
           "pathName": "pages/certificate/certificate",
           "query": "",
-          "scene": null
-        },
-        {
-          "name": "文章详情",
-          "pathName": "pages/articlepage/articlepage",
-          "query": "user_id=38&dynamic_id=4",
           "scene": null
         },
         {
@@ -58,6 +52,66 @@
           "name": "添加猫咪",
           "pathName": "pages/addcat/addcat",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的动态",
+          "pathName": "pages/dynamicpage/dynamicpage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "御猫馆",
+          "pathName": "pages/catshop/catshop",
+          "query": "id=77",
+          "scene": null
+        },
+        {
+          "name": "编辑猫咪",
+          "pathName": "pages/addcat/addcat",
+          "query": "cat_id=23",
+          "scene": null
+        },
+        {
+          "name": "御猫馆",
+          "pathName": "pages/catshop/catshop",
+          "query": "id=106",
+          "scene": null
+        },
+        {
+          "name": "视频",
+          "pathName": "pages/videopage/videopage",
+          "query": "user_id=35&dynamic_id=10",
+          "scene": null
+        },
+        {
+          "name": "赛事列表",
+          "pathName": "pages/orderpage/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发布动态",
+          "pathName": "pages/dongtai/dongtai",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收藏！！",
+          "pathName": "pages/likepage/likepage",
+          "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "个人信息",
+          "pathName": "pages/userInfo/userInfo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "文章",
+          "pathName": "pages/articlepage/articlepage",
+          "query": "user_id=38&dynamic_id=19",
           "scene": null
         }
       ]

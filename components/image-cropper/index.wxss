@@ -1,0 +1,121 @@
+.crop_image_content .cropimg1 {
+  opacity: 0.4;
+  position: absolute;
+}
+
+.crop_image_content .cropimg2 {
+  position: absolute;
+}
+
+.crop_image_content .mainBox {
+  position: absolute;
+  cursor: move;
+}
+
+.minBox {
+  position: absolute;
+  height: 16rpx;
+  width: 16rpx;
+}
+
+.left-up {
+  top: -4rpx;
+  left: -4rpx;
+  border-top: 4rpx solid white;
+  border-left: 4rpx solid white;
+}
+
+.up {
+  left: 50%;
+  margin-left: -8rpx;
+  top: -4rpx;
+  border-top: 4rpx solid white;
+}
+
+.right-up {
+  right: -3rpx;
+  top: -4rpx;
+  border-top: 4rpx solid white;
+  border-right: 4rpx solid white;
+}
+
+.right {
+  top: 50%;
+  margin-top: -8rpx;
+  right: -3rpx;
+  border-right: 4rpx solid white;
+}
+
+.right-down {
+  bottom: -3rpx;
+  right: -3rpx;
+  border-bottom: 4rpx solid white;
+  border-right: 4rpx solid white;
+}
+
+.down {
+  bottom: -3rpx;
+  left: 50%;
+  margin-left: -8rpx;
+  border-bottom: 4rpx solid white;
+}
+
+.left-down {
+  bottom: -3rpx;
+  left: -4rpx;
+  border-left: 4rpx solid white;
+  border-bottom: 4rpx solid white;
+}
+
+.left {
+  top: 50%;
+  margin-top: -8rpx;
+  left: -4rpx;
+  border-left: 4rpx solid white;
+}
+
+.click{
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.c-left-up{
+  margin-left:-20rpx;
+  margin-top:-20rpx;
+}
+
+.c-up{
+  margin-left:-12rpx;
+  margin-top:-20rpx;
+}
+
+.c-right-up{
+  margin-left:-6rpx;
+  margin-top:-20rpx;
+}
+
+.c-right{
+  margin-left:-6rpx;
+  margin-top:-12rpx;
+}
+
+.c-right-down{
+  margin-left:-6rpx;
+  margin-top:-6rpx;
+}
+
+.c-down{
+  margin-left:-12rpx;
+  margin-top:-6rpx;
+}
+
+.c-left-down{
+  margin-left:-20rpx;
+  margin-top:-6rpx;
+}
+
+.c-left{
+  margin-left:-20rpx;
+  margin-top:-12rpx;
+}

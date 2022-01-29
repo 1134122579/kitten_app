@@ -4,6 +4,7 @@
     "pages/enroll/enroll",
     "pages/dynamicpage/dynamicpage",
     "pages/baomingpage/baomingpage",
+    "pages/catshop/catshop",
     "pages/articlepage/articlepage",
     "pages/likepage/likepage",
     "pages/videopage/videopage",
@@ -52,6 +53,9 @@
     "navigationBarTitleText": "WCCF协会",
     "navigationBarTextStyle": "black"
   },
+  "navigateToMiniProgramAppIdList": [
+    "wx23f0e224e37e69bd"
+  ],
   "tabBar": {
     "custom": true,
     "color": "#272822",
@@ -80,7 +84,8 @@
     ]
   },
   "usingComponents": {
-    
+    "iconfont": "./components/iconfont/iconfont",
+    "image-cropper": "./components/image-cropper/index",
     "CatBmModel": "./components/CatBmModel/CatBmModel",
     "CatListPopup": "./components/CatListPopup/CatListPopup",
     "NavFollowModel": "./components/NavFollowModel/NavFollowModel",
