@@ -95,7 +95,7 @@ page {
 .contentVideo {
   position: absolute;
   bottom: 60px;
-  background: rgba(255, 255, 255, .1);
+  background: rgba(0,0,0, .2);
   color: #fff;
   width: 80%;
   box-sizing: border-box;
