@@ -15,7 +15,7 @@
 					<view>
 						{{detail.breed}}
 					</view>
-					<view class="catShop_content_class">{{detail.code}}</view>
+					<view class="catShop_content_class">品种标准</view>
 				</view>
 				<view class="catShop_content_desc">{{is_Zk?detail.desccopy:detail.desc}} <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text> </view>
 			</view>

@@ -11,7 +11,7 @@ Page({
     isEmpty: true,
     listType: "homeblockmodel",
     is_Zkbutton: true,
-    is_Zk: false,
+    is_Zk: true,
     catList: [],
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
     isStatus: 1,

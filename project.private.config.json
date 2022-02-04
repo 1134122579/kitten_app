@@ -113,6 +113,12 @@
           "pathName": "pages/articlepage/articlepage",
           "query": "user_id=38&dynamic_id=19",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/catshop/catshop",
+          "query": "id=83",
+          "scene": null
         }
       ]
     }

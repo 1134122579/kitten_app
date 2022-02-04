@@ -34,7 +34,7 @@ Component({
       {
         pagePath: "pages/releasepage/releasepage",
         text: "",
-        iconPath: "../images/addicon.png",
+        iconPath: "../images/adddicon_s.png",
         selectedIconPath: "../images/adddicon_s.png",
         isnavigatetominiprogram: false,
         is_content: true,
