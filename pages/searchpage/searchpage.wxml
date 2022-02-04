@@ -1,2 +1,10 @@
-<!--pages/searchpage/searchpage.wxml-->
-<text>pages/searchpage/searchpage.wxml</text>
+<view>
+  <van-cell-group>
+    <van-field model:value="{{ title }}" center clearable placeholder="请输入搜索内容" border="{{ false }}" use-button-slot>
+      <van-button slot="button" size="small" type="warning" bind:click="getsearch">
+        搜索
+      </van-button>
+    </van-field>
+  </van-cell-group>
+  <ListModel list="{{list}}"  isNullList="{{isNullList}}"  listType="{{listType}}" isEmpty="{{isEmpty}}" />
+</view>

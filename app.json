@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/enroll/enroll",
+    "pages/MatchOrder/MatchOrder",
     "pages/dynamicpage/dynamicpage",
     "pages/baomingpage/baomingpage",
     "pages/catshop/catshop",

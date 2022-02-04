@@ -100,9 +100,11 @@ page {
 }
 
 .okplayicon_content {
-  width: 100%;
+  width: 90vw;
+  height: 80vh;
   box-sizing: border-box;
-  padding: 60rpx 84rpx;
+  padding: 60rpx 24rpx;
+  overflow-y: auto;
 }
 
 .okplayicon_content_title {

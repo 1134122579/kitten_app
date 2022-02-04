@@ -15,9 +15,9 @@
 					<view>
 						{{detail.breed}}
 					</view>
-					<view class="catShop_content_class">品种标准</view>
+					<view class="catShop_content_class" bindtap="lookbutton">品种标准</view>
 				</view>
-				<view class="catShop_content_desc">{{is_Zk?detail.desccopy:detail.desc}} <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text> </view>
+				<!-- <view class="catShop_content_desc">{{is_Zk?detail.desccopy:detail.desc}} <text class="Zk" wx:if="{{is_Zkbutton}}" bindtap="ontextLook">{{is_Zk?'展开全文':'隐藏全文'}}</text> </view> -->
 			</view>
 			<!-- 分类 -->
 			<view class="tbsStyle">
@@ -141,13 +141,8 @@
 	</view>
 </view>
 <!-- 充值成功 -->
-<!-- <van-popup show="{{is_okplayShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
-	<view class="okplayicon_content flexcolumn">
-		<view class="okplayicon ">
-			<image src="../../images/okplayicon.png"></image>
-		</view>
-		<view class="okplayicon_content_title">
-			支付成功
-		</view>
+<van-popup show="{{is_lookShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
+	<view class="okplayicon_content ">
+	<rich-text nodes="{{detail.desc}}" ></rich-text>
 	</view>
-</van-popup> -->
+</van-popup>

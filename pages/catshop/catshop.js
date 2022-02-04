@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    is_lookShow:false,
     options: "",
     isEmpty: true,
     listType: "homeblockmodel",
@@ -50,6 +51,11 @@ Page({
       },
     ],
   },
+  lookbutton(){
+this.setData({
+  is_lookShow:true
+})
+  },  
   // 前往猫舍
   goHouse(e){
     let {item}=e.currentTarget.dataset
@@ -62,7 +68,7 @@ Page({
   },
   onplayClose() {
     this.setData({
-      is_okplayShow: false,
+      is_lookShow: false,
     });
   },
   // 赛事积分
@@ -181,6 +187,7 @@ Page({
   async getPzDetial() {
     let { options } = this.data;
     let res = await Api.getPzDetial(options);
+    res["desc"]=res["desc"].replace('<img ', '<img style="max-width:100%;height:auto;display:block;margin:10rpx 0;"')
     res["desccopy"] = `${res["desc"].slice(0, 50)}...`;
     this.setData({
       detail: res,

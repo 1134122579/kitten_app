@@ -851,4 +851,13 @@ export default {
       isThree: false,
     });
   },
+  getUserMatchOrder(params) {
+    return fly({
+      url: `getUserMatchOrder`,
+      method: "get",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
 };

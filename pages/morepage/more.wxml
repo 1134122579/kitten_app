@@ -5,7 +5,7 @@
 	<!-- 个人信息 -->
 	<view class="more_header">
 		<image class="header_bg" mode="aspectFill" src="https://img.js.design/assets/img/61b45304013b1b249687edff.png"></image>
-		<view class="user_content" >
+		<view class="user_content">
 			<view class="user_content_t" bindtap="onuserInfo">
 				<van-image round width="100rpx" height="100rpx" src="{{userInfo.headimgurl}}"></van-image>
 				<view class="userName">{{userInfo.name||'未认证'}}</view>
@@ -37,7 +37,7 @@
 						收藏
 					</view>
 				</view>
-				<view class="listBlock flexcolumn"  bindtap="goList" data-id="2">
+				<view class="listBlock flexcolumn" bindtap="goList" data-id="2">
 					<view class="num">
 						{{userInfo.fans_num}}
 					</view>
@@ -102,16 +102,26 @@
 		</view>
 		<block wx:for="{{list}}" wx:key="title">
 			<!-- hidden="{{!split.power(powerlist,item.is_power)}}" -->
-			<view class="{{item.marginTop}}" >
-				<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}" value="{{item.value}}" border="{{isborder}}" />
-			</view>
+			<label for="">
+				<view class="{{item.marginTop}}">
+					<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link value="{{item.value}}" border="{{isborder}}">
+						<iconfont slot="icon" name="{{item.icon}}" class="iconstyle" size="22" />
+					</van-cell>
+				</view>
+				<button wx:if="{{item.isshare}}" open-type="share"></button>
+			</label>
+			<!-- <view class="{{item.marginTop}}">
+				<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link value="{{item.value}}" border="{{isborder}}">
+					<iconfont slot="icon" name="{{item.icon}}" class="iconstyle" size="22" />
+				</van-cell>
+			</view> -->
 			<!-- 联系客服 -->
 			<!-- <view wx:if="{{item.isbutton}}" class="{{item.marginTop}}" wx:if="{{split.power(powerlist,item.is_power)}}">
 					<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link icon="{{item.icon}}" value="{{item.value}}" border="{{isborder}}" />
 			</view> -->
 		</block>
 	</view>
-  <!-- 客服 -->
+	<!-- 客服 -->
 	<!-- <view class="contact">
 		<button class="button_style" open-type="contact">
 			<van-icon name="service-o" size="20"></van-icon>

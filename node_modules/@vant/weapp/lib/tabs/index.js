@@ -92,6 +92,7 @@ var relation_1 = require("../common/relation");
     mounted: function () {
         var _this = this;
         (0, utils_1.requestAnimationFrame)(function () {
+            _this.swiping = true;
             _this.setData({
                 container: function () { return _this.createSelectorQuery().select('.van-tabs'); },
             });
@@ -201,6 +202,7 @@ var relation_1 = require("../common/relation");
                 lineOffsetLeft +=
                     (rect.width - lineRect.width) / 2 + (ellipsis ? 0 : 8);
                 _this.setData({ lineOffsetLeft: lineOffsetLeft });
+                _this.swiping = true;
                 if (skipTransition) {
                     (0, utils_1.nextTick)(function () {
                         _this.setData({ skipTransition: false });
@@ -240,16 +242,17 @@ var relation_1 = require("../common/relation");
         onTouchStart: function (event) {
             if (!this.data.swipeable)
                 return;
+            this.swiping = true;
             this.touchStart(event);
         },
         onTouchMove: function (event) {
-            if (!this.data.swipeable)
+            if (!this.data.swipeable || !this.swiping)
                 return;
             this.touchMove(event);
         },
         // watch swipe touch end
         onTouchEnd: function () {
-            if (!this.data.swipeable)
+            if (!this.data.swipeable || !this.swiping)
                 return;
             var _a = this, direction = _a.direction, deltaX = _a.deltaX, offsetX = _a.offsetX;
             var minSwipeDistance = 50;
@@ -259,6 +262,7 @@ var relation_1 = require("../common/relation");
                     this.setCurrentIndex(index);
                 }
             }
+            this.swiping = false;
         },
         getAvaiableTab: function (direction) {
             var _a = this.data, tabs = _a.tabs, currentIndex = _a.currentIndex;

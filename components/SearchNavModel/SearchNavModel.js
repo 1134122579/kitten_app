@@ -13,8 +13,8 @@ Component({
     tabName: {
       type: String,
       value: "发现",
-      observer(newV,oldV){
-        console.log(newV,oldV,'tabName')
+      observer(newV, oldV) {
+        console.log(newV, oldV, 'tabName')
       }
     },
     showNav: {
@@ -46,8 +46,7 @@ Component({
     navHeight: App.globalData.navHeight,
     navTop: App.globalData.navTop,
     active: 1,
-    list: [
-      {
+    list: [{
         id: 1,
         title: "发现",
       },
@@ -86,9 +85,9 @@ Component({
     },
     //回退
     _navBack: function () {
-      wx.navigateBack({
-        delta: 1,
-      });
+      wx.navigateTo({
+        url: '/pages/searchpage/searchpage',
+      })
     },
     //回主页
     _toIndex: function () {

@@ -21,6 +21,9 @@ var initialMaxDate = (function () {
     var now = (0, utils_1.getToday)();
     return new Date(now.getFullYear(), now.getMonth() + 6, now.getDate()).getTime();
 })();
+var getTime = function (date) {
+    return date instanceof Date ? date.getTime() : date;
+};
 (0, component_1.VantComponent)({
     props: {
         title: {
@@ -212,7 +215,7 @@ var initialMaxDate = (function () {
                 var months = (0, utils_1.getMonths)(minDate, maxDate);
                 months.some(function (month, index) {
                     if ((0, utils_1.compareMonth)(month, targetDate) === 0) {
-                        _this.setData({ scrollIntoView: "month" + index });
+                        _this.setData({ scrollIntoView: "month".concat(index) });
                         return true;
                     }
                     return false;
@@ -239,11 +242,21 @@ var initialMaxDate = (function () {
             var _a = this.data, type = _a.type, currentDate = _a.currentDate, allowSameDay = _a.allowSameDay;
             if (type === 'range') {
                 // @ts-ignore
-                var startDay = currentDate[0], endDay = currentDate[1];
-                if (startDay && !endDay) {
-                    var compareToStart = (0, utils_1.compareDay)(date, startDay);
+                var startDay_1 = currentDate[0], endDay = currentDate[1];
+                if (startDay_1 && !endDay) {
+                    var compareToStart = (0, utils_1.compareDay)(date, startDay_1);
                     if (compareToStart === 1) {
-                        this.select([startDay, date], true);
+                        var days_1 = this.selectComponent('.month').data.days;
+                        days_1.some(function (day, index) {
+                            var isDisabled = day.type === 'disabled' &&
+                                getTime(startDay_1) < getTime(day.date) &&
+                                getTime(day.date) < getTime(date);
+                            if (isDisabled) {
+                                (date = days_1[index - 1].date);
+                            }
+                            return isDisabled;
+                        });
+                        this.select([startDay_1, date], true);
                     }
                     else if (compareToStart === -1) {
                         this.select([date, null]);
@@ -310,9 +323,6 @@ var initialMaxDate = (function () {
             }
         },
         emit: function (date) {
-            var getTime = function (date) {
-                return date instanceof Date ? date.getTime() : date;
-            };
             this.setData({
                 currentDate: Array.isArray(date) ? date.map(getTime) : getTime(date),
             });
@@ -324,7 +334,7 @@ var initialMaxDate = (function () {
                 if (showRangePrompt) {
                     (0, toast_1.default)({
                         context: this,
-                        message: rangePrompt || "\u9009\u62E9\u5929\u6570\u4E0D\u80FD\u8D85\u8FC7 " + maxRange + " \u5929",
+                        message: rangePrompt || "\u9009\u62E9\u5929\u6570\u4E0D\u80FD\u8D85\u8FC7 ".concat(maxRange, " \u5929"),
                     });
                 }
                 this.$emit('over-range');

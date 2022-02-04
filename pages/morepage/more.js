@@ -9,84 +9,107 @@ Page({
     powerlist: ["user"],
     navHeight: appInst.globalData.navHeight,
     userInfo: {},
-    list: [
-      {
+    list: [{
         title: "我的动态",
-        icon: "shield-o",
+        icon: "xiaohongshushoucang",
         to: "../../pages/dynamicpage/dynamicpage",
         linktype: "navigateTo",
         value: "",
         isborder: false,
         marginTop: "",
         is_power: "admin",
-        isLink:false,
-        isbutton:false
+        isLink: false,
+        isbutton: false,
+        isshare: false,
       },
       {
         title: "投票活动",
-        icon: "shield-o",
+        icon: "security",
         to: "../../pages/vote/vote",
         linktype: "navigateTo",
         value: "",
         isborder: false,
         marginTop: "",
         is_power: "admin",
-        isLink:false,
-        isbutton:false
+        isshare: false,
+        isLink: false,
+        isbutton: false
       },
       {
         title: "证书注册",
-        icon: "coupon-o",
+        icon: "RFQ-logo",
         to: "../../pages/certificate/certificate",
         linktype: "navigateTo",
         value: "",
         isborder: false,
         // marginTop: "marginTop",
         is_power: "user",
-        isLink:false,
-        isbutton:false
+        isshare: false,
+        isLink: false,
+        isbutton: false
+      },
+      {
+        title: "赛事订单",
+        icon: "dingdanjihe",
+        to: "../../pages/MatchOrder/MatchOrder",
+        linktype: "navigateTo",
+        value: "",
+        isborder: false,
+        marginTop: "",
+        is_power: "user",
+        isshare: false,
+        isLink: false,
+        isbutton: false
       },
       {
         title: "分享推荐",
-        icon: "vip-card-o",
+        icon: "share",
         to: "",
         linktype: "navigateTo",
         value: "",
         isborder: false,
         marginTop: "",
         is_power: "user",
-        isLink:false,
-        isbutton:false
+        isshare: true,
+        isLink: false,
+        isbutton: false
       },
       {
         title: "意见建议",
-        icon: "orders-o",
+        icon: "editor",
         to: "../../pages/fankui/fankui",
         linktype: "navigateTo",
         value: "",
         isborder: false,
         marginTop: "",
         is_power: "user",
-        isLink:false,
-        isbutton:false
+        isshare: false,
+        isLink: false,
+        isbutton: false
       }
+
+
     ],
   },
-  goList(e){
+  goList(e) {
     console.log(e)
-    let {id}=e.currentTarget.dataset
+    let {
+      id
+    } = e.currentTarget.dataset
     wx.navigateTo({
-      url:`/pages/likepage/likepage?id=${id}`,
+      url: `/pages/likepage/likepage?id=${id}`,
     });
   },
-  
+
   gocathouse() {
-    let {user_id}=storage.getUserInfo()
+    let {
+      user_id
+    } = storage.getUserInfo()
     wx.showLoading({
       title: '加载中..',
     })
     wx.navigateTo({
-      url: "/pages/cathouse/cathouse?user_id="+user_id ,
+      url: "/pages/cathouse/cathouse?user_id=" + user_id,
     });
   },
   goVip() {
@@ -138,7 +161,7 @@ Page({
    */
   onShow: function () {
     appInst.tabbershow(this, 4);
-    appInst.getUserinfoFn(()=>{})
+    appInst.getUserinfoFn(() => {})
     let {
       powerlist
     } = this.data;
@@ -152,7 +175,7 @@ Page({
       });
     }
     // console.log('windowHeight', appInst.globalData.userInfo)
-    console.log("userInfo",appInst.globalData.userInfo)
+    console.log("userInfo", appInst.globalData.userInfo)
     this.setData({
       userInfo: appInst.globalData.userInfo,
       navHeight: appInst.globalData.navHeight,
@@ -186,5 +209,12 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () {
+    var shareObj = {
+      title: "WCCF协会", // 默认是小程序的名称(可以写slogan等)
+      path: 'pages/home/home', // 默认是当前页面，必须是以‘/'开头的完整路径
+      imageUrl: '',
+    }
+    return shareObj
+  },
 });

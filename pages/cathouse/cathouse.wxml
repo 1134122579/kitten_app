@@ -44,7 +44,7 @@
       <view class="flexcenter">
         <label for="" class="">
           <view class="mynum_button flexcenter">
-            <image style="width: 36rpx;height: 36rpx;display: block;margin-right: 10rpx;" src="/images/fx.png"></image>
+					<iconfont slot="icon" name="share" class="iconstyle" size="24"/>
             <view>分享</view>
           </view>
           <button open-type="share" />
