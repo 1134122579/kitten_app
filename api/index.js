@@ -854,7 +854,7 @@ export default {
   getUserMatchOrder(params) {
     return fly({
       url: `getUserMatchOrder`,
-      method: "get",
+      method: "post",
       params,
       loading: false,
       isThree: false,

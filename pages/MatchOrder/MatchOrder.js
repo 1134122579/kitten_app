@@ -1,18 +1,55 @@
 // pages/MatchOrder/MatchOrder.js
+import Api from '../../api/index'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: [],
+    page:1,
+    isnulllist:false,
+    orderdetailorder_no:null,
+  },
+  lookbutton(e){
+    let order_no=e.currentTarget.dataset.id
+console.log(e)
+this.setData({
+  orderdetailorder_no:order_no
+})
+  },
+  getUserMatchOrder() {
+    let {
+      page,list
+    } = this.data
+    Api.getUserMatchOrder({
+      page
+    }).then(res => {
+      this.setData({
+        isnulllist: res.lenght>0?false:true
+      })
+      if(page==1){
+        this.setData({
+          list: res
+        })
+      }else{
+        this.setData({
+          list: list.concat(res)
+        })
+      }
+      
+    })
+  },
+  onpulldown() {
+    this.data.page++
+    this.getUserMatchOrder()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getUserMatchOrder()
   },
 
   /**
@@ -47,7 +84,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+this.onpulldown()
   },
 
   /**

@@ -1,1 +1,31 @@
-/* pages/MatchOrder/MatchOrder.wxss */
+.order_block{
+  border-bottom: 1rpx solid #cccccc;
+  margin:0 20rpx ;
+  padding: 20rpx 0;
+  font-size: 20rpx;
+  line-height: 2;
+}
+.order_text{
+  font-weight: 600;
+}
+.look{
+  padding:4rpx 20rpx;
+  background: coral;
+  color: #ffffff;
+  border-radius: 40rpx;
+  letter-spacing: 5rpx;
+  text-indent: 5rpx;
+}
+.order_detail{
+  font-weight: 600;
+  text-align: center;
+}
+.flexaround{
+  width: 100%;
+}
+.order_price{
+  color: #ff0000;
+}
+.order_list{
+  width: 25%;
+}

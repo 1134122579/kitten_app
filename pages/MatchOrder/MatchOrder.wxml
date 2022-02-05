@@ -1,2 +1,30 @@
-<!--pages/MatchOrder/MatchOrder.wxml-->
-<text>pages/MatchOrder/MatchOrder.wxml</text>
+<view>
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="order_block">
+      <view class="flexbetween ">
+        <view>
+          <view> 姓名：<text class="order_text">{{item.cat_name}}</text></view>
+          <view> 订单编号：<text class="order_text">{{item.order_no}}</text></view>
+          <view> 订单金额：<text class="order_text order_price">{{item.price}}</text></view>
+          <view> 创建时间：<text class="order_text">{{item.create_time}}</text></view>
+        </view>
+        <view class="look" bindtap="lookbutton" data-id="{{item.order_no}}">
+          查看
+        </view>
+      </view>
+      <view class="order_foolter" wx:if="{{orderdetailorder_no==item.order_no}}">
+        <view class="order_detail">订单详情</view>
+        <block wx:for="{{item.group_names}}" wx:key="id" wx:for-item="group">
+          <view>
+            <view class="flexbetween">
+              <view class="order_list">参赛组别：<text class="order_text">{{group.name}}</text></view>
+              <view class="order_list">组别金额：<text class="order_text order_price">{{group.price}}</text></view>
+              <view class="order_list">参赛类型：<text class="order_text">{{group.type==1?'环赛':'非环赛'}}</text></view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+
+</view>
