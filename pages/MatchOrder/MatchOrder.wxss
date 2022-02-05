@@ -10,7 +10,7 @@
 }
 .look{
   padding:4rpx 20rpx;
-  background: coral;
+  background:var(--button-warning-background-color);
   color: #ffffff;
   border-radius: 40rpx;
   letter-spacing: 5rpx;
