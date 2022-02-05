@@ -63,7 +63,8 @@ page{
 
 .user {
   margin: 0 20rpx;
-  padding: 10rpx 0;
+  /* padding: 20rpx 0; */
+  height: 120rpx;
   border-bottom: 1rpx solid #dad8d8;
 }
 

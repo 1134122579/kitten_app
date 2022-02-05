@@ -20,7 +20,7 @@
       <!-- 列表 -->
       <block wx:if="{{!isEmy}}">
       <!-- 收藏 -->
-        <ListModel wx:if="{{tabId==1}}" list="{{sclist}}" isStatus="{{tabId}}" listType="homeblockmodel" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+        <ListModel wx:if="{{tabId==1}}" list="{{sclist}}" isStatus="{{tabId}}" listType="homeblockmodel" isticket="{{isticket}}" isNullList="{{isNullList}}" isEmpty="{{isEmpty}}" />
         <!-- 粉丝关注 -->
         <view class="userList" wx:if="{{tabId!=1}}" >
           <block wx:for="{{list}}" wx:key="index">

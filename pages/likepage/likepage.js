@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isEmpty:false,
     tabId: null,
     navHeight: App.globalData.navHeight,
     isnullLsit: false,
@@ -21,6 +22,8 @@ Page({
   // 顶部tab
   tabType(e) {
     let id = e.detail;
+    let {tabId}=this.data
+    if(tabId==id)return
     console.log(id);
     this.setData({
       "lisQuery.page": 1,
@@ -43,6 +46,7 @@ Page({
       res = await Api.getUserCollect(lisQuery);
       this.setData({
         sclist: res,
+    isEmpty:false,
         isEmy: lisQuery.page == 1 && res.length <= 0 ? true : false,
       });
       return;
@@ -54,6 +58,8 @@ Page({
       res = await Api.getFollow(lisQuery);
     }
     this.setData({
+      sclist: [],
+    isEmpty:true,
       isnullLsit: res.length > 0 ? false : true,
     });
     if (lisQuery.page == 1) {

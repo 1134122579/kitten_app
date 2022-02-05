@@ -175,8 +175,9 @@ Component({
         query.select(".tab_left").boundingClientRect();
         query.select(".tab_right").boundingClientRect();
         query.exec((res) => {
-          leftHeight = res[0]?.height; //获取左边列表的高度
-          rightHeight = res[1]?.height; //获取右边列表的高度
+     
+          leftHeight = parseInt(res[0]?.height); //获取左边列表的高度
+          rightHeight =parseInt(res[1]?.height) ; //获取右边列表的高度
           console.log(leftHeight,rightHeight)
           resolve(res);
         });
