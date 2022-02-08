@@ -54,6 +54,14 @@ Page({
     });
     return value;
   },
+    //预览图片
+    previewImage(e) {
+      var index = e.target.dataset.index;
+      wx.previewImage({
+        current: this.data.getdata.img[index], //当前点击的图片链接
+        urls: this.data.getdata.img, //图片数组
+      });
+    },
   // 倒计时
   oncountChange(e) {
     this.setData({

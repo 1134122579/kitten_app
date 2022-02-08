@@ -187,7 +187,7 @@ this.setData({
   async getPzDetial() {
     let { options } = this.data;
     let res = await Api.getPzDetial(options);
-    res["desc"]=res["desc"].replace('<img ', '<img style="max-width:100%;height:auto;display:block;margin:10rpx 0;"')
+    res["desc"]=res["desc"].replaceAll('<img ', '<img style="max-width:100%;height:auto;display:block;margin:10rpx 0;"')
     res["desccopy"] = `${res["desc"].slice(0, 50)}...`;
     this.setData({
       detail: res,

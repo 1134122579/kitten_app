@@ -111,10 +111,12 @@ App({
       let res = wx.getSystemInfoSync();
       let statusBarHeight = res.statusBarHeight,
         navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
-        navHeight =
-          statusBarHeight +
-          menuButtonObject.height +
-          (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+        // navHeight =
+        //   statusBarHeight +
+        //   menuButtonObject.height +
+        //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+          navHeight = Number(menuButtonObject.top)  + Number(menuButtonObject.height)+8;
+          this.globalData.menuButtonObject=menuButtonObject
       this.globalData.navHeight = navHeight;
       this.globalData.navTop = navTop;
       this.globalData.windowHeight = res.windowHeight;
@@ -186,6 +188,7 @@ App({
     this.globalData.statusBarHeight = wx.getSystemInfoSync().statusBarHeight;
   },
   globalData: {
+    menuButtonObject:{},
     is_location: false,
     is_login: true,
     longitude: "",

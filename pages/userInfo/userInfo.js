@@ -227,7 +227,7 @@ Page({
       home_name="",
     } = this.data;
     photo = fileList?.[0]?.url;
-    let cat_bg = fileListcat_bg?.[0]?.url;
+    let cat_bg = fileListcat_bg?.[0]?.url||'';
     if (!photo) {
       wx.showToast({
         title: "请上传头像！",

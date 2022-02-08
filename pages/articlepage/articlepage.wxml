@@ -52,7 +52,7 @@
               {{item.nickname}}
             </view>
             <view class="content flexbetween">
-              <view class="content_l"><text bindtap="onhf" data-item="{{item}}">{{iscontentlookId==item.id?item.content:item.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{item}}" bindtap="iscontentlookclick" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{item.create_time}}</text></view>
+              <view class="content_l"><text bindtap="onhf" data-item="{{item}}" wx:if="{{!item.iscontentcopy}}">{{item.content}}</text><text bindtap="onhf" data-item="{{item}}" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?item.content:item.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{item}}" bindtap="iscontentlookclick" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{item.create_time}}</text></view>
               <!-- <view class="content_l" bindtap="onhf" data-item="{{item}}">
                 {{item.content}} <text class="timestyle"> {{item.create_time}}</text>
               </view> -->
@@ -73,7 +73,7 @@
                     {{reply.nickname}}
                   </view>
                   <view class="content flexbetween">
-                    <view class="content_l"><text  data-item="{{reply}}">{{iscontentlookId==reply.id?reply.content:reply.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{reply}}" bindtap="iscontentlookclick" wx:if="{{reply.iscontentcopy}}">{{iscontentlookId==reply.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{reply.create_time}}</text></view>
+                    <view class="content_l"><text  data-item="{{reply}}" wx:if="{{!reply.iscontentcopy}}">{{reply.content}}</text><text  data-item="{{reply}}" wx:if="{{reply.iscontentcopy}}">{{iscontentlookId==reply.id?reply.content:reply.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{reply}}" bindtap="iscontentlookclick" wx:if="{{reply.iscontentcopy}}">{{iscontentlookId==reply.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{reply.create_time}}</text></view>
                     <!-- bindtap="onhf"  -->
                     <!-- <view class="content_l" data-item="{{reply}}">
                       {{reply.content}}<text class="timestyle"> {{reply.create_time}}</text>

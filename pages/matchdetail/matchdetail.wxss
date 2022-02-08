@@ -109,7 +109,7 @@ page {
 
 .timeData {
   color: rgba(255, 87, 51, 1);
-  font-size: 28rpx;
+  font-size: 22rpx;
 }
 
 .hd_text {

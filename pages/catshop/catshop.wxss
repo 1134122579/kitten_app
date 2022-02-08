@@ -103,8 +103,9 @@ page {
   width: 90vw;
   height: 80vh;
   box-sizing: border-box;
-  padding: 60rpx 24rpx;
+  padding: 10rpx 24rpx;
   overflow-y: auto;
+  padding-bottom:50rpx;
 }
 
 .okplayicon_content_title {
@@ -185,4 +186,9 @@ page {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}.poup_title{
+  text-align: center;
+  font-weight: 600;
+  font-size: 28rpx;
+  padding: 10px 0;
 }

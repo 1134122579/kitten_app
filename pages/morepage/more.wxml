@@ -49,7 +49,7 @@
 			<view class="header_footer">
 				<view class="hf_title flexbetween">
 					<view class="hf_title_l">
-						{{userInfo.home_name}}的猫舍
+						{{userInfo.home_name?userInfo.home_name:'我'}}的猫舍
 					</view>
 					<view class="hf_title_r" bindtap="gocathouse">
 						<image style="width: 100%;height: 100%;display: block;" src="/images/gocaticon.png"></image>

@@ -63,8 +63,8 @@ Component({
   methods: {
     navigateToMiniProgram() {
       wx.navigateToMiniProgram({
-        appId: "wx23f0e224e37e69bd",
-        path: "pages/index/index",
+        appId: "wxb894410659e6b29a",
+        path: "pages/home/dashboard/index",
         envVersion: "release", // 打开正式版
         success(res) {
           // 打开成功

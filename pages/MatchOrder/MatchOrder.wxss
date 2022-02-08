@@ -2,7 +2,7 @@
   border-bottom: 1rpx solid #cccccc;
   margin:0 20rpx ;
   padding: 20rpx 0;
-  font-size: 20rpx;
+  font-size: 24rpx;
   line-height: 2;
 }
 .order_text{
@@ -27,5 +27,5 @@
   color: #ff0000;
 }
 .order_list{
-  width: 25%;
+  width: 28%;
 }

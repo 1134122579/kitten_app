@@ -142,6 +142,7 @@
 </view>
 <!-- 充值成功 -->
 <van-popup show="{{is_lookShow }}" closeable round bind:click-overlay="onplayClose" bind:close="onplayClose">
+<view class="poup_title">品种标准</view>
 	<view class="okplayicon_content ">
 	<rich-text nodes="{{detail.desc}}" ></rich-text>
 	</view>

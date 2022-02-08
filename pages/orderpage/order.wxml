@@ -29,7 +29,7 @@
 		<view class="orderList_content" wx:if="{{isStatus==4}}">
 			<view class="orderList_content_ul">
 				<view class="blokrow flexastart">
-					<view class="typeText fontBlod">赛事</view>
+					<view class="typeText fontBlod">赛季</view>
 					<view class="typeValue flexastart classStyle">
 						<van-tabs bind:change="typeChange" active="{{timeactive}}" line-height="0" title-active-color="#333" title-inactive-color="#ccc" swipeable ellipsis="{{ellipsis}}">
 							<van-tab wx:for="{{timeList}}" title="{{item}}" name="{{item}}" wx:key="index">
@@ -54,7 +54,7 @@
 					<!-- <view class="headertag ">可选全国或单城市</view> -->
 				</view>
 				<view class="blokrow flexastart">
-					<view class="typeText fontBlod">赛季</view>
+					<view class="typeText fontBlod">时间</view>
 					<view class="typeValue flexastart">
 						<view class="typeValue_t  {{sjiValue?'colorH':''}}" bindtap="arrsjClick">本赛季</view>
 						<picker mode="selector" range="{{sjList}}" bindchange="bindsjChange">
