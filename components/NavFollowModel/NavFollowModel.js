@@ -42,6 +42,7 @@ Component({
   data: {
     is_gz: false,
     navHeight: App.globalData.navHeight,
+    menuButtonObject: App.globalData.menuButtonObject,
     navTop: App.globalData.navTop,
     active: 1,
     list: [

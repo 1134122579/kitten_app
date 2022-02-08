@@ -115,7 +115,7 @@ App({
         //   statusBarHeight +
         //   menuButtonObject.height +
         //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
-          navHeight = Number(menuButtonObject.top)  + Number(menuButtonObject.height)+8;
+          navHeight = Number(menuButtonObject.top)  + Number(menuButtonObject.height)+4;
           this.globalData.menuButtonObject=menuButtonObject
       this.globalData.navHeight = navHeight;
       this.globalData.navTop = navTop;

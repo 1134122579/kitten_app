@@ -1,10 +1,10 @@
 <view class="navbar " style='height:{{navHeight}}px;background-color:{{bgColor}}'>
-  <view class="navbar-action-wrap navbar-action-group row item-center flexcenter" style='top:{{navTop}}px;'>
+  <view class="navbar-action-wrap navbar-action-group row item-center flexcenter" style='top:{{navTop}}px;height: {{menuButtonObject.height}}px;'>
     <!-- <view class="navbar-action_item flexcenter" bindtap="_navBack"> -->
     <van-icon name="arrow-left" color="{{iconColor}}" bindtap="_navBack" size="23px"></van-icon>
     <!-- </view> -->
     <view class="userInfo flexastart">
-      <image src="{{userInfo.headimgurl}}" style="width: 58rpx;height: 58rpx;display: block;border-radius: 50%;"></image>
+      <image src="{{userInfo.headimgurl}}" style="width: {{menuButtonObject.height}}px;height: {{menuButtonObject.height}}px;display: block;border-radius: 50%;"></image>
       <view class="name">{{userInfo.nickname}}</view>
       <view  wx:if="{{myuserID!=userInfo.user_id}}" class="{{userInfo.is_follow==1||is_gz?'gzstyle':'gzstyle'}}" bindtap="onClick">
         {{userInfo.is_follow==1||is_gz?'已关注':'关注'}}

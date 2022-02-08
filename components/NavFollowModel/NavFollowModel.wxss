@@ -44,9 +44,10 @@
   left: 10px;
   z-index: 11;
   line-height: 1;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  /* padding-top: 4px;
+  padding-bottom: 4px; */
   justify-content: flex-start;
+  box-sizing: border-box;
 }
 
 .navbar-action-group {
@@ -78,10 +79,10 @@
 
 .name {
   max-width: 30%;
-  overflow: hidden;
+  overflow-x: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 28rpx;
+  font-size: 26rpx;
   box-sizing: border-box;
   padding:0 20rpx;
   color: #000;
