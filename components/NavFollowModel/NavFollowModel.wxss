@@ -79,12 +79,12 @@
 
 .name {
   max-width: 30%;
-  overflow-x: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 26rpx;
   box-sizing: border-box;
-  padding:0 20rpx;
+  padding:0 18rpx;
   color: #000;
 }
 

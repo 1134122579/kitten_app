@@ -7,6 +7,7 @@
           <view> 订单编号：<text class="order_text">{{item.order_no}}</text></view>
           <view> 订单金额：<text class="order_text order_price">{{item.price}}</text></view>
           <view> 创建时间：<text class="order_text">{{item.create_time}}</text></view>
+          <view> 订单状态：<text class="order_text order_price">{{item.status==1?'支付成功':'未支付'}}</text></view>
         </view>
         <view class="look" bindtap="lookbutton" data-id="{{item.order_no}}">
           查看
