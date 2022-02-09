@@ -101,7 +101,7 @@ page {
 
 .okplayicon_content {
   width: 90vw;
-  height: 80vh;
+  height: 50vh;
   box-sizing: border-box;
   padding: 10rpx 24rpx;
   overflow-y: auto;
