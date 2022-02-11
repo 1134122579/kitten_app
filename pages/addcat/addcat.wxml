@@ -3,10 +3,10 @@
 <view class="enroll">
   <view class="cat_detail">
     <view class="e_title">
-      猫咪图片 <text style="font-size: 24rpx;font-weight: normal;">最多8张</text> 
+      猫咪图片 <text style="font-size: 24rpx;font-weight: normal;">最多8张</text>
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}"  multiple max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
+      <van-uploader file-list="{{ fileList }}" multiple max-count="8" accept="image" bind:after-read="afterRead" bind:delete="deleteImage" />
     </view>
   </view>
   <view class="cat_detail">
@@ -34,7 +34,7 @@
         <!-- 颜色 -->
         <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="花色" required placeholder="请输入" border="{{ true }}" input-align="right" />
         <!-- 体重 -->
-        <van-field model:value="{{ weight }}" size="large" label-class="labelClass" type="number" custom-style="inputStyle" label="体重" required placeholder="请输入体重单位（kg）" border="{{ true }}" input-align="right" />
+        <van-field model:value="{{ weight }}" size="large" label-class="labelClass" type="digit" custom-style="inputStyle" label="体重" required placeholder="请输入体重单位（kg）" border="{{ true }}" input-align="right" />
         <!-- 眼睛颜色 -->
         <!-- <van-field model:value="{{ eye_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="眼睛颜色" required placeholder="请输入" border="{{ true }}" input-align="right" /> -->
         <!-- 注册号 -->
@@ -68,7 +68,7 @@
         </picker>
         <!-- 血型 -->
         <picker mode="selector" range="{{xuexingList}}" bindchange="bindxuexingChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择血型" value="{{ blood_type}}" readonly label="血型" />
+          <van-field size="large" input-align="right" border="{{ true }}" placeholder="选择血型" value="{{ blood_type}}" readonly label="血型" />
         </picker>
         <!-- 血型 -->
         <!-- <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
@@ -119,17 +119,17 @@
     <view class="e_title">
       简介信息
     </view>
-    <van-field  model:value="{{ desc }}" type="textarea" placeholder="请输入猫咪简介" autosize="{{autoSize}}" border="{{ true }}"  />
+    <van-field model:value="{{ desc }}" type="textarea" placeholder="请输入猫咪简介" autosize="{{autoSize}}" border="{{ true }}" />
   </view>
   <view class="button_">
     <van-button wx:if="{{!cat_id}}" block round type="warning" bind:click="onClick">提交信息</van-button>
     <van-button wx:else block round type="warning" bind:click="onClick">修改信息</van-button>
   </view>
-
 </view>
 <!-- 单选  父母-->
 <CatListPopup catList="{{catList}}" ischeckbox="{{ischeckbox}}" isShow="{{isShow}}" bind:myevent="setCatItem" />
-<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+<!-- 选择品种 -->
+<!-- <van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
   <view class="poupList">
     <view class="listStyle">
       <block wx:for="{{PzList}}" wx:key="index">
@@ -138,4 +138,25 @@
     </view>
     <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view>
   </view>
-</van-popup>
+</van-popup> -->
+<!-- <van-popup show="{{ show }}" position="bottom" custom-style="height: 70%;" bind:close="onClose" round>
+  <view class="poupList">
+    <view class="">
+      <van-radio-group value="{{ cat_pz }}" bind:change="onChange">
+        <van-index-bar index-list="{{ indexList }}" highlight-color="{{highlightColor}}">
+          <block wx:for="{{CatClassList}}" wx:key="index">
+            <view class="CatClassList">
+              <van-index-anchor index="{{item.name}}" />
+              <block wx:for="{{item.list}}" wx:for-item="j" wx:key="index">
+                <van-cell title="{{j.name}}" bind:click="getcarType" data-item="{{j}}">
+                  <van-radio slot="right-icon" name="{{j.name}}" />
+                </van-cell>
+              </block>
+            </view>
+          </block>
+        </van-index-bar>
+      </van-radio-group>
+    </view>
+    <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view>
+  </view>
+</van-popup> -->

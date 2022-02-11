@@ -1,0 +1,19 @@
+<view class="poupList">
+  <view class="concatlist">
+    <van-radio-group value="{{ cat_pz }}" bind:change="onChange">
+      <van-index-bar index-list="{{ indexList }}" highlight-color="{{highlightColor}}">
+        <block wx:for="{{CatClassList}}" wx:key="index">
+          <view class="CatClassList">
+            <van-index-anchor index="{{item.name}}" />
+            <block wx:for="{{item.list}}" wx:for-item="j" wx:key="index">
+              <van-cell title="{{j.name}}" bind:click="getcarType" data-item="{{j}}">
+                <van-radio slot="right-icon" name="{{j.name}}" />
+              </van-cell>
+            </block>
+          </view>
+        </block>
+      </van-index-bar>
+    </van-radio-group>
+  </view>
+  <view class="button_list" bindtap="onclosebuttonPopup">确认选择</view>
+</view>

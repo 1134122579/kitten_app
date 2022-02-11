@@ -1,0 +1,25 @@
+page{
+  position: relative;
+  height: auto;
+}
+.poupList{
+  padding-bottom: 160rpx;
+}
+
+.button_list{
+  position: fixed;
+  z-index: 5;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  flex-shrink: 0;
+  background:var(--button-warning-background-color) ;
+  width: 80%;
+  margin: 20rpx auto;
+  flex-shrink: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 40rpx;
+}

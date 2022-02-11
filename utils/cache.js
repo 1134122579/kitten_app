@@ -7,7 +7,7 @@ let $newstorage = new Storage()
 
 export default {
   // 获取数据
- getToken(callback) {
+  getToken(callback) {
     // let res = await $newstorage.get(name)
     return wx.getStorageSync(name)
 
@@ -24,6 +24,16 @@ export default {
   },
   getUserInfo() {
     return wx.getStorageSync(userName);
+  },
+  getInfo(infoname) {
+    return wx.getStorageSync(infoname);
+  },
+  setInfo(infoname, data) {
+    wx.setStorageSync(infoname, data);
+    // $newstorage.set(name, data, false)
+  },
+  removeInfo(infoname) {
+    wx.removeStorageSync(infoname);
   },
   setUserInfo(data) {
     wx.setStorageSync(userName, data);
