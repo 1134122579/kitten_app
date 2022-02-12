@@ -23,7 +23,7 @@ App({
     wx.getLocation({
       success(res) {
         console.log(res);
-        cb(res)
+        cb(res);
       },
       fail() {
         wx.getSetting({
@@ -47,7 +47,7 @@ App({
                           duration: 3000,
                           icon: "none",
                         });
-                      } 
+                      }
                       // else {
                       //   //允许授权，调用地图
                       //   cb();
@@ -93,7 +93,6 @@ App({
   },
   onLaunch() {
     // 展示本地存储能力
-
     let that = this;
     const logs = wx.getStorageSync("logs") || [];
     logs.unshift(Date.now());
@@ -115,8 +114,9 @@ App({
         //   statusBarHeight +
         //   menuButtonObject.height +
         //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
-          navHeight = Number(menuButtonObject.top)  + Number(menuButtonObject.height)+4;
-          this.globalData.menuButtonObject=menuButtonObject
+        navHeight =
+          Number(menuButtonObject.top) + Number(menuButtonObject.height) + 4;
+      this.globalData.menuButtonObject = menuButtonObject;
       this.globalData.navHeight = navHeight;
       this.globalData.navTop = navTop;
       this.globalData.windowHeight = res.windowHeight;
@@ -188,7 +188,7 @@ App({
     this.globalData.statusBarHeight = wx.getSystemInfoSync().statusBarHeight;
   },
   globalData: {
-    menuButtonObject:{},
+    menuButtonObject: {},
     is_location: false,
     is_login: true,
     longitude: "",
