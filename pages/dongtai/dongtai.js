@@ -150,15 +150,15 @@ Page({
     const { fileList = [] } = that.data;
     console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    // if(fileList.length>0){
-    //   if ( fileList[0].type == "image" && file[0].type != "image") {
-    //     wx.showToast({
-    //       title: "已上传图片无法选择视频",
-    //       icon: "none",
-    //     });
-    //     return ;
-    //   }
-    // }
+    if(fileList.length>0){
+      if ( fileList[0].type == "image" && file[0].type == "video") {
+        wx.showToast({
+          title: "已上传图片无法选择视频",
+          icon: "none",
+        });
+        return ;
+      }
+    }
     this.setData({
       maxcount: type == "image" ? 8 : 1,
       type: typenum,
@@ -178,8 +178,9 @@ Page({
     const { fileList = [] } = that.data;
     console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    if(fileList.length>0){
-      if ( fileList[0].type == "image" && file[0].type != "image") {
+    console.log(fileList, file, "测试上传十篇");
+    if (fileList.length > 0) {
+      if (fileList[0].type == "image" && file[0].type == "video") {
         wx.showToast({
           title: "已上传图片无法选择视频",
           icon: "none",
@@ -187,7 +188,6 @@ Page({
         return;
       }
     }
-
     // 视频裁剪
     if (file[0].type == "video") {
       wx.openVideoEditor({
@@ -234,9 +234,7 @@ Page({
     //   title: "上传中..",
     //   mask: true,
     // });
-    const {
-      fileList = []
-    } = this.data;
+    const { fileList = [] } = this.data;
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 接口地址
       filePath: file.url,
@@ -254,7 +252,10 @@ Page({
           url: res.data.imgLink,
           isupload: false,
         });
-        console.log(fileList, "fileListfileListfileListfileListfileListfileList")
+        console.log(
+          fileList,
+          "fileListfileListfileListfileListfileListfileList"
+        );
         that.setData({
           fileList,
         });
@@ -271,7 +272,7 @@ Page({
     let delitem = e.detail;
     this.setData({
       fileList: fileList.filter((item) => item.url != delitem.file.url),
-      maxcount:fileList.length<=0&&8
+      maxcount: fileList.length <= 0 && 8,
     });
   },
   // 品种
@@ -426,6 +427,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.getHotLable();
     this.setData({
       endTime: getDate(new Date()),
     });
@@ -435,7 +437,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getHotLable();
   },
 
   /**
