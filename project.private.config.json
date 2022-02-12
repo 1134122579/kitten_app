@@ -45,7 +45,7 @@
         {
           "name": "报名页面",
           "pathName": "pages/baomingpage/baomingpage",
-          "query": "id=1",
+          "query": "match_id=1",
           "scene": null
         },
         {
@@ -136,6 +136,12 @@
           "name": "",
           "pathName": "pages/MatchOrder/MatchOrder",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的猫舍",
+          "pathName": "pages/cathouse/cathouse",
+          "query": "user_id=38",
           "scene": null
         }
       ]

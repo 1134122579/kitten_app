@@ -244,7 +244,7 @@ Page({
           url: res.data.imgLink,
           isupload: false
         });
-        console.log(fileList, "fileListfileListfileListfileListfileListfileList")
+  
         that.setData({
           fileList,
         });

@@ -54,6 +54,17 @@ Page({
     });
     return value;
   },
+  // 查看详情
+  gocatDetail(event){
+    console.log(event)
+    let {item}=event.currentTarget.dataset
+    wx.showLoading({
+      title: '加载中..',
+    })
+    wx.navigateTo({
+      url:`/pages/catdetail/catdetail?user_id=${item.user_id}&cat_id=${item.id}`,
+    })
+  },
     //预览图片
     previewImage(e) {
       var index = e.target.dataset.index;

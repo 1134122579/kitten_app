@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show:false,
+    show: false,
     maxcount: 8,
     title: "",
     address: "",
@@ -40,6 +40,8 @@ Page({
       maxHeight: 200,
       minHeight: 100,
     },
+    isnoTimelocation: false,
+    locationObj: {}, // 暂存定位
     endTime: "2022-01-01",
     levelList: [
       {
@@ -96,49 +98,67 @@ Page({
   getlocation() {
     console.log(1);
     let that = this;
-    App.isGetlocation((res)=>{
-      const latitude = res.latitude;
-          const longitude = res.longitude;
-          wx.chooseLocation({
-            latitude,
-            longitude,
-            success(res) {
-              console.log(res);
-              that.setData({
-                address: res.address,
-              });
-            },
-          });
-          return
-      wx.getLocation({
-        type: "gcj02", //返回可以用于wx.openLocation的经纬度
+    let { isnoTimelocation, locationObj } = this.data;
+    if (isnoTimelocation) {
+      const latitude = locationObj.latitude;
+      const longitude = locationObj.longitude;
+      wx.chooseLocation({
+        latitude,
+        longitude,
         success(res) {
-          const latitude = res.latitude;
-          const longitude = res.longitude;
-          wx.chooseLocation({
-            latitude,
-            longitude,
-            success(res) {
-              console.log(res);
-              that.setData({
-                address: res.address,
-              });
-            },
+          console.log(res);
+          that.setData({
+            address: res.address,
+            isnoTimelocation: true,
           });
         },
       });
-    })
- 
+    } else {
+      App.isGetlocation((res) => {
+        this.setData({
+          locationObj: res,
+        });
+        const latitude = res.latitude;
+        const longitude = res.longitude;
+        wx.chooseLocation({
+          latitude,
+          longitude,
+          success(res) {
+            console.log(res);
+            that.setData({
+              address: res.address,
+              isnoTimelocation: true,
+            });
+            setTimeout(() => {
+              that.setData({
+                isnoTimelocation: false,
+              });
+            }, 30000);
+          },
+        });
+      });
+    }
   },
   // 上传前
   beforeread(event) {
+    let that = this;
     console.log(event, "event");
-    let {
-      file: { duration, size, type, url },
-      callback,
-    } = event.detail;
+    let { file, callback } = event.detail;
+    let { duration, size, type, url } = file[0];
     let isSize = size / 1024 / 1024;
     let typenum = type == "image" ? 1 : 2;
+    const { fileList = [] } = that.data;
+    console.log(file, "视频");
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+    // if(fileList.length>0){
+    //   if ( fileList[0].type == "image" && file[0].type != "image") {
+    //     wx.showToast({
+    //       title: "已上传图片无法选择视频",
+    //       icon: "none",
+    //     });
+    //     return ;
+    //   }
+    // }
     this.setData({
       maxcount: type == "image" ? 8 : 1,
       type: typenum,
@@ -158,17 +178,20 @@ Page({
     const { fileList = [] } = that.data;
     console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    if (fileList.length > 0 && file.type != "image") {
-      wx.showToast({
-        title: "已上传图片无法选择视频",
-        icon: "none",
-      });
-      return;
+    if(fileList.length>0){
+      if ( fileList[0].type == "image" && file[0].type != "image") {
+        wx.showToast({
+          title: "已上传图片无法选择视频",
+          icon: "none",
+        });
+        return;
+      }
     }
+
     // 视频裁剪
-    if (file.type == "video") {
+    if (file[0].type == "video") {
       wx.openVideoEditor({
-        filePath: file.url,
+        filePath: file[0].url,
         success(res) {
           // duration	number	剪辑后生成的视频文件的时长，单位毫秒（ms）
           // size	number	剪辑后生成的视频文件大小，单位字节数（byte）
@@ -184,7 +207,7 @@ Page({
             return;
           }
           console.log(res, 12123123);
-          that.uploadFile(fileList, { url: tempFilePath, size, duration });
+          that.uploadFile({ url: tempFilePath, size, duration });
         },
         complete(res) {
           console.log(res, "complete");
@@ -192,18 +215,30 @@ Page({
       });
       return;
     }
+    let fileArray = file.map((item) => {
+      item["isupload"] = true;
+      return item;
+    });
+    console.log(fileArray);
+    fileArray.forEach((item) => {
+      that.uploadFile(item);
+    });
+    return;
     console.log("afterRead", file);
     that.uploadFile(fileList, file);
   },
   // 文件上传
-  uploadFile(fileList, file) {
+  uploadFile(file) {
     let that = this;
-    wx.showLoading({
-      title: "上传中..",
-      mask: true,
-    });
+    // wx.showLoading({
+    //   title: "上传中..",
+    //   mask: true,
+    // });
+    const {
+      fileList = []
+    } = this.data;
     wx.uploadFile({
-      url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
+      url: App.globalData.baseUrl + "upImage", // 接口地址
       filePath: file.url,
       name: "file",
       success(res) {
@@ -217,7 +252,9 @@ Page({
         fileList.push({
           ...file,
           url: res.data.imgLink,
+          isupload: false,
         });
+        console.log(fileList, "fileListfileListfileListfileListfileListfileList")
         that.setData({
           fileList,
         });
@@ -234,6 +271,7 @@ Page({
     let delitem = e.detail;
     this.setData({
       fileList: fileList.filter((item) => item.url != delitem.file.url),
+      maxcount:fileList.length<=0&&8
     });
   },
   // 品种

@@ -164,13 +164,14 @@ page {
 
 .typeList {
   flex-wrap: nowrap;
-  margin-top: 28rpx;
+  /* margin-top: 28rpx; */
   overflow-x: auto;
 }
 
 .type_block {
   padding: 10rpx 20rpx;
   margin: 10rpx 0;
+  width: 130rpx;
   border-radius: 10rpx;
   margin-left: 14rpx;
   flex-shrink: 0;
@@ -262,4 +263,11 @@ page {
   text-align: center;
   margin-bottom: 80rpx;
   margin-top: 20rpx;
+}
+.cat_name{
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+white-space: nowrap;
 }

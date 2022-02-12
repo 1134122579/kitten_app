@@ -30,24 +30,26 @@ Page({
   cattypeitem(e) {
     let { cat, looktypeList, price, checkListId } = e.detail;
     console.log(e, "猫咪选项");
-
-    let { isCatObjlist, z_price } = this.data;
+    let { isCatObjlist, z_price=0 } = this.data;
     isCatObjlist = isCatObjlist.map((item) => {
       item["cat_id"] = item["id"];
       if (item.id == cat.id) {
         item["looktypeList"] = looktypeList;
         item["price"] = price;
         item["group_ids"] = checkListId;
+      }else{
+        item["price"] = 0;
       }
       return item;
     });
+    console.log(isCatObjlist,z_price,121545156)
     isCatObjlist.forEach(
       (item) =>
-        (z_price = Number(z_price.toFixed(2)) + Number(item.price.toFixed(2)))
+        (z_price = Number(z_price) + Number(item.price.toFixed(2)))
     );
     this.setData({
       isCatObjlist,
-      z_price:z_price.toFixed(2),
+      z_price: z_price.toFixed(2),
     });
   },
   myevent(e) {
@@ -92,15 +94,14 @@ Page({
       console.log(res, "创建订单成功");
       // 调用支付
       Api.payMatchOrder(res).then((res) => {
-        let { nonceStr, paySign, signType, timeStamp ,out_trade_no} = res;
+        let { nonceStr, paySign, signType, timeStamp, out_trade_no } = res;
         wx.requestPayment({
           nonceStr,
           signType,
           package: res.package,
           paySign,
           timeStamp,
-          success(data) {
-          },
+          success(data) {},
           complete() {
             wx.hideLoading();
             Api.queryMatchOrder({
@@ -108,12 +109,12 @@ Page({
             }).then((res) => {
               wx.showToast({
                 title: "参加成功,1.5秒自动返回",
-                icon:'none'
+                icon: "none",
               });
               setTimeout(() => {
                 wx.navigateBack({
                   delta: 1,
-                })
+                });
               }, 1500);
             });
           },

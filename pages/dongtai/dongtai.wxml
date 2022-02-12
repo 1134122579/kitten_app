@@ -3,14 +3,14 @@
 <view class="enroll">
   <view class="cat_detail">
     <view class="e_title">
-      猫咪图片/视频
+      猫咪图片/视频 <text style="font-size: 24rpx;font-weight: normal;">最多8张图或者1个视频</text>
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}"  max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" compressed="false"/>
+      <van-uploader file-list="{{ fileList }}"  multiple max-count="8" max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" compressed="false"/>
     </view>
   </view>
 
-  <van-field model:value="{{ title }}" size="large" label-class="labelClass" custom-style="inputStyle" placeholder="添加标题" border="{{ true }}" input-align="left" />
+  <van-field model:value="{{ title }}" size="large" maxlength="{{30}}" label-class="labelClass" custom-style="inputStyle" placeholder="添加标题 (最长30字)" border="{{ true }}" input-align="left" />
   <view class="cat_detail">
     <!-- <view class="e_title">
       简介信息
