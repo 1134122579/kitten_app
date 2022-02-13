@@ -143,6 +143,12 @@
           "pathName": "pages/cathouse/cathouse",
           "query": "user_id=38",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/baomingpage/baomingpage",
+          "query": "match_id=1",
+          "scene": null
         }
       ]
     }

@@ -272,7 +272,7 @@ Page({
     let delitem = e.detail;
     this.setData({
       fileList: fileList.filter((item) => item.url != delitem.file.url),
-      maxcount: fileList.length <= 0 && 8,
+      maxcount: fileList.length <= 0||fileList[0].type=="image" ? 8:1,
     });
   },
   // 品种
@@ -315,7 +315,7 @@ Page({
   },
   // 提交
   onClick() {
-    let { label, fileList, desc, title, type } = this.data;
+    let { label="", fileList=[], desc="", title="", type="" } = this.data;
     let link_url = fileList.map((item) => item.url);
     if (this.checkUpQuery()) {
       wx.showLoading({
@@ -384,13 +384,13 @@ Page({
       });
       return;
     }
-    if (!label.trim()) {
-      wx.showToast({
-        title: "请选择标签",
-        icon: "none",
-      });
-      return;
-    }
+    // if (!label.trim()) {
+    //   wx.showToast({
+    //     title: "请选择标签",
+    //     icon: "none",
+    //   });
+    //   return;
+    // }
     if (!desc) {
       wx.showToast({
         title: "请输入内容",
@@ -398,13 +398,13 @@ Page({
       });
       return;
     }
-    if (!address) {
-      wx.showToast({
-        title: "请选择地点",
-        icon: "none",
-      });
-      return;
-    }
+    // if (!address) {
+    //   wx.showToast({
+    //     title: "请选择地点",
+    //     icon: "none",
+    //   });
+    //   return;
+    // }
     return true;
   },
   bindbqclick(e) {

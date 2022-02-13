@@ -28,42 +28,81 @@ Page({
     });
   },
   cattypeitem(e) {
-    let { cat, looktypeList, price, checkListId } = e.detail;
+    let {
+      cat,
+      looktypeList,
+      price,
+      checkListId
+    } = e.detail;
     console.log(e, "猫咪选项");
-    let { isCatObjlist, z_price=0 } = this.data;
+    let {
+      isCatObjlist,
+    } = this.data;
+    let index = isCatObjlist.findIndex(item => item.id == cat.id)
+    isCatObjlist[index]["looktypeList"] = looktypeList
+    isCatObjlist[index]["price"] = price
+    isCatObjlist[index]["group_ids"] = checkListId
+    console.log(isCatObjlist)
     isCatObjlist = isCatObjlist.map((item) => {
-      item["cat_id"] = item["id"];
-      if (item.id == cat.id) {
-        item["looktypeList"] = looktypeList;
-        item["price"] = price;
-        item["group_ids"] = checkListId;
-      }else{
-        item["price"] = 0;
-      }
+      item["price"] = item?.looktypeList.reduce(
+        (price, item) => {
+          return Number(price)  +Number(item.price) 
+        }, 0
+      );
       return item;
-    });
-    console.log(isCatObjlist,z_price,121545156)
-    isCatObjlist.forEach(
-      (item) =>
-        (z_price = Number(z_price) + Number(item.price.toFixed(2)))
+    })||0;
+    let zprice = isCatObjlist.reduce(
+      (price, item) => {
+        return Number(price)  +Number(item.price) 
+      }, 0
     );
+    console.log(isCatObjlist, zprice, 121545156)
     this.setData({
       isCatObjlist,
-      z_price: z_price.toFixed(2),
+      z_price: zprice.toFixed(2),
     });
   },
   myevent(e) {
     console.log(e);
-    let { isShow, isCatObjlist } = e.detail;
+    let {
+      isShow,
+      isCatObjlist
+    } = e.detail;
+    if(isCatObjlist.length<=0){
+      this.setData({
+        z_price: 0,
+      });
+    }
+    isCatObjlist = isCatObjlist.map((item) => {
+      item["cat_id"] = item["id"];
+      item["group_ids"] = item["group_ids"]?item["group_ids"]:[];
+      item["looktypeList"] = item["looktypeList"]?item["looktypeList"]:[];
+      item["price"] = item?.looktypeList.reduce(
+        (price, item) => {
+          return Number(price)  +Number(item.price) 
+        }, 0
+      );
+      return item;
+    });
+    let zprice = isCatObjlist.reduce(
+      (price, item) => {
+        return Number(price)  +Number(item.price) 
+      }, 0
+    );
     this.setData({
       show: isShow,
       isCatObjlist,
+      z_price: zprice.toFixed(2),
     });
   },
   // 创建订单
   onPlay() {
-    let { isCatObjlist, match_id } = this.data;
-    let nullprice = isCatObjlist.some((item) => item.price == 0 || item.price);
+    let {
+      isCatObjlist,
+      match_id
+    } = this.data;
+    console.log(isCatObjlist)
+    let nullprice = isCatObjlist.some((item) => item?.group_ids?.length <=0);
     console.log(nullprice);
     if (isCatObjlist.length <= 0) {
       wx.showToast({
@@ -72,7 +111,7 @@ Page({
       });
       return;
     }
-    if (!nullprice) {
+    if (nullprice) {
       wx.showToast({
         title: "有猫咪没选择赛事",
         icon: "none",
@@ -90,11 +129,20 @@ Page({
       obj["group_ids"] = item["group_ids"];
       return obj;
     });
-    Api.joinMatch({ match_id, cat_info }).then((res) => {
+    Api.joinMatch({
+      match_id,
+      cat_info
+    }).then((res) => {
       console.log(res, "创建订单成功");
       // 调用支付
       Api.payMatchOrder(res).then((res) => {
-        let { nonceStr, paySign, signType, timeStamp, out_trade_no } = res;
+        let {
+          nonceStr,
+          paySign,
+          signType,
+          timeStamp,
+          out_trade_no
+        } = res;
         wx.requestPayment({
           nonceStr,
           signType,
@@ -124,7 +172,9 @@ Page({
   },
   // 获取类型
   matchGroup() {
-    let { match_id } = this.data;
+    let {
+      match_id
+    } = this.data;
     Api.matchGroup({
       match_id,
     }).then((res) => {
