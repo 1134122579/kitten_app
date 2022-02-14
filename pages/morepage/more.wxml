@@ -97,14 +97,14 @@
 	<!-- 功能 -->
 
 	<view class="function">
-		<view class="function_title">
+		<!-- <view class="function_title">
 			常用功能
-		</view>
+		</view> -->
 		<block wx:for="{{list}}" wx:key="title">
 			<!-- hidden="{{!split.power(powerlist,item.is_power)}}" -->
 			<label for="">
 				<view class="{{item.marginTop}}">
-					<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link value="{{item.value}}" border="{{isborder}}">
+					<van-cell title="{{item.title}}" url="{{item.to}}" link-type="{{item.linktype}}" is-link value="{{item.value}}" border="{{item.isborder}}">
 						<iconfont slot="icon" name="{{item.icon}}" class="iconstyle" size="22" />
 					</van-cell>
 				</view>

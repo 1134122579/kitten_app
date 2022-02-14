@@ -1,7 +1,8 @@
 /* pages/morepage/more.wxss */
 
 page {
-  background: #f7f8fa;
+  /* background: #f7f8fa; */
+  background: #fff;
   --grid-item-content-background-color:rgba(0,0,0,0)
 }
 

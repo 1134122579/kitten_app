@@ -88,7 +88,7 @@
       <view class="userList flexastart">
         <view class="user_block flexastart">
           <view class="userdesc">血型：</view>
-          <view class="typeListname">{{getdata.blood_type||"未知"}}</view>
+          <view class="typeListname">{{getdata.blood_type||"未知未知未知未知"}}</view>
         </view>
         <view class="user_block flexastart">
           <view class="userdesc">级别：</view>

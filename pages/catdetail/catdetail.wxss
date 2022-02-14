@@ -158,8 +158,8 @@ page {
   padding: 5rpx 0;
   font-weight: bold;
   font-size: 32rpx;
-  border-bottom: 4px solid rgba(255, 0, 0, 1);
-  margin-bottom: 20rpx;
+  /* border-bottom: 4px solid rgba(255, 0, 0, 1); */
+  margin-bottom: 10rpx;
 }
 
 .typeList {
@@ -196,7 +196,7 @@ page {
 
 .userdesc {
   font-weight: normal;
-
+  text-indent: 30rpx;
 }
 
 .name {
@@ -249,6 +249,8 @@ page {
 
 .fm_typeListname {
   font-size: 28rpx;
+  overflow: hidden;
+
 }
 
 /* 编辑 */

@@ -71,11 +71,11 @@ Page({
       },
       {
         id: 4,
-        text: "东方体别",
+        text: "卷毛组",
       },
       {
         id: 5,
-        text: "无毛组别",
+        text: "无毛组",
       },
     ],
     statusList: [{
