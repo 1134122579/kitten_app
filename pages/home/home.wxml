@@ -46,7 +46,7 @@
 					<view class="hotListStyle_l flexastart">
 						<block wx:for="{{hotList}}" wx:key="index" wx:if="{{item.name!=='推荐'}}">
 							<view class="blockHot flexcolumn" bindtap="goShop" data-item="{{item}}">
-								<image src="{{item.cover}}" style="width: 124rpx;height: 124rpx;display: block;border-radius: 50%;margin-bottom: 10rpx;"></image>
+								<image src="{{item.icon}}" style="width: 124rpx;height: 124rpx;display: block;border-radius: 50%;margin-bottom: 10rpx;"></image>
 								{{item.name}}
 							</view>
 						</block>

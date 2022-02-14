@@ -1,7 +1,7 @@
 <view class="saishipage ">
 	<!-- 头部 -->
 	<view class="headerImage">
-		<image class="imageStyle" mode="widthFix" src="https://img.js.design/assets/img/61b44a697eee4352133690cc.png"></image>
+		<image class="imageStyle" mode="widthFix" src="http://cdn.catcius.com/match.jpg?imageView2/3/w/300"></image>
 	</view>
 	<view class="orderList flexcolumn">
 		<view class="orderList_header">
