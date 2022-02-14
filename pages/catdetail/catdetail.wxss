@@ -182,7 +182,7 @@ page {
 .typeListname {
   /* padding: 10rpx 0; */
   font-weight: bold;
-  margin-top: 10rpx;
+  
 }
 
 .userImg {
@@ -223,6 +223,7 @@ page {
   flex-shrink: 0;
   color: rgba(28, 28, 28, 1);
   font-size: 24rpx;
+  margin-top: 14rpx;
 }
 
 /* 父母 */
