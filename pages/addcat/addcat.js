@@ -135,6 +135,10 @@ Page({
         id: 3,
         text: "AB",
       },
+      {
+        id: 4,
+        text: "未知",
+      },
     ],
   },
   showPopup() {
