@@ -58,9 +58,9 @@
         <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择类型" value="{{cat_statustext}}" readonly label="类型" />
         </picker>
-        <!-- 类别 -->
+        <!-- 组别 -->
         <picker mode="selector" range="{{levelList}}" bindchange="bindlevelChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择类别" value="{{group_name}}" readonly label="类别" />
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择组别" value="{{group_name}}" readonly label="组别" />
         </picker>
         <!-- 绝育 -->
         <picker mode="selector" range="{{jueyuList}}" bindchange="bindjueyuChange" range-key="text">

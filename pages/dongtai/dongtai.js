@@ -2,6 +2,7 @@
 let App = getApp();
 import Api from "../../api/index";
 import { getDate } from "../../utils/util";
+import storgae from "../../utils/cache";
 
 Page({
   /**
@@ -76,7 +77,10 @@ Page({
     ],
   },
   showPopup() {
-    this.setData({ show: true });
+    wx.navigateTo({
+      url: '/pages/CatClasspage/CatClasspage?cat_pz=' + this.data.label,
+    })
+    // this.setData({ show: true });
   },
   onclosebuttonPopup() {
     this.setData({ show: false });
@@ -437,17 +441,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      label:storgae.getInfo("CARPZ")
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function () {
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {},
+  onUnload: function () {
+    storgae.removeInfo("CARPZ")
+
+  },
+  
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

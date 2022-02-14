@@ -86,17 +86,17 @@
         扩展信息
       </view>
       <view class="userList flexastart">
-        <view class="user_block flexastart">
+        <view class="user_block flexastart" wx:if="{{getdata.blood_type}}">
           <view class="userdesc">血型：</view>
-          <view class="typeListname">{{getdata.blood_type||"未知未知未知未知"}}</view>
+          <view class="typeListname">{{getdata.blood_type}}</view>
         </view>
         <view class="user_block flexastart">
-          <view class="userdesc">级别：</view>
+          <view class="userdesc">组别：</view>
           <view class="typeListname" wx:if="{{getdata.group_id==1}}">长毛组</view>
           <view class="typeListname" wx:if="{{getdata.group_id==2}}">中长毛组</view>
           <view class="typeListname" wx:if="{{getdata.group_id==3}}">短毛组</view>
-          <view class="typeListname" wx:if="{{getdata.group_id==4}}">东方体别</view>
-          <view class="typeListname" wx:if="{{getdata.group_id==5}}">无毛组别</view>
+          <view class="typeListname" wx:if="{{getdata.group_id==4}}">卷毛组</view>
+          <view class="typeListname" wx:if="{{getdata.group_id==5}}">无毛组</view>
         </view>
         <view class="user_block flexastart">
           <view class="userdesc">类别：</view>

@@ -25,7 +25,7 @@ Page({
       },
       {
       status: 2,
-      title: '代售'
+      title: '待售'
     }, {
       status: 3,
       title: '种公'
