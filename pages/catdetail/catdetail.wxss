@@ -182,7 +182,7 @@ page {
 .typeListname {
   /* padding: 10rpx 0; */
   font-weight: bold;
-  
+
 }
 
 .userImg {
@@ -204,9 +204,11 @@ page {
   font-weight: bold;
   font-size: 36rpx;
 }
-.headerName{
+
+.headerName {
   align-items: flex-end;
 }
+
 .desc {
   color: rgb(201, 201, 201);
   font-size: 24rpx;
@@ -255,22 +257,37 @@ page {
 }
 
 /* 编辑 */
-.Button_ {
+.buttonStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80%;
-  height: 82rpx;
-  background-color: rgba(255, 106, 110, 1);
   border-radius: 248rpx;
-  color: #fff;
+  height: 82rpx;
   margin: 0 auto;
-  line-height: 80rpx;
-  text-align: center;
   margin-bottom: 80rpx;
   margin-top: 20rpx;
+  text-align: center;
+  background-color: rgba(255, 106, 110, 1);
 }
-.cat_name{
+
+.Button_ {
+  width: 50%;
+  height: 82rpx;
+  color: #fff;
+  line-height: 80rpx;
+}
+
+.Button_del {
+  background-color: #fff;
+  color: rgba(255, 106, 110, 1);
+  border-radius: 0  248rpx 248rpx 0 ;
+}
+
+.cat_name {
   max-width: 60%;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: normal;
-white-space: nowrap;
+  white-space: nowrap;
 }

@@ -107,6 +107,22 @@ Page({
       });
     });
   },
+  // 删除
+  delCat(){
+    let id =this.data.cat_id
+    Api.delCat({id}).then(res=>{
+      wx.showToast({
+        title: "删除成功，1.5秒自动返回",
+        icon: "none",
+        mask: true,
+      });
+      setTimeout(() => {
+        wx.navigateBack({
+          delta: 1,
+        });
+      }, 1500);
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

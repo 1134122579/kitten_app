@@ -35,7 +35,7 @@
 				</view>
 				<!-- 列表 -->
 				<view class="cdongtaiLsit">
-					<ListModel list="{{list}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+					<ListModel list="{{list}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" isEmpty="{{isEmpty}}"/>
 				</view>
 			</block>
 			<!-- 御猫馆 -->
@@ -69,7 +69,7 @@
 			<block wx:if="{{tabName=='关注'}}">
 				<block wx:if="{{!is_empty}}">
 					<view class="FollowDynamic">
-						<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}" />
+						<ListModel list="{{gzlist}}" listType="{{listType}}" isStatus="{{isStatus}}" isticket="{{isticket}}" isNullList="{{isNullList}}"  isEmpty="{{isEmpty}}"/>
 					</view>
 				</block>
 				<block wx:else>

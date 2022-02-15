@@ -73,6 +73,10 @@ Page({
         loading: false,
       });
     }
+    this.setData({
+      isEmpty:false
+    })
+    wx.stopPullDownRefresh()
   },
   // 品种切换
   typeChange(event) {
@@ -199,7 +203,13 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {},
+  onPullDownRefresh: function () {
+    this.setData({
+      "listQuery.page": 1,
+      isEmpty:true
+    })
+    this.getCatList();
+  },
 
   /**
    * 页面上拉触底事件的处理函数

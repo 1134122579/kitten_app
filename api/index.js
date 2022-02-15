@@ -36,6 +36,16 @@ export default {
       isThree: false,
     });
   },
+  delCat(params) {
+    return fly({
+      url: `delCat`,
+      method: "post",
+      params,
+      loading: false,
+      isThree: false,
+    });
+  },
+  
   
   getSelectMathCity(params) {
     return fly({

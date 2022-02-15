@@ -15,7 +15,6 @@ Component({
     isStatus: {
       type: [String, Number],
       observer(newV, oldV) {
-        console.log("isSwitchList1", newV, oldV);
         if (newV != oldV) {
           this.data.leftList = []; //左边数组
           this.data.rightList = []; //左边数组
@@ -37,7 +36,6 @@ Component({
     list: {
       type: Array,
       observer(newV, oldV) {
-        console.log(newV, "newV");
         this.setData({
           alllist: newV,
           isNullList: newV.length > 0 ? true : false,
@@ -154,7 +152,6 @@ Component({
       if (alllist.length <= 0) return;
       for (const item of alllist) {
       let { leftList, rightList } = this.data;
-      console.log(leftList, rightList )
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         // leftListnew=[...leftList,item]
         // leftHeight <= rightHeight
@@ -178,7 +175,6 @@ Component({
      
           leftHeight = res[0]?.height; //获取左边列表的高度
           rightHeight = res[1]?.height; //获取右边列表的高度
-          console.log(leftHeight,rightHeight)
           resolve(res);
         });
       });

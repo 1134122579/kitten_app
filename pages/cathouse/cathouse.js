@@ -10,6 +10,7 @@ Page({
     my_id: 0,
     listType: 'mycathouse',
     isNullList: true,
+    isEmpty:false,
     listQuery: {
       page: 1,
       user_id: '',
@@ -76,6 +77,7 @@ Page({
       listQuery,
       catList,
     } = this.data
+
     Api.getUserCatList(listQuery).then(res => {
       let {
         homenfo,
@@ -96,7 +98,10 @@ Page({
         })
       }
       this.setData({
-        catList: catiInfo
+        catList: catiInfo,
+      isEmpty:false
+
+        
       })
       return
       if (listQuery.page == 1) {
@@ -123,7 +128,6 @@ Page({
       "listQuery.user_id": options.user_id,
       my_id: storage.getUserInfo().user_id
     })
-    this.getUserCatList()
   },
 
   /**
@@ -137,6 +141,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      isEmpty:true
+    })
+    this.getUserCatList()
   },
 
   /**

@@ -6,7 +6,7 @@
       <block wx:for="{{getdata.img}}" wx:key="*this">
         <swiper-item>
           <view class="headerImage">
-            <image class="imageStyle"  src="{{item}}" data-index='{{index}}' mode="aspectFill" bindtap="previewImage"></image>
+            <image class="imageStyle" src="{{item}}" data-index='{{index}}' mode="aspectFill" bindtap="previewImage"></image>
           </view>
         </swiper-item>
       </block>
@@ -146,20 +146,20 @@
         父母信息
       </view>
       <view class="typeList flexastart">
-        <block  wx:if="{{getdata.mother_info}}" >
-          <view class="type_block flexcolumn"  bindtap="gocatDetail" data-item="{{getdata.mother_info}}">
+        <block wx:if="{{getdata.mother_info}}">
+          <view class="type_block flexcolumn" bindtap="gocatDetail" data-item="{{getdata.mother_info}}">
             <view class="userImg">
-              <image style="width: 100%;height: 100%;display: block;"   mode="aspectFill" src="{{getdata.mother_info.img||nullheaderImage}}"></image>
+              <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{getdata.mother_info.img||nullheaderImage}}"></image>
             </view>
             <view class="typeListname flexcenter">{{getdata.mother_info.cat_name}} <van-icon wx:if="{{getdata.mother_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{getdata.mother_info.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>
             </view>
           </view>
         </block>
-        <block  wx:if="{{getdata.father_info}}">
-          <view class="type_block flexcolumn"  bindtap="gocatDetail" data-item="{{getdata.father_info}}">
+        <block wx:if="{{getdata.father_info}}">
+          <view class="type_block flexcolumn" bindtap="gocatDetail" data-item="{{getdata.father_info}}">
             <view class="userImg">
-              <image style="width: 100%;height: 100%;display: block;"   mode="aspectFill" src="{{getdata.father_info.img||nullheaderImage}}"></image>
+              <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{getdata.father_info.img||nullheaderImage}}"></image>
             </view>
             <view class="typeListname flexcenter">{{getdata.father_info.cat_name}} <van-icon wx:if="{{getdata.father_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{getdata.father_info.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>
@@ -168,7 +168,7 @@
         </block>
       </view>
     </view>
-    
+
     <!-- 兄弟姐妹-->
     <view class="new_content" wx:if="{{getdata.nest_info}}">
       <view class="typetitle">
@@ -180,7 +180,9 @@
             <view class="userImg">
               <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{item.img||nullheaderImage}}"></image>
             </view>
-            <view class="typeListname flexcenter"><view class="cat_name">{{item.cat_name}}</view> <van-icon wx:if="{{item.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
+            <view class="typeListname flexcenter">
+              <view class="cat_name">{{item.cat_name}}</view>
+              <van-icon wx:if="{{item.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{item.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>
             </view>
           </view>
@@ -196,8 +198,13 @@
         图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图图
       </view>
     </view> -->
-    <view class="Button_" wx:if="{{detile_userid==getdata.user_id}}" bindtap="goedit" >
-      编辑信息
+    <view wx:if="{{detile_userid==getdata.user_id}}" class="buttonStyle">
+      <view class="Button_" bindtap="goedit">
+        编辑信息
+      </view>
+      <view class="Button_ Button_del " bindtap="delCat">
+        删除猫咪
+      </view>
     </view>
   </view>
 </view>

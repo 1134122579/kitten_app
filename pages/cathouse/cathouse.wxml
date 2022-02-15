@@ -71,6 +71,6 @@
   </view>
   <!-- 获取猫咪列表 -->
 <view class="list">
-  <ListModel list="{{catList}}" listType="{{listType}}" isNullList="{{isNullList}}"  isStatus="{{isStatus}}"/>
+  <ListModel list="{{catList}}" listType="{{listType}}" isNullList="{{isNullList}}"  isStatus="{{isStatus}}" isEmpty="{{isEmpty}}"/>
 </view>
 </view>
