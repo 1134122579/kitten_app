@@ -99,7 +99,7 @@
       <block wx:for="{{getdata.pwinfo}}" wx:key="index">
         <view class="type_block flexcolumn" bindtap="lookpw" data-item="{{item}}">
           <view class="userImg">
-            <image style="width: 100%;height: 100%;display: block;" mode="widthFix" src="{{item.photos||nullheaderImage}}"></image>
+            <image style="width: 100%;height: 100%;display: block;" mode="widthFix" src="{{item.photosheader||nullheaderImage}}"></image>
           </view>
           <view class="typeListname">{{item.name}}</view>
           <view class="userdesc">{{item.type}}</view>

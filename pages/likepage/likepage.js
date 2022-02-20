@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isEmpty:false,
+    isEmpty: false,
     tabId: null,
     navHeight: App.globalData.navHeight,
     isnullLsit: false,
@@ -19,11 +19,26 @@ Page({
       page: 1,
     },
   },
+  // 前往猫舍
+  gocathouse(e) {
+    let {
+      item
+    } =e.currentTarget.dataset;
+    console.log(item,this.data.tabId)
+    wx.showLoading({
+      title: "加载中...",
+    });
+    wx.navigateTo({
+      url: `/pages/cathouse/cathouse?user_id=${this.data.tabId==2?item.user_id:item.follow_user_id}`,
+    });
+  },
   // 顶部tab
   tabType(e) {
     let id = e.detail;
-    let {tabId}=this.data
-    if(tabId==id)return
+    let {
+      tabId
+    } = this.data
+    if (tabId == id) return
     console.log(id);
     this.setData({
       "lisQuery.page": 1,
@@ -39,14 +54,18 @@ Page({
   },
   // 数据
   async getFollow() {
-    let { lisQuery, list, tabId } = this.data;
+    let {
+      lisQuery,
+      list,
+      tabId
+    } = this.data;
     let res = [];
     if (tabId == 1) {
       // 收藏
       res = await Api.getUserCollect(lisQuery);
       this.setData({
         sclist: res,
-    isEmpty:false,
+        isEmpty: false,
         isEmy: lisQuery.page == 1 && res.length <= 0 ? true : false,
       });
       return;
@@ -59,13 +78,13 @@ Page({
     }
     this.setData({
       sclist: [],
-    isEmpty:true,
+      isEmpty: true,
       isnullLsit: res.length > 0 ? false : true,
     });
     if (lisQuery.page == 1) {
       this.setData({
         list: res,
-        isEmy:  res.length <= 0 ? true : false,
+        isEmy: res.length <= 0 ? true : false,
       });
     } else {
       this.setData({
@@ -76,9 +95,16 @@ Page({
   // 取关
   cacheFollow(e) {
     console.log(e);
-    let { item } = e.currentTarget.dataset;
-    let { user_id } = storage.getUserInfo();
-    Api.cacheFollow({ user_id, follow_user_id: item.follow_user_id }).then((res) => {
+    let {
+      item
+    } = e.currentTarget.dataset;
+    let {
+      user_id
+    } = storage.getUserInfo();
+    Api.cacheFollow({
+      user_id,
+      follow_user_id: item.follow_user_id
+    }).then((res) => {
       this.getFollow();
       wx.showToast({
         title: "取消关注",
@@ -89,9 +115,16 @@ Page({
   // 关注
   addFollow(e) {
     console.log(e);
-    let { user_id } = storage.getUserInfo();
-    let { item } = e.currentTarget.dataset;
-    Api.addFollow({ user_id, follow_user_id: item.user_id }).then((res) => {
+    let {
+      user_id
+    } = storage.getUserInfo();
+    let {
+      item
+    } = e.currentTarget.dataset;
+    Api.addFollow({
+      user_id,
+      follow_user_id: item.user_id
+    }).then((res) => {
       this.getFollow();
       wx.showToast({
         title: "关注成功",
@@ -103,7 +136,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { id } = options;
+    let {
+      id
+    } = options;
     this.setData({
       tabId: id,
     });
@@ -122,8 +157,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏

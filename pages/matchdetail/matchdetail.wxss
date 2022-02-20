@@ -206,7 +206,7 @@ page {
 .pwinfoStyle{
   padding: 20rpx;
   width: 550rpx;
-  height: 60vh;
+  height: 750rpx;
   overflow-y: auto;
   border-radius: 14rpx;
 }
@@ -220,18 +220,19 @@ page {
   border-radius: 14rpx;
 }
 .userListname{
-  font-size: 40rpx;
+  font-size: 36rpx;
   margin-top: 20rpx;
   font-weight: 600;
 }
 .usertype{
-  font-size: 30rpx;
+  font-size: 26rpx;
   padding: 10rpx 0;
   font-weight: 600;
-
+  color: #a7a5a4;
 }
 .userobjdesc{
-  font-size:34rpx;
+  font-size:28rpx;
   line-height: 1.5;
   text-indent: 64rpx;
+  color: #888584;
 }

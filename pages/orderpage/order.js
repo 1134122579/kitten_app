@@ -229,6 +229,10 @@ Page({
       }
     } else {
       res = await Api.get_match(listQuery);
+      res=res.map(item=>{
+        item['cover']=item['cover']+'?imageView2/3/w/300'
+        return item
+      })
       this.setData({
         isnullList: res.length > 0 ? false : true,
       });

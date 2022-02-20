@@ -55,10 +55,13 @@
       </view>
       <view class="userList flexastart">
         <view class="user_block flexastart">
+          <view class="userdesc">编号：</view>
+          <view class="typeListname">{{getdata.register_no}}</view>
+        </view>
+        <view class="user_block flexastart">
           <view class="userdesc">生日：</view>
           <view class="typeListname">{{getdata.birthday}}</view>
         </view>
-
         <view class="user_block flexastart">
           <view class="userdesc">花色：</view>
           <view class="typeListname">{{getdata.color}}</view>
@@ -78,6 +81,11 @@
         <view class="user_block flexastart">
           <view class="userdesc">体重：</view>
           <view class="typeListname">{{getdata.weight}}kg</view>
+        </view>
+        <view class="user_block flexastart">
+          <view class="userdesc">公开：</view>
+          <view class="typeListname" wx:if="{{getdata.is_show==1}}" >是</view>
+          <view class="typeListname" wx:else>否</view>
         </view>
       </view>
     </view>

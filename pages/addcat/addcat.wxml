@@ -117,6 +117,16 @@
   </view>
   <view class="cat_detail">
     <view class="e_title">
+      猫咪权限
+    </view>
+    <!-- 猫咪权限 -->
+    <!-- fatherCat -->
+    <picker mode="selector" range="{{permissList}}" bindchange="bindpermissChange" range-key="text">
+      <van-field size="large" required input-align="right" border="{{ true }}" placeholder="请选择" value="{{permisstext}}" readonly label="公开" />
+    </picker>
+  </view>
+  <view class="cat_detail">
+    <view class="e_title">
       简介信息
     </view>
     <van-field model:value="{{ desc }}" type="textarea" placeholder="请输入猫咪简介" autosize="{{autoSize}}" border="{{ true }}" />

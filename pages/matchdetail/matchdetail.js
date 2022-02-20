@@ -97,6 +97,10 @@ this.setData({
           ? res["start_time"] * 1000 - +new Date()
           : 0;
       res["start_time"] = formatDate(res["start_time"]);
+      res["pwinfo"] = res["pwinfo"].map(item=>{
+        item['photosheader']=item['photos']+'?imageView2/3/w/300'
+        return item
+      });
       res["end_time"] = formatDate(res["end_time"]);
       console.log(res);
       this.setData({

@@ -71,6 +71,16 @@ Component({
    * 组件的方法列表
    */
   methods: {
+      // 前往猫舍
+  gocathouse() {
+    let { userInfo } = this.data;
+    wx.showLoading({
+      title: "加载中...",
+    });
+    wx.navigateTo({
+      url: `/pages/cathouse/cathouse?user_id=${userInfo.user_id}`,
+    });
+  },
     onsearch() {
       wx.navigateTo({
         url: "/pages/searchpage/searchpage",

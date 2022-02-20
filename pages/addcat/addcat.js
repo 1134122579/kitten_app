@@ -34,6 +34,8 @@ Page({
     eye_color: "", //眼睛颜色
     register_no: "", //编号
     father_name: "", //
+    permisstext:'',//是
+    permiss_id:'',//是否公开 id
     weight: "",
     father_pz: "",
     father_color: "",
@@ -114,6 +116,15 @@ Page({
         text: "母",
       },
     ],
+    permissList: [{
+      id: 1,
+      text: "是",
+    },
+    {
+      id: 2,
+      text: "否",
+    },
+  ],
     jueyuList: [{
         id: 1,
         text: "是",
@@ -314,6 +325,17 @@ Page({
       sextext: sexList[event.detail.value]["text"],
     });
   },
+   // 是否公开
+   bindpermissChange(event) {
+    let {
+      permissList
+    } = this.data;
+    this.setData({
+      permissIndex: event.detail.value,
+      permiss_id: permissList[event.detail.value]["id"],
+      permisstext: permissList[event.detail.value]["text"],
+    });
+  },
   // 投票期数
   bindvoteChange(event) {
     let {
@@ -426,6 +448,7 @@ Page({
       birthday,
       sex,
       cat_pz="",
+      permiss_id='',
       color,
       fileList,
       group_id = "",
@@ -455,6 +478,7 @@ Page({
           cat_name,
           birthday,
           sex,
+          is_show:permiss_id,
           cat_pz,
           color,
           group_id,
@@ -491,6 +515,7 @@ Page({
           desc,
           is_jueyu,
           blood_type,
+          is_show:permiss_id,
           img,
           weight,
           mother_id,
@@ -523,6 +548,7 @@ Page({
       fileList,
       cat_name,
       color,
+      permiss_id,
       is_jueyu,
       blood_type,
       cat_status,
@@ -608,6 +634,13 @@ Page({
       });
       return;
     }
+    if(!permiss_id){
+      wx.showToast({
+        title: "请选择是否公开",
+        icon: "none",
+      });
+      return;
+    }
 
     // if (!blood_type.trim()) {
     //   wx.showToast({
@@ -650,8 +683,10 @@ Page({
       obj["motherCat"] = res["mother_info"];
       obj["nestobjList"] = res["nest_info"];
       obj["fatherCat"] = res["father_info"];
+      obj["permiss_id"] = res["is_show"];
       obj["sextext"] = res["sex"] == 1 ? "公" : "母";
       obj["is_jueyutext"] = res["is_jueyu"] == 1 ? "是" : "否";
+      obj["permisstext"] = res["is_show"] == 1 ? "是" : "否";
       statusList.forEach((item) => {
         if (res["cat_status"] == item.id) {
           obj["cat_statustext"] = item.text;

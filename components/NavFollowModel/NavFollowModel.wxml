@@ -4,8 +4,8 @@
     <van-icon name="arrow-left" color="{{iconColor}}" bindtap="_navBack" size="23px"></van-icon>
     <!-- </view> -->
     <view class="userInfo flexastart">
-      <image src="{{userInfo.headimgurl}}" style="width: {{menuButtonObject.height}}px;height: {{menuButtonObject.height}}px;display: block;border-radius: 50%;"></image>
-      <view class="name">{{userInfo.nickname}}</view>
+      <image src="{{userInfo.headimgurl}}" bindtap="gocathouse" style="width: {{menuButtonObject.height}}px;height: {{menuButtonObject.height}}px;display: block;border-radius: 50%;"></image>
+      <view class="name" bindtap="gocathouse">{{userInfo.nickname}}</view>
       <view  wx:if="{{myuserID!=userInfo.user_id}}" class="{{userInfo.is_follow==1||is_gz?'gzstyle':'gzstyle'}}" bindtap="onClick">
         {{userInfo.is_follow==1||is_gz?'已关注':'关注'}}
       </view>

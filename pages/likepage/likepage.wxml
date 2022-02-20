@@ -25,7 +25,7 @@
         <view class="userList" wx:if="{{tabId!=1}}" >
           <block wx:for="{{list}}" wx:key="index">
             <view class="user flexbetween">
-              <view class="flexastart">
+              <view class="flexastart" bindtap="gocathouse" data-item="{{item}}">
                 <image src="{{item.headimgurl}}" style="width: 82rpx;height: 82rpx;border-radius: 50%;"></image>
                 <view class="name">{{item.nickname}}</view>
               </view>
