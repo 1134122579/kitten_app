@@ -281,7 +281,7 @@ page {
 .Button_del {
   background-color: #fff;
   color: rgba(255, 106, 110, 1);
-  border-radius: 0  248rpx 248rpx 0 ;
+  border-radius: 248rpx 0  0  248rpx;
 }
 
 .cat_name {

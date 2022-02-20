@@ -56,7 +56,7 @@
       <van-cell-group>
         <!-- 类别 -->
         <picker mode="selector" range="{{statusList}}" bindchange="bindstatusChange" range-key="text">
-          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择类型" value="{{cat_statustext}}" readonly label="类型" />
+          <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择分组" value="{{cat_statustext}}" readonly label="分组" />
         </picker>
         <!-- 组别 -->
         <picker mode="selector" range="{{levelList}}" bindchange="bindlevelChange" range-key="text">
@@ -67,9 +67,9 @@
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择绝育" value="{{ is_jueyutext}}" readonly label="绝育" />
         </picker>
         <!-- 血型 -->
-        <picker mode="selector" range="{{xuexingList}}" bindchange="bindxuexingChange" range-key="text">
+        <!-- <picker mode="selector" range="{{xuexingList}}" bindchange="bindxuexingChange" range-key="text">
           <van-field size="large" input-align="right" border="{{ true }}" placeholder="选择血型" value="{{ blood_type}}" readonly label="血型" />
-        </picker>
+        </picker> -->
         <!-- 血型 -->
         <!-- <picker mode="selector" range="{{sexList}}" bindchange="bindsexChange" range-key="text">
           <van-field size="large" input-align="right" border="{{ true }}" required placeholder="选择性别" value="{{ sexList[sexIndex]['text']}}" readonly label="性别" />

@@ -199,12 +199,15 @@
       </view>
     </view> -->
     <view wx:if="{{detile_userid==getdata.user_id}}" class="buttonStyle">
-      <view class="Button_" bindtap="goedit">
-        编辑信息
-      </view>
       <view class="Button_ Button_del " bindtap="delCat">
         删除猫咪
       </view>
+      <view class="Button_" bindtap="goedit">
+        编辑信息
+      </view>
+      <!-- <view class="Button_ Button_del " bindtap="delCat">
+        删除猫咪
+      </view> -->
     </view>
   </view>
 </view>

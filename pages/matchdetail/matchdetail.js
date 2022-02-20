@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ispwshow:false,
     nullheaderImage:
       "https://img.js.design/assets/img/61b44a697eee4352133690cc.png",
     getdata: {},
@@ -77,8 +78,8 @@ Page({
       match_id: id,
     }).then((res) => {
       res["djs_time"] =
-        res["end_time"] * 1000 - +new Date() > 0
-          ? res["end_time"] * 1000 - +new Date()
+        res["start_time"] * 1000 - +new Date() > 0
+          ? res["start_time"] * 1000 - +new Date()
           : 0;
       res["start_time"] = formatDate(res["start_time"]);
       res["end_time"] = formatDate(res["end_time"]);

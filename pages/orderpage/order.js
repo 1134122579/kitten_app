@@ -11,18 +11,18 @@ Page({
     searchvalue: '',
     ellipsis: false,
     // 1 赛事报名 2 实时赛事 3 赛事回顾 4赛事积分
-    isStatus: null,
+    isStatus: 3,
     isnullList: false,
     numlist: [],
     listQuery: {
       page: 1,
-      status: ''
+      status: 3
     },
     is_okplayShow: false,
     navHeight: appInst.globalData.navHeight,
     ordertypeList: [{
         title: "赛事报名",
-        status: null,
+        status: 3,
         disabled: false,
       },
       {
@@ -234,13 +234,11 @@ Page({
       });
       if (listQuery.page == 1) {
         this.setData({
-          numlist: res,
           list: res,
           isEmy: res.length > 0 ? true : false,
         });
       } else {
         this.setData({
-          numlist: numlist.concat(res),
           list: list.concat(res),
         });
       }
@@ -323,8 +321,8 @@ Page({
     appInst.tabbershow(this, 1);
     this.getSelectMathCity();
     this.setData({
-      isStatus: null,
-      "listQuery.status":''
+      isStatus: 3,
+      "listQuery.status":3
     });
     this.getOrderList();
   },

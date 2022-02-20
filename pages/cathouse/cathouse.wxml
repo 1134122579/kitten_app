@@ -63,7 +63,7 @@
     <!-- 列表 分类 -->
     <view>
       <view class="orderList_header">
-        <van-tabs active="{{ isStatus }}" bind:change="ontabChange" color="#333">
+        <van-tabs active="{{ isStatus }}" id="tabs" bind:change="ontabChange" color="#333">
           <van-tab wx:for="{{typeList}}" wx:key="status" data-id="{{item.status}}" name="{{item.status}}" title="{{item.title}}" />
         </van-tabs>
       </view>

@@ -14,20 +14,21 @@ Page({
     listQuery: {
       page: 1,
       user_id: '',
-      cat_status: 1,
+      cat_status: 2,
     },
     homenfo: {}, //猫舍信息
     catList: [], //猫咪列表
-    isStatus: 1,
+    isStatus: 2,
     typeList: [
+      {
+        status: 2,
+        title: '待售'
+      },
       {
         status: 1,
         title: '展示'
       },
       {
-      status: 2,
-      title: '待售'
-    }, {
       status: 3,
       title: '种公'
     }, {
@@ -145,6 +146,8 @@ Page({
       isEmpty:true
     })
     this.getUserCatList()
+    this.selectComponent("#tabs").resize();
+      
   },
 
   /**

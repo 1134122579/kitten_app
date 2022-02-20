@@ -20,7 +20,7 @@
             <view class="flexbetween">
               <view class="order_list">参赛组别：<text class="order_text">{{group.name}}</text></view>
               <view class="order_list">组别金额：<text class="order_text order_price">{{group.price}}</text></view>
-              <view class="order_list">参赛类型：<text class="order_text">{{group.type==1?'环赛':'非环赛'}}</text></view>
+              <view class="order_list">参赛类型：<text class="order_text">{{group.type==1?'环赛':'杯赛'}}</text></view>
             </view>
           </view>
         </block>
