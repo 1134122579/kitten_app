@@ -202,3 +202,36 @@ page {
   font-size: 20rpx;
   font-weight: normal;
 }
+/* 裁判详情 */
+.pwinfoStyle{
+  padding: 20rpx;
+  width: 550rpx;
+  height: 60vh;
+  overflow-y: auto;
+  border-radius: 14rpx;
+}
+.van-popup {
+  border-radius: 14rpx;
+}
+.userImageStyle{
+  width: 550rpx;
+  height: 550rpx;
+  overflow: hidden;
+  border-radius: 14rpx;
+}
+.userListname{
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  font-weight: 600;
+}
+.usertype{
+  font-size: 30rpx;
+  padding: 10rpx 0;
+  font-weight: 600;
+
+}
+.userobjdesc{
+  font-size:34rpx;
+  line-height: 1.5;
+  text-indent: 64rpx;
+}

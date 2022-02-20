@@ -149,6 +149,12 @@
           "pathName": "pages/baomingpage/baomingpage",
           "query": "match_id=1",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/matchdetail/matchdetail",
+          "query": "id=3",
+          "scene": null
         }
       ]
     }

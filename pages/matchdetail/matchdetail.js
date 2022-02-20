@@ -15,10 +15,25 @@ Page({
     match_id: "",
     page: 1,
     MatchImgList: [], // 精彩瞬间
+    lookobj:{},//裁判详情
   },
   onPullDown() {
     this.data.page++;
     this.getMatchImg();
+  },
+  // 查看裁判
+  lookpw(e){
+    console.log(e)
+    let {item}=e.currentTarget.dataset
+    this.setData({
+      ispwshow:true,
+      lookobj:item
+    })
+  },
+  onPwClose(){
+this.setData({
+  ispwshow:false
+})
   },
   // 精彩瞬间
   getMatchImg() {
