@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ismyid:'',
     user_id: "",
     cat_id: "",
     detile_userid: "",
@@ -102,6 +103,7 @@ Page({
       cat_id,
     }).then((res) => {
       console.log(res, "猫咪详情");
+      let desclength=res.desc.length
       this.setData({
         getdata: res,
       });
@@ -145,6 +147,9 @@ Page({
    */
   onShow: function () {
     this.getCatdetails();
+    this.setData({
+      ismyid:storgae.getUserInfo().user_id
+    })
   },
 
   /**

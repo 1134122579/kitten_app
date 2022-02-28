@@ -15,6 +15,7 @@ page {
 .content {
   box-sizing: border-box;
   width: 100%;
+  padding: 0 18rpx;
 }
 
 .headerImage {
@@ -146,7 +147,7 @@ page {
   margin-top: 20rpx;
   background: #fff;
   padding: 20rpx;
-  margin: 10rpx;
+  margin: 20rpx 0;
   box-sizing: border-box;
   border-radius: 20rpx;
 }
@@ -166,24 +167,29 @@ page {
   flex-wrap: nowrap;
   /* margin-top: 28rpx; */
   overflow-x: auto;
+  padding: 0 2rpx;
 }
 
 .type_block {
-  padding: 10rpx 20rpx;
+  padding: 16rpx  14rpx ;
   margin: 10rpx 0;
   width: 130rpx;
   border-radius: 10rpx;
-  margin-left: 14rpx;
+  margin-right: 18rpx;
   flex-shrink: 0;
-  font-size: 24rpx;
+  font-size: 28rpx;
   box-shadow: 0 0 5rpx rgba(166, 166, 166, 1);
 }
 
 .typeListname {
   /* padding: 10rpx 0; */
   font-weight: bold;
-
+  /* padding: 10rpx 0 10rpx; */
 }
+.cat_namestyle{
+  padding: 14rpx 0;
+}
+
 
 .userImg {
   width: 124rpx;
@@ -196,7 +202,9 @@ page {
 
 .userdesc {
   font-weight: normal;
-  text-indent: 30rpx;
+  /* text-indent: 30rpx; */
+  color: #a6a6a6;
+  width: 80rpx;
 }
 
 .name {
@@ -210,7 +218,7 @@ page {
 }
 
 .desc {
-  color: rgb(201, 201, 201);
+  color: #a6a6a6;
   font-size: 24rpx;
   line-height: 2;
 }
@@ -225,7 +233,7 @@ page {
   flex-shrink: 0;
   color: rgba(28, 28, 28, 1);
   font-size: 24rpx;
-  margin-top: 14rpx;
+  margin-top: 20rpx;
 }
 
 /* 父母 */
@@ -279,9 +287,12 @@ page {
 }
 
 .Button_del {
-  background-color: #fff;
-  color: rgba(255, 106, 110, 1);
+  /* background-color: #fff; */
+  /* color: rgba(255, 106, 110, 1); */
   border-radius: 248rpx 0  0  248rpx;
+  color:  #fff;
+  background-color:#409EFF;
+
 }
 
 .cat_name {

@@ -2,7 +2,8 @@
 
 <view class="newcontent flexcolumn">
   <view class="logo">
-    <open-data type="userAvatarUrl"></open-data>
+    <!-- <open-data type="userAvatarUrl"></open-data> -->
+    <image style="width: 100%;height: 100%;" src="http://cdn.catcius.com/618.jpg?imageView2/3/w/300"></image>
   </view>
   <view class="newtitle"> 凯修斯御猫堂</view>
   <view class="buttonSyule ">

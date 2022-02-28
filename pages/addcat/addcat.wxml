@@ -122,14 +122,14 @@
     <!-- 猫咪权限 -->
     <!-- fatherCat -->
     <picker mode="selector" range="{{permissList}}" bindchange="bindpermissChange" range-key="text">
-      <van-field size="large" required input-align="right" border="{{ true }}" placeholder="请选择" value="{{permisstext}}" readonly label="公开" />
+      <van-field size="large" required input-align="right" border="{{ true }}" placeholder="请选择" value="{{permisstext}}" readonly label="他人可见" />
     </picker>
   </view>
   <view class="cat_detail">
     <view class="e_title">
       简介信息
     </view>
-    <van-field model:value="{{ desc }}" type="textarea" placeholder="请输入猫咪简介" autosize="{{autoSize}}" border="{{ true }}" />
+    <van-field model:value="{{ desc }}" maxlength="150" type="textarea" placeholder="请输入猫咪简介(最多150字)" autosize="{{autoSize}}" border="{{ true }}" />
   </view>
   <view class="button_">
     <van-button wx:if="{{!cat_id}}" block round type="warning" bind:click="onClick">提交信息</van-button>

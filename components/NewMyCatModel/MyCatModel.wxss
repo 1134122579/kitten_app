@@ -12,9 +12,8 @@
 
 .block_image {
   width: 100%;
-  /* min-height: 60rpx; */
-  /* max-height: 420rpx; */
-  height: 420rpx;
+  /* min-height: 260rpx; */
+  max-height: 420rpx;
   overflow: hidden;
   position: relative;
 }

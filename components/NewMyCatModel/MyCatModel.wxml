@@ -1,7 +1,7 @@
 <wxs src="../../utils/split.wxs" module="split" />
   <view class="tab_content_list_one" bindtap="gocatDteail">
     <view class="block_image">
-      <image mode="aspectFill" class="M_imageurl" lazy-load="{{is_lazyload}}" bindload="imageload" src="{{item.img}}">
+      <image mode="widthFix" class="M_imageurl" lazy-load="{{is_lazyload}}" bindload="imageload" src="{{item.img}}">
       </image>
     </view>
     <view class="M_text">
