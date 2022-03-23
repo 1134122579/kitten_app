@@ -346,7 +346,7 @@ Page({
       match_id: voteList[event.detail.value]["id"],
     });
   },
-  // 级别
+  // 分组
   bindstatusChange(event) {
     let {
       statusList

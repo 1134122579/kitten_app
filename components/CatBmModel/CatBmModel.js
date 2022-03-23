@@ -67,7 +67,7 @@ Component({
       let price=0
       if (!isHuansai) {
         wx.showToast({
-          title: "环赛必选",
+          title: "杯赛必选",
           icon: "none",
         });
         return;

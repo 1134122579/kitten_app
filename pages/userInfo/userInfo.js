@@ -242,13 +242,13 @@ Page({
       });
       return;
     }
-    // if (!mobile) {
-    //   wx.showToast({
-    //     title: "请输入手机号",
-    //     icon: "none",
-    //   });
-    //   return;
-    // }
+    if (!mobile) {
+      wx.showToast({
+        title: "请输入手机号",
+        icon: "none",
+      });
+      return;
+    }
 
     // if (!birthday) {
     //   wx.showToast({

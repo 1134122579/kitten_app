@@ -41,53 +41,6 @@ Component({
           isNullList: newV.length > 0 ? true : false,
         });
           this.waterfallFlow();
-        return;
-        if (this.data.listType == "MatchImgList") {
-          this.setData({
-            alllist: newV,
-            isNullList: newV.length > 0 ? true : false,
-          });
-          this.waterfallFlow();
-          return;
-        }
-        if (this.data.listType == "mycathouse") {
-          this.setData({
-            alllist: newV,
-            isNullList: newV.length > 0 ? true : false,
-          });
-          this.waterfallFlow();
-          return;
-        }
-        if (this.data.listType == "homeblockmodel") {
-          this.setData({
-            alllist: newV,
-            isNullList: newV.length > 0 ? true : false,
-          });
-          this.waterfallFlow();
-          return;
-        }
-        return;
-        let { alllist } = this.data;
-        let idList = [];
-        if (alllist?.length > 0) {
-          alllist.forEach((item) => {
-            idList.push(item?.id);
-          });
-        }
-        if (newV?.length > 0) {
-          let newList = [];
-          newV.forEach((item) => {
-            if (!idList.includes(item?.id)) {
-              newList.push(item);
-            }
-          });
-          console.log(alllist, 1212321123);
-          // this.setData({
-          //   alllist:newList?.length>0?newList:[]
-          // })
-          this.data.alllist = newList?.length > 0 ? newList : [];
-          this.waterfallFlow();
-        }
       },
     },
     isticket: {

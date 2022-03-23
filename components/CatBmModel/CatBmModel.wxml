@@ -38,15 +38,14 @@
       <view class="flexbetween">
         <!-- 左边 -->
         <view class="typelisttitle">
-          环赛
+          杯赛
           <view class="tag">(必选/单选)</view>
         </view>
         <!-- 右边 -->
         <view class="typelisttitle">
-          杯赛
+          环赛
           <view class="tag">(非必选/可多选)</view>
         </view>
-
       </view>
     </view>
     <!-- 列表 -->
