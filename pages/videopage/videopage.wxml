@@ -45,7 +45,7 @@
                     <view class="content flexbetween">
                       <view class="content_l"><text bindtap="onhf" data-item="{{item}}" wx:if="{{!item.iscontentcopy}}">{{item.content}}</text><text bindtap="onhf" data-item="{{item}}" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?item.content:item.contentcopy}}</text><text class="iscontentlookStyle" data-item="{{item}}" bindtap="iscontentlookclick" wx:if="{{item.iscontentcopy}}">{{iscontentlookId==item.id?'隐藏评论':'展开评论'}}</text> <text class="timestyle"> {{item.create_time}}</text></view>
                       <view class="content_R flexcolumn" bindtap="zanComment" data-item="{{item}}">
-                        <van-icon name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" />
+                        <van-icon style="{{split.ridefilter(is_zplList,item.id)&&'color:#ff0000'}}" name="{{split.ridefilter(is_zplList,item.id)?'like':'like-o'}}" size="14" />
                         <view>{{split.ridefilter(is_zplList,item.id)?item.zan_num+1:item.zan_num}}</view>
                       </view>
                     </view>
@@ -105,11 +105,11 @@
     </label>
     <view class="flexaround button_r">
       <view class="flexcenter" bindtap="zanDynamic">
-        <van-icon name="{{getData.is_zan ==1?'like':'like-o'}}" size="20" />
+        <van-icon  style="{{getData.is_zan==1&&'color:#ff0000'}}" name="{{getData.is_zan ==1?'like':'like-o'}}" size="20" />
         <view class="num"> {{getData.zan_num}}</view>
       </view>
       <view class="flexcenter" bindtap="addCollect">
-        <van-icon name="{{getData.is_collect ==1?'star':'star-o'}}" size="20" />
+        <van-icon  style="{{getData.is_collect==1&&'color:#ff0000'}}" name="{{getData.is_collect ==1?'star':'star-o'}}" size="20" />
         <view class="num">{{getData.sc_num}}</view>
       </view>
       <view class="flexcenter" bindtap="onlookPl">

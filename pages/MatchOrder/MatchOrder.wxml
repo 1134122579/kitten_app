@@ -2,15 +2,20 @@
   <block wx:for="{{list}}" wx:key="index">
     <view class="order_block">
       <view class="flexbetween ">
-        <view>
+        <view class="order-content">
           <view> 姓名：<text class="order_text">{{item.cat_name}}</text></view>
           <view> 订单编号：<text class="order_text">{{item.order_no}}</text></view>
           <view> 订单金额：<text class="order_text order_price">{{item.price}}</text></view>
           <view> 创建时间：<text class="order_text">{{item.create_time}}</text></view>
           <view> 订单状态：<text class="order_text order_price">{{item.status==1?'支付成功':'未支付'}}</text></view>
         </view>
-        <view class="look" bindtap="lookbutton" data-id="{{item.order_no}}">
+        <view class="order-button flexcenter">
+          <view class="look" bindtap="lookbutton" data-id="{{item.order_no}}">
           查看
+        </view>
+        <view class="look errorstyle" wx:if="{{item.status!=1}}" bindtap="delbutton" data-id="{{item.order_no}}">
+          删除
+        </view>
         </view>
       </view>
       <view class="order_foolter" wx:if="{{orderdetailorder_no==item.order_no}}">
@@ -27,5 +32,4 @@
       </view>
     </view>
   </block>
-
 </view>

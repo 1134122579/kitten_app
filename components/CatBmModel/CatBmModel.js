@@ -67,14 +67,14 @@ Component({
       let price=0
       if (!isHuansai) {
         wx.showToast({
-          title: "杯赛必选",
+          title: "环赛必选",
           icon: "none",
         });
         return;
       }
       // looktypeList = looktypeList.filter((item) => item.id != isHuansai);
       // console.log(looktypeList)
-      list = matchGroupobj.beisai.filter((item) => item.id == isHuansai);
+      list = matchGroupobj.huansai.filter((item) => item.id == isHuansai);
       let newList = looktypeListcheck.concat(list);
       newList.forEach(item=>{
         price=price+Number(item.price) 
