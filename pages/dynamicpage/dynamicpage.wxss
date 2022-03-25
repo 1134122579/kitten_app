@@ -1,1 +1,14 @@
 /* pages/dynamicpage/dynamicpage.wxss */
+.liststyle{
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.ismore{
+  font-size: 24rpx;
+  color: #fff;
+  padding: 20rpx;
+  text-align: center;
+}

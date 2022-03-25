@@ -6,7 +6,7 @@
       猫咪图片/视频 <text style="font-size: 24rpx;font-weight: normal;">最多8张图或者1个视频</text>
     </view>
     <view class="uplodaStyle">
-      <van-uploader file-list="{{ fileList }}"  multiple max-count="8" max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" compressed="false"/>
+      <van-uploader file-list="{{ fileList }}"  multiple  max-count="{{maxcount}}" accept="media" bind:before-read="beforeread" use-before-read="true" bind:after-read="afterRead" bind:delete="deleteImage" compressed="false"/>
     </view>
   </view>
 

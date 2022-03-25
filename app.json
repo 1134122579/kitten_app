@@ -89,6 +89,7 @@
     "iconfont": "./components/iconfont/iconfont",
     "MyNavModel": "./components/MyNavModel/MyNavModel",
     "image-cropper": "./components/image-cropper/index",
+    "DongtaiModel": "./components/DongtaiModel/DongtaiModel",
     "CatBmModel": "./components/CatBmModel/CatBmModel",
     "CatListPopup": "./components/CatListPopup/CatListPopup",
     "NavFollowModel": "./components/NavFollowModel/NavFollowModel",

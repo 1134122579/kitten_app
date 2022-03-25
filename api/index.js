@@ -870,4 +870,23 @@ export default {
       isThree: false,
     });
   },
+          
+cancelOrder(params) {
+    return fly({
+      url: `cancelOrder`,
+      method: "post",
+      params,
+      loading: true,
+      isThree: false,
+    });
+  },
+  delDynamic(params) {
+    return fly({
+      url: `delDynamic`,
+      method: "post",
+      params,
+      loading: true,
+      isThree: false,
+    });
+  },
 };

@@ -19,9 +19,15 @@ Page({
   },
   delbutton(e){
     let order_no = e.currentTarget.dataset.id;
-    wx.showToast({
-      title: '删除成功',
-      icon:'none'
+    Api.cancelOrder({order_no}).then(res=>{
+      wx.showToast({
+        title: '删除成功',
+        icon:'none'
+      })
+      this.setData({
+        page:1
+      })
+      this.getUserMatchOrder()
     })
   },
   getUserMatchOrder() {

@@ -109,7 +109,7 @@
         <view class="num"> {{getData.zan_num}}</view>
       </view>
       <view class="flexcenter" bindtap="addCollect">
-        <van-icon  style="{{getData.is_collect==1&&'color:#ff0000'}}" name="{{getData.is_collect ==1?'star':'star-o'}}" size="20" />
+        <van-icon  style="{{getData.is_collect==1&&'color:#F0D155'}}" name="{{getData.is_collect ==1?'star':'star-o'}}" size="20" />
         <view class="num">{{getData.sc_num}}</view>
       </view>
       <view class="flexcenter" bindtap="onlookPl">

@@ -5,7 +5,7 @@
         <!-- 猫舍 -->
         <MyCatModel item="{{item}}" wx:if="{{listType=='mycathouse'}}" bind:join_vote="join_vote" />
         <!-- 首页 -->
-        <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
+        <HomeBlockModel item="{{item}}" isdele="{{isdele}}" bind:ondele="ondele" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
         <!-- 精彩瞬间 -->
         <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
           <image mode="widthFix" style="width: 100%; border-radius: 6rpx;display: block;overflow: hidden;" src="{{item.url}}"></image>
@@ -18,7 +18,7 @@
         <!-- 猫舍 -->
         <MyCatModel item="{{item}}" wx:if="{{listType=='mycathouse'}}" bind:join_vote="join_vote" />
         <!-- 首页 -->
-        <HomeBlockModel item="{{item}}" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
+        <HomeBlockModel isdele="{{isdele}}" item="{{item}}"  bind:ondele="ondele" wx:if="{{listType=='homeblockmodel'}}" bind:join_vote="join_vote" />
         <!-- 精彩瞬间 -->
         <view class="MatchImgList" wx:if="{{listType=='MatchImgList'}}">
           <image mode="widthFix" style="width: 100%; border-radius: 6rpx;display: block;overflow: hidden;" src="{{item.url}}"></image>

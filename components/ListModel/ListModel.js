@@ -12,6 +12,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    isdele:{
+      type:Boolean,
+      value:false
+    },
     isStatus: {
       type: [String, Number],
       observer(newV, oldV) {
@@ -94,6 +98,22 @@ Component({
   methods: {
     join_vote(e) {
       this.triggerEvent("join_vote", e.detail);
+    },
+    ondele(e) {
+      let {id}=e.detail
+      let {leftList,rightList}=this.data
+      Api.delDynamic({ dynamic_id:id }).then((res) => {
+        leftList=leftList.filter(item=>item.id!=id)
+        rightList=rightList.filter(item=>item.id!=id)
+        this.setData({
+          leftList
+          ,rightList
+        })
+       wx.showToast({
+         title: '删除成功',
+       })
+      });
+      this.triggerEvent("ondele", e.detail);
     },
     //瀑布流布局
     async waterfallFlow() {

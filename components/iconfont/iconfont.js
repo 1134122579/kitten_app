@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // dingdanjihe | editor | RFQ-logo | security | salescenter | service | share | xiaohongshushoucang | xiaohongshupinglun | xiaohongshuhuozan | bianji | bofang | bofang1 | dingwei | huore-s | naozhong | 24gl-playCircle | danxuanxuanzhong | danxuanweixuanzhong
+    // shanchu | dingdanjihe | editor | RFQ-logo | security | salescenter | service | share | xiaohongshushoucang | xiaohongshupinglun | xiaohongshuhuozan | bianji | bofang | bofang1 | dingwei | huore-s | naozhong | 24gl-playCircle | danxuanxuanzhong | danxuanweixuanzhong
     name: {
       type: String,
     },

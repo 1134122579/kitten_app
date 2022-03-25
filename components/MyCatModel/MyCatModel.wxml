@@ -24,7 +24,7 @@
           <text class="name_text">{{item.cat_name}}</text>
         </view>
         <view class="M_id flexcenter" bindtap="onLike">
-          <van-icon name="{{item.is_zan==1||is_like?'like':'like-o'}}" size="18" />
+          <van-icon color="{{(item.is_zan==1||is_like)&&'#ff0000'}}" name="{{item.is_zan==1||is_like?'like':'like-o'}}" size="18" />
           {{is_like?item.like_num+1:item.like_num}}
         </view>
       </view>

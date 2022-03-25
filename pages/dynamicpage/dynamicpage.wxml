@@ -1,5 +1,18 @@
+<!-- 我的动态
+<view>
+  <ListModel list="{{catList}}" isdele="{{isdele}}" bind:ondele="ondele" listType="{{listType}}" isStatus="{{isStatus}}" />
+</view> -->
+
 <!-- 我的动态 -->
 
-<view>
-<ListModel list="{{catList}}" listType="{{listType}}" isStatus="{{isStatus}}"/>
-</view>
+<block wx:if="{{list.length>0}}">
+  <view class="liststyle">
+    <block wx:for="{{list}}" wx:key="index">
+      <DongtaiModel bind:ondele="ondele" />
+    </block>
+  </view>
+  <view class="ismore" hidden="{{!ismore}}">暂无更多</view>
+</block>
+<block wx:else>
+  <van-empty description="暂无动态" />
+</block>

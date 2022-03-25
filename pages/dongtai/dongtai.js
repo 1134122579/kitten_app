@@ -78,8 +78,8 @@ Page({
   },
   showPopup() {
     wx.navigateTo({
-      url: '/pages/CatClasspage/CatClasspage?cat_pz=' + this.data.label,
-    })
+      url: "/pages/CatClasspage/CatClasspage?cat_pz=" + this.data.label,
+    });
     // this.setData({ show: true });
   },
   onclosebuttonPopup() {
@@ -100,7 +100,6 @@ Page({
   },
   // 获取个位置
   getlocation() {
-    console.log(1);
     let that = this;
     let { isnoTimelocation, locationObj } = this.data;
     if (isnoTimelocation) {
@@ -110,7 +109,6 @@ Page({
         latitude,
         longitude,
         success(res) {
-          console.log(res);
           that.setData({
             address: res.address,
             isnoTimelocation: true,
@@ -146,27 +144,28 @@ Page({
   // 上传前
   beforeread(event) {
     let that = this;
-    console.log(event, "event");
+    console.log(event, "上传前event");
     let { file, callback } = event.detail;
     let { duration, size, type, url } = file[0];
     let isSize = size / 1024 / 1024;
     let typenum = type == "image" ? 1 : 2;
     const { fileList = [] } = that.data;
-    console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    if(fileList.length>0){
-      if ( fileList[0].type == "image" && file[0].type == "video") {
+    if (fileList.length > 0) {
+      if (file[0].type == "video") {
         wx.showToast({
           title: "已上传图片无法选择视频",
           icon: "none",
         });
-        return ;
+        return;
       }
     }
+    console.log(fileList, file, type, this.data.maxcount, "视频");
     this.setData({
       maxcount: type == "image" ? 8 : 1,
       type: typenum,
     });
+    console.log(file, type, this.data.maxcount, "视频");
     callback(true);
     return;
     isSize > 20 && callback(false); //判断大小
@@ -180,18 +179,16 @@ Page({
     let that = this;
     const { file } = event.detail;
     const { fileList = [] } = that.data;
-    console.log(file, "视频");
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    console.log(fileList, file, "测试上传十篇");
-    if (fileList.length > 0) {
-      if (fileList[0].type == "image" && file[0].type == "video") {
-        wx.showToast({
-          title: "已上传图片无法选择视频",
-          icon: "none",
-        });
-        return;
-      }
-    }
+    // if (fileList.length > 0) {
+    //   if (fileList[0].type == "image" && file[0].type == "video") {
+    //     wx.showToast({
+    //       title: "已上传图片无法选择视频",
+    //       icon: "none",
+    //     });
+    //     return;
+    //   }
+    // }
     // 视频裁剪
     if (file[0].type == "video") {
       wx.openVideoEditor({
@@ -210,7 +207,6 @@ Page({
             });
             return;
           }
-          console.log(res, 12123123);
           that.uploadFile({ url: tempFilePath, size, duration });
         },
         complete(res) {
@@ -223,13 +219,21 @@ Page({
       item["isupload"] = true;
       return item;
     });
-    console.log(fileArray);
+    let promiseall = [];
     fileArray.forEach((item) => {
-      that.uploadFile(item);
+      promiseall.push(that.uploadFilenew(item));
     });
-    return;
-    console.log("afterRead", file);
-    that.uploadFile(fileList, file);
+    wx.showLoading({
+      title: '上传中..',
+    })
+    Promise.all(promiseall).then((res) => {
+      that.setData({
+        fileList: fileList.concat(res),
+      });
+      wx.hideLoading()
+    }).catch(err=>{
+      wx.hideLoading()
+    });
   },
   // 文件上传
   uploadFile(file) {
@@ -239,6 +243,7 @@ Page({
     //   mask: true,
     // });
     const { fileList = [] } = this.data;
+    console.log(fileList, "前数据");
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 接口地址
       filePath: file.url,
@@ -246,20 +251,12 @@ Page({
       success(res) {
         // 上传完成需要更新 fileList
         res = JSON.parse(res.data);
-        // console.log(res, "upImage");
-        // let fileList = [{
-        //   ...file,
-        //   url: res.data.imgLink
-        // }]
         fileList.push({
           ...file,
           url: res.data.imgLink,
           isupload: false,
         });
-        console.log(
-          fileList,
-          "fileListfileListfileListfileListfileListfileList"
-        );
+        console.log(fileList, "数据");
         that.setData({
           fileList,
         });
@@ -269,14 +266,31 @@ Page({
       },
     });
   },
+  uploadFilenew(file) {
+    return new Promise((resolve, reject) => {
+      wx.uploadFile({
+        url: App.globalData.baseUrl + "upImage", // 接口地址
+        filePath: file.url,
+        name: "file",
+        success(res) {
+          // 上传完成需要更新 fileList
+          res = JSON.parse(res.data);
+          resolve({
+            ...file,
+            url: res.data.imgLink,
+            isupload: false,
+          });
+        },
+      });
+    });
+  },
   // 删除
   deleteImage(e) {
     let { fileList } = this.data;
-    console.log(e);
     let delitem = e.detail;
     this.setData({
       fileList: fileList.filter((item) => item.url != delitem.file.url),
-      maxcount: fileList.length <= 0||fileList[0].type=="image" ? 8:1,
+      maxcount: fileList.length <= 0 || fileList[0].type == "image" ? 8 : 1,
     });
   },
   // 品种
@@ -319,7 +333,13 @@ Page({
   },
   // 提交
   onClick() {
-    let { label="", fileList=[], desc="", title="", type="" } = this.data;
+    let {
+      label = "",
+      fileList = [],
+      desc = "",
+      title = "",
+      type = "",
+    } = this.data;
     let link_url = fileList.map((item) => item.url);
     if (this.checkUpQuery()) {
       wx.showLoading({
@@ -412,7 +432,6 @@ Page({
     return true;
   },
   bindbqclick(e) {
-    console.log(e);
     this.setData({
       label: e.currentTarget.dataset.item.name,
     });
@@ -442,24 +461,21 @@ Page({
    */
   onShow: function () {
     this.setData({
-      label:storgae.getInfo("CARPZ")
-    })
+      label: storgae.getInfo("CARPZ"),
+    });
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  },
+  onHide: function () {},
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    storgae.removeInfo("CARPZ")
-
+    storgae.removeInfo("CARPZ");
   },
-  
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
