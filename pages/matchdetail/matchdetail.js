@@ -99,6 +99,7 @@ this.setData({
       res["start_time"] = formatDate(res["start_time"]);
       res["pwinfo"] = res["pwinfo"].map(item=>{
         item['photosheader']=item['photos']+'?imageView2/3/w/300'
+        item['photosheader1']=item['photos']+'?imageView2/3/w/400'
         return item
       });
       res["end_time"] = formatDate(res["end_time"]);

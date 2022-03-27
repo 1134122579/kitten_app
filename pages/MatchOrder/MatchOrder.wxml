@@ -1,4 +1,5 @@
 <view>
+<block wx:if="{{list.length>0}}">
   <block wx:for="{{list}}" wx:key="index">
     <view class="order_block">
       <view class="flexbetween ">
@@ -7,15 +8,22 @@
           <view> 订单编号：<text class="order_text">{{item.order_no}}</text></view>
           <view> 订单金额：<text class="order_text order_price">{{item.price}}</text></view>
           <view> 创建时间：<text class="order_text">{{item.create_time}}</text></view>
-          <view> 订单状态：<text class="order_text order_price">{{item.status==1?'支付成功':'未支付'}}</text></view>
+          <view class="flexastart"> 订单状态：
+          <view class="order_text order_price" wx:if="{{item.status==1}}">已参赛</view>
+          <!-- <view class="order_text order_price" wx:if="{{item.status==2}}">待支付</view> -->
+          <view class="order_text order_price" wx:if="{{item.status==3}}">未支付</view>
+          <!-- <view class="order_text order_price" wx:if="{{item.status==4}}">退款失败</view>
+          <view class="order_text order_price" wx:if="{{item.status==5}}">取消支付</view> -->
+          </view>
+          <!-- 1 已参赛  2 删除  3 未支付  -->
         </view>
         <view class="order-button flexcenter">
           <view class="look" bindtap="lookbutton" data-id="{{item.order_no}}">
-          查看
-        </view>
-        <view class="look errorstyle" wx:if="{{item.status!=1}}" bindtap="delbutton" data-id="{{item.order_no}}">
-          删除
-        </view>
+            查看
+          </view>
+          <view class="look errorstyle" wx:if="{{item.status==3}}" bindtap="delbutton" data-id="{{item.order_no}}">
+            删除
+          </view>
         </view>
       </view>
       <view class="order_foolter" wx:if="{{orderdetailorder_no==item.order_no}}">
@@ -32,4 +40,9 @@
       </view>
     </view>
   </block>
+  <view class="isnulllist" wx:if="{{!isnulllist}}"> 暂无更多</view>
+</block>
+<block wx:else>
+  <van-empty description="暂无订单" />
+</block>
 </view>

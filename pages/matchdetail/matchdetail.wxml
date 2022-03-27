@@ -2,7 +2,7 @@
   <Navheader />
   <!-- 头部 -->
   <view class="headerImage">
-    <image class="imageStyle" mode="widthFix" src="{{getdata.cover||nullheaderImage}}"></image>
+    <image class="imageStyle" mode="widthFix" src="{{getdata.cover}}"></image>
   </view>
 
   <!-- 内容  活动简介-->
@@ -99,7 +99,7 @@
       <block wx:for="{{getdata.pwinfo}}" wx:key="index">
         <view class="type_block flexcolumn" bindtap="lookpw" data-item="{{item}}">
           <view class="userImg">
-            <image style="width: 100%;height: 100%;display: block;" mode="widthFix" src="{{item.photosheader||nullheaderImage}}"></image>
+            <image style="width: 100%;height: 100%;display: block;" mode="widthFix" src="{{item.photosheader1}}"></image>
           </view>
           <view class="typeListname">{{item.name}}</view>
           <view class="userdesc">{{item.type}}</view>
@@ -121,7 +121,7 @@
 <van-popup show="{{ ispwshow }}"  closeable bind:close="onPwClose">
   <view class="pwinfoStyle">
     <view class="userImageStyle">
-      <image style="width: 100%;height: 100%;display: block;" src="{{lookobj.photos}}" mode="widthFix"></image>
+      <image style="width: 100%;height: 100%;display: block;" src="{{lookobj.photosheader}}" mode="widthFix"></image>
     </view>
     <view class="userListname">{{lookobj.name}}</view>
     <view class="usertype">{{lookobj.type}}</view>

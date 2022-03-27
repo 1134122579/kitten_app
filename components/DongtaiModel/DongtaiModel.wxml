@@ -2,7 +2,7 @@
 <view class="tab_content_list_one" bindtap="gocatDteail">
   <van-skeleton row="8" loading="{{ loading }}">
     <view class="block_image">
-      <image mode="widthFix" class="M_imageurl" lazy-load="{{is_lazyload}}" bindload="imageload" src="{{item.link_url||'../../images/kongtu.png'}}">
+      <image mode="aspectFill" class="M_imageurl" lazy-load="{{is_lazyload}}" bindload="imageload" src="{{item.link_url||'../../images/kongtu.png'}}">
       </image>
       <image src="/images/playok.png" wx:if="{{item.type==2}}" class="playok"></image>
     </view>

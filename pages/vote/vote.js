@@ -159,6 +159,7 @@ Page({
   },
   // 倒计时
   oncountChange(e) {
+    console.log(e,'倒计时')
     this.setData({
       timeData: e.detail
     })
@@ -171,6 +172,7 @@ Page({
       res['end_time'] = formatDate(res['end_time'])
       res['start_time'] = formatDate(res['start_time'])
       res['rule'] = res['rule'].replace(/\<img/gi, '<img style="max-width:100%;height:auto"')
+      // res['cover']='https://gimg2.baidu.com/image_search/src=http%3A%2F%2Farticle-fd.zol-img.com.cn%2Fg6%2FM00%2F0D%2F0F%2FChMkKmEciAeIWZCdAAFrN0ou2EIAAS4nQJsMT4AAWtP722.jpg&refer=http%3A%2F%2Farticle-fd.zol-img.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1649038059&t=f074450f46e549dc77b7832b6899f9b2'
       this.setData({
         content: res
       })

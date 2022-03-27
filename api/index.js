@@ -866,7 +866,7 @@ export default {
       url: `getUserMatchOrder`,
       method: "post",
       params,
-      loading: false,
+      loading: true,
       isThree: false,
     });
   },

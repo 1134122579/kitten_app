@@ -155,6 +155,18 @@
           "pathName": "pages/matchdetail/matchdetail",
           "query": "id=3",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/vote/vote",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/matchdetail/matchdetail",
+          "query": "id=14",
+          "scene": null
         }
       ]
     }

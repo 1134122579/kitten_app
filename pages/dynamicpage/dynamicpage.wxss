@@ -1,6 +1,8 @@
 /* pages/dynamicpage/dynamicpage.wxss */
 .liststyle{
-  padding: 20rpx;
+  padding: 24rpx;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -8,7 +10,7 @@
 }
 .ismore{
   font-size: 24rpx;
-  color: #fff;
+  color: #ccc;
   padding: 20rpx;
   text-align: center;
 }

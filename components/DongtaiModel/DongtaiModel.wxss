@@ -1,5 +1,5 @@
 .tab_content_list_one {
-  width: 100%;
+  width: 46vw;
   box-sizing: border-box;
   box-shadow: 0 0 10rpx #ccc;
   font-size: 24rpx;

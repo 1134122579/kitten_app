@@ -8,7 +8,7 @@
 <block wx:if="{{list.length>0}}">
   <view class="liststyle">
     <block wx:for="{{list}}" wx:key="index">
-      <DongtaiModel bind:ondele="ondele" />
+      <DongtaiModel item="{{item}}" isdele="{{isdele}}" bind:ondele="ondele" />
     </block>
   </view>
   <view class="ismore" hidden="{{!ismore}}">暂无更多</view>

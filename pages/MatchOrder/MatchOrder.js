@@ -21,7 +21,7 @@ Page({
     let order_no = e.currentTarget.dataset.id;
     Api.cancelOrder({order_no}).then(res=>{
       wx.showToast({
-        title: '删除成功',
+        title: '取消成功',
         icon:'none'
       })
       this.setData({
