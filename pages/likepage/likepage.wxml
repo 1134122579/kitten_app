@@ -29,8 +29,8 @@
                 <image src="{{item.headimgurl}}" style="width: 82rpx;height: 82rpx;border-radius: 50%;"></image>
                 <view class="name">{{item.nickname}}</view>
               </view>
-              <view class="Qbutton" wx:if="{{tabId==2}}" bindtap="addFollow" data-item="{{item}}">回关</view>
-              <view class="Qbutton" wx:if="{{tabId==3}}" bindtap="cacheFollow" data-item="{{item}}">取关</view>
+              <view class="Qbutton" wx:if="{{tabId==2}}" bindtap="onisfoll" data-item="{{item}}">{{item.is_hu==1?'已互关':'回关'}}</view>
+              <view class="Qbutton" wx:if="{{tabId==3}}" bindtap="cacheFollow" data-item="{{item}}">{{item.is_hu==1?'已互关':'回关'}}</view>
             </view>
           </block>
           <view class="isnulllist">暂无更多</view>

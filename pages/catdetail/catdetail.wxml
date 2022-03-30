@@ -100,7 +100,7 @@
           <view class="typeListname" wx:if="{{getdata.group_id==1}}">长毛组</view>
           <view class="typeListname" wx:if="{{getdata.group_id==2}}">中长毛组</view>
           <view class="typeListname" wx:if="{{getdata.group_id==3}}">短毛组</view>
-          <view class="typeListname" wx:if="{{getdata.group_id==4}}">卷毛组</view>
+          <view class="typeListname" wx:if="{{getdata.group_id==4}}">东方体组</view>
           <view class="typeListname" wx:if="{{getdata.group_id==5}}">无毛组</view>
         </view>
         <view class="user_block flexastart">
@@ -113,7 +113,7 @@
         </view>
         <view class="user_block flexastart">
           <view class="userdesc">绝育：</view>
-          <view class="typeListname">{{getdata.is_jueyu==1?'未绝育':'已绝育'}}</view>
+          <view class="typeListname">{{getdata.is_jueyu==1?'已绝育':'未绝育'}}</view>
         </view>
       </view>
     </view>
@@ -160,7 +160,10 @@
             <view class="userImg">
               <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{getdata.mother_info.img||nullheaderImage}}"></image>
             </view>
-            <view class="typeListname  cat_namestyle flexcenter">{{getdata.mother_info.cat_name}} <van-icon wx:if="{{getdata.mother_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
+            <view class="typeListname  cat_namestyle flexcenter">
+            <view class="cat_name">
+              {{getdata.mother_info.cat_name}}
+            </view> <van-icon wx:if="{{getdata.mother_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{getdata.mother_info.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>
             </view>
           </view>
@@ -170,7 +173,10 @@
             <view class="userImg">
               <image style="width: 100%;height: 100%;display: block;" mode="aspectFill" src="{{getdata.father_info.img||nullheaderImage}}"></image>
             </view>
-            <view class="typeListname cat_namestyle flexcenter">{{getdata.father_info.cat_name}} <van-icon wx:if="{{getdata.father_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
+            <view class="typeListname cat_namestyle flexcenter">
+              <view class="cat_name">
+            {{getdata.father_info.cat_name}}
+            </view> <van-icon wx:if="{{getdata.father_info.sex==1}}" size="20" name="/images/gong_icon.png"></van-icon>
               <van-icon wx:if="{{getdata.father_info.sex==2}}" size="20" name="/images/mu_icon.png"></van-icon>
             </view>
           </view>

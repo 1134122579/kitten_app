@@ -3,12 +3,15 @@ let App = getApp();
 import Api from "../../api/index";
 import { getDate } from "../../utils/util";
 import storgae from "../../utils/cache";
+let time
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    isnopush:false,
+    ispush:false,
     cat_id: "",
     catDetail: "", //猫咪详情
     catList: [],
@@ -71,7 +74,7 @@ Page({
       },
       {
         id: 4,
-        text: "卷毛组",
+        text: "东方体组",
       },
       {
         id: 5,
@@ -444,16 +447,22 @@ Page({
       motherCat,
       cat_id,
       id,
+      ispush,
+      isnopush
     } = this.data;
     console.log(nest_ids, 12312123);
     if (this.checkUpQuery()) {
       let father_id = fatherCat?.id || "";
       let mother_id = motherCat?.id || "";
+      if(ispush||isnopush)return
       wx.showLoading({
         title: "上传中..",
         mask: true,
       });
       let img = fileList.map((item) => item.url);
+      this.setData({
+        ispush:true
+      })
       if (cat_id) {
         Api.edit_cat({
           id,
@@ -476,11 +485,15 @@ Page({
         }).then((res) => {
           wx.hideLoading();
           wx.showToast({
-            title: "修改成功，1.5秒自动返回",
+            title: "修改成功，将自动返回",
             icon: "none",
             mask: true,
           });
-          setTimeout(() => {
+          this.setData({
+            ispush:false,
+            isnopush:true,
+          })
+          time=setTimeout(() => {
             wx.navigateBack({
               delta: 1,
             });
@@ -507,11 +520,15 @@ Page({
         }).then((res) => {
           wx.hideLoading();
           wx.showToast({
-            title: "添加成功，1.5秒自动返回",
+            title: "添加成功，将自动返回",
             icon: "none",
             mask: true,
           });
-          setTimeout(() => {
+          this.setData({
+            isnopush:true,
+            ispush:false,
+          })
+          time=setTimeout(() => {
             wx.navigateBack({
               delta: 1,
             });
@@ -733,12 +750,15 @@ Page({
     if (storgae.getInfo("CARPZ")) {
       storgae.removeInfo("CARPZ");
     }
+    clearTimeout(time)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {},
+  onUnload: function () {
+    clearTimeout(time)
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

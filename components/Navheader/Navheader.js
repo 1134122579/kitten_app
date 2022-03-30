@@ -15,7 +15,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    navHeight: App.globalData.navHeight,
+    navTop: App.globalData.navTop,
   },
 
   /**
@@ -23,9 +24,17 @@ Component({
    */
   methods: {
     onback(){
-      wx.navigateBack({
-        delta: 1,
-      })
+      let pages = getCurrentPages();
+      if (pages.length > 1) {
+        wx.navigateBack({//返回
+          delta: 1
+        });
+      }
+      if (pages.length == 1) {
+        wx.switchTab({
+          url: '/pages/home/home',
+        })
+      }
     }
   }
 })

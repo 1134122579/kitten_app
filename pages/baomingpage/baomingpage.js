@@ -1,5 +1,6 @@
 // pages/baomingpage/baomingpage.js
 import Api from "../../api/index";
+let time
 Page({
   /**
    * 页面的初始数据
@@ -59,7 +60,7 @@ Page({
     console.log(isCatObjlist, zprice, 121545156)
     this.setData({
       isCatObjlist,
-      z_price: zprice.toFixed(2),
+      z_price: zprice.toFixed(0),
     });
   },
   myevent(e) {
@@ -92,7 +93,7 @@ Page({
     this.setData({
       show: isShow,
       isCatObjlist,
-      z_price: zprice.toFixed(2),
+      z_price: zprice.toFixed(0),
     });
   },
   // 创建订单
@@ -156,14 +157,14 @@ Page({
               out_trade_no,
             }).then((res) => {
               wx.showToast({
-                title: "参加成功,1.5秒自动返回",
+                title: "参加成功,将自动返回",
                 icon: "none",
               });
-              setTimeout(() => {
+              time=setTimeout(() => {
                 wx.navigateBack({
                   delta: 1,
                 });
-              }, 1500);
+              }, 1000);
             });
           },
         });
@@ -212,7 +213,9 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function () {
+    clearTimeout(time)
+  },
 
   /**
    * 生命周期函数--监听页面卸载

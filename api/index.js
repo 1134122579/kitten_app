@@ -659,7 +659,7 @@ export default {
       url: `getMyfans`,
       method: "post",
       params,
-      loading: false,
+      loading: true,
       isThree: false,
     });
   },
@@ -668,7 +668,7 @@ export default {
       url: `cacheFollow`,
       method: "post",
       params,
-      loading: false,
+      loading: true,
       isThree: false,
     });
   },
@@ -758,7 +758,7 @@ export default {
       url: `getDynamicDetails`,
       method: "post",
       params,
-      loading: false,
+      loading: true,
       isThree: false,
     });
   },

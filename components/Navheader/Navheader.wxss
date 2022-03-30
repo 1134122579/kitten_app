@@ -10,4 +10,8 @@
   padding-left: 20rpx;
   z-index: 999;
   color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 4px;
 }

@@ -112,6 +112,18 @@ Page({
       });
     });
   },
+  onisfoll(e){
+    let {
+      item
+    } = e.currentTarget.dataset;
+    if(item.is_hu==1){
+      e.currentTarget.dataset.item['follow_user_id']=item.user_id
+      console.log(e)
+      this.cacheFollow(e)
+    }else{
+      this.addFollow(e)
+    }
+  },
   // 关注
   addFollow(e) {
     console.log(e);

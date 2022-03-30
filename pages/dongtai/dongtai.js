@@ -3,12 +3,15 @@ let App = getApp();
 import Api from "../../api/index";
 import { getDate } from "../../utils/util";
 import storgae from "../../utils/cache";
+let time
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    isnopush:false,
+    ispush:false,
     show: false,
     maxcount: 8,
     title: "",
@@ -339,13 +342,19 @@ Page({
       desc = "",
       title = "",
       type = "",
+      ispush,
+      isnopush
     } = this.data;
     let link_url = fileList.map((item) => item.url);
     if (this.checkUpQuery()) {
+      if(ispush||isnopush)return
       wx.showLoading({
         title: "发布中..",
         mask: true,
       });
+      this.setData({
+        ispush:true
+      })
       Api.addDynamic({
         label,
         link_url,
@@ -355,15 +364,19 @@ Page({
       }).then((res) => {
         wx.hideLoading();
         wx.showToast({
-          title: "添加成功，1.5秒自动返回",
+          title: "添加成功，将自动返回",
           icon: "none",
           mask: true,
         });
-        setTimeout(() => {
+        this.setData({
+          ispush:false,
+    isnopush:true,
+        })
+        time=  setTimeout(() => {
           wx.navigateBack({
             delta: 1,
           });
-        }, 1500);
+        }, 1000);
       });
     }
   },
@@ -468,12 +481,15 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {},
+  onHide: function () {
+    clearTimeout(time)
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    clearTimeout(time)
     storgae.removeInfo("CARPZ");
   },
 

@@ -1,4 +1,4 @@
 
-<view class="custom flex_center" style="padding-top:{{statusBarHeight}}px">
-  <van-icon name="arrow-left" size="24px" bind:click="onback" />
+<view class="custom " style="height:{{navHeight}}px">
+  <van-icon name="arrow-left" size="28px" bind:click="onback" />
 </view>

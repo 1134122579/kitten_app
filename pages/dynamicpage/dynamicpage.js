@@ -52,15 +52,33 @@ Page({
   // },
   ondele(e) {
     let { id } = e.detail;
-    Api.delDynamic({ dynamic_id: id }).then((res) => {
-      this.setData({
-        page: 1,
-      });
-      this.getlist();
-      wx.showToast({
-        title: "删除成功",
-      });
-    });
+   wx.showModal({
+      cancelColor: '#ccc',
+      cancelText: '取消',
+      confirmColor: '#ff0000',
+      confirmText: '确认',
+      content: '此操作将永久删除，是否继续 ？',
+      showCancel: true,
+      title: '操作提示',
+      success: (result) => {
+        console.log(result)
+        let {confirm}=result
+        if(confirm){
+          Api.delDynamic({ dynamic_id: id }).then((res) => {
+            this.setData({
+              page: 1,
+            });
+            this.getlist();
+            wx.showToast({
+              title: "删除成功",
+            });
+          });
+        }
+      },
+      fail: (res) => {},
+      complete: (res) => {},
+    })
+   
   },
 
   /**

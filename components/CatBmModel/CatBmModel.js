@@ -103,6 +103,7 @@ Component({
         checkList = checkList.filter((catitem) => catitem != item.id);
         looktypeListcheck = looktypeListcheck.filter((catitem) => catitem.id != item.id);
       } else {
+        
         checkList.push(item.id);
         looktypeListcheck.push(item);
       }
