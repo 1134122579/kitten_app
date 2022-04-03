@@ -10,6 +10,9 @@
 } */
 @import './myicon/iconfont.wxss';
 page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+  Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+  sans-serif;
   width: 100%;
   height: 100%;
   background: #fff;

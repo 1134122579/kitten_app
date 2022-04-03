@@ -1,7 +1,9 @@
 // app.js
 import Api from "./api/index";
 import storage from "./utils/cache";
-import { Storage } from "./utils/storage";
+import {
+  Storage
+} from "./utils/storage";
 const $Storage = new Storage();
 
 App({
@@ -103,32 +105,7 @@ App({
     try {
       that.isTimetoken();
     } catch (error) {}
-    // 获取小程序顶部参数
-    try {
-      let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-      console.log("获取自定义顶部高度相关参数", menuButtonObject);
-      let res = wx.getSystemInfoSync();
-      let statusBarHeight = res.statusBarHeight,
-        navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
-        // navHeight =
-        //   statusBarHeight +
-        //   menuButtonObject.height +
-        //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
-        navHeight =
-          Number(menuButtonObject.top) + Number(menuButtonObject.height) + 4;
-      this.globalData.menuButtonObject = menuButtonObject;
-      this.globalData.navHeight = navHeight;
-      this.globalData.navTop = navTop;
-      this.globalData.windowHeight = res.windowHeight;
-      console.log(
-        "获取自定义顶部高度相关参数====",
-        navHeight,
-        statusBarHeight,
-        navTop
-      );
-    } catch (err) {
-      console.error("获取小程序顶部参数", err);
-    }
+
     // 获取小程序定位问题
     // try {
     //   wx.getLocation({
@@ -181,10 +158,45 @@ App({
           });
         }
       });
-    } else {
-    }
+    } else {}
   },
   onShow() {
+    // 获取小程序顶部参数
+    try {
+      let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+      console.log("获取自定义顶部高度相关参数", menuButtonObject);
+      if (menuButtonObject.width==0) {
+        menuButtonObject = {
+          bottom: 80,
+          height: 32,
+          left: 281,
+          right: 368,
+          top: 48,
+          width: 87,
+        }
+      }
+      let res = wx.getSystemInfoSync();
+      let statusBarHeight = res.statusBarHeight,
+        navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
+        // navHeight =
+        //   statusBarHeight +
+        //   menuButtonObject.height +
+        //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+        navHeight =
+        Number(menuButtonObject.top) + Number(menuButtonObject.height) + 4;
+      this.globalData.menuButtonObject = menuButtonObject;
+      this.globalData.navHeight = navHeight;
+      this.globalData.navTop = navTop;
+      this.globalData.windowHeight = res.windowHeight;
+      console.log(
+        "获取自定义顶部高度相关参数====",
+        navHeight,
+        statusBarHeight,
+        navTop
+      );
+    } catch (err) {
+      console.error("获取小程序顶部参数", err);
+    }
     this.globalData.statusBarHeight = wx.getSystemInfoSync().statusBarHeight;
   },
   globalData: {

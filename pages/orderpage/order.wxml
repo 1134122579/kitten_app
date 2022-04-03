@@ -89,13 +89,13 @@
 			</view>
 			<block wx:if="{{isEmy}}">
 				<view class=" B_ul flexaround">
-					<view class="B_li">
+					<view class="B_li Rank">
 						 Rank
 					</view>
-					<view class="B_li">
+					<view class="B_li  B_li_value_name">
 						 Name
 					</view>
-					<view class="B_li">
+					<view class="B_li ">
 						 Breed
 					</view>
 					<view class="B_li">
@@ -107,10 +107,10 @@
 				</view>
 				<block wx:for="{{numlist}}" wx:key="index">
 					<view class="B_ul flexaround">
-						<view class="B_li_value">
+						<view class="B_li_value Rank">
 							{{item.rank}}
 						</view>
-						<view class="B_li_value">
+						<view class="B_li_value B_li_value_name">
 							{{item.name}}
 						</view>
 						<view class="B_li_value">

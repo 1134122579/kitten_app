@@ -38,3 +38,84 @@ page {
   background: rgb(255, 255, 255);
 
 }
+
+/* 报名赛事弹窗 */
+.orderInfo{
+    width: 299px;
+    height: 496px;
+    text-align: center;
+    padding: 0 20rpx;
+}
+.orderInfo-header-image{
+  width: 65%;
+  margin: 0 auto;
+}
+.orderInfo-title{
+  font-weight: 600;
+  font-size: 40rpx;
+  padding: 20rpx 0;
+}
+.orderInfo-catinfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #737373;
+  font-size: 32rpx;
+  line-height: 1.2;
+}
+.orderInfo-labal{
+  min-width: 120rpx;
+  flex-shrink: 0;
+}
+.orderInfo-content{
+  flex: 1;
+  flex-wrap: wrap;
+}
+.orderInfo-no{
+  margin-right: 10rpx;
+}
+.orderinfo-copy{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.orderinfo-txt{
+  color: #70B3FF;
+}
+
+/* 人 */
+
+.orederinfo-peopre{
+  width: 100%;
+  margin-top: 20rpx;
+}
+.peopre-title{
+  width: 100%;
+  text-align: left;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.proper-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.block-one{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.block-code{
+  width: 180rpx;
+  height: 180rpx;
+  background: #cccccc;
+}
+.block-name{
+  color: #737373;
+  padding: 8rpx 0;
+}
+.block-down{
+  width: 40rpx;
+}

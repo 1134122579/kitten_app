@@ -78,3 +78,8 @@ white-space: nowrap;
     color: #fff;
     border-radius: 40rpx;
 }
+.is-dongtai {
+  padding: 20rpx 0;
+  padding-left: 20rpx;
+  color: #FF6A6E;
+}

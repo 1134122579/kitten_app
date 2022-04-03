@@ -1,7 +1,9 @@
 // pages/enrollpage/enrollpage.js
 let App = getApp();
 import Api from "../../api/index";
-import { getDate } from "../../utils/util";
+import {
+  getDate
+} from "../../utils/util";
 import storgae from "../../utils/cache";
 let time
 
@@ -10,8 +12,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isnopush:false,
-    ispush:false,
+    issynccheckbox:false,
+    isnopush: false,
+    ispush: false,
     cat_id: "",
     catDetail: "", //猫咪详情
     catList: [],
@@ -34,9 +37,10 @@ Page({
     eye_color: "", //眼睛颜色
     register_no: "", //编号
     father_name: "", //
-    permisstext: "", //是
-    permiss_id: "", //是否公开 id
-    weight: "",
+    permisstext: "是", //是
+    permiss_id: 1, //是否公开 id
+    is_sync: 2, //是否同步用
+    color_code: "",
     father_pz: "",
     father_color: "",
     father_register_no: "",
@@ -59,8 +63,7 @@ Page({
       minHeight: 100,
     },
     endTime: "2022-01-01",
-    levelList: [
-      {
+    levelList: [{
         id: 1,
         text: "长毛组",
       },
@@ -81,8 +84,7 @@ Page({
         text: "无毛组",
       },
     ],
-    statusList: [
-      {
+    statusList: [{
         id: 1,
         text: "展示",
       },
@@ -100,8 +102,7 @@ Page({
       },
     ],
     PzList: [],
-    voteList: [
-      {
+    voteList: [{
         id: 1,
         text: "第一期",
       },
@@ -110,8 +111,7 @@ Page({
         text: "第二期",
       },
     ],
-    sexList: [
-      {
+    sexList: [{
         id: 1,
         text: "公",
       },
@@ -120,8 +120,7 @@ Page({
         text: "母",
       },
     ],
-    permissList: [
-      {
+    permissList: [{
         id: 1,
         text: "是",
       },
@@ -130,8 +129,7 @@ Page({
         text: "否",
       },
     ],
-    jueyuList: [
-      {
+    jueyuList: [{
         id: 1,
         text: "是",
       },
@@ -140,8 +138,7 @@ Page({
         text: "否",
       },
     ],
-    xuexingList: [
-      {
+    xuexingList: [{
         id: 1,
         text: "A",
       },
@@ -158,6 +155,21 @@ Page({
         text: "未知",
       },
     ],
+  },
+  noop() {},
+  onissyncChange() {
+    let {issynccheckbox,permiss_id}=this.data
+    if(permiss_id!=1){
+      wx.showToast({
+        title: '仅他人可见，才可勾选',
+        icon:'none'
+      })
+      return
+    }
+    this.setData({
+      is_sync:!issynccheckbox?1:2,
+      issynccheckbox:!issynccheckbox
+    })
   },
   showPopup() {
     wx.navigateTo({
@@ -205,8 +217,12 @@ Page({
   // 上传
   afterRead(event) {
     let that = this;
-    let { fileList = [] } = this.data;
-    const { file } = event.detail;
+    let {
+      fileList = []
+    } = this.data;
+    const {
+      file
+    } = event.detail;
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     // wx.showLoading({
     //   title: "上传中..",
@@ -238,7 +254,9 @@ Page({
   uploadFile(file) {
     console.log(file);
     let that = this;
-    const { fileList = [] } = this.data;
+    const {
+      fileList = []
+    } = this.data;
     wx.uploadFile({
       url: App.globalData.baseUrl + "upImage", // 仅为示例，非真实的接口地址
       filePath: file.url,
@@ -283,7 +301,9 @@ Page({
   // 删除
   deleteImage(e) {
     let deleItem = e.detail;
-    let { fileList } = this.data;
+    let {
+      fileList
+    } = this.data;
     this.setData({
       fileList: fileList.filter((item) => item.url != deleItem.file.url),
     });
@@ -297,14 +317,18 @@ Page({
   },
   // 品种
   bindpzChange(event) {
-    let { PzList } = this.data;
+    let {
+      PzList
+    } = this.data;
     this.setData({
       cat_pz: PzList[event.detail.value]["name"],
     });
   },
   // 绝育
   bindjueyuChange(event) {
-    let { jueyuList } = this.data;
+    let {
+      jueyuList
+    } = this.data;
     this.setData({
       is_jueyu: jueyuList[event.detail.value]["id"],
       is_jueyutext: jueyuList[event.detail.value]["text"],
@@ -312,14 +336,18 @@ Page({
   },
   // 血型
   bindxuexingChange(event) {
-    let { xuexingList } = this.data;
+    let {
+      xuexingList
+    } = this.data;
     this.setData({
       blood_type: xuexingList[event.detail.value]["text"],
     });
   },
   // 性别
   bindsexChange(event) {
-    let { sexList } = this.data;
+    let {
+      sexList
+    } = this.data;
     this.setData({
       sexIndex: event.detail.value,
       sex: sexList[event.detail.value]["id"],
@@ -328,16 +356,22 @@ Page({
   },
   // 是否公开
   bindpermissChange(event) {
-    let { permissList } = this.data;
+    let {
+      permissList
+    } = this.data;
     this.setData({
       permissIndex: event.detail.value,
       permiss_id: permissList[event.detail.value]["id"],
       permisstext: permissList[event.detail.value]["text"],
+      is_sync:2,
+      issynccheckbox:false
     });
   },
   // 投票期数
   bindvoteChange(event) {
-    let { voteList } = this.data;
+    let {
+      voteList
+    } = this.data;
     this.setData({
       voteIndex: event.detail.value,
       match_id: voteList[event.detail.value]["id"],
@@ -345,7 +379,9 @@ Page({
   },
   // 分组
   bindstatusChange(event) {
-    let { statusList } = this.data;
+    let {
+      statusList
+    } = this.data;
     this.setData({
       cat_status: statusList[event.detail.value]["id"],
       cat_statustext: statusList[event.detail.value]["text"],
@@ -387,8 +423,16 @@ Page({
   // },
   // 父母
   setCatItem(e) {
-    let { isfather, ischeckbox } = this.data;
-    let { isShow, isCatObjlist, rediocat, isCatList } = e.detail;
+    let {
+      isfather,
+      ischeckbox
+    } = this.data;
+    let {
+      isShow,
+      isCatObjlist,
+      rediocat,
+      isCatList
+    } = e.detail;
     if (ischeckbox) {
       console.log(e, "123选中的猫咪信息");
       this.setData({
@@ -414,7 +458,9 @@ Page({
   },
   // 类别
   bindlevelChange(event) {
-    let { levelList } = this.data;
+    let {
+      levelList
+    } = this.data;
     this.setData({
       group_id: levelList[event.detail.value]["id"],
       group_name: levelList[event.detail.value]["text"],
@@ -431,6 +477,7 @@ Page({
     let {
       cat_name,
       birthday,
+      is_sync=2,
       sex,
       cat_pz = "",
       permiss_id = "",
@@ -440,7 +487,7 @@ Page({
       desc,
       is_jueyu,
       blood_type = "",
-      weight,
+      color_code,
       cat_status,
       fatherCat,
       nest_ids = [],
@@ -451,17 +498,18 @@ Page({
       isnopush
     } = this.data;
     console.log(nest_ids, 12312123);
+
     if (this.checkUpQuery()) {
       let father_id = fatherCat?.id || "";
       let mother_id = motherCat?.id || "";
-      if(ispush||isnopush)return
+      if (ispush || isnopush) return
       wx.showLoading({
         title: "上传中..",
         mask: true,
       });
       let img = fileList.map((item) => item.url);
       this.setData({
-        ispush:true
+        ispush: true
       })
       if (cat_id) {
         Api.edit_cat({
@@ -477,7 +525,7 @@ Page({
           is_jueyu,
           blood_type,
           img,
-          weight,
+          color_code,
           mother_id,
           father_id,
           nest_ids,
@@ -490,18 +538,24 @@ Page({
             mask: true,
           });
           this.setData({
-            ispush:false,
-            isnopush:true,
+            ispush: false,
+            isnopush: true,
           })
-          time=setTimeout(() => {
+          time = setTimeout(() => {
             wx.navigateBack({
               delta: 1,
             });
           }, 1500);
-        });
+        }).catch(err => {
+          this.setData({
+            isnopush: false,
+            ispush: false,
+          })
+        });;
       } else {
         Api.add_cat({
           cat_name,
+          is_sync,
           birthday,
           sex,
           cat_pz,
@@ -512,7 +566,7 @@ Page({
           blood_type,
           is_show: permiss_id,
           img,
-          weight,
+          color_code,
           mother_id,
           father_id,
           nest_ids,
@@ -525,14 +579,19 @@ Page({
             mask: true,
           });
           this.setData({
-            isnopush:true,
-            ispush:false,
+            isnopush: true,
+            ispush: false,
           })
-          time=setTimeout(() => {
+          time = setTimeout(() => {
             wx.navigateBack({
               delta: 1,
             });
           }, 1500);
+        }).catch(err => {
+          this.setData({
+            isnopush: false,
+            ispush: false,
+          })
         });
       }
     }
@@ -543,7 +602,7 @@ Page({
       cat_pz,
       sex,
       desc,
-      weight,
+      color_code,
       fileList,
       cat_name,
       color,
@@ -598,13 +657,13 @@ Page({
       });
       return;
     }
-    if (!weight.trim()) {
-      wx.showToast({
-        title: "请输入体重",
-        icon: "none",
-      });
-      return;
-    }
+    // if (!color_code.trim()) {
+    //   wx.showToast({
+    //     title: "请输入体重",
+    //     icon: "none",
+    //   });
+    //   return;
+    // }
     if (!birthday.trim()) {
       wx.showToast({
         title: "请选择生日",
@@ -660,8 +719,14 @@ Page({
   },
   // 获取猫咪详情
   getCatdetails() {
-    let { cat_id, statusList, levelList } = this.data;
-    let { user_id } = storgae.getUserInfo();
+    let {
+      cat_id,
+      statusList,
+      levelList
+    } = this.data;
+    let {
+      user_id
+    } = storgae.getUserInfo();
     Api.getCatdetails({
       user_id,
       cat_id,

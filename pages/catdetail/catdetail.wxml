@@ -63,7 +63,7 @@
           <view class="typeListname">{{getdata.birthday}}</view>
         </view>
         <view class="user_block flexastart">
-          <view class="userdesc">花色：</view>
+          <view class="userdesc">颜色：</view>
           <view class="typeListname">{{getdata.color}}</view>
         </view>
         <view class="user_block flexastart">
@@ -76,8 +76,8 @@
         </view>
 
         <view class="user_block flexastart">
-          <view class="userdesc">体重：</view>
-          <view class="typeListname">{{getdata.weight}}kg</view>
+          <view class="userdesc">颜色代码：</view>
+          <view class="typeListname">{{getdata.color_code}}</view>
         </view>
         <view class="user_block flexastart" wx:if="{{ismyid==getdata.user_id}}">
           <view class="userdesc">公开：</view>

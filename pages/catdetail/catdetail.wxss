@@ -204,7 +204,7 @@ page {
   font-weight: normal;
   /* text-indent: 30rpx; */
   color: #a6a6a6;
-  width: 80rpx;
+  min-width: 80rpx;
 }
 
 .name {

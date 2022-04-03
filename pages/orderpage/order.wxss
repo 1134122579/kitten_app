@@ -98,11 +98,22 @@ page {
 }
 .B_li,.B_li_value{
   font-size: 24rpx;
-  width:200rpx;
-  text-align: center;
+  flex-shrink: 0;
+  width: 120rpx;
+  text-align: left;
+}
+.B_li_value{
+  width: 120rpx;
+  text-align: left;
+}
+.B_li_value_name{
+  width: 240rpx;
 }
 .B_li{
   font-weight: 600;
+}
+.Rank{
+  text-align: center;
 }
 
 /* 动画 */

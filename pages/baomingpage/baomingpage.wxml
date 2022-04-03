@@ -27,3 +27,68 @@
     <van-button type="default" bindtap="onPlay" color="#FF6A6E" block>￥{{z_price}}立即支付</van-button>
   </view>
 </view>
+
+<!-- 订单创建成功弹窗 -->
+<van-popup show="{{ isorderInfoShow }}" bind:close="onorderInfoClose" custom-style="border: 2px solid #447AFF" round>
+  <view class="orderInfo">
+    <view class="orderInfo-header-image">
+      <image style="width: 100%;" src="/images/order-poup.png" mode="widthFix"></image>
+    </view>
+    <view class="orderInfo-title">报名信息提交成功！</view>
+    <view class="orderInfo-catinfo">
+      <view class="orderInfo-labal"> 猫咪ID号：</view>
+      <view class="orderInfo-content flexastart">
+        <view class="orderInfo-no">SRF0000</view>
+        <view class="orderInfo-no">SRF0000</view>
+        <view class="orderInfo-no">SRF0000</view>
+        <view class="orderInfo-no">SRF0000</view>
+        <view class="orderInfo-no">SRF0000</view>
+      </view>
+    </view>
+    <view class="orderInfo-catinfo">
+      <view class="orderInfo-labal">订单编号：</view>
+      <view class="orderInfo-content flexastart">
+        <view class="orderInfo-no">SRF00000000000000000</view>
+      </view>
+    </view>
+    <view class="orderinfo-copy">---<view class="orderinfo-txt">点击复制</view>---</view>
+
+    <view class="orederinfo-peopre">
+      <view class="peopre-title">报名费用相关问题请天假俱乐部人员：</view>
+      <view class="proper-block ">
+
+        <view class="block-one">
+          <view class="block-code">
+                <!-- 二维码 -->
+          </view>
+          <view class="block-name">
+            俱乐部主席
+          </view>
+          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+        </view>
+        <view class="block-one">
+          <view class="block-code">
+
+          </view>
+          <view class="block-name">
+            俱乐部主席
+          </view>
+          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+        </view>
+        <view class="block-one">
+          <view class="block-code">
+
+          </view>
+          <view class="block-name">
+            俱乐部主席
+          </view>
+          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+        </view>
+
+      </view>
+    </view>
+
+
+
+  </view>
+</van-popup>

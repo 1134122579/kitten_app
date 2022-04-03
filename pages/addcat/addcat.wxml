@@ -32,9 +32,9 @@
         </picker> -->
         <van-field size="large" input-align="right" border="{{ true }}" required bindtap="showPopup" placeholder="选择品种" value="{{ cat_pz}}" readonly label="品种" />
         <!-- 颜色 -->
-        <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="花色" required placeholder="请输入" border="{{ true }}" input-align="right" />
-        <!-- 体重 -->
-        <van-field model:value="{{ weight }}" size="large" label-class="labelClass" type="digit" custom-style="inputStyle" label="体重" required placeholder="请输入体重单位（kg）" border="{{ true }}" input-align="right" />
+        <van-field model:value="{{ color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色" required placeholder="请输入" border="{{ true }}" input-align="right" />
+        <!-- 颜色代码  color_code -->
+        <van-field model:value="{{ color_code }}" size="large" label-class="labelClass" custom-style="inputStyle" label="颜色代码" placeholder="请输入颜色代码" border="{{ true }}" input-align="right" />
         <!-- 眼睛颜色 -->
         <!-- <van-field model:value="{{ eye_color }}" size="large" label-class="labelClass" custom-style="inputStyle" label="眼睛颜色" required placeholder="请输入" border="{{ true }}" input-align="right" /> -->
         <!-- 注册号 -->
@@ -124,6 +124,17 @@
     <picker mode="selector" range="{{permissList}}" bindchange="bindpermissChange" range-key="text">
       <van-field size="large" required input-align="right" border="{{ true }}" placeholder="请选择" value="{{permisstext}}" readonly label="他人可见" />
     </picker>
+  </view>
+  <view class="cat_detail" wx:if="{{!cat_id}}" >
+    <label for="" bindtap="onissyncChange" >
+      <view class="is-dongtai flexbetween"  >
+        <view>
+          是否同步发布到动态？
+        </view>
+        <!-- 1  同步   2  不同步 -->
+          <van-checkbox  checked-color="#FF6A6E" value="{{issynccheckbox}}" class="isdongtaicheckbox"  ></van-checkbox>
+      </view> 
+    </label>
   </view>
   <view class="cat_detail">
     <view class="e_title">

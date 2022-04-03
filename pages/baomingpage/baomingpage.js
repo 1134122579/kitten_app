@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isorderInfoShow:false,
     match_id: null,
     isShowTypeList: true,
     show: false,
@@ -15,6 +16,11 @@ Page({
     isHuansai: null,
     checkList: [],
     matchGroupobj: {},
+  },
+  onorderInfoClose(){
+this.setData({
+  isorderInfoShow:false
+})
   },
   getSelectCatList() {
     Api.getSelectCatList().then((res) => {
@@ -47,14 +53,14 @@ Page({
     isCatObjlist = isCatObjlist.map((item) => {
       item["price"] = item?.looktypeList.reduce(
         (price, item) => {
-          return Number(price)  +Number(item.price) 
+          return Number(price) + Number(item.price)
         }, 0
       );
       return item;
-    })||0;
+    }) || 0;
     let zprice = isCatObjlist.reduce(
       (price, item) => {
-        return Number(price)  +Number(item.price) 
+        return Number(price) + Number(item.price)
       }, 0
     );
     console.log(isCatObjlist, zprice, 121545156)
@@ -69,28 +75,30 @@ Page({
       isShow,
       isCatObjlist
     } = e.detail;
-    if(isCatObjlist.length<=0){
+    if (isCatObjlist.length <= 0) {
       this.setData({
         z_price: 0,
       });
     }
+
     isCatObjlist = isCatObjlist.map((item) => {
       item["cat_id"] = item["id"];
-      item["group_ids"] = item["group_ids"]?item["group_ids"]:[];
-      item["looktypeList"] = item["looktypeList"]?item["looktypeList"]:[];
+      item["group_ids"] = item["group_ids"] ? item["group_ids"] : [];
+      item["looktypeList"] = item["looktypeList"] ? item["looktypeList"] : [];
       item["price"] = item?.looktypeList.reduce(
         (price, item) => {
-          return Number(price)  +Number(item.price) 
+          return Number(price) + Number(item.price)
         }, 0
       );
       return item;
     });
     let zprice = isCatObjlist.reduce(
       (price, item) => {
-        return Number(price)  +Number(item.price) 
+        return Number(price) + Number(item.price)
       }, 0
     );
     this.setData({
+
       show: isShow,
       isCatObjlist,
       z_price: zprice.toFixed(0),
@@ -98,12 +106,16 @@ Page({
   },
   // 创建订单
   onPlay() {
+    this.setData({
+      isorderInfoShow:true
+    })
+  return
     let {
       isCatObjlist,
-      match_id
+      match_id,
     } = this.data;
     console.log(isCatObjlist)
-    let nullprice = isCatObjlist.some((item) => item?.group_ids?.length <=0);
+    let nullprice = isCatObjlist.some((item) => item?.group_ids?.length <= 0);
     console.log(nullprice);
     if (isCatObjlist.length <= 0) {
       wx.showToast({
@@ -119,9 +131,10 @@ Page({
       });
       return;
     }
-    wx.showLoading({
-      title: "提交中..",
-    });
+    let catNolist = isCatObjlist.map((item) => {
+      return item['register_no'];
+    })
+
     let cat_info = isCatObjlist.map((item) => {
       let obj = {};
       obj["march_id"] = match_id;
@@ -130,12 +143,20 @@ Page({
       obj["group_ids"] = item["group_ids"];
       return obj;
     });
+    console.log(catNolist, match_id,
+      cat_info)
+ 
+    wx.showLoading({
+      title: "提交中..",
+    });
     Api.joinMatch({
       match_id,
       cat_info
     }).then((res) => {
       console.log(res, "创建订单成功");
       // 调用支付
+
+      return
       Api.payMatchOrder(res).then((res) => {
         let {
           nonceStr,
@@ -160,7 +181,7 @@ Page({
                 title: "参加成功,将自动返回",
                 icon: "none",
               });
-              time=setTimeout(() => {
+              time = setTimeout(() => {
                 wx.navigateBack({
                   delta: 1,
                 });

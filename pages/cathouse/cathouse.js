@@ -147,7 +147,6 @@ Page({
     })
     this.getUserCatList()
     this.selectComponent("#tabs").resize();
-      
   },
 
   /**

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    highlightColor:'rgba(255, 106, 110, 1)',
+    highlightColor: 'rgba(255, 106, 110, 1)',
     indexList: [],
     show: false,
     navHeight: App.globalData.navHeight,
@@ -29,22 +29,33 @@ Page({
     ellipsis: false,
   },
   showPopup() {
-    let { show } = this.data;
-    this.setData({ show: !show });
+    let {
+      show
+    } = this.data;
+    this.setData({
+      show: !show
+    });
   },
   onpoup(e) {
     console.log(e, "阻止冒泡");
   },
   onclosebuttonPopup() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
 
   onClose() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   // 获取动态列表
   async getCatList() {
-    let { tabName, mValue } = this.data;
+    let {
+      tabName,
+      mValue
+    } = this.data;
     let res = [];
     this.setData({
       loading: true,
@@ -74,13 +85,15 @@ Page({
       });
     }
     this.setData({
-      isEmpty:false
+      isEmpty: false
     })
     wx.stopPullDownRefresh()
   },
   // 品种切换
   typeChange(event) {
-    let { name } = event.detail;
+    let {
+      name
+    } = event.detail;
     this.setData({
       "listQuery.label": name,
       "listQuery.page": 1,
@@ -93,7 +106,9 @@ Page({
   // 顶部切换
   tabType(e) {
     let name = e.detail;
-    let { mValue } = this.data;
+    let {
+      mValue
+    } = this.data;
     console.log("tabType", name);
     this.setData({
       tabName: name,
@@ -154,7 +169,9 @@ Page({
   // 前往
   goShop(e) {
     console.log(e);
-    let { item } = e.currentTarget.dataset;
+    let {
+      item
+    } = e.currentTarget.dataset;
     wx.showLoading({
       title: "加载中...",
     });
@@ -162,10 +179,50 @@ Page({
       url: `/pages/catshop/catshop?id=${item.id}`,
     });
   },
+  // 设置小程序样式
+  setTopStyleValue() {
+    try {
+      let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+      if (menuButtonObject.width==0) {
+        menuButtonObject = {
+          bottom: 80,
+          height: 32,
+          left: 281,
+          right: 368,
+          top: 48,
+          width: 87,
+        }
+      }
+      console.log("获取自定义顶部高度相关参数", menuButtonObject);
+      let res = wx.getSystemInfoSync();
+      let statusBarHeight = res.statusBarHeight,
+        navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
+        // navHeight =
+        //   statusBarHeight +
+        //   menuButtonObject.height +
+        //   (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+        navHeight =
+        Number(menuButtonObject.top) + Number(menuButtonObject.height) + 4;
+      App.globalData.menuButtonObject = menuButtonObject;
+      App.globalData.navHeight = navHeight;
+      App.globalData.navTop = navTop;
+      App.globalData.windowHeight = res.windowHeight;
+      console.log(
+        "获取自定义顶部高度相关参数====",
+        menuButtonObject,
+        navHeight,
+        statusBarHeight,
+        navTop
+      );
+    } catch (err) {
+      console.error("获取小程序顶部参数", err);
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setTopStyleValue()
     App.tabbershow(this, 0);
   },
   /**
@@ -191,7 +248,7 @@ Page({
    */
   onHide: function () {
     this.setData({
-      show:false
+      show: false
     })
   },
 
@@ -206,7 +263,7 @@ Page({
   onPullDownRefresh: function () {
     this.setData({
       "listQuery.page": 1,
-      isEmpty:true
+      isEmpty: true
     })
     this.getCatList();
   },
@@ -221,5 +278,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {},
+  onShareAppMessage: function () {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
+  },
+  onShareTimeline: function () {
+    return {
+    //   title: '分享的标题', 
+    //   query: {
+    //     // key: 'value' //要携带的参数
+    //   },
+    //   imageUrl: ''  //分享图,默认小程序的logo
+    }
+  },
 });
