@@ -36,32 +36,32 @@ page {
   padding-bottom: 40rpx;
   box-sizing: border-box;
   background: rgb(255, 255, 255);
-
 }
 
 /* 报名赛事弹窗 */
 .orderInfo{
-    width: 299px;
-    height: 496px;
+    width: 82vw;
+    max-height: 90vh;
     text-align: center;
     padding: 0 20rpx;
 }
 .orderInfo-header-image{
-  width: 65%;
+  width: 55.7%;
   margin: 0 auto;
 }
 .orderInfo-title{
   font-weight: 600;
-  font-size: 40rpx;
-  padding: 20rpx 0;
+  font-size: 36rpx;
+  padding: 10rpx 0;
 }
 .orderInfo-catinfo {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   color: #737373;
-  font-size: 32rpx;
+  font-size: 28rpx;
   line-height: 1.2;
+  padding: 10rpx 0;
 }
 .orderInfo-labal{
   min-width: 120rpx;
@@ -78,9 +78,16 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size:28rpx ;
 }
 .orderinfo-txt{
   color: #70B3FF;
+  margin: 0 10rpx ;
+}
+.xian{
+  height: 2px;
+  width: 60rpx;
+background: #FFC200;
 }
 
 /* 人 */
@@ -92,14 +99,14 @@ page {
 .peopre-title{
   width: 100%;
   text-align: left;
-  font-size: 32rpx;
+  font-size: 30rpx;
   font-weight: 600;
 }
 .proper-block {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20rpx;
+  margin: 20rpx 0;
 }
 .block-one{
   display: flex;
@@ -110,12 +117,20 @@ page {
 .block-code{
   width: 180rpx;
   height: 180rpx;
-  background: #cccccc;
 }
 .block-name{
   color: #737373;
+  font-size: 26rpx;
   padding: 8rpx 0;
 }
 .block-down{
   width: 40rpx;
+}
+.order-list{
+ max-height: 218rpx;
+  overflow-y: auto;
+  margin: 10rpx 0;
+}
+.orderinfo-block{
+  margin-bottom: 10rpx;
 }

@@ -24,7 +24,8 @@
   <!-- 按钮 -->
 
   <view class="button_">
-    <van-button type="default" bindtap="onPlay" color="#FF6A6E" block>￥{{z_price}}立即支付</van-button>
+    <!-- <van-button type="default" bindtap="onPlay" color="#FF6A6E" block>￥{{z_price}}立即支付</van-button> -->
+    <van-button type="default" bindtap="onPlay" color="#FF6A6E" block>立即报名</van-button>
   </view>
 </view>
 
@@ -35,56 +36,62 @@
       <image style="width: 100%;" src="/images/order-poup.png" mode="widthFix"></image>
     </view>
     <view class="orderInfo-title">报名信息提交成功！</view>
-    <view class="orderInfo-catinfo">
-      <view class="orderInfo-labal"> 猫咪ID号：</view>
-      <view class="orderInfo-content flexastart">
-        <view class="orderInfo-no">SRF0000</view>
-        <view class="orderInfo-no">SRF0000</view>
-        <view class="orderInfo-no">SRF0000</view>
-        <view class="orderInfo-no">SRF0000</view>
-        <view class="orderInfo-no">SRF0000</view>
-      </view>
-    </view>
-    <view class="orderInfo-catinfo">
-      <view class="orderInfo-labal">订单编号：</view>
-      <view class="orderInfo-content flexastart">
-        <view class="orderInfo-no">SRF00000000000000000</view>
-      </view>
-    </view>
-    <view class="orderinfo-copy">---<view class="orderinfo-txt">点击复制</view>---</view>
+    <view class="order-list">
+      <block wx:for="{{orderinfo.orderInfo}}" wx:key="index">
+        <view class="orderinfo-block">
+          <view class="orderInfo-catinfo">
+            <view class="orderInfo-labal"> 猫咪ID号：</view>
+            <view class="orderInfo-content flexastart">
+              <view class="orderInfo-no">{{item.register_no}}</view>
+            </view>
+          </view>
+          <view class="orderInfo-catinfo">
+            <view class="orderInfo-labal">订单编号：</view>
+            <view class="orderInfo-content flexastart">
+              <view class="orderInfo-no" >{{item.order_no}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
 
+    </view>
+    <view class="orderinfo-copy" bindtap='copyorderno' data-text="{{copycontent}}">
+      <view class="xian"></view>
+      <view class="orderinfo-txt" >点击复制</view>
+      <view class="xian"></view>
+    </view>
     <view class="orederinfo-peopre">
-      <view class="peopre-title">报名费用相关问题请天假俱乐部人员：</view>
+      <view class="peopre-title">缴纳报名费用及优惠政策咨询请联系活动主办方:</view>
       <view class="proper-block ">
 
         <view class="block-one">
           <view class="block-code">
-                <!-- 二维码 -->
+            <!-- 二维码 -->
+            <image style="width: 100%;height: 100%;" mode="aspectFit" src="{{orderinfo.matchCode.zx_code}}"></image>
           </view>
           <view class="block-name">
             俱乐部主席
           </view>
-          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+          <image class="block-down" data-url="{{orderinfo.matchCode.zx_code}}" bindtap="downImage" mode="widthFix" src="/images/order-down.png"></image>
         </view>
         <view class="block-one">
           <view class="block-code">
-
+            <image style="width: 100%;height: 100%;" mode="aspectFit" src="{{orderinfo.matchCode.fzx_code}}"></image>
           </view>
           <view class="block-name">
-            俱乐部主席
+            俱乐部副主席
           </view>
-          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+          <image class="block-down" data-url="{{orderinfo.matchCode.fzx_code}}" bindtap="downImage" mode="widthFix" src="/images/order-down.png"></image>
         </view>
         <view class="block-one">
           <view class="block-code">
-
+            <image style="width: 100%;height: 100%;" mode="aspectFit" src="{{orderinfo.matchCode.ms_code}}"></image>
           </view>
           <view class="block-name">
-            俱乐部主席
+            俱乐部秘书长
           </view>
-          <image class="block-down" mode="widthFix" src="/images/order-down.png"></image>
+          <image class="block-down" data-url="{{orderinfo.matchCode.ms_code}}" bindtap="downImage" mode="widthFix" src="/images/order-down.png"></image>
         </view>
-
       </view>
     </view>
 

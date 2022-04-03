@@ -889,4 +889,13 @@ cancelOrder(params) {
       isThree: false,
     });
   },
+  getOrderCopyInfo(params) {
+    return fly({
+      url: `getOrderCopyInfo`,
+      method: "post",
+      params,
+      loading: true,
+      isThree: false,
+    });
+  },
 };

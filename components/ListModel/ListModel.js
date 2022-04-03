@@ -12,9 +12,9 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    isdele:{
-      type:Boolean,
-      value:false
+    isdele: {
+      type: Boolean,
+      value: false
     },
     isStatus: {
       type: [String, Number],
@@ -44,7 +44,7 @@ Component({
           alllist: newV,
           isNullList: newV.length > 0 ? true : false,
         });
-          this.waterfallFlow();
+        this.waterfallFlow();
       },
     },
     isticket: {
@@ -96,35 +96,58 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    //预览图片
+    previewImage(e) {
+      var url = e.target.dataset.url;
+      console.log(e)
+      wx.previewImage({
+        current: url, //当前点击的图片链接
+        urls: [url], //图片数组
+      });
+    },
     join_vote(e) {
       this.triggerEvent("join_vote", e.detail);
     },
     ondele(e) {
-      let {id}=e.detail
-      let {leftList,rightList}=this.data
-      Api.delDynamic({ dynamic_id:id }).then((res) => {
-        leftList=leftList.filter(item=>item.id!=id)
-        rightList=rightList.filter(item=>item.id!=id)
+      let {
+        id
+      } = e.detail
+      let {
+        leftList,
+        rightList
+      } = this.data
+      Api.delDynamic({
+        dynamic_id: id
+      }).then((res) => {
+        leftList = leftList.filter(item => item.id != id)
+        rightList = rightList.filter(item => item.id != id)
         this.setData({
-          leftList
-          ,rightList
+          leftList,
+          rightList
         })
-       wx.showToast({
-         title: '删除成功',
-       })
+        wx.showToast({
+          title: '删除成功',
+        })
       });
       this.triggerEvent("ondele", e.detail);
     },
     //瀑布流布局
     async waterfallFlow() {
       //在获取list后调用
-      let { alllist, leftList, rightList } = this.data;
+      let {
+        alllist,
+        leftList,
+        rightList
+      } = this.data;
       let leftListnew = [];
       let rightListnew = [];
       query = wx.createSelectorQuery().in(this); //  组件必须加上this
       if (alllist.length <= 0) return;
       for (const item of alllist) {
-      let { leftList, rightList } = this.data;
+        let {
+          leftList,
+          rightList
+        } = this.data;
         leftHeight <= rightHeight ? leftList.push(item) : rightList.push(item); //判断两边高度，来觉得添加到那边
         // leftListnew=[...leftList,item]
         // leftHeight <= rightHeight
@@ -145,7 +168,7 @@ Component({
         query.select(".tab_left").boundingClientRect();
         query.select(".tab_right").boundingClientRect();
         query.exec((res) => {
-     
+
           leftHeight = res[0]?.height; //获取左边列表的高度
           rightHeight = res[1]?.height; //获取右边列表的高度
           resolve(res);
@@ -154,4 +177,5 @@ Component({
     },
     // 获取数据
   },
+
 });

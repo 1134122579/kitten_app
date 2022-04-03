@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isorderInfoShow:false,
+    copycontent:'',
+    orderinfo: {},
+    ispushorder: false,
+    isorderInfoShow: false,
     match_id: null,
     isShowTypeList: true,
     show: false,
@@ -17,10 +20,88 @@ Page({
     checkList: [],
     matchGroupobj: {},
   },
-  onorderInfoClose(){
-this.setData({
-  isorderInfoShow:false
-})
+  // 点击复制订单号
+  copyorderno(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功',
+              icon: "none"
+            })
+          }
+        })
+      }
+    })
+  },
+  // 下载图片
+  downImage(e) {
+    var url = e.currentTarget.dataset.url;
+    console.log(e)
+    if (!url) {
+      return
+    }
+    wx.downloadFile({
+      url: url,
+      success: (res) => {
+        var benUrl = res.tempFilePath;
+        //图片保存到本地相册
+        wx.saveImageToPhotosAlbum({
+          filePath: benUrl,
+          //授权成功，保存图片
+          success: (data) => {
+            wx.showToast({
+              title: '保存成功',
+              icon: 'success',
+              duration: 2000
+            })
+          },
+          //授权失败
+          fail: (err) => {
+            if (err.errMsg) { //重新授权弹框确认
+              wx.showModal({
+                title: '提示',
+                content: '您好,请先授权，在保存此图片。',
+                showCancel: false,
+                success(res) {
+                  if (res.confirm) { //重新授权弹框用户点击了确定
+                    wx.openSetting({ //进入小程序授权设置页面
+                      success(settingdata) {
+                        if (settingdata.authSetting['scope.writePhotosAlbum']) { //用户打开了保存图片授权开关
+                          wx.saveImageToPhotosAlbum({
+                            filePath: benUrl,
+                            success: (data) => {
+                              wx.showToast({
+                                title: '保存成功',
+                                icon: 'success',
+                                duration: 2000
+                              })
+                            },
+                          })
+                        } else { //用户未打开保存图片到相册的授权开关
+                          wx.showModal({
+                            title: '温馨提示',
+                            content: '授权失败，请稍后重新获取',
+                            showCancel: false,
+                          })
+                        }
+                      }
+                    })
+                  }
+                }
+              })
+            }
+          }
+        })
+      }
+    })
+  },
+  onorderInfoClose() {
+    this.setData({
+      isorderInfoShow: false
+    })
   },
   getSelectCatList() {
     Api.getSelectCatList().then((res) => {
@@ -66,6 +147,7 @@ this.setData({
     console.log(isCatObjlist, zprice, 121545156)
     this.setData({
       isCatObjlist,
+      ispushorder:false,
       z_price: zprice.toFixed(0),
     });
   },
@@ -106,13 +188,11 @@ this.setData({
   },
   // 创建订单
   onPlay() {
-    this.setData({
-      isorderInfoShow:true
-    })
-  return
+
     let {
       isCatObjlist,
       match_id,
+      ispushorder
     } = this.data;
     console.log(isCatObjlist)
     let nullprice = isCatObjlist.some((item) => item?.group_ids?.length <= 0);
@@ -145,52 +225,82 @@ this.setData({
     });
     console.log(catNolist, match_id,
       cat_info)
- 
+    if (ispushorder) {
+      this.setData({
+        isorderInfoShow: true
+      })
+      return
+    }
     wx.showLoading({
       title: "提交中..",
     });
-    Api.joinMatch({
-      match_id,
-      cat_info
-    }).then((res) => {
-      console.log(res, "创建订单成功");
-      // 调用支付
-
-      return
-      Api.payMatchOrder(res).then((res) => {
+    try {
+      Api.joinMatch({
+        match_id,
+        cat_info
+      }).then((res) => {
+        console.log(res, "创建订单成功");
+        // 调用支付
         let {
-          nonceStr,
-          paySign,
-          signType,
-          timeStamp,
-          out_trade_no
-        } = res;
-        wx.requestPayment({
-          nonceStr,
-          signType,
-          package: res.package,
-          paySign,
-          timeStamp,
-          success(data) {},
-          complete() {
-            wx.hideLoading();
-            Api.queryMatchOrder({
-              out_trade_no,
-            }).then((res) => {
-              wx.showToast({
-                title: "参加成功,将自动返回",
-                icon: "none",
-              });
-              time = setTimeout(() => {
-                wx.navigateBack({
-                  delta: 1,
+          order_no
+        } = res
+        Api.payMatchOrder(res).then((res) => {
+          let {
+            nonceStr,
+            paySign,
+            signType,
+            timeStamp,
+            out_trade_no
+          } = res;
+          Api.getOrderCopyInfo({
+            match_id,
+            order_no
+          }).then(res => {
+            let copycontent=''
+            res.orderInfo.forEach(item=>{
+              copycontent=`${copycontent}
+              猫咪ID号：${item.register_no}
+              订单编号：${item.order_no}`
+            })
+            wx.hideLoading()
+            this.setData({
+              copycontent:copycontent,
+              orderinfo: res,
+              ispushorder: true,
+              isorderInfoShow: true
+            })
+          })
+          return
+          wx.requestPayment({
+            nonceStr,
+            signType,
+            package: res.package,
+            paySign,
+            timeStamp,
+            success(data) {},
+            complete() {
+              wx.hideLoading();
+              Api.queryMatchOrder({
+                out_trade_no,
+              }).then((res) => {
+                wx.showToast({
+                  title: "参加成功,将自动返回",
+                  icon: "none",
                 });
-              }, 1000);
-            });
-          },
+                time = setTimeout(() => {
+                  wx.navigateBack({
+                    delta: 1,
+                  });
+                }, 1000);
+              });
+            },
+          });
         });
       });
-    });
+    } catch (error) {
+      wx.hideLoading()
+    }
+
   },
   // 获取类型
   matchGroup() {

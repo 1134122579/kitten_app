@@ -17,6 +17,7 @@ Page({
     MatchImgList: [], // 精彩瞬间
     lookobj:{},//裁判详情
   },
+  
   onPullDown() {
     this.data.page++;
     this.getMatchImg();

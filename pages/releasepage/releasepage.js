@@ -1,5 +1,6 @@
 // pages/releasepage/releasepage.js
-let App=getApp()
+let App = getApp()
+import storage from '../../utils/cache'
 Page({
 
   /**
@@ -8,12 +9,19 @@ Page({
   data: {
 
   },
-  goaddcat(){
+  goaddcat() {
+    wx.showLoading({
+      title: '进入中..',
+    })
+    storage.removeInfo('CARPZ')
     wx.navigateTo({
       url: '/pages/addcat/addcat',
     })
   },
-  godongtai(){
+  godongtai() {
+    wx.showLoading({
+      title: '进入中..',
+    })
     wx.navigateTo({
       url: '/pages/dongtai/dongtai',
     })
@@ -44,7 +52,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    wx.hideLoading({})
   },
 
   /**

@@ -79,6 +79,8 @@ font-size: 30rpx;
   width: 50%;
   box-sizing: border-box;
   text-align: center;
+  overflow-y: auto;
+  height: 77%;
 }
 .button_{
   width: 100%;
